@@ -11,16 +11,29 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as InfrastructureRouteImport } from './routes/infrastructure'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ModulesRouteImport } from './routes/modules'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ServersRouteImport } from './routes/servers'
+import { Route as SlaRouteImport } from './routes/sla'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as WhyServerfyRouteImport } from './routes/why-serverfy'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as ModulesIndexRouteImport } from './routes/modules.index'
+import { Route as ModulesCodeRouteImport } from './routes/modules.$code'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
+import { Route as ServersIndexRouteImport } from './routes/servers.index'
+import { Route as ServersSlugRouteImport } from './routes/servers.$slug'
+import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
+import { Route as SolutionsSlugRouteImport } from './routes/solutions.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -32,9 +45,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InfrastructureRoute = InfrastructureRouteImport.update({
+  id: '/infrastructure',
+  path: '/infrastructure',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -57,6 +80,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RefundPolicyRoute = RefundPolicyRouteImport.update({
+  id: '/refund-policy',
+  path: '/refund-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
@@ -65,6 +93,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const ServersRoute = ServersRouteImport.update({
   id: '/servers',
   path: '/servers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SlaRoute = SlaRouteImport.update({
+  id: '/sla',
+  path: '/sla',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SolutionsRoute = SolutionsRouteImport.update({
@@ -77,113 +110,233 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhyServerfyRoute = WhyServerfyRouteImport.update({
+  id: '/why-serverfy',
+  path: '/why-serverfy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91DotwellKnownChar93OauthProtectedResourceRoute =
   Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
     id: '/.well-known/oauth-protected-resource',
     path: '/.well-known/oauth-protected-resource',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ModulesIndexRoute = ModulesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ModulesRoute,
+} as any)
+const ModulesCodeRoute = ModulesCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => ModulesRoute,
+} as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ResourcesRoute,
+} as any)
+const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ResourcesRoute,
+} as any)
+const ServersIndexRoute = ServersIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServersRoute,
+} as any)
+const ServersSlugRoute = ServersSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ServersRoute,
+} as any)
+const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsSlugRoute = SolutionsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => SolutionsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/infrastructure': typeof InfrastructureRoute
   '/mcp': typeof McpRoute
-  '/modules': typeof ModulesRoute
+  '/modules': typeof ModulesRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/resources': typeof ResourcesRoute
-  '/servers': typeof ServersRoute
-  '/solutions': typeof SolutionsRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/resources': typeof ResourcesRouteWithChildren
+  '/servers': typeof ServersRouteWithChildren
+  '/sla': typeof SlaRoute
+  '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/modules/$code': typeof ModulesCodeRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
+  '/servers/$slug': typeof ServersSlugRoute
+  '/solutions/$slug': typeof SolutionsSlugRoute
+  '/modules/': typeof ModulesIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
+  '/servers/': typeof ServersIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/infrastructure': typeof InfrastructureRoute
   '/mcp': typeof McpRoute
-  '/modules': typeof ModulesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/resources': typeof ResourcesRoute
-  '/servers': typeof ServersRoute
-  '/solutions': typeof SolutionsRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/sla': typeof SlaRoute
   '/terms': typeof TermsRoute
+  '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/modules/$code': typeof ModulesCodeRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
+  '/servers/$slug': typeof ServersSlugRoute
+  '/solutions/$slug': typeof SolutionsSlugRoute
+  '/modules': typeof ModulesIndexRoute
+  '/resources': typeof ResourcesIndexRoute
+  '/servers': typeof ServersIndexRoute
+  '/solutions': typeof SolutionsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/infrastructure': typeof InfrastructureRoute
   '/mcp': typeof McpRoute
-  '/modules': typeof ModulesRoute
+  '/modules': typeof ModulesRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/resources': typeof ResourcesRoute
-  '/servers': typeof ServersRoute
-  '/solutions': typeof SolutionsRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/resources': typeof ResourcesRouteWithChildren
+  '/servers': typeof ServersRouteWithChildren
+  '/sla': typeof SlaRoute
+  '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/modules/$code': typeof ModulesCodeRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
+  '/servers/$slug': typeof ServersSlugRoute
+  '/solutions/$slug': typeof SolutionsSlugRoute
+  '/modules/': typeof ModulesIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
+  '/servers/': typeof ServersIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/careers'
     | '/contact'
+    | '/infrastructure'
     | '/mcp'
     | '/modules'
     | '/pricing'
     | '/privacy'
+    | '/refund-policy'
     | '/resources'
     | '/servers'
+    | '/sla'
     | '/solutions'
     | '/terms'
+    | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/modules/$code'
+    | '/resources/$slug'
+    | '/servers/$slug'
+    | '/solutions/$slug'
+    | '/modules/'
+    | '/resources/'
+    | '/servers/'
+    | '/solutions/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/careers'
     | '/contact'
+    | '/infrastructure'
     | '/mcp'
-    | '/modules'
     | '/pricing'
     | '/privacy'
+    | '/refund-policy'
+    | '/sla'
+    | '/terms'
+    | '/why-serverfy'
+    | '/.well-known/oauth-protected-resource'
+    | '/modules/$code'
+    | '/resources/$slug'
+    | '/servers/$slug'
+    | '/solutions/$slug'
+    | '/modules'
     | '/resources'
     | '/servers'
     | '/solutions'
-    | '/terms'
-    | '/.well-known/oauth-protected-resource'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/careers'
     | '/contact'
+    | '/infrastructure'
     | '/mcp'
     | '/modules'
     | '/pricing'
     | '/privacy'
+    | '/refund-policy'
     | '/resources'
     | '/servers'
+    | '/sla'
     | '/solutions'
     | '/terms'
+    | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/modules/$code'
+    | '/resources/$slug'
+    | '/servers/$slug'
+    | '/solutions/$slug'
+    | '/modules/'
+    | '/resources/'
+    | '/servers/'
+    | '/solutions/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
+  InfrastructureRoute: typeof InfrastructureRoute
   McpRoute: typeof McpRoute
-  ModulesRoute: typeof ModulesRoute
+  ModulesRoute: typeof ModulesRouteWithChildren
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
-  ResourcesRoute: typeof ResourcesRoute
-  ServersRoute: typeof ServersRoute
-  SolutionsRoute: typeof SolutionsRoute
+  RefundPolicyRoute: typeof RefundPolicyRoute
+  ResourcesRoute: typeof ResourcesRouteWithChildren
+  ServersRoute: typeof ServersRouteWithChildren
+  SlaRoute: typeof SlaRoute
+  SolutionsRoute: typeof SolutionsRouteWithChildren
   TermsRoute: typeof TermsRoute
+  WhyServerfyRoute: typeof WhyServerfyRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 
@@ -203,11 +356,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/infrastructure': {
+      id: '/infrastructure'
+      path: '/infrastructure'
+      fullPath: '/infrastructure'
+      preLoaderRoute: typeof InfrastructureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -238,6 +405,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/refund-policy': {
+      id: '/refund-policy'
+      path: '/refund-policy'
+      fullPath: '/refund-policy'
+      preLoaderRoute: typeof RefundPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources': {
       id: '/resources'
       path: '/resources'
@@ -250,6 +424,13 @@ declare module '@tanstack/react-router' {
       path: '/servers'
       fullPath: '/servers'
       preLoaderRoute: typeof ServersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sla': {
+      id: '/sla'
+      path: '/sla'
+      fullPath: '/sla'
+      preLoaderRoute: typeof SlaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/solutions': {
@@ -266,6 +447,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/why-serverfy': {
+      id: '/why-serverfy'
+      path: '/why-serverfy'
+      fullPath: '/why-serverfy'
+      preLoaderRoute: typeof WhyServerfyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.well-known/oauth-protected-resource': {
       id: '/.well-known/oauth-protected-resource'
       path: '/.well-known/oauth-protected-resource'
@@ -273,21 +461,136 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/modules/': {
+      id: '/modules/'
+      path: '/'
+      fullPath: '/modules/'
+      preLoaderRoute: typeof ModulesIndexRouteImport
+      parentRoute: typeof ModulesRoute
+    }
+    '/modules/$code': {
+      id: '/modules/$code'
+      path: '/$code'
+      fullPath: '/modules/$code'
+      preLoaderRoute: typeof ModulesCodeRouteImport
+      parentRoute: typeof ModulesRoute
+    }
+    '/resources/': {
+      id: '/resources/'
+      path: '/'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof ResourcesRoute
+    }
+    '/resources/$slug': {
+      id: '/resources/$slug'
+      path: '/$slug'
+      fullPath: '/resources/$slug'
+      preLoaderRoute: typeof ResourcesSlugRouteImport
+      parentRoute: typeof ResourcesRoute
+    }
+    '/servers/': {
+      id: '/servers/'
+      path: '/'
+      fullPath: '/servers/'
+      preLoaderRoute: typeof ServersIndexRouteImport
+      parentRoute: typeof ServersRoute
+    }
+    '/servers/$slug': {
+      id: '/servers/$slug'
+      path: '/$slug'
+      fullPath: '/servers/$slug'
+      preLoaderRoute: typeof ServersSlugRouteImport
+      parentRoute: typeof ServersRoute
+    }
+    '/solutions/': {
+      id: '/solutions/'
+      path: '/'
+      fullPath: '/solutions/'
+      preLoaderRoute: typeof SolutionsIndexRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/$slug': {
+      id: '/solutions/$slug'
+      path: '/$slug'
+      fullPath: '/solutions/$slug'
+      preLoaderRoute: typeof SolutionsSlugRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
   }
 }
+
+interface ModulesRouteChildren {
+  ModulesCodeRoute: typeof ModulesCodeRoute
+  ModulesIndexRoute: typeof ModulesIndexRoute
+}
+
+const ModulesRouteChildren: ModulesRouteChildren = {
+  ModulesCodeRoute: ModulesCodeRoute,
+  ModulesIndexRoute: ModulesIndexRoute,
+}
+
+const ModulesRouteWithChildren =
+  ModulesRoute._addFileChildren(ModulesRouteChildren)
+
+interface ResourcesRouteChildren {
+  ResourcesSlugRoute: typeof ResourcesSlugRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
+}
+
+const ResourcesRouteChildren: ResourcesRouteChildren = {
+  ResourcesSlugRoute: ResourcesSlugRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
+}
+
+const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
+  ResourcesRouteChildren,
+)
+
+interface ServersRouteChildren {
+  ServersSlugRoute: typeof ServersSlugRoute
+  ServersIndexRoute: typeof ServersIndexRoute
+}
+
+const ServersRouteChildren: ServersRouteChildren = {
+  ServersSlugRoute: ServersSlugRoute,
+  ServersIndexRoute: ServersIndexRoute,
+}
+
+const ServersRouteWithChildren =
+  ServersRoute._addFileChildren(ServersRouteChildren)
+
+interface SolutionsRouteChildren {
+  SolutionsSlugRoute: typeof SolutionsSlugRoute
+  SolutionsIndexRoute: typeof SolutionsIndexRoute
+}
+
+const SolutionsRouteChildren: SolutionsRouteChildren = {
+  SolutionsSlugRoute: SolutionsSlugRoute,
+  SolutionsIndexRoute: SolutionsIndexRoute,
+}
+
+const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
+  SolutionsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
+  InfrastructureRoute: InfrastructureRoute,
   McpRoute: McpRoute,
-  ModulesRoute: ModulesRoute,
+  ModulesRoute: ModulesRouteWithChildren,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
-  ResourcesRoute: ResourcesRoute,
-  ServersRoute: ServersRoute,
-  SolutionsRoute: SolutionsRoute,
+  RefundPolicyRoute: RefundPolicyRoute,
+  ResourcesRoute: ResourcesRouteWithChildren,
+  ServersRoute: ServersRouteWithChildren,
+  SlaRoute: SlaRoute,
+  SolutionsRoute: SolutionsRouteWithChildren,
   TermsRoute: TermsRoute,
+  WhyServerfyRoute: WhyServerfyRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
 }

@@ -1,6 +1,8 @@
 import { Icon } from "@/components/Icon";
 import { Reveal, SectionHeading } from "@/components/Primitives";
+import { Link } from "@tanstack/react-router";
 import { useCases } from "@/data/serverfy";
+import { linkFor } from "@/data/links";
 
 export function UseCases() {
   return (
@@ -23,7 +25,11 @@ export function UseCases() {
               <span className="grid size-10 place-items-center rounded-xl icon-tile transition-transform duration-300 group-hover:scale-105">
                 <Icon name={u.icon} className="size-4.5" />
               </span>
-              <h3 className="mt-4 text-sm font-extrabold text-foreground sm:text-base">{u.title}</h3>
+              <h3 className="mt-4 text-sm font-extrabold text-foreground sm:text-base">
+                <Link to={linkFor[u.title] ?? "/solutions"} className="hover:text-orange">
+                  {u.title}
+                </Link>
+              </h3>
               <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">{u.desc}</p>
             </Reveal>
           ))}
