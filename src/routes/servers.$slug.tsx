@@ -1,5 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { DetailPageView, detailHead } from "@/components/DetailPageView";
+import { DedicatedServerView } from "@/components/DedicatedServerView";
 import { findPage, serverPages } from "@/data/pages";
 
 export const Route = createFileRoute("/servers/$slug")({
