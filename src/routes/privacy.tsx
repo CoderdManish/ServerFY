@@ -15,10 +15,13 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/privacy" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "/privacy" }],
   }),
 });
 

@@ -108,29 +108,44 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
   );
 }
 
-export function detailHead(page: DetailPage) {
+export function detailHead(page: DetailPage, path: string) {
   return {
     meta: [
       { title: page.metaTitle },
       { name: "description", content: page.description },
       { property: "og:title", content: page.metaTitle },
       { property: "og:description", content: page.description },
-      { property: "og:type", content: "website" },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: path },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: page.metaTitle },
       { name: "twitter:description", content: page.description },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: path }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: page.faq.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
+          "@graph": [
+            {
+              "@type": "FAQPage",
+              mainEntity: page.faq.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+                { "@type": "ListItem", position: 2, name: page.eyebrow, item: path.split("/").slice(0, 2).join("/") },
+                { "@type": "ListItem", position: 3, name: page.title, item: path },
+              ],
+            },
+          ],
         }),
       },
     ],

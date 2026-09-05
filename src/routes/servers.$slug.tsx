@@ -8,9 +8,9 @@ export const Route = createFileRoute("/servers/$slug")({
     if (!page) throw notFound();
     return page;
   },
-  head: ({ loaderData }) =>
+  head: ({ loaderData, params }) =>
     loaderData
-      ? detailHead(loaderData)
+      ? detailHead(loaderData, `/servers/${params.slug}`)
       : { meta: [{ title: "Server not found — ServerFY" }, { name: "robots", content: "noindex" }] },
   component: ServerDetail,
 });
