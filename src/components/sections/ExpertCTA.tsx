@@ -26,9 +26,9 @@ export function ExpertCTA() {
         </Reveal>
 
         <Reveal delay={0.12}>
-          <div className="relative mx-auto max-w-md rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm">
+          <div className="glass-dark relative mx-auto max-w-md rounded-3xl p-6">
             <div className="flex items-center gap-3">
-              <span className="grid size-12 place-items-center rounded-2xl bg-orange text-white">
+              <span className="icon-tile grid size-12 place-items-center rounded-2xl">
                 <Headphones className="size-5" aria-hidden="true" />
               </span>
               <div>
