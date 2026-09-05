@@ -1,5 +1,4 @@
 import { Quote, Star } from "lucide-react";
-import { motion } from "motion/react";
 import { Reveal, SectionHeading } from "@/components/Primitives";
 import { testimonials } from "@/data/serverfy";
 
@@ -17,17 +16,11 @@ export function Testimonials() {
       {/* Drag / swipe carousel */}
       <Reveal className="mt-12">
         <div className="container-fy">
-          <motion.ul
-            drag="x"
-            dragConstraints={{ left: -1200, right: 0 }}
-            dragElastic={0.08}
-            className="flex cursor-grab gap-4 active:cursor-grabbing"
-            style={{ touchAction: "pan-y" }}
-          >
+          <ul className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {testimonials.map((t) => (
               <li
                 key={t.role}
-                className="w-[85vw] shrink-0 neu-card rounded-2xl p-6 sm:w-[46%] lg:w-[31%] xl:w-[24%]"
+                className="w-[85vw] shrink-0 snap-start neu-card rounded-2xl p-6 sm:w-[46%] lg:w-[31%] xl:w-[24%]"
               >
                 <div className="flex items-center justify-between">
                   <span className="flex gap-0.5" aria-label={`${t.stars} out of 5 stars`}>
@@ -49,8 +42,8 @@ export function Testimonials() {
                 </div>
               </li>
             ))}
-          </motion.ul>
-          <p className="mt-4 text-center text-xs text-muted-foreground">Drag or swipe to see more</p>
+          </ul>
+          <p className="mt-4 text-center text-xs text-muted-foreground">Swipe to see more</p>
         </div>
       </Reveal>
     </section>

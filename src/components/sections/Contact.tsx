@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, CheckCircle2, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { ctaClasses } from "@/components/CtaButton";
 import { Eyebrow, Reveal } from "@/components/Primitives";
@@ -91,14 +90,9 @@ export function Contact() {
 
         <Reveal delay={0.08}>
           <div className="relative rounded-3xl border border-white/10 bg-card p-5 shadow-lift sm:p-7">
-            <AnimatePresence mode="wait">
-              {state === "success" ? (
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="flex min-h-[420px] flex-col items-center justify-center text-center"
+            {state === "success" ? (
+                <div
+                  className="anim-rise flex min-h-[420px] flex-col items-center justify-center text-center"
                   role="status"
                 >
                   <span className="grid size-14 place-items-center rounded-2xl icon-tile">
@@ -116,13 +110,9 @@ export function Contact() {
                   >
                     Send another request
                   </button>
-                </motion.div>
+                </div>
               ) : (
-                <motion.form
-                  key="form"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                <form
                   onSubmit={onSubmit}
                   noValidate
                   className="grid gap-4 sm:grid-cols-2"
@@ -210,9 +200,8 @@ export function Contact() {
                       </>
                     )}
                   </button>
-                </motion.form>
+                </form>
               )}
-            </AnimatePresence>
           </div>
         </Reveal>
       </div>

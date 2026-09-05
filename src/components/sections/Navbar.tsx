@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, Phone, X, ChevronDown, MessageCircle, ArrowRight } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
@@ -89,10 +88,7 @@ export function Navbar() {
                     />
                   ) : null}
                   {isActive ? (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-orange"
-                    />
+                    <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-orange" />
                   ) : null}
                 </Link>
               </div>
@@ -156,17 +152,13 @@ export function Navbar() {
       </div>
 
       {/* Mega menu */}
-      <AnimatePresence>
-        {openMenu ? (
-          <motion.div
-            key={openMenu}
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-x-0 top-full hidden xl:block"
-            onMouseEnter={() => hoverOpen(openMenu)}
-          >
+      {openMenu ? (
+        <div
+          key={openMenu}
+          className="anim-rise absolute inset-x-0 top-full hidden xl:block"
+          style={{ animationDuration: "0.22s" }}
+          onMouseEnter={() => hoverOpen(openMenu)}
+        >
             <div className="container-fy pb-6">
               <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-lift">
                 <div className="grid grid-cols-[280px_repeat(2,minmax(0,1fr))]">
@@ -205,20 +197,12 @@ export function Navbar() {
                 </div>
               </div>
             </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+        </div>
+      ) : null}
 
       {/* Mobile menu */}
-      <AnimatePresence>
-        {mobileOpen ? (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-white/10 bg-navy-dark/95 backdrop-blur-xl xl:hidden"
-          >
+      {mobileOpen ? (
+        <div className="anim-rise overflow-hidden border-t border-white/10 bg-navy-dark/95 backdrop-blur-xl xl:hidden" style={{ animationDuration: "0.28s" }}>
             <nav aria-label="Mobile" className="container-fy max-h-[70vh] overflow-y-auto py-4">
               <ul className="space-y-1">
                 {nav.map((item) => (
@@ -239,9 +223,8 @@ export function Navbar() {
                 <ArrowRight className="size-4" aria-hidden="true" />
               </CtaButton>
             </nav>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+        </div>
+      ) : null}
     </header>
   );
 }

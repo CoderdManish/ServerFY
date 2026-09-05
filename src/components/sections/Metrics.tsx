@@ -1,31 +1,49 @@
 import { useEffect, useRef } from "react";
-import { animate, useInView, useReducedMotion } from "motion/react";
 import { Reveal, SectionHeading } from "@/components/Primitives";
 import { metrics } from "@/data/serverfy";
 
 function Counter({ value, suffix, display }: { value: number | null; suffix?: string | undefined; display?: string | undefined }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  const reduce = useReducedMotion();
-  const decimals = value !== null && !Number.isInteger(value) ? 1 : 0;
 
   useEffect(() => {
     const node = ref.current;
     if (!node || value === null) return;
-    if (!inView) return;
-    if (reduce) {
-      node.textContent = value.toFixed(decimals);
+    const decimals = Number.isInteger(value) ? 0 : 1;
+    const write = (v: number) => {
+      node.textContent = decimals ? v.toFixed(1) : Math.round(v).toLocaleString("en-IN");
+    };
+    if (
+      typeof IntersectionObserver === "undefined" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      write(value);
       return;
     }
-    const controls = animate(0, value, {
-      duration: 1.4,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => {
-        node.textContent = decimals ? v.toFixed(1) : Math.round(v).toLocaleString("en-IN");
+    let raf = 0;
+    const run = () => {
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min(1, (now - start) / 1400);
+        write(value * (1 - Math.pow(1 - t, 3)));
+        if (t < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          run();
+        }
       },
-    });
-    return () => controls.stop();
-  }, [inView, value, reduce, decimals]);
+      { rootMargin: "-60px" },
+    );
+    io.observe(node);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [value]);
 
   return (
     <span className="type-metric text-white">

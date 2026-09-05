@@ -10,6 +10,24 @@ import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
 export default defineConfig({
   plugins: [mcpPlugin()],
   tanstackStart: {
+    pages: [
+      { path: "/" },
+      { path: "/servers" },
+      { path: "/modules" },
+      { path: "/solutions" },
+      { path: "/resources" },
+      { path: "/pricing" },
+      { path: "/about" },
+      { path: "/contact" },
+      { path: "/why-serverfy" },
+      { path: "/infrastructure" },
+      { path: "/careers" },
+      { path: "/sla" },
+      { path: "/refund-policy" },
+      { path: "/terms" },
+      { path: "/privacy" },
+    ],
+    prerender: { enabled: true, autoStaticPathsDiscovery: false },
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
