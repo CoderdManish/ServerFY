@@ -169,6 +169,9 @@
 
 @utility section-y {
   padding-block: clamp(3rem, 2rem + 2.6vw, 4.75rem);
+  /* Skip layout/paint work for sections that are far off-screen. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
 }
 
 /* Brand surfaces */
