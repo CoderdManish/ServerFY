@@ -18,7 +18,7 @@ import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/sections/FloatingActions";
-import { faqs } from "@/data/serverfy";
+import { faqs, site } from "@/data/serverfy";
 
 const title = "ServerFY | Reliable SAP Servers for Functional & Technical SAP";
 const description =
