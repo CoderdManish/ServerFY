@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { IncludedBand } from "@/components/sections/IncludedBand";
 import { ServerCategories } from "@/components/sections/ServerCategories";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Comparison } from "@/components/sections/Comparison";
@@ -42,6 +43,7 @@ function ServersPage() {
       <DashboardPreview />
       <Comparison />
       <TrialBanner />
+      <IncludedBand />
       <ExpertCTA />
     </PageShell>
   );

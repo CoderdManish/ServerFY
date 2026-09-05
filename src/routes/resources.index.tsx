@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { IncludedBand } from "@/components/sections/IncludedBand";
 import { FAQ } from "@/components/sections/FAQ";
 import { DashboardPreview } from "@/components/sections/DashboardPreview";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
@@ -76,6 +77,7 @@ function ResourcesPage() {
       </section>
       <DashboardPreview />
       <FAQ />
+      <IncludedBand />
       <ExpertCTA />
     </PageShell>
   );
