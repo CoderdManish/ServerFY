@@ -6,6 +6,7 @@ import { Logo } from "@/components/brand/Logo";
 import { Icon } from "@/components/Icon";
 import { CtaButton } from "@/components/CtaButton";
 import { megaMenus, nav, site } from "@/data/serverfy";
+import { linkFor } from "@/data/links";
 import { cn } from "@/lib/utils";
 
 type MenuKey = keyof typeof megaMenus;
@@ -184,7 +185,7 @@ export function Navbar() {
                         {group.items.map((it) => (
                           <li key={it.label}>
                             <Link
-                              to={menuHref[openMenu]}
+                              to={linkFor[it.label] ?? menuHref[openMenu]}
                               className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-accent"
                               onClick={() => setOpenMenu(null)}
                             >
