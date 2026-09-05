@@ -2,6 +2,7 @@ import { Linkedin, Mail, MapPin, MessageCircle, Phone, Twitter, Youtube } from "
 import { Logo } from "@/components/brand/Logo";
 import { Link } from "@tanstack/react-router";
 import { footerColumns, site } from "@/data/serverfy";
+import { linkFor } from "@/data/links";
 
 const columnHref: Record<string, string> = {
   "SAP Servers": "/servers",
@@ -12,15 +13,6 @@ const columnHref: Record<string, string> = {
   Support: "/contact",
 };
 
-const linkHref: Record<string, string> = {
-  Terms: "/terms",
-  Privacy: "/privacy",
-  FAQs: "/resources",
-  Contact: "/contact",
-  "Contact Support": "/contact",
-  About: "/about",
-  "Why ServerFY": "/about",
-};
 
 export function Footer() {
   return (
@@ -76,7 +68,7 @@ export function Footer() {
                   {col.links.map((l) => (
                     <li key={l}>
                       <Link
-                        to={linkHref[l] ?? columnHref[col.title] ?? "/contact"}
+                        to={linkFor[l] ?? columnHref[col.title] ?? "/contact"}
                         className="text-white/60 transition-colors hover:text-orange"
                       >
                         {l}

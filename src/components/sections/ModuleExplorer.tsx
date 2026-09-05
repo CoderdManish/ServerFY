@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+import { moduleSlug } from "@/data/module-pages";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, Search } from "lucide-react";
@@ -118,7 +120,9 @@ export function ModuleExplorer() {
                     </span>
                   </div>
                   <h3 className="mt-4 text-base font-extrabold text-foreground">
-                    SAP {m.code}
+                    <Link to="/modules/$code" params={{ code: moduleSlug(m.code) }} className="hover:text-orange">
+                      SAP {m.code}
+                    </Link>
                   </h3>
                   <p className="text-xs font-semibold text-blue">{m.name}</p>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{m.desc}</p>
@@ -130,10 +134,13 @@ export function ModuleExplorer() {
                         </span>
                       ))}
                     </span>
-                    <a href="/pricing" className="group inline-flex items-center gap-1 text-xs font-extrabold text-blue hover:text-blue-bright">
-                      View Servers
+                    <Link
+                      to="/modules/$code" params={{ code: moduleSlug(m.code) }}
+                      className="group inline-flex items-center gap-1 text-xs font-extrabold text-blue hover:text-blue-bright"
+                    >
+                      View details
                       <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-                    </a>
+                    </Link>
                   </div>
                 </motion.li>
               ))}
