@@ -358,7 +358,9 @@
   box-shadow:
     0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
     0 18px 46px -26px color-mix(in oklab, var(--navy) 55%, transparent);
-  backdrop-filter: blur(16px) saturate(140%);
+  @media (min-width: 1024px) {
+    backdrop-filter: blur(16px) saturate(140%);
+  }
 }
 
 /* ── Neumorphic raised card ── */
