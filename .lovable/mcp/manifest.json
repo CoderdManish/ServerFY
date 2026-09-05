@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "sdk_version": "2.0.2",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "vibrant-ui-forge",
+      "version": "0.1.0",
+      "title": "Vibrant UI Forge"
+    },
+    "tools": [
+      {
+        "name": "list_plans",
+        "title": "List server plans",
+        "description": "List ServerFY SAP server plans with specs, features and pricing in INR for a chosen billing cycle.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "billingCycle": {
+              "default": "monthly",
+              "description": "Billing cycle used to compute the discounted price.",
+              "type": "string",
+              "enum": [
+                "monthly",
+                "quarterly",
+                "yearly"
+              ]
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_sap_modules",
+        "title": "List SAP modules",
+        "description": "List the SAP functional and technical modules ServerFY offers, with platforms and current availability. Optionally filter by type, platform or a search term.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "type": {
+              "description": "Filter by module type.",
+              "type": "string",
+              "enum": [
+                "functional",
+                "technical"
+              ]
+            },
+            "platform": {
+              "description": "Only modules available on this platform.",
+              "type": "string",
+              "enum": [
+                "S/4HANA",
+                "ECC",
+                "HANA"
+              ]
+            },
+            "search": {
+              "description": "Match module code, name or description.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_faqs",
+        "title": "List FAQs",
+        "description": "Return ServerFY's published frequently asked questions and answers.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "search": {
+              "description": "Only FAQs matching this text.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_company_info",
+        "title": "Get company info",
+        "description": "Return ServerFY's public contact details and the categories of SAP server environments offered.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
