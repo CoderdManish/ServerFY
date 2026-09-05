@@ -18,6 +18,7 @@ export const Route = createFileRoute("/servers/$slug")({
 
 function ServerDetail() {
   const page = Route.useLoaderData();
+  if (page.slug === "dedicated") return <DedicatedServerView page={page} />;
   const related = serverPages
     .filter((p) => p.slug !== page.slug)
     .slice(0, 5)
