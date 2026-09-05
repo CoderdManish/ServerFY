@@ -1,5 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { DetailPageView, detailHead } from "@/components/DetailPageView";
+import { DedicatedServerView } from "@/components/DedicatedServerView";
 import { findPage, serverPages } from "@/data/pages";
 
 export const Route = createFileRoute("/servers/$slug")({
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/servers/$slug")({
 
 function ServerDetail() {
   const page = Route.useLoaderData();
+  if (page.slug === "dedicated") return <DedicatedServerView page={page} />;
   const related = serverPages
     .filter((p) => p.slug !== page.slug)
     .slice(0, 5)
