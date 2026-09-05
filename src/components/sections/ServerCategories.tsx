@@ -1,7 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
 import { Icon } from "@/components/Icon";
 import { Reveal, SectionHeading } from "@/components/Primitives";
+import { Link } from "@tanstack/react-router";
 import { serverCategories } from "@/data/serverfy";
+import { linkFor } from "@/data/links";
 
 export function ServerCategories() {
   return (
@@ -22,8 +24,8 @@ export function ServerCategories() {
         <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {serverCategories.map((c, i) => (
             <Reveal as="li" key={c.title} delay={(i % 4) * 0.06} y={16}>
-              <a
-                href="/pricing"
+              <Link
+                to={linkFor[c.title] ?? "/servers"}
                 className="group flex h-full items-start gap-4 rounded-2xl neu-card p-5"
               >
                 <span className="grid size-11 shrink-0 place-items-center rounded-xl icon-tile transition-transform duration-300 group-hover:scale-105">
@@ -39,7 +41,7 @@ export function ServerCategories() {
                   </span>
                   <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">{c.desc}</span>
                 </span>
-              </a>
+              </Link>
             </Reveal>
           ))}
         </ul>
