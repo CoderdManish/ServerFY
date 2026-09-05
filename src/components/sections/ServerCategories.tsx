@@ -23,7 +23,7 @@ export function ServerCategories() {
           {serverCategories.map((c, i) => (
             <Reveal as="li" key={c.title} delay={(i % 4) * 0.06} y={16}>
               <a
-                href="#pricing"
+                href="/pricing"
                 className="group flex h-full items-start gap-4 rounded-2xl neu-card p-5"
               >
                 <span className="grid size-11 shrink-0 place-items-center rounded-xl icon-tile transition-transform duration-300 group-hover:scale-105">

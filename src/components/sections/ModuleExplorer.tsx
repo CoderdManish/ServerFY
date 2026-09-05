@@ -130,7 +130,7 @@ export function ModuleExplorer() {
                         </span>
                       ))}
                     </span>
-                    <a href="#pricing" className="group inline-flex items-center gap-1 text-xs font-extrabold text-blue hover:text-blue-bright">
+                    <a href="/pricing" className="group inline-flex items-center gap-1 text-xs font-extrabold text-blue hover:text-blue-bright">
                       View Servers
                       <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                     </a>
