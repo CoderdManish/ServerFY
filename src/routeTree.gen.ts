@@ -15,9 +15,11 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ModulesRouteImport } from './routes/modules'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ServersRouteImport } from './routes/servers'
 import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 
 const IndexRoute = IndexRouteImport.update({
@@ -50,6 +52,11 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
@@ -63,6 +70,11 @@ const ServersRoute = ServersRouteImport.update({
 const SolutionsRoute = SolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotwellKnownChar93OauthProtectedResourceRoute =
@@ -79,9 +91,11 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/modules': typeof ModulesRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/servers': typeof ServersRoute
   '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRoutesByTo {
@@ -91,9 +105,11 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/modules': typeof ModulesRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/servers': typeof ServersRoute
   '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRoutesById {
@@ -104,9 +120,11 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/modules': typeof ModulesRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/servers': typeof ServersRoute
   '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRouteTypes {
@@ -118,9 +136,11 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/modules'
     | '/pricing'
+    | '/privacy'
     | '/resources'
     | '/servers'
     | '/solutions'
+    | '/terms'
     | '/.well-known/oauth-protected-resource'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -130,9 +150,11 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/modules'
     | '/pricing'
+    | '/privacy'
     | '/resources'
     | '/servers'
     | '/solutions'
+    | '/terms'
     | '/.well-known/oauth-protected-resource'
   id:
     | '__root__'
@@ -142,9 +164,11 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/modules'
     | '/pricing'
+    | '/privacy'
     | '/resources'
     | '/servers'
     | '/solutions'
+    | '/terms'
     | '/.well-known/oauth-protected-resource'
   fileRoutesById: FileRoutesById
 }
@@ -155,9 +179,11 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   ModulesRoute: typeof ModulesRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
   ServersRoute: typeof ServersRoute
   SolutionsRoute: typeof SolutionsRoute
+  TermsRoute: typeof TermsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 
@@ -205,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources': {
       id: '/resources'
       path: '/resources'
@@ -226,6 +259,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.well-known/oauth-protected-resource': {
       id: '/.well-known/oauth-protected-resource'
       path: '/.well-known/oauth-protected-resource'
@@ -243,9 +283,11 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   ModulesRoute: ModulesRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
   ServersRoute: ServersRoute,
   SolutionsRoute: SolutionsRoute,
+  TermsRoute: TermsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
 }
