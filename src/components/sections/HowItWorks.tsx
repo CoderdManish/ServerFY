@@ -40,9 +40,9 @@ export function HowItWorks() {
                 transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 className="relative pl-14 lg:pl-0"
               >
-                <span className="absolute left-0 top-0 grid size-10 place-items-center rounded-xl bg-navy text-white lg:relative lg:mb-6 lg:size-[4.5rem] lg:rounded-2xl">
+                <span className="absolute left-0 top-0 grid size-10 place-items-center rounded-xl icon-tile lg:relative lg:mb-6 lg:size-[4.5rem] lg:rounded-2xl">
                   <Icon name={s.icon} className="size-5 lg:size-7" />
-                  <span className="absolute -right-1.5 -top-1.5 rounded-full bg-orange px-1.5 py-0.5 text-[0.6rem] font-extrabold text-white lg:-right-2 lg:-top-2 lg:px-2 lg:text-[0.68rem]">
+                  <span className="absolute -right-1.5 -top-1.5 rounded-full bg-navy px-1.5 py-0.5 text-[0.6rem] font-extrabold text-white lg:-right-2 lg:-top-2 lg:px-2 lg:text-[0.68rem]">
                     {s.no}
                   </span>
                 </span>

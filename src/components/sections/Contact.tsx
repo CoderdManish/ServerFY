@@ -101,7 +101,7 @@ export function Contact() {
                   className="flex min-h-[420px] flex-col items-center justify-center text-center"
                   role="status"
                 >
-                  <span className="grid size-14 place-items-center rounded-2xl bg-accent text-blue">
+                  <span className="grid size-14 place-items-center rounded-2xl icon-tile">
                     <CheckCircle2 className="size-7" aria-hidden="true" />
                   </span>
                   <h3 className="mt-5 text-xl font-extrabold text-foreground">Request received</h3>

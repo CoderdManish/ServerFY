@@ -27,7 +27,7 @@ export function Testimonials() {
             {testimonials.map((t) => (
               <li
                 key={t.role}
-                className="w-[85vw] shrink-0 rounded-2xl border border-border bg-background p-6 shadow-card sm:w-[46%] lg:w-[31%] xl:w-[24%]"
+                className="w-[85vw] shrink-0 neu-card rounded-2xl p-6 sm:w-[46%] lg:w-[31%] xl:w-[24%]"
               >
                 <div className="flex items-center justify-between">
                   <span className="flex gap-0.5" aria-label={`${t.stars} out of 5 stars`}>

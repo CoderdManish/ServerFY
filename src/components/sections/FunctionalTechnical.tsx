@@ -17,7 +17,7 @@ function Column({
   return (
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm">
       <div className={`flex items-center gap-3 ${align === "right" ? "lg:flex-row-reverse lg:text-right" : ""}`}>
-        <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-blue/25 text-blue-bright">
+        <span className="grid size-11 shrink-0 place-items-center rounded-xl icon-tile-dark">
           <I className="size-5" aria-hidden="true" />
         </span>
         <div className="min-w-0">
