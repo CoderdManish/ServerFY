@@ -130,7 +130,7 @@ export function Pricing() {
                   </ul>
 
                   <CtaButton
-                    href="#contact"
+                    href="/contact"
                     className="mt-7 w-full"
                     variant={plan.highlight ? "primary" : plan.monthly ? "outlineDark" : "blue"}
                   >
