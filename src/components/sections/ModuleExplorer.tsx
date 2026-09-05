@@ -36,7 +36,7 @@ export function ModuleExplorer() {
           sub="Search the catalogue, filter by platform, and see which functional and technical environments are ready to provision."
         />
 
-        <div className="mt-10 rounded-3xl border border-border bg-background p-4 shadow-card sm:p-6">
+        <div className="mt-10 glass-panel rounded-3xl p-4 sm:p-6">
           <div className="grid gap-4 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-center">
             <div
               role="tablist"
@@ -102,10 +102,10 @@ export function ModuleExplorer() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.97 }}
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                  className="card-hover flex flex-col rounded-2xl border border-border bg-card p-5"
+                  className="neu-card flex flex-col rounded-2xl p-5"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <span className="grid size-10 place-items-center rounded-xl bg-secondary text-blue">
+                    <span className="grid size-10 place-items-center rounded-xl icon-tile-soft">
                       <Icon name={m.icon} className="size-5" />
                     </span>
                     <span

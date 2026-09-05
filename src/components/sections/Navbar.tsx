@@ -196,7 +196,7 @@ export function Navbar() {
                               className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-accent"
                               onClick={() => setOpenMenu(null)}
                             >
-                              <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-lg bg-secondary text-blue">
+                              <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-lg icon-tile-soft">
                                 <Icon name={it.icon} className="size-4" />
                               </span>
                               <span className="min-w-0">

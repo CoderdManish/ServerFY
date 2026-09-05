@@ -24,9 +24,9 @@ export function ServerCategories() {
             <Reveal as="li" key={c.title} delay={(i % 4) * 0.06} y={16}>
               <a
                 href="#pricing"
-                className="card-hover group flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card"
+                className="card-hover group flex h-full items-start gap-4 rounded-2xl neu-card p-5"
               >
-                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-blue transition-transform duration-300 group-hover:scale-105 group-hover:bg-blue group-hover:text-white">
+                <span className="grid size-11 shrink-0 place-items-center rounded-xl icon-tile transition-transform duration-300 group-hover:scale-105">
                   <Icon name={c.icon} className="size-5" />
                 </span>
                 <span className="min-w-0 flex-1">
