@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { ContactStrip } from "@/components/sections/ContactStrip";
+import { IncludedBand } from "@/components/sections/IncludedBand";
 import { Metrics } from "@/components/sections/Metrics";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -18,10 +20,13 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/about" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "/about" }],
   }),
 });
 
@@ -66,6 +71,8 @@ function AboutPage() {
       </section>
       <Metrics />
       <Testimonials />
+      <ContactStrip />
+      <IncludedBand />
       <ExpertCTA />
     </PageShell>
   );

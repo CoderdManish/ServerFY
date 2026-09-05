@@ -15,10 +15,13 @@ export const Route = createFileRoute("/terms")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/terms" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "/terms" }],
   }),
 });
 

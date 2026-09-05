@@ -5,6 +5,6 @@ import { companyPages } from "@/data/pages";
 const page = companyPages.find((p) => p.slug === "infrastructure")!;
 
 export const Route = createFileRoute("/infrastructure")({
-  head: () => detailHead(page),
+  head: () => detailHead(page, "/infrastructure"),
   component: () => <DetailPageView page={page} related={[{ label: "Why ServerFY", to: "/why-serverfy" }, { label: "Server status", to: "/resources/server-status" }, { label: "SLA", to: "/sla" }]} />,
 });

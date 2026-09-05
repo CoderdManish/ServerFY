@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { ContactStrip } from "@/components/sections/ContactStrip";
 import { Contact } from "@/components/sections/Contact";
 import { FAQ } from "@/components/sections/FAQ";
 
@@ -16,10 +17,13 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/contact" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "/contact" }],
   }),
 });
 
@@ -30,6 +34,7 @@ function ContactPage() {
       title="Tell us what you need access to"
       intro="Share your module, SAP version, user count and how long you need the environment. We come back with availability and pricing."
     >
+      <ContactStrip />
       <Contact />
       <FAQ />
     </PageShell>
