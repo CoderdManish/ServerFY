@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, Phone, X, ChevronDown, MessageCircle, ArrowRight } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Icon } from "@/components/Icon";
@@ -13,7 +14,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState<MenuKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [active, setActive] = useState("#top");
+  const active = useRouterState({ select: (st) => st.location.pathname });
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -21,22 +22,6 @@ export function Navbar() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const ids = nav.map((n) => n.href).filter((h) => h.startsWith("#"));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(`#${visible.target.id}`);
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: [0.01, 0.25, 0.6] },
-    );
-    ids.forEach((id) => {
-      const el = document.querySelector(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -68,18 +53,18 @@ export function Navbar() {
       onMouseLeave={hoverClose}
     >
       <div className="container-fy flex h-16 items-center justify-between gap-4 lg:h-[76px]">
-        <a href="#top" className="shrink-0" aria-label="ServerFY home">
+        <Link to="/" className="shrink-0" aria-label="ServerFY home">
           <Logo variant="light" />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav aria-label="Main" className="hidden items-center gap-0.5 xl:flex">
           {nav.map((item) => {
-            const isActive = active === item.href;
+            const isActive = item.href === "/" ? active === "/" : active.startsWith(item.href);
             return (
               <div key={item.label} className="relative" onMouseEnter={() => (item.menu ? hoverOpen(item.menu) : hoverClose())}>
-                <a
-                  href={item.href}
+                <Link
+                  to={item.href}
                   aria-haspopup={item.menu ? "true" : undefined}
                   aria-expanded={item.menu ? openMenu === item.menu : undefined}
                   onFocus={() => (item.menu ? hoverOpen(item.menu) : setOpenMenu(null))}
@@ -101,7 +86,7 @@ export function Navbar() {
                       className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-orange"
                     />
                   ) : null}
-                </a>
+                </Link>
               </div>
             );
           })}
@@ -230,14 +215,14 @@ export function Navbar() {
               <ul className="space-y-1">
                 {nav.map((item) => (
                   <li key={item.label}>
-                    <a
-                      href={item.href}
+                    <Link
+                      to={item.href}
                       onClick={() => setMobileOpen(false)}
                       className="flex min-h-11 items-center justify-between rounded-xl px-3 text-[0.95rem] font-semibold text-white/85 hover:bg-white/5"
                     >
                       {item.label}
                       <ArrowRight className="size-4 text-orange" aria-hidden="true" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
