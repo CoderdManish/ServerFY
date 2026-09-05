@@ -4,6 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/manrope-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
 /*
  * ServerFY design system.
  * Brand palette: Deep Navy, Dark Blue, Bright Blue, White, Bright Orange.
@@ -159,6 +169,9 @@
 
 @utility section-y {
   padding-block: clamp(3rem, 2rem + 2.6vw, 4.75rem);
+  /* Skip layout/paint work for sections that are far off-screen. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
 }
 
 /* Brand surfaces */
@@ -186,7 +199,10 @@
 @utility glass-card {
   background: color-mix(in oklab, #ffffff 8%, transparent);
   border: 1px solid color-mix(in oklab, #ffffff 14%, transparent);
-  backdrop-filter: blur(14px);
+  /* Blur is costly on low-power devices — only apply it on larger screens. */
+  @media (min-width: 1024px) {
+    backdrop-filter: blur(14px);
+  }
 }
 
 @utility card-hover {
@@ -342,7 +358,9 @@
   box-shadow:
     0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
     0 18px 46px -26px color-mix(in oklab, var(--navy) 55%, transparent);
-  backdrop-filter: blur(16px) saturate(140%);
+  @media (min-width: 1024px) {
+    backdrop-filter: blur(16px) saturate(140%);
+  }
 }
 
 /* ── Neumorphic raised card ── */

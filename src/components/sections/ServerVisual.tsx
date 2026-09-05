@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from "motion/react";
 import { Cloud, Database, Network, ShieldCheck } from "lucide-react";
 
 /**
@@ -6,7 +5,6 @@ import { Cloud, Database, Network, ShieldCheck } from "lucide-react";
  * only, so it stays smooth on mobile and respects reduced-motion.
  */
 export function ServerVisual({ compact = false }: { compact?: boolean }) {
-  const reduce = useReducedMotion();
   const racks = compact ? 2 : 3;
 
   return (
@@ -37,7 +35,7 @@ export function ServerVisual({ compact = false }: { compact?: boolean }) {
             stroke="url(#fy-line)"
             strokeWidth="1.4"
             strokeDasharray="10 14"
-            style={reduce ? {} : { animation: `dash-flow ${9 + i * 2}s linear infinite` }}
+            style={{ animation: `dash-flow ${9 + i * 2}s linear infinite` }}
           />
         ))}
         {[
@@ -52,11 +50,7 @@ export function ServerVisual({ compact = false }: { compact?: boolean }) {
         ))}
       </svg>
 
-      <motion.div
-        className="relative mx-auto grid max-w-[430px] gap-3 rounded-[26px] border border-white/12 bg-white/[0.04] p-4 backdrop-blur-sm sm:p-5"
-        animate={reduce ? false : { y: [0, -8, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-      >
+      <div className="float-slow relative mx-auto grid max-w-[430px] gap-3 rounded-[26px] border border-white/12 bg-white/[0.04] p-4 backdrop-blur-sm sm:p-5">
         {/* top chips */}
         <div className="flex items-center justify-between gap-2 text-white/70">
           {[
@@ -105,7 +99,7 @@ export function ServerVisual({ compact = false }: { compact?: boolean }) {
             </div>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
