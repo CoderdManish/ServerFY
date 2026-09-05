@@ -5,7 +5,7 @@ import { serverCategories } from "@/data/serverfy";
 
 export function ServerCategories() {
   return (
-    <section id="servers" className="section-y relative">
+    <section id="servers" className="section-y relative bg-soft-tint">
       <div className="container-fy">
         <SectionHeading
           eyebrow="Server types"

@@ -7,7 +7,7 @@ const perks = ["24 Hour Access", "Multiple SAP Modules", "No Complex Setup", "Fa
 
 export function TrialBanner() {
   return (
-    <section className="section-y bg-white">
+    <section className="section-y bg-soft-mesh">
       <div className="container-fy">
         <Reveal>
           <div className="relative overflow-hidden rounded-[2rem] bg-navy-gradient p-7 sm:p-10 lg:p-14">

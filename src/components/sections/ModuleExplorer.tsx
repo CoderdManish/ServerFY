@@ -28,7 +28,7 @@ export function ModuleExplorer() {
   }, [tab, filter, query]);
 
   return (
-    <section id="modules" className="section-y bg-white">
+    <section id="modules" className="section-y bg-soft-mesh">
       <div className="container-fy">
         <SectionHeading
           eyebrow="Module explorer"

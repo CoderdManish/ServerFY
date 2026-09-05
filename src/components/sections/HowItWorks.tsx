@@ -12,7 +12,7 @@ export function HowItWorks() {
   const scaleY = scaleX;
 
   return (
-    <section className="section-y">
+    <section className="section-y bg-soft-mesh">
       <div className="container-fy">
         <SectionHeading
           eyebrow="How it works"

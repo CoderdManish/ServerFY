@@ -4,7 +4,7 @@ import { useCases } from "@/data/serverfy";
 
 export function UseCases() {
   return (
-    <section id="use-cases" className="section-y bg-white">
+    <section id="use-cases" className="section-y bg-soft-mesh">
       <div className="container-fy">
         <SectionHeading
           eyebrow="Use cases"
