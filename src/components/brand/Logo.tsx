@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import mark from "@/assets/serverfy-mark.png";
+import mark from "@/assets/serverfy-mark.webp";
 
 /** ServerFY brand lockup — official mark artwork plus the wordmark. */
 export function Logo({ variant = "dark", className }: { variant?: "dark" | "light"; className?: string }) {
@@ -9,9 +9,10 @@ export function Logo({ variant = "dark", className }: { variant?: "dark" | "ligh
       <img
         src={mark}
         alt="ServerFY"
-        width={144}
-        height={165}
+        width={72}
+        height={83}
         decoding="async"
+        fetchPriority="high"
         className="h-9 w-auto shrink-0 object-contain"
       />
       <span className={cn("text-[1.35rem] font-extrabold leading-none tracking-tight", wordColor)} aria-hidden="true">
