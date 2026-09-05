@@ -1,4 +1,4 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ChevronDown } from "lucide-react";
 import { Reveal, SectionHeading } from "@/components/Primitives";
 import { faqs } from "@/data/serverfy";
 
@@ -14,20 +14,20 @@ export function FAQ() {
         />
 
         <Reveal delay={0.08}>
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((f, i) => (
-              <AccordionItem
-                key={f.q}
-                value={`item-${i}`}
-                className="border-b border-border data-[state=open]:border-blue-bright/40"
-              >
-                <AccordionTrigger className="py-5 text-left text-[0.95rem] font-extrabold text-foreground hover:text-blue hover:no-underline">
+          <div className="w-full">
+            {faqs.map((f) => (
+              <details key={f.q} className="group border-b border-border open:border-blue-bright/40">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-[0.95rem] font-extrabold text-foreground transition-colors hover:text-blue [&::-webkit-details-marker]:hidden">
                   {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="pb-5 text-sm leading-relaxed text-muted-foreground">{f.a}</AccordionContent>
-              </AccordionItem>
+                  <ChevronDown
+                    className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <p className="pb-5 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
+              </details>
             ))}
-          </Accordion>
+          </div>
         </Reveal>
       </div>
     </section>
