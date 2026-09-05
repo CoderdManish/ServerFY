@@ -119,7 +119,7 @@ export function Pricing() {
                         <span
                           className={cn(
                             "mt-0.5 grid size-4.5 shrink-0 place-items-center rounded-full",
-                            plan.highlight ? "bg-orange/20 text-orange" : "bg-accent text-blue",
+                            plan.highlight ? "bg-orange/20 text-orange" : "bg-orange/10 text-orange",
                           )}
                         >
                           <Check className="size-3" aria-hidden="true" />
