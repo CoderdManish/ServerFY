@@ -10,6 +10,13 @@ import { cn } from "@/lib/utils";
 
 type MenuKey = keyof typeof megaMenus;
 
+const menuHref: Record<MenuKey, string> = {
+  servers: "/servers",
+  modules: "/modules",
+  solutions: "/solutions",
+  resources: "/resources",
+};
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState<MenuKey | null>(null);
@@ -176,8 +183,8 @@ export function Navbar() {
                       <ul className="mt-3 space-y-1">
                         {group.items.map((it) => (
                           <li key={it.label}>
-                            <a
-                              href="/modules"
+                            <Link
+                              to={menuHref[openMenu]}
                               className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-accent"
                               onClick={() => setOpenMenu(null)}
                             >
@@ -188,7 +195,7 @@ export function Navbar() {
                                 <span className="block text-sm font-bold text-foreground">{it.label}</span>
                                 <span className="block truncate text-xs text-muted-foreground">{it.desc}</span>
                               </span>
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
