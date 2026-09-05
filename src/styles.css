@@ -199,7 +199,10 @@
 @utility glass-card {
   background: color-mix(in oklab, #ffffff 8%, transparent);
   border: 1px solid color-mix(in oklab, #ffffff 14%, transparent);
-  backdrop-filter: blur(14px);
+  /* Blur is costly on low-power devices — only apply it on larger screens. */
+  @media (min-width: 1024px) {
+    backdrop-filter: blur(14px);
+  }
 }
 
 @utility card-hover {
