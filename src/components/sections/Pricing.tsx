@@ -47,7 +47,7 @@ export function Pricing() {
         />
 
         <Reveal className="mt-8 flex justify-center" delay={0.12}>
-          <div role="tablist" aria-label="Billing cycle" className="inline-flex rounded-2xl border border-border bg-card p-1 shadow-card">
+          <div role="tablist" aria-label="Billing cycle" className="inline-flex rounded-2xl glass-panel p-1">
             {billingCycles.map((c) => (
               <button
                 key={c.id}
@@ -83,7 +83,7 @@ export function Pricing() {
                     "relative flex h-full flex-col rounded-3xl border p-6 transition-all duration-300",
                     plan.highlight
                       ? "border-orange/40 bg-navy-gradient text-white shadow-lift lg:-mt-3 lg:pb-9"
-                      : "border-border bg-card shadow-card hover:-translate-y-1 hover:border-blue-bright",
+                      : "neu-card",
                   )}
                 >
                   {plan.highlight ? (
