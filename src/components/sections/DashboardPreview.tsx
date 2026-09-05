@@ -1,4 +1,3 @@
-import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import { Activity, ArrowRight, Cpu, HardDrive, MemoryStick, Server } from "lucide-react";
 import { CtaButton } from "@/components/CtaButton";
 import { Reveal, SectionHeading } from "@/components/Primitives";
@@ -18,6 +17,47 @@ const gauges = [
   { label: "RAM", value: 68, icon: MemoryStick },
   { label: "Storage", value: 51, icon: HardDrive },
 ];
+
+
+function path(values: number[], w: number, h: number, close: boolean) {
+  const max = 80;
+  const step = w / (values.length - 1);
+  const pts = values.map((v, i) => `${(i * step).toFixed(1)},${(h - (v / max) * h).toFixed(1)}`);
+  const d = `M${pts.join(" L")}`;
+  return close ? `${d} L${w},${h} L0,${h} Z` : d;
+}
+
+function UsageChart() {
+  const w = 320;
+  const h = 128;
+  const cpu = usage.map((u) => u.cpu);
+  const ram = usage.map((u) => u.ram);
+  return (
+    <figure className="m-0">
+      <svg viewBox={`0 0 ${w} ${h}`} className="h-32 w-full" role="img" aria-label="Weekly CPU and RAM utilisation">
+        <defs>
+          <linearGradient id="fy-cpu" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--blue-bright)" stopOpacity="0.45" />
+            <stop offset="100%" stopColor="var(--blue-bright)" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="fy-ram" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--orange)" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="var(--orange)" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path d={path(ram, w, h, true)} fill="url(#fy-ram)" />
+        <path d={path(ram, w, h, false)} fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinejoin="round" />
+        <path d={path(cpu, w, h, true)} fill="url(#fy-cpu)" />
+        <path d={path(cpu, w, h, false)} fill="none" stroke="var(--blue-bright)" strokeWidth="2" strokeLinejoin="round" />
+      </svg>
+      <figcaption className="mt-2 flex justify-between text-[0.65rem] font-semibold text-muted-foreground">
+        {usage.map((u) => (
+          <span key={u.t}>{u.t}</span>
+        ))}
+      </figcaption>
+    </figure>
+  );
+}
 
 export function DashboardPreview() {
   return (
@@ -104,31 +144,8 @@ export function DashboardPreview() {
                         <Activity className="size-3.5" aria-hidden="true" /> Live
                       </span>
                     </div>
-                    <div className="mt-4 h-40">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={usage}>
-                          <defs>
-                            <linearGradient id="fy-cpu" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stopColor="var(--blue-bright)" stopOpacity={0.45} />
-                              <stop offset="100%" stopColor="var(--blue-bright)" stopOpacity={0} />
-                            </linearGradient>
-                            <linearGradient id="fy-ram" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stopColor="var(--orange)" stopOpacity={0.35} />
-                              <stop offset="100%" stopColor="var(--orange)" stopOpacity={0} />
-                            </linearGradient>
-                          </defs>
-                          <XAxis dataKey="t" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} />
-                          <Tooltip
-                            contentStyle={{
-                              borderRadius: 12,
-                              border: "1px solid var(--border)",
-                              fontSize: 12,
-                            }}
-                          />
-                          <Area type="monotone" dataKey="ram" stroke="var(--orange)" strokeWidth={2} fill="url(#fy-ram)" />
-                          <Area type="monotone" dataKey="cpu" stroke="var(--blue-bright)" strokeWidth={2} fill="url(#fy-cpu)" />
-                        </AreaChart>
-                      </ResponsiveContainer>
+                    <div className="mt-4">
+                      <UsageChart />
                     </div>
                   </div>
 

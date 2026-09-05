@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowUp, Headphones, MessageCircle } from "lucide-react";
 import { site } from "@/data/serverfy";
 
@@ -15,22 +14,18 @@ export function FloatingActions() {
 
   return (
     <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2.5 sm:bottom-6 sm:right-6">
-      <AnimatePresence>
-        {showTop ? (
-          <motion.button
-            key="top"
-            type="button"
-            initial={{ opacity: 0, scale: 0.8, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 10 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            aria-label="Back to top"
-            className="grid size-11 place-items-center rounded-full glass-panel text-navy transition-colors hover:border-blue-bright hover:text-blue"
-          >
-            <ArrowUp className="size-4" aria-hidden="true" />
-          </motion.button>
-        ) : null}
-      </AnimatePresence>
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+        aria-hidden={!showTop}
+        tabIndex={showTop ? 0 : -1}
+        className={`grid size-11 place-items-center rounded-full glass-panel text-navy transition-all duration-300 hover:border-blue-bright hover:text-blue ${
+          showTop ? "translate-y-0 scale-100 opacity-100" : "pointer-events-none translate-y-2 scale-90 opacity-0"
+        }`}
+      >
+        <ArrowUp className="size-4" aria-hidden="true" />
+      </button>
 
       <a
         href="/contact"

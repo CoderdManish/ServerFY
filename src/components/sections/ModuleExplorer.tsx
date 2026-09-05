@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { moduleSlug } from "@/data/module-pages";
 import { useMemo, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, Search } from "lucide-react";
 import { Icon } from "@/components/Icon";
 import { SectionHeading } from "@/components/Primitives";
@@ -57,7 +56,7 @@ export function ModuleExplorer() {
                   )}
                 >
                   {tab === t ? (
-                    <motion.span layoutId="module-tab" className="absolute inset-0 -z-10 rounded-lg bg-navy" transition={{ duration: 0.3 }} />
+                    <span className="absolute inset-0 -z-10 rounded-lg bg-navy" />
                   ) : null}
                   {t} modules
                 </button>
@@ -94,18 +93,9 @@ export function ModuleExplorer() {
             ))}
           </div>
 
-          <motion.ul layout className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-            <AnimatePresence mode="popLayout">
-              {list.map((m) => (
-                <motion.li
-                  key={m.code}
-                  layout
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                  className="neu-card flex flex-col rounded-2xl p-5"
-                >
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {list.map((m) => (
+                <li key={m.code} className="neu-card flex flex-col rounded-2xl p-5">
                   <div className="flex items-start justify-between gap-3">
                     <span className="grid size-10 place-items-center rounded-xl icon-tile-soft">
                       <Icon name={m.icon} className="size-5" />
@@ -142,10 +132,9 @@ export function ModuleExplorer() {
                       <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                     </Link>
                   </div>
-                </motion.li>
-              ))}
-            </AnimatePresence>
-          </motion.ul>
+                </li>
+            ))}
+          </ul>
 
           {list.length === 0 ? (
             <p className="py-14 text-center text-sm text-muted-foreground">
