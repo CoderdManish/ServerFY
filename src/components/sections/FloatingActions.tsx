@@ -14,18 +14,16 @@ export function FloatingActions() {
 
   return (
     <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2.5 sm:bottom-6 sm:right-6">
-      <button
-        type="button"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
-        aria-hidden={!showTop}
-        tabIndex={showTop ? 0 : -1}
-        className={`grid size-11 place-items-center rounded-full glass-panel text-navy transition-all duration-300 hover:border-blue-bright hover:text-blue ${
-          showTop ? "translate-y-0 scale-100 opacity-100" : "pointer-events-none translate-y-2 scale-90 opacity-0"
-        }`}
-      >
-        <ArrowUp className="size-4" aria-hidden="true" />
-      </button>
+      {showTop ? (
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+          className="anim-rise grid size-11 place-items-center rounded-full glass-panel text-navy transition-colors duration-300 hover:border-blue-bright hover:text-blue"
+        >
+          <ArrowUp className="size-4" aria-hidden="true" />
+        </button>
+      ) : null}
 
       <a
         href="/contact"
