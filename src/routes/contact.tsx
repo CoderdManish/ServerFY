@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { ContactStrip } from "@/components/sections/ContactStrip";
 import { Contact } from "@/components/sections/Contact";
 import { FAQ } from "@/components/sections/FAQ";
 
@@ -33,6 +34,7 @@ function ContactPage() {
       title="Tell us what you need access to"
       intro="Share your module, SAP version, user count and how long you need the environment. We come back with availability and pricing."
     >
+      <ContactStrip />
       <Contact />
       <FAQ />
     </PageShell>

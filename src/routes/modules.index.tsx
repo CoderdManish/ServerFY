@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { IncludedBand } from "@/components/sections/IncludedBand";
 import { ModuleExplorer } from "@/components/sections/ModuleExplorer";
 import { FunctionalTechnical } from "@/components/sections/FunctionalTechnical";
 import { TrialBanner } from "@/components/sections/TrialBanner";
@@ -38,6 +39,7 @@ function ModulesPage() {
       <ModuleExplorer />
       <FunctionalTechnical />
       <TrialBanner />
+      <IncludedBand />
       <ExpertCTA />
     </PageShell>
   );

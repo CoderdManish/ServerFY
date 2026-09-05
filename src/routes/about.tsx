@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { ContactStrip } from "@/components/sections/ContactStrip";
+import { IncludedBand } from "@/components/sections/IncludedBand";
 import { Metrics } from "@/components/sections/Metrics";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -69,6 +71,8 @@ function AboutPage() {
       </section>
       <Metrics />
       <Testimonials />
+      <ContactStrip />
+      <IncludedBand />
       <ExpertCTA />
     </PageShell>
   );

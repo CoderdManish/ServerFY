@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { IncludedBand } from "@/components/sections/IncludedBand";
 import { UseCases } from "@/components/sections/UseCases";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -38,6 +39,7 @@ function SolutionsPage() {
       <UseCases />
       <HowItWorks />
       <Testimonials />
+      <IncludedBand />
       <ExpertCTA />
     </PageShell>
   );

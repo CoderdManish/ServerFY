@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon";
 import { CtaButton } from "@/components/CtaButton";
 import { PageShell } from "@/components/PageShell";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
+import { IncludedBand } from "@/components/sections/IncludedBand";
 import type { DetailPage } from "@/data/pages";
 
 type RelatedLink = { label: string; to: string };
@@ -68,6 +69,8 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
           </div>
         </div>
       </section>
+
+      <IncludedBand />
 
       {/* FAQ */}
       <section className="section-y bg-soft-mesh">
