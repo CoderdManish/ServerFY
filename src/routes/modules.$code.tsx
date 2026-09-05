@@ -9,9 +9,9 @@ export const Route = createFileRoute("/modules/$code")({
     if (!mod) throw notFound();
     return moduleDetailPage(mod);
   },
-  head: ({ loaderData }) =>
+  head: ({ loaderData, params }) =>
     loaderData
-      ? detailHead(loaderData)
+      ? detailHead(loaderData, `/modules/${params.code}`)
       : { meta: [{ title: "Module not found — ServerFY" }, { name: "robots", content: "noindex" }] },
   component: ModuleDetail,
 });

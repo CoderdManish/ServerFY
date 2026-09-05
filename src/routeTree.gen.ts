@@ -21,6 +21,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ServersRouteImport } from './routes/servers'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SlaRouteImport } from './routes/sla'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -93,6 +94,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const ServersRoute = ServersRouteImport.update({
   id: '/servers',
   path: '/servers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SlaRoute = SlaRouteImport.update({
@@ -175,6 +181,7 @@ export interface FileRoutesByFullPath {
   '/refund-policy': typeof RefundPolicyRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/servers': typeof ServersRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sla': typeof SlaRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
@@ -199,6 +206,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sla': typeof SlaRoute
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
@@ -226,6 +234,7 @@ export interface FileRoutesById {
   '/refund-policy': typeof RefundPolicyRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/servers': typeof ServersRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sla': typeof SlaRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
@@ -255,6 +264,7 @@ export interface FileRouteTypes {
     | '/refund-policy'
     | '/resources'
     | '/servers'
+    | '/sitemap.xml'
     | '/sla'
     | '/solutions'
     | '/terms'
@@ -279,6 +289,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/refund-policy'
+    | '/sitemap.xml'
     | '/sla'
     | '/terms'
     | '/why-serverfy'
@@ -305,6 +316,7 @@ export interface FileRouteTypes {
     | '/refund-policy'
     | '/resources'
     | '/servers'
+    | '/sitemap.xml'
     | '/sla'
     | '/solutions'
     | '/terms'
@@ -333,6 +345,7 @@ export interface RootRouteChildren {
   RefundPolicyRoute: typeof RefundPolicyRoute
   ResourcesRoute: typeof ResourcesRouteWithChildren
   ServersRoute: typeof ServersRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SlaRoute: typeof SlaRoute
   SolutionsRoute: typeof SolutionsRouteWithChildren
   TermsRoute: typeof TermsRoute
@@ -424,6 +437,13 @@ declare module '@tanstack/react-router' {
       path: '/servers'
       fullPath: '/servers'
       preLoaderRoute: typeof ServersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sla': {
@@ -587,6 +607,7 @@ const rootRouteChildren: RootRouteChildren = {
   RefundPolicyRoute: RefundPolicyRoute,
   ResourcesRoute: ResourcesRouteWithChildren,
   ServersRoute: ServersRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SlaRoute: SlaRoute,
   SolutionsRoute: SolutionsRouteWithChildren,
   TermsRoute: TermsRoute,

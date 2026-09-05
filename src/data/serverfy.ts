@@ -6,11 +6,11 @@
 export const site = {
   name: "ServerFY",
   tagline: "Reliable SAP server infrastructure",
-  phone: "+91 00000 00000",
-  phoneHref: "tel:+910000000000",
-  whatsapp: "https://wa.me/910000000000",
+  phone: "+91 86053 23014",
+  phoneHref: "tel:+918605323014",
+  whatsapp: "https://wa.me/918605323014",
   email: "hello@serverfy.com",
-  address: "Remote-first · India",
+  address: "Vishal Nagar, Pune, Maharashtra, India",
 };
 
 export type NavItem = {

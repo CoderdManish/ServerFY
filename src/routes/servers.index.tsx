@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { IncludedBand } from "@/components/sections/IncludedBand";
 import { ServerCategories } from "@/components/sections/ServerCategories";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Comparison } from "@/components/sections/Comparison";
@@ -20,10 +21,13 @@ export const Route = createFileRoute("/servers/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/servers" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "/servers" }],
   }),
 });
 
@@ -39,6 +43,7 @@ function ServersPage() {
       <DashboardPreview />
       <Comparison />
       <TrialBanner />
+      <IncludedBand />
       <ExpertCTA />
     </PageShell>
   );

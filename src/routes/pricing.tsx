@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { IncludedBand } from "@/components/sections/IncludedBand";
 import { Pricing } from "@/components/sections/Pricing";
 import { Comparison } from "@/components/sections/Comparison";
 import { TrialBanner } from "@/components/sections/TrialBanner";
@@ -18,10 +19,13 @@ export const Route = createFileRoute("/pricing")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/pricing" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "/pricing" }],
   }),
 });
 
@@ -36,6 +40,7 @@ function PricingPage() {
       <Comparison />
       <TrialBanner />
       <FAQ />
+      <IncludedBand />
     </PageShell>
   );
 }
