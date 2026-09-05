@@ -5,7 +5,7 @@ const badges = ["Secure VPN access", "Daily backups", "24/7 monitoring"];
 
 export function TrustBar() {
   return (
-    <section aria-label="Available SAP releases" className="border-y border-border bg-white py-7">
+    <section aria-label="Available SAP releases" className="border-y border-border bg-soft-tint py-7">
       <div className="container-fy flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
         <Reveal className="shrink-0" y={12}>
           <p className="type-eyebrow text-muted-foreground">Live releases available today</p>
@@ -24,7 +24,7 @@ export function TrustBar() {
             {badges.map((b) => (
               <li
                 key={b}
-                className="rounded-full border border-border bg-secondary px-3 py-1 text-[0.7rem] font-bold text-blue"
+                className="neu-pill rounded-full px-3 py-1 text-[0.7rem] font-bold text-blue"
               >
                 {b}
               </li>
