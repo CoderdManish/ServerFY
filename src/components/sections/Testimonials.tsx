@@ -23,7 +23,7 @@ export function Testimonials() {
                 className="w-[85vw] shrink-0 snap-start neu-card rounded-2xl p-6 sm:w-[46%] lg:w-[31%] xl:w-[24%]"
               >
                 <div className="flex items-center justify-between">
-                  <span className="flex gap-0.5" aria-label={`${t.stars} out of 5 stars`}>
+                  <span role="img" className="flex gap-0.5" aria-label={`${t.stars} out of 5 stars`}>
                     {Array.from({ length: t.stars }).map((_, i) => (
                       <Star key={i} className="size-4 fill-orange text-orange" aria-hidden="true" />
                     ))}

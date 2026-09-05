@@ -20,8 +20,7 @@ const logLines = [
 function ProvisionLog() {
   return (
     <div
-      className="anim-rise rounded-2xl border border-white/12 bg-navy-dark/70 backdrop-blur-sm"
-      style={{ animationDelay: "0.75s" }}
+      className="rounded-2xl border border-white/12 bg-navy-dark/70 backdrop-blur-sm"
       aria-hidden="true"
     >
       <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
@@ -37,7 +36,7 @@ function ProvisionLog() {
           <p
             key={l.text}
             className="anim-rise overflow-hidden text-ellipsis whitespace-nowrap"
-            style={{ animationDelay: `${0.95 + i * 0.12}s`, animationDuration: "0.45s" }}
+            style={{ animationDelay: `${0.35 + i * 0.12}s`, animationDuration: "0.45s" }}
           >
             {l.kind === "cmd" ? (
               <>
@@ -64,35 +63,22 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.13] [mask-image:radial-gradient(70%_60%_at_50%_35%,#000,transparent)]" />
       <div className="container-fy relative grid items-center gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14">
         <div className="min-w-0">
-          <span
-            className="anim-rise type-eyebrow inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-white/80 backdrop-blur"
-            style={{ animationDelay: "0.05s" }}
-          >
+          <span className="type-eyebrow inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-white/80 backdrop-blur">
             <span className="size-1.5 rounded-full bg-orange led" />
             All SAP landscapes operational
           </span>
 
           <h1 className="type-hero mt-6 text-balance text-white">
-            <span className="anim-rise block" style={{ animationDelay: "0.12s" }}>
-              Enterprise SAP Servers
-            </span>
-            <span className="anim-rise text-gradient-orange mt-1 block" style={{ animationDelay: "0.24s" }}>
-              Engineered For Excellence.
-            </span>
+            <span className="block">Enterprise SAP Servers</span>
+            <span className="text-gradient-orange mt-1 block">Engineered For Excellence.</span>
           </h1>
 
-          <p
-            className="anim-rise mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg"
-            style={{ animationDelay: "0.34s" }}
-          >
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
             High-performance SAP environments for Functional &amp; Technical modules. Practice, learn, develop, test and
             run your SAP operations with confidence.
           </p>
 
-          <div
-            className="anim-rise mt-8 flex flex-col gap-3 sm:flex-row"
-            style={{ animationDelay: "0.42s" }}
-          >
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <CtaButton href="/contact" size="lg">
               Get Your SAP Server
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -103,14 +89,11 @@ export function Hero() {
             </CtaButton>
           </div>
 
-          <p className="anim-rise mt-4 text-sm text-white/45" style={{ animationDelay: "0.48s" }}>
+          <p className="mt-4 text-sm text-white/45">
             Free trial available · No setup fee · Access within hours
           </p>
 
-          <ul
-            className="anim-rise mt-9 grid grid-cols-2 gap-3 sm:grid-cols-4"
-            style={{ animationDelay: "0.56s" }}
-          >
+          <ul className="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {proofs.map(({ icon: I, label }) => (
               <li key={label} className="flex items-center gap-2 text-[0.78rem] font-semibold text-white/70">
                 <span className="grid size-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 text-blue-bright">
@@ -122,7 +105,7 @@ export function Hero() {
           </ul>
         </div>
 
-        <div className="anim-rise flex min-w-0 flex-col gap-5" style={{ animationDelay: "0.3s" }}>
+        <div className="flex min-w-0 flex-col gap-5">
           <ServerVisual compact />
           <ProvisionLog />
         </div>
