@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { animate, motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { CtaButton } from "@/components/CtaButton";
 import { Reveal, SectionHeading } from "@/components/Primitives";
@@ -9,26 +8,27 @@ import { cn } from "@/lib/utils";
 function AnimatedPrice({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const prev = useRef(value);
-  const reduce = useReducedMotion();
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    if (reduce) {
+    const from = prev.current;
+    prev.current = value;
+    if (from === value || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       node.textContent = value.toLocaleString("en-IN");
-      prev.current = value;
       return;
     }
-    const controls = animate(prev.current, value, {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => {
-        node.textContent = Math.round(v).toLocaleString("en-IN");
-      },
-    });
-    prev.current = value;
-    return () => controls.stop();
-  }, [value, reduce]);
+    let raf = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / 600);
+      const eased = 1 - Math.pow(1 - t, 3);
+      node.textContent = Math.round(from + (value - from) * eased).toLocaleString("en-IN");
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [value]);
 
   return <span ref={ref}>{value.toLocaleString("en-IN")}</span>;
 }
@@ -60,7 +60,7 @@ export function Pricing() {
                 )}
               >
                 {cycle === c.id ? (
-                  <motion.span layoutId="cycle-pill" className="absolute inset-0 -z-10 rounded-xl bg-navy" transition={{ duration: 0.32 }} />
+                  <span className="absolute inset-0 -z-10 rounded-xl bg-navy" />
                 ) : null}
                 {c.label}
                 {c.note ? (

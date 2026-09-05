@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from "motion/react";
 import { Code2, SlidersHorizontal } from "lucide-react";
 import { Reveal, SectionHeading } from "@/components/Primitives";
 import { functionalList, technicalList } from "@/data/serverfy";
@@ -27,16 +26,13 @@ function Column({
       </div>
       <ul className="mt-5 flex flex-wrap gap-2">
         {items.map((m, i) => (
-          <motion.li
+          <li
             key={m}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.04 }}
-            className="rounded-lg border border-white/10 bg-navy-dark/50 px-3 py-2 text-xs font-bold text-white/80 transition-colors hover:border-blue-bright hover:text-white"
+            style={{ animationDelay: `${i * 40}ms`, animationDuration: "0.45s" }}
+            className="anim-rise rounded-lg border border-white/10 bg-navy-dark/50 px-3 py-2 text-xs font-bold text-white/80 transition-colors hover:border-blue-bright hover:text-white"
           >
             SAP {m}
-          </motion.li>
+          </li>
         ))}
       </ul>
     </div>
@@ -44,7 +40,6 @@ function Column({
 }
 
 export function FunctionalTechnical() {
-  const reduce = useReducedMotion();
   return (
     <section className="section-y relative overflow-hidden bg-navy-gradient">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.1]" />
@@ -83,7 +78,7 @@ export function FunctionalTechnical() {
                   stroke="url(#fy-bridge)"
                   strokeWidth="1.6"
                   strokeDasharray="8 12"
-                  style={reduce ? {} : { animation: `dash-flow ${6 + i}s linear infinite` }}
+                  style={{ animation: `dash-flow ${6 + i}s linear infinite` }}
                 />
               ))}
               <circle cx="60" cy="150" r="16" fill="var(--navy-dark)" stroke="var(--orange)" strokeWidth="1.5" />
