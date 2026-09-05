@@ -95,46 +95,57 @@ export function ModuleExplorer() {
 
           <ul className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {list.map((m) => (
-                <li key={m.code} className="neu-card flex flex-col rounded-2xl p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <span className="grid size-10 place-items-center rounded-xl icon-tile-soft">
-                      <Icon name={m.icon} className="size-5" />
-                    </span>
-                    <span
-                      className={cn(
-                        "rounded-full px-2.5 py-1 text-[0.62rem] font-extrabold uppercase tracking-wider",
-                        m.availability === "Available" ? "bg-accent text-blue" : "bg-orange/10 text-orange",
-                      )}
-                    >
-                      {m.availability}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 text-base font-extrabold text-foreground">
-                    <Link to="/modules/$code" params={{ code: moduleSlug(m.code) }} className="hover:text-orange">
-                      SAP {m.code}
-                    </Link>
-                  </h3>
-                  <p className="text-xs font-semibold text-blue">{m.name}</p>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{m.desc}</p>
-                  <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-                    <span className="flex flex-wrap gap-1">
-                      {m.platforms.map((p) => (
-                        <span key={p} className="rounded-md bg-muted px-2 py-1 text-[0.62rem] font-bold text-muted-foreground">
-                          {p}
-                        </span>
-                      ))}
-                    </span>
-                    <Link
-                      to="/modules/$code" params={{ code: moduleSlug(m.code) }}
-                      className="group inline-flex items-center gap-1 text-xs font-extrabold text-blue hover:text-blue-bright"
-                    >
-                      View details
-                      <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-                    </Link>
-                  </div>
-                </li>
+              <li key={m.code} className="group neu-card rail-card flex flex-col rounded-2xl p-5">
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-2xl icon-tile transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
+                    <Icon name={m.icon} className="size-5" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <h3 className="truncate text-base font-extrabold text-foreground">
+                      <Link to="/modules/$code" params={{ code: moduleSlug(m.code) }} className="hover:text-orange">
+                        SAP {m.code}
+                      </Link>
+                    </h3>
+                    <span className="block truncate text-xs font-semibold text-blue">{m.name}</span>
+                  </span>
+                  <span
+                    className={cn(
+                      "shrink-0 rounded-full px-2.5 py-1 text-[0.62rem] font-extrabold uppercase tracking-wider",
+                      m.availability === "Available"
+                        ? "bg-accent text-blue"
+                        : "bg-orange/12 text-orange ring-1 ring-orange/25",
+                    )}
+                  >
+                    {m.availability}
+                  </span>
+                </div>
+
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{m.desc}</p>
+
+                <div className="mt-4 flex items-center justify-between gap-3 border-t border-border pt-4">
+                  <span className="flex min-w-0 flex-wrap gap-1">
+                    {m.platforms.map((p) => (
+                      <span
+                        key={p}
+                        className="rounded-md neu-inset px-2 py-1 text-[0.62rem] font-bold text-muted-foreground"
+                      >
+                        {p}
+                      </span>
+                    ))}
+                  </span>
+                  <Link
+                    to="/modules/$code"
+                    params={{ code: moduleSlug(m.code) }}
+                    className="inline-flex shrink-0 items-center gap-1 text-xs font-extrabold text-blue transition-colors group-hover:text-orange"
+                  >
+                    View details
+                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                  </Link>
+                </div>
+              </li>
             ))}
           </ul>
+
 
           {list.length === 0 ? (
             <p className="py-14 text-center text-sm text-muted-foreground">
