@@ -33,7 +33,7 @@ export function FloatingActions() {
       </AnimatePresence>
 
       <a
-        href="#contact"
+        href="/contact"
         aria-label="Contact support"
         className="grid size-11 place-items-center rounded-full bg-navy text-white shadow-card transition-transform hover:-translate-y-0.5"
       >

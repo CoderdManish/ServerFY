@@ -32,7 +32,7 @@ export function TrialBanner() {
                     </li>
                   ))}
                 </ul>
-                <CtaButton href="#contact" size="lg" className="mt-8">
+                <CtaButton href="/contact" size="lg" className="mt-8">
                   Start Free Trial
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </CtaButton>

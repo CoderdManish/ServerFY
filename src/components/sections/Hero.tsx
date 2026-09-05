@@ -93,11 +93,11 @@ export function Hero() {
             className="anim-rise mt-8 flex flex-col gap-3 sm:flex-row"
             style={{ animationDelay: "0.42s" }}
           >
-            <CtaButton href="#contact" size="lg">
+            <CtaButton href="/contact" size="lg">
               Get Your SAP Server
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>
-            <CtaButton href="#modules" size="lg" variant="outlineLight">
+            <CtaButton href="/modules" size="lg" variant="outlineLight">
               Explore SAP Modules
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>
