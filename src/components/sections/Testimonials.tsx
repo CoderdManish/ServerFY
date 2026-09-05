@@ -5,7 +5,7 @@ import { testimonials } from "@/data/serverfy";
 
 export function Testimonials() {
   return (
-    <section className="section-y overflow-hidden bg-white">
+    <section className="section-y overflow-hidden bg-soft-mesh">
       <div className="container-fy">
         <SectionHeading
           eyebrow="Testimonials"

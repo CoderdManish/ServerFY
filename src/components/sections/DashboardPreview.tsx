@@ -21,7 +21,7 @@ const gauges = [
 
 export function DashboardPreview() {
   return (
-    <section className="section-y bg-white">
+    <section className="section-y bg-soft-mesh">
       <div className="container-fy">
         <SectionHeading
           eyebrow="Dashboard preview"

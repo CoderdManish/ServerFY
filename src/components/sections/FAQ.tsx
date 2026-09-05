@@ -4,7 +4,7 @@ import { faqs } from "@/data/serverfy";
 
 export function FAQ() {
   return (
-    <section id="faq" className="section-y">
+    <section id="faq" className="section-y bg-soft-tint">
       <div className="container-fy grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <SectionHeading
           eyebrow="FAQ"
