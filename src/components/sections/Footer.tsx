@@ -1,6 +1,26 @@
 import { Linkedin, Mail, MapPin, MessageCircle, Phone, Twitter, Youtube } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
+import { Link } from "@tanstack/react-router";
 import { footerColumns, site } from "@/data/serverfy";
+
+const columnHref: Record<string, string> = {
+  "SAP Servers": "/servers",
+  "SAP Modules": "/modules",
+  Solutions: "/solutions",
+  Resources: "/resources",
+  Company: "/about",
+  Support: "/contact",
+};
+
+const linkHref: Record<string, string> = {
+  Terms: "/terms",
+  Privacy: "/privacy",
+  FAQs: "/resources",
+  Contact: "/contact",
+  "Contact Support": "/contact",
+  About: "/about",
+  "Why ServerFY": "/about",
+};
 
 export function Footer() {
   return (
@@ -55,9 +75,12 @@ export function Footer() {
                 <ul className="mt-4 space-y-2.5 text-sm">
                   {col.links.map((l) => (
                     <li key={l}>
-                      <a href="/contact" className="text-white/60 transition-colors hover:text-orange">
+                      <Link
+                        to={linkHref[l] ?? columnHref[col.title] ?? "/contact"}
+                        className="text-white/60 transition-colors hover:text-orange"
+                      >
                         {l}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
