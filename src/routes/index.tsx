@@ -48,10 +48,38 @@ export const Route = createFileRoute("/")({
           "@graph": [
             {
               "@type": "Organization",
+              "@id": "/#organization",
               name: "ServerFY",
               description:
                 "Independent provider of SAP server environments for practice, training, development and testing.",
               url: "/",
+              email: site.email,
+              telephone: site.phoneHref.replace("tel:", ""),
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Vishal Nagar",
+                addressLocality: "Pune",
+                addressRegion: "Maharashtra",
+                addressCountry: "IN",
+              },
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  contactType: "sales",
+                  telephone: site.phoneHref.replace("tel:", ""),
+                  email: site.email,
+                  areaServed: "IN",
+                  availableLanguage: ["en", "hi", "mr"],
+                },
+              ],
+              sameAs: [site.whatsapp],
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              name: "ServerFY",
+              url: "/",
+              publisher: { "@id": "/#organization" },
             },
             {
               "@type": "FAQPage",
