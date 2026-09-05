@@ -20,14 +20,14 @@ export type NavItem = {
 };
 
 export const nav: NavItem[] = [
-  { label: "Home", href: "#top" },
-  { label: "SAP Servers", href: "#servers", menu: "servers" },
-  { label: "SAP Modules", href: "#modules", menu: "modules" },
-  { label: "Solutions", href: "#use-cases", menu: "solutions" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Resources", href: "#faq", menu: "resources" },
-  { label: "About Us", href: "#why" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "SAP Servers", href: "/servers", menu: "servers" },
+  { label: "SAP Modules", href: "/modules", menu: "modules" },
+  { label: "Solutions", href: "/solutions", menu: "solutions" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Resources", href: "/resources", menu: "resources" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const megaMenus = {

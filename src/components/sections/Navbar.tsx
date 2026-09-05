@@ -126,7 +126,7 @@ export function Navbar() {
           >
             <MessageCircle className="size-4" aria-hidden="true" />
           </a>
-          <CtaButton href="#contact" size="sm" className="whitespace-nowrap">
+          <CtaButton href="/contact" size="sm" className="whitespace-nowrap">
             Get Your SAP Server
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </CtaButton>
@@ -180,7 +180,7 @@ export function Navbar() {
                   <div className="bg-navy-gradient p-7 text-white">
                     <p className="type-eyebrow text-orange">{megaMenus[openMenu].title}</p>
                     <p className="mt-3 text-sm leading-relaxed text-white/70">{megaMenus[openMenu].blurb}</p>
-                    <CtaButton href="#contact" size="sm" variant="outlineLight" className="mt-6">
+                    <CtaButton href="/contact" size="sm" variant="outlineLight" className="mt-6">
                       Talk to an expert
                       <ArrowRight className="size-4" aria-hidden="true" />
                     </CtaButton>
@@ -192,7 +192,7 @@ export function Navbar() {
                         {group.items.map((it) => (
                           <li key={it.label}>
                             <a
-                              href="#modules"
+                              href="/modules"
                               className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-accent"
                               onClick={() => setOpenMenu(null)}
                             >
@@ -241,7 +241,7 @@ export function Navbar() {
                   </li>
                 ))}
               </ul>
-              <CtaButton href="#contact" className="mt-4 w-full" onClick={() => setMobileOpen(false)}>
+              <CtaButton href="/contact" className="mt-4 w-full" onClick={() => setMobileOpen(false)}>
                 Get Your SAP Server
                 <ArrowRight className="size-4" aria-hidden="true" />
               </CtaButton>
