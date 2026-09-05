@@ -309,3 +309,96 @@
 @utility caret {
   animation: fy-caret 1.05s steps(1) infinite;
 }
+
+/* ── Surfaces: soft mesh backgrounds (replace flat white sections) ── */
+@utility bg-soft-mesh {
+  background-color: #fbfcfe;
+  background-image:
+    radial-gradient(900px 480px at 12% -10%, color-mix(in oklab, var(--blue-bright) 9%, transparent), transparent 62%),
+    radial-gradient(760px 420px at 92% 8%, color-mix(in oklab, var(--orange) 8%, transparent), transparent 64%),
+    radial-gradient(700px 500px at 50% 118%, color-mix(in oklab, var(--blue) 7%, transparent), transparent 66%);
+}
+
+@utility bg-soft-tint {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(800px 420px at 88% -12%, color-mix(in oklab, var(--orange) 7%, transparent), transparent 62%),
+    radial-gradient(820px 460px at 4% 100%, color-mix(in oklab, var(--blue-bright) 8%, transparent), transparent 64%);
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(color-mix(in oklab, var(--navy) 9%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ── Glassmorphism on light surfaces ── */
+@utility glass-panel {
+  background: linear-gradient(
+    150deg,
+    color-mix(in oklab, #ffffff 92%, transparent),
+    color-mix(in oklab, #ffffff 62%, transparent)
+  );
+  border: 1px solid color-mix(in oklab, #ffffff 85%, transparent);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+    0 18px 46px -26px color-mix(in oklab, var(--navy) 55%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+}
+
+/* ── Neumorphic raised card ── */
+@utility neu-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f2f6fc 100%);
+  border: 1px solid color-mix(in oklab, var(--navy) 8%, transparent);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    -6px -6px 16px rgba(255, 255, 255, 0.9),
+    10px 14px 30px -18px color-mix(in oklab, var(--navy) 45%, transparent);
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--orange) 35%, transparent);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.95) inset,
+      -8px -8px 20px rgba(255, 255, 255, 0.95),
+      16px 22px 42px -20px color-mix(in oklab, var(--navy) 50%, transparent);
+  }
+}
+
+@utility neu-inset {
+  background: linear-gradient(145deg, #eef3fa 0%, #ffffff 100%);
+  box-shadow:
+    inset 3px 3px 8px color-mix(in oklab, var(--navy) 12%, transparent),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.95);
+}
+
+/* ── Skeuomorphic orange icon tile ── */
+@utility icon-tile {
+  color: #fff;
+  background: linear-gradient(160deg, var(--orange-light) 0%, var(--orange) 55%, #d94800 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 -2px 6px rgba(120, 30, 0, 0.35) inset,
+    0 10px 22px -12px color-mix(in oklab, var(--orange) 85%, transparent);
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s ease;
+}
+
+@utility icon-tile-soft {
+  color: var(--orange);
+  background: linear-gradient(150deg, color-mix(in oklab, var(--orange) 16%, #fff) 0%, #ffffff 100%);
+  border: 1px solid color-mix(in oklab, var(--orange) 26%, transparent);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 10px 20px -14px color-mix(in oklab, var(--orange) 80%, transparent);
+}
+
+@utility icon-tile-dark {
+  color: var(--orange);
+  background: linear-gradient(150deg, color-mix(in oklab, var(--orange) 22%, transparent), transparent 85%);
+  border: 1px solid color-mix(in oklab, var(--orange) 34%, transparent);
+  box-shadow: 0 10px 26px -18px color-mix(in oklab, var(--orange) 90%, transparent);
+}
