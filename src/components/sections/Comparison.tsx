@@ -13,7 +13,7 @@ export function Comparison() {
         />
 
         {/* Desktop table */}
-        <Reveal className="mt-12 hidden overflow-hidden rounded-3xl border border-border bg-card shadow-card lg:block">
+        <Reveal className="mt-12 hidden overflow-hidden rounded-3xl glass-panel lg:block">
           <table className="w-full border-collapse text-sm">
             <caption className="sr-only">ServerFY plan comparison by feature</caption>
             <thead>

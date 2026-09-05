@@ -30,7 +30,7 @@ export function DashboardPreview() {
         />
 
         <Reveal className="mt-12" delay={0.1}>
-          <div className="rounded-[2rem] border border-border bg-background p-3 shadow-card sm:p-5">
+          <div className="rounded-[2rem] glass-panel p-3 sm:p-5">
             <div className="overflow-hidden rounded-3xl border border-border bg-card">
               {/* window bar */}
               <div className="flex items-center gap-3 border-b border-border bg-muted/60 px-4 py-3">
