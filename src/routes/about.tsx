@@ -18,10 +18,13 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/about" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "/about" }],
   }),
 });
 
