@@ -48,7 +48,7 @@ export function Metrics() {
         <ul className="mt-14 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {metrics.map((m, i) => (
             <Reveal as="li" key={m.label} delay={i * 0.05}>
-              <div className="border-l-2 border-white/10 pl-5 transition-colors hover:border-orange">
+              <div className="glass-dark glass-dark-hover h-full border-l-2 border-l-orange/70 p-6">
                 <Counter value={m.value} suffix={m.suffix} display={m.display} />
                 <p className="mt-3 text-sm font-semibold text-white/60">{m.label}</p>
               </div>
