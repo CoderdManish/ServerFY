@@ -402,3 +402,36 @@
   border: 1px solid color-mix(in oklab, var(--orange) 34%, transparent);
   box-shadow: 0 10px 26px -18px color-mix(in oklab, var(--orange) 90%, transparent);
 }
+
+/* Frosted panel for dark (navy) sections */
+@utility glass-dark {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03) 60%, rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.16) inset,
+    0 24px 50px -30px rgba(0, 0, 0, 0.9);
+  border-radius: 1.25rem;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+@utility glass-dark-hover {
+  &:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab, var(--orange) 55%, transparent);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.2) inset,
+      0 30px 60px -30px color-mix(in oklab, var(--orange) 55%, transparent);
+  }
+}
+
+/* Soft pill used in the release strip */
+@utility neu-pill {
+  background: linear-gradient(160deg, #ffffff, #eef3fa);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 8px 18px -14px rgba(16, 39, 78, 0.5);
+}
