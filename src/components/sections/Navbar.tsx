@@ -30,7 +30,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [solid]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
