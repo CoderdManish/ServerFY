@@ -18,7 +18,15 @@ import {
 import type { SapModule } from "@/data/serverfy";
 import { cn } from "@/lib/utils";
 
+/* ------------------------------ Pastel cycle ------------------------------ */
+
+const TINT_CARDS = ["tintcard-blue", "tintcard-orange", "tintcard-green", "tintcard-violet"] as const;
+const TINT_ICONS = ["ico-blue", "ico-orange", "ico-green", "ico-violet"] as const;
+const tintCard = (i: number) => TINT_CARDS[i % TINT_CARDS.length];
+const icoTint = (i: number) => TINT_ICONS[i % TINT_ICONS.length];
+
 /* --------------------------------- Mock UI -------------------------------- */
+
 
 function EasyAccessMock({ mod, menu }: { mod: SapModule; menu: string[] }) {
   return (
