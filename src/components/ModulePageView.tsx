@@ -521,7 +521,7 @@ function CompareCell({ value }: { value: string }) {
   if (value === "yes") {
     return (
       <td className="px-5 py-2.5">
-        <Check className="size-4 text-orange" aria-label="Available" />
+        <Check className="size-4 text-green" aria-label="Available" />
       </td>
     );
   }
