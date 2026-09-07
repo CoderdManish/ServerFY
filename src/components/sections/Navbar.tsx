@@ -17,19 +17,20 @@ const menuHref: Record<MenuKey, string> = {
   resources: "/resources",
 };
 
-export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+export function Navbar({ solid = false }: { solid?: boolean }) {
+  const [scrolled, setScrolled] = useState(solid);
+
   const [openMenu, setOpenMenu] = useState<MenuKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const active = useRouterState({ select: (st) => st.location.pathname });
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(solid || window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [solid]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
