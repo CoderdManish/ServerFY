@@ -194,18 +194,18 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
               </Link>
             </div>
 
-            <ul className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
               {c.areas.map((a, i) => (
                 <Reveal as="li" key={a.title} delay={i * 0.04}>
-                  <div className="neu-card rail-card h-full rounded-2xl p-5">
-                    <span className="icon-tile grid size-11 place-items-center rounded-xl">
+                  <div className={cn("h-full rounded-2xl p-4", tintCard(i))}>
+                    <span className={cn("grid size-11 place-items-center rounded-xl", icoTint(i))}>
                       <Icon name={a.icon} className="size-5" />
                     </span>
-                    <h3 className="mt-4 text-base font-bold text-foreground">{a.title}</h3>
-                    <ul className="mt-3 space-y-2">
+                    <h3 className="mt-3 text-[0.92rem] font-bold leading-tight text-foreground">{a.title}</h3>
+                    <ul className="mt-3 space-y-1.5">
                       {a.items.map((it) => (
-                        <li key={it} className="flex items-start gap-2 text-[0.8rem] leading-relaxed text-muted-foreground">
-                          <Check className="mt-0.5 size-3.5 shrink-0 text-orange" aria-hidden="true" />
+                        <li key={it} className="flex items-start gap-1.5 text-[0.74rem] leading-relaxed text-muted-foreground">
+                          <Check className="mt-0.5 size-3 shrink-0 text-green" aria-hidden="true" />
                           {it}
                         </li>
                       ))}
@@ -214,6 +214,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                 </Reveal>
               ))}
             </ul>
+
           </div>
         </section>
 
