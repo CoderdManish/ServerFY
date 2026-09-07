@@ -157,7 +157,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
             <div>
               <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">What is SAP {mod.code}?</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.whatIs}</p>
-              <CtaButton href="/contact" size="sm" variant="outlineDark" className="mt-6">
+              <CtaButton href="/contact" size="sm" variant="outlineBlue" className="mt-6">
                 Learn More About SAP {mod.code}
               </CtaButton>
             </div>
@@ -343,7 +343,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                   </li>
                 ))}
               </ol>
-              <CtaButton href="/contact" size="sm" variant="outlineDark" className="mt-7">
+              <CtaButton href="/contact" size="sm" variant="outlineBlue" className="mt-7">
                 View More Practice Scenarios
               </CtaButton>
             </div>
