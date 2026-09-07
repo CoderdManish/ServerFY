@@ -307,17 +307,18 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
 
             <div>
               <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">Who Can Use This Server?</h2>
-              <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {audience.map((a) => (
-                  <li key={a.title} className="glass-panel rounded-2xl p-4 text-center">
-                    <span className="icon-tile mx-auto grid size-11 place-items-center rounded-xl">
+              <ul className="mt-6 grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+                {audience.map((a, i) => (
+                  <li key={a.title} className="rounded-2xl border border-border bg-card p-3.5 text-center shadow-card">
+                    <span className={cn("mx-auto grid size-11 place-items-center rounded-full", icoTint(i))}>
                       <Icon name={a.icon} className="size-5" />
                     </span>
-                    <h3 className="mt-3 text-sm font-bold text-foreground">{a.title}</h3>
-                    <p className="mt-1.5 text-[0.75rem] leading-relaxed text-muted-foreground">{a.desc}</p>
+                    <h3 className="mt-3 text-[0.82rem] font-bold text-foreground">{a.title}</h3>
+                    <p className="mt-1.5 text-[0.7rem] leading-relaxed text-muted-foreground">{a.desc}</p>
                   </li>
                 ))}
               </ul>
+
             </div>
           </div>
         </section>
