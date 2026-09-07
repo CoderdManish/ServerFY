@@ -408,15 +408,16 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
             <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">Why Choose ServerFY?</h2>
             <p className="mt-2 text-sm text-muted-foreground">A reliable partner for your SAP learning and practice journey.</p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-              {whyChoose.map((w) => (
-                <li key={w.title} className="neu-card rounded-2xl p-4">
-                  <span className="icon-tile grid size-10 place-items-center rounded-lg">
+              {whyChoose.map((w, i) => (
+                <li key={w.title} className="rounded-2xl border border-border bg-card p-4 shadow-card">
+                  <span className={cn("grid size-10 place-items-center rounded-lg", icoTint(i))}>
                     <Icon name={w.icon} className="size-4" />
                   </span>
                   <h3 className="mt-3 text-[0.85rem] font-bold leading-tight text-foreground">{w.title}</h3>
                   <p className="mt-1.5 text-[0.72rem] leading-relaxed text-muted-foreground">{w.desc}</p>
                 </li>
               ))}
+
             </ul>
           </div>
         </section>
