@@ -379,20 +379,26 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
           <div className="container-fy">
             <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">How It Works?</h2>
             <p className="mt-2 text-sm text-muted-foreground">Start practising {mod.code} in just 3 simple steps.</p>
-            <ol className="mt-9 grid gap-6 lg:grid-cols-3">
-              {moduleSteps.map((s) => (
-                <li key={s.no} className="glass-panel flex items-start gap-4 rounded-2xl p-5">
-                  <span className="icon-tile grid size-12 shrink-0 place-items-center rounded-xl">
-                    <Icon name={s.icon} className="size-5" />
-                  </span>
-                  <div>
-                    <p className="type-eyebrow text-orange">{s.no}</p>
-                    <h3 className="mt-1 text-base font-bold text-foreground">{s.title}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+            <ol className="mt-9 grid items-center gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
+              {moduleSteps.map((s, i) => (
+                <li key={s.no} className="contents">
+                  <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card">
+                    <span className={cn("grid size-12 shrink-0 place-items-center rounded-full", icoTint(i))}>
+                      <Icon name={s.icon} className="size-5" />
+                    </span>
+                    <div>
+                      <p className="type-eyebrow text-blue">{s.no}</p>
+                      <h3 className="mt-1 text-base font-bold text-foreground">{s.title}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                    </div>
                   </div>
+                  {i < moduleSteps.length - 1 ? (
+                    <ArrowRight className="mx-auto hidden size-5 text-blue/50 lg:block" aria-hidden="true" />
+                  ) : null}
                 </li>
               ))}
             </ol>
+
           </div>
         </section>
 
