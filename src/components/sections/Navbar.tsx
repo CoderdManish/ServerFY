@@ -17,8 +17,9 @@ const menuHref: Record<MenuKey, string> = {
   resources: "/resources",
 };
 
-export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+export function Navbar({ solid = false }: { solid?: boolean }) {
+  const [scrolled, setScrolled] = useState(solid);
+
   const [openMenu, setOpenMenu] = useState<MenuKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const active = useRouterState({ select: (st) => st.location.pathname });
