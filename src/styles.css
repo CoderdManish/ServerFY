@@ -510,3 +510,51 @@
     0 1px 0 rgba(255, 255, 255, 0.9) inset,
     0 8px 18px -14px rgba(16, 39, 78, 0.5);
 }
+
+/* -------- Module page pastel accents (reference layout) -------- */
+:root {
+  --green: #12a05f;
+  --violet: #6b5bd6;
+}
+@theme inline {
+  --color-green: var(--green);
+  --color-violet: var(--violet);
+}
+
+@utility tintcard-blue {
+  background: linear-gradient(165deg, color-mix(in oklab, var(--blue-bright) 9%, #fff), #fff 85%);
+  border: 1px solid color-mix(in oklab, var(--blue-bright) 18%, transparent);
+  box-shadow: 0 10px 26px -20px color-mix(in oklab, var(--blue) 70%, transparent);
+}
+@utility tintcard-orange {
+  background: linear-gradient(165deg, color-mix(in oklab, var(--orange) 9%, #fff), #fff 85%);
+  border: 1px solid color-mix(in oklab, var(--orange) 20%, transparent);
+  box-shadow: 0 10px 26px -20px color-mix(in oklab, var(--orange) 60%, transparent);
+}
+@utility tintcard-green {
+  background: linear-gradient(165deg, color-mix(in oklab, var(--green) 9%, #fff), #fff 85%);
+  border: 1px solid color-mix(in oklab, var(--green) 20%, transparent);
+  box-shadow: 0 10px 26px -20px color-mix(in oklab, var(--green) 60%, transparent);
+}
+@utility tintcard-violet {
+  background: linear-gradient(165deg, color-mix(in oklab, var(--violet) 9%, #fff), #fff 85%);
+  border: 1px solid color-mix(in oklab, var(--violet) 20%, transparent);
+  box-shadow: 0 10px 26px -20px color-mix(in oklab, var(--violet) 60%, transparent);
+}
+
+@utility ico-blue {
+  color: var(--blue);
+  background: color-mix(in oklab, var(--blue-bright) 14%, #fff);
+}
+@utility ico-orange {
+  color: var(--orange);
+  background: color-mix(in oklab, var(--orange) 14%, #fff);
+}
+@utility ico-green {
+  color: var(--green);
+  background: color-mix(in oklab, var(--green) 14%, #fff);
+}
+@utility ico-violet {
+  color: var(--violet);
+  background: color-mix(in oklab, var(--violet) 14%, #fff);
+}
