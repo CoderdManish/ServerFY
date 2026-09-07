@@ -64,7 +64,7 @@ function EasyAccessMock({ mod, menu }: { mod: SapModule; menu: string[] }) {
       </div>
       <div className="mt-3 flex items-center gap-2 rounded-xl bg-card px-3 py-2 shadow-card">
         <span className="grid size-6 shrink-0 place-items-center rounded-full bg-orange/15">
-          <Check className="size-3.5 text-orange" aria-hidden="true" />
+          <Check className="size-3.5 text-green" aria-hidden="true" />
         </span>
         <span className="text-[0.72rem] font-bold text-foreground">
           Real SAP System <span className="font-medium text-muted-foreground">— not a simulation</span>
@@ -264,7 +264,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                 <ul className="space-y-2">
                   {c.config.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-[0.82rem] leading-relaxed text-foreground">
-                      <Check className="mt-0.5 size-3.5 shrink-0 text-orange" aria-hidden="true" />
+                      <Check className="mt-0.5 size-3.5 shrink-0 text-green" aria-hidden="true" />
                       {item}
                     </li>
                   ))}
