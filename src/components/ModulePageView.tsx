@@ -99,7 +99,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar solid />
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden bg-soft-mesh pt-28 pb-14 lg:pt-32 lg:pb-16">
