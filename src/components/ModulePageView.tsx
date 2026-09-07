@@ -434,12 +434,12 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                 <li
                   key={p.name}
                   className={cn(
-                    "relative flex flex-col rounded-2xl p-6",
-                    p.highlight ? "glass-panel ring-2 ring-orange/40" : "neu-card",
+                    "relative flex flex-col rounded-2xl border bg-card p-6 shadow-card",
+                    p.highlight ? "border-blue ring-1 ring-blue/30" : "border-border",
                   )}
                 >
                   {p.highlight ? (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-orange px-3 py-1 text-[0.62rem] font-black uppercase tracking-wider text-white">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue px-3 py-1 text-[0.62rem] font-black uppercase tracking-wider text-white">
                       Most popular
                     </span>
                   ) : null}
@@ -448,11 +448,12 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                   <ul className="mt-5 flex-1 space-y-2.5">
                     {p.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-[0.82rem] leading-relaxed text-muted-foreground">
-                        <Check className="mt-0.5 size-3.5 shrink-0 text-orange" aria-hidden="true" />
+                        <Check className="mt-0.5 size-3.5 shrink-0 text-green" aria-hidden="true" />
                         {f}
                       </li>
                     ))}
                   </ul>
+
                   <CtaButton
                     href={p.href}
                     size="sm"
