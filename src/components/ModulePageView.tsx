@@ -18,7 +18,15 @@ import {
 import type { SapModule } from "@/data/serverfy";
 import { cn } from "@/lib/utils";
 
+/* ------------------------------ Pastel cycle ------------------------------ */
+
+const TINT_CARDS = ["tintcard-blue", "tintcard-orange", "tintcard-green", "tintcard-violet"] as const;
+const TINT_ICONS = ["ico-blue", "ico-orange", "ico-green", "ico-violet"] as const;
+const tintCard = (i: number) => TINT_CARDS[i % TINT_CARDS.length];
+const icoTint = (i: number) => TINT_ICONS[i % TINT_ICONS.length];
+
 /* --------------------------------- Mock UI -------------------------------- */
+
 
 function EasyAccessMock({ mod, menu }: { mod: SapModule; menu: string[] }) {
   return (
@@ -56,7 +64,7 @@ function EasyAccessMock({ mod, menu }: { mod: SapModule; menu: string[] }) {
       </div>
       <div className="mt-3 flex items-center gap-2 rounded-xl bg-card px-3 py-2 shadow-card">
         <span className="grid size-6 shrink-0 place-items-center rounded-full bg-orange/15">
-          <Check className="size-3.5 text-orange" aria-hidden="true" />
+          <Check className="size-3.5 text-green" aria-hidden="true" />
         </span>
         <span className="text-[0.72rem] font-bold text-foreground">
           Real SAP System <span className="font-medium text-muted-foreground">— not a simulation</span>
@@ -149,7 +157,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
             <div>
               <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">What is SAP {mod.code}?</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.whatIs}</p>
-              <CtaButton href="/contact" size="sm" variant="outlineDark" className="mt-6">
+              <CtaButton href="/contact" size="sm" variant="outlineBlue" className="mt-6">
                 Learn More About SAP {mod.code}
               </CtaButton>
             </div>
@@ -194,18 +202,18 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
               </Link>
             </div>
 
-            <ul className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
               {c.areas.map((a, i) => (
                 <Reveal as="li" key={a.title} delay={i * 0.04}>
-                  <div className="neu-card rail-card h-full rounded-2xl p-5">
-                    <span className="icon-tile grid size-11 place-items-center rounded-xl">
+                  <div className={cn("h-full rounded-2xl p-4", tintCard(i))}>
+                    <span className={cn("grid size-11 place-items-center rounded-xl", icoTint(i))}>
                       <Icon name={a.icon} className="size-5" />
                     </span>
-                    <h3 className="mt-4 text-base font-bold text-foreground">{a.title}</h3>
-                    <ul className="mt-3 space-y-2">
+                    <h3 className="mt-3 text-[0.92rem] font-bold leading-tight text-foreground">{a.title}</h3>
+                    <ul className="mt-3 space-y-1.5">
                       {a.items.map((it) => (
-                        <li key={it} className="flex items-start gap-2 text-[0.8rem] leading-relaxed text-muted-foreground">
-                          <Check className="mt-0.5 size-3.5 shrink-0 text-orange" aria-hidden="true" />
+                        <li key={it} className="flex items-start gap-1.5 text-[0.74rem] leading-relaxed text-muted-foreground">
+                          <Check className="mt-0.5 size-3 shrink-0 text-green" aria-hidden="true" />
                           {it}
                         </li>
                       ))}
@@ -214,6 +222,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                 </Reveal>
               ))}
             </ul>
+
           </div>
         </section>
 
@@ -255,7 +264,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                 <ul className="space-y-2">
                   {c.config.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-[0.82rem] leading-relaxed text-foreground">
-                      <Check className="mt-0.5 size-3.5 shrink-0 text-orange" aria-hidden="true" />
+                      <Check className="mt-0.5 size-3.5 shrink-0 text-green" aria-hidden="true" />
                       {item}
                     </li>
                   ))}
@@ -298,17 +307,18 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
 
             <div>
               <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">Who Can Use This Server?</h2>
-              <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {audience.map((a) => (
-                  <li key={a.title} className="glass-panel rounded-2xl p-4 text-center">
-                    <span className="icon-tile mx-auto grid size-11 place-items-center rounded-xl">
+              <ul className="mt-6 grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+                {audience.map((a, i) => (
+                  <li key={a.title} className="rounded-2xl border border-border bg-card p-3.5 text-center shadow-card">
+                    <span className={cn("mx-auto grid size-11 place-items-center rounded-full", icoTint(i))}>
                       <Icon name={a.icon} className="size-5" />
                     </span>
-                    <h3 className="mt-3 text-sm font-bold text-foreground">{a.title}</h3>
-                    <p className="mt-1.5 text-[0.75rem] leading-relaxed text-muted-foreground">{a.desc}</p>
+                    <h3 className="mt-3 text-[0.82rem] font-bold text-foreground">{a.title}</h3>
+                    <p className="mt-1.5 text-[0.7rem] leading-relaxed text-muted-foreground">{a.desc}</p>
                   </li>
                 ))}
               </ul>
+
             </div>
           </div>
         </section>
@@ -333,7 +343,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                   </li>
                 ))}
               </ol>
-              <CtaButton href="/contact" size="sm" variant="outlineDark" className="mt-7">
+              <CtaButton href="/contact" size="sm" variant="outlineBlue" className="mt-7">
                 View More Practice Scenarios
               </CtaButton>
             </div>
@@ -369,20 +379,26 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
           <div className="container-fy">
             <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">How It Works?</h2>
             <p className="mt-2 text-sm text-muted-foreground">Start practising {mod.code} in just 3 simple steps.</p>
-            <ol className="mt-9 grid gap-6 lg:grid-cols-3">
-              {moduleSteps.map((s) => (
-                <li key={s.no} className="glass-panel flex items-start gap-4 rounded-2xl p-5">
-                  <span className="icon-tile grid size-12 shrink-0 place-items-center rounded-xl">
-                    <Icon name={s.icon} className="size-5" />
-                  </span>
-                  <div>
-                    <p className="type-eyebrow text-orange">{s.no}</p>
-                    <h3 className="mt-1 text-base font-bold text-foreground">{s.title}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+            <ol className="mt-9 grid items-center gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
+              {moduleSteps.map((s, i) => (
+                <li key={s.no} className="contents">
+                  <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card">
+                    <span className={cn("grid size-12 shrink-0 place-items-center rounded-full", icoTint(i))}>
+                      <Icon name={s.icon} className="size-5" />
+                    </span>
+                    <div>
+                      <p className="type-eyebrow text-blue">{s.no}</p>
+                      <h3 className="mt-1 text-base font-bold text-foreground">{s.title}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                    </div>
                   </div>
+                  {i < moduleSteps.length - 1 ? (
+                    <ArrowRight className="mx-auto hidden size-5 text-blue/50 lg:block" aria-hidden="true" />
+                  ) : null}
                 </li>
               ))}
             </ol>
+
           </div>
         </section>
 
@@ -392,15 +408,16 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
             <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">Why Choose ServerFY?</h2>
             <p className="mt-2 text-sm text-muted-foreground">A reliable partner for your SAP learning and practice journey.</p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-              {whyChoose.map((w) => (
-                <li key={w.title} className="neu-card rounded-2xl p-4">
-                  <span className="icon-tile grid size-10 place-items-center rounded-lg">
+              {whyChoose.map((w, i) => (
+                <li key={w.title} className="rounded-2xl border border-border bg-card p-4 shadow-card">
+                  <span className={cn("grid size-10 place-items-center rounded-lg", icoTint(i))}>
                     <Icon name={w.icon} className="size-4" />
                   </span>
                   <h3 className="mt-3 text-[0.85rem] font-bold leading-tight text-foreground">{w.title}</h3>
                   <p className="mt-1.5 text-[0.72rem] leading-relaxed text-muted-foreground">{w.desc}</p>
                 </li>
               ))}
+
             </ul>
           </div>
         </section>
@@ -417,12 +434,12 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                 <li
                   key={p.name}
                   className={cn(
-                    "relative flex flex-col rounded-2xl p-6",
-                    p.highlight ? "glass-panel ring-2 ring-orange/40" : "neu-card",
+                    "relative flex flex-col rounded-2xl border bg-card p-6 shadow-card",
+                    p.highlight ? "border-blue ring-1 ring-blue/30" : "border-border",
                   )}
                 >
                   {p.highlight ? (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-orange px-3 py-1 text-[0.62rem] font-black uppercase tracking-wider text-white">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue px-3 py-1 text-[0.62rem] font-black uppercase tracking-wider text-white">
                       Most popular
                     </span>
                   ) : null}
@@ -431,11 +448,12 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                   <ul className="mt-5 flex-1 space-y-2.5">
                     {p.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-[0.82rem] leading-relaxed text-muted-foreground">
-                        <Check className="mt-0.5 size-3.5 shrink-0 text-orange" aria-hidden="true" />
+                        <Check className="mt-0.5 size-3.5 shrink-0 text-green" aria-hidden="true" />
                         {f}
                       </li>
                     ))}
                   </ul>
+
                   <CtaButton
                     href={p.href}
                     size="sm"
@@ -511,7 +529,7 @@ function CompareCell({ value }: { value: string }) {
   if (value === "yes") {
     return (
       <td className="px-5 py-2.5">
-        <Check className="size-4 text-orange" aria-label="Available" />
+        <Check className="size-4 text-green" aria-label="Available" />
       </td>
     );
   }

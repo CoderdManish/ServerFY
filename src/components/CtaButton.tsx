@@ -14,6 +14,8 @@ const cta = cva(
           "border border-white/25 bg-white/5 text-white backdrop-blur hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10",
         outlineDark:
           "border border-border bg-white text-navy hover:-translate-y-0.5 hover:border-blue-bright hover:shadow-card",
+        outlineBlue:
+          "border border-blue/40 bg-white text-blue hover:-translate-y-0.5 hover:border-blue hover:shadow-card",
         ghost: "text-blue hover:text-blue-bright",
       },
       size: {
