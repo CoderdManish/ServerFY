@@ -46,7 +46,7 @@ const commonFaq = [
 
 export const serverPages: DetailPage[] = [
   {
-    slug: "s4hana",
+    slug: "sap-s4hana-server-access",
     eyebrow: "SAP Servers",
     title: "SAP S/4HANA server access",
     metaTitle: "SAP S/4HANA Server Access | Practice & Development — ServerFY",
@@ -78,7 +78,7 @@ export const serverPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "ecc",
+    slug: "sap-ecc-server-access",
     eyebrow: "SAP Servers",
     title: "SAP ECC 6.0 server access",
     metaTitle: "SAP ECC 6.0 Server Access | IDES Practice Systems — ServerFY",
@@ -110,7 +110,7 @@ export const serverPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "hana",
+    slug: "sap-hana-server-access",
     eyebrow: "SAP Servers",
     title: "SAP HANA database access",
     metaTitle: "SAP HANA Server Access | Modelling & SQLScript — ServerFY",
@@ -141,7 +141,7 @@ export const serverPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "dedicated",
+    slug: "sap-dedicated-server-access",
     eyebrow: "Enterprise-grade SAP server access",
     title: "SAP S/4HANA dedicated server",
     metaTitle: "SAP S/4HANA Dedicated Server | Private SAP Environment — ServerFY",
@@ -180,7 +180,7 @@ export const serverPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "shared",
+    slug: "sap-shared-server-access",
     eyebrow: "SAP Servers",
     title: "Shared SAP servers",
     metaTitle: "Shared SAP Server Access | Affordable Practice — ServerFY",
@@ -211,7 +211,7 @@ export const serverPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "practice",
+    slug: "sap-practice-server-access",
     eyebrow: "SAP Servers",
     title: "SAP practice servers",
     metaTitle: "SAP Practice Server Access Online | Hands-on — ServerFY",
@@ -242,7 +242,7 @@ export const serverPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "training",
+    slug: "sap-training-server-access",
     eyebrow: "SAP Servers",
     title: "SAP training servers",
     metaTitle: "SAP Training Server for Institutes & Batches — ServerFY",
@@ -273,7 +273,7 @@ export const serverPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "development",
+    slug: "sap-development-server-access",
     eyebrow: "SAP Servers",
     title: "SAP development servers",
     metaTitle: "SAP Development Server | ABAP, Fiori & Integration — ServerFY",
@@ -304,7 +304,7 @@ export const serverPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "testing",
+    slug: "sap-testing-server-access",
     eyebrow: "SAP Servers",
     title: "SAP testing servers",
     metaTitle: "SAP Testing Server | Functional & Regression — ServerFY",
@@ -335,7 +335,7 @@ export const serverPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "demo",
+    slug: "sap-demo-server-access",
     eyebrow: "SAP Servers",
     title: "SAP demo & POC servers",
     metaTitle: "SAP Demo & POC Server Access | Client-ready — ServerFY",
@@ -371,7 +371,7 @@ export const serverPages: DetailPage[] = [
 
 export const solutionPages: DetailPage[] = [
   {
-    slug: "sap-training",
+    slug: "sap-server-for-training-institutes",
     eyebrow: "Solutions",
     title: "SAP training institutes & corporate batches",
     metaTitle: "SAP Server for Training Institutes & Batches — ServerFY",
@@ -403,7 +403,7 @@ export const solutionPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "consultant-practice",
+    slug: "sap-server-for-consultants",
     eyebrow: "Solutions",
     title: "Practice environments for consultants",
     metaTitle: "SAP Practice Environment for Consultants — ServerFY",
@@ -434,7 +434,7 @@ export const solutionPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "trainer-labs",
+    slug: "sap-server-for-trainers",
     eyebrow: "Solutions",
     title: "Trainer labs with multi-user access",
     metaTitle: "SAP Trainer Lab | Multi-user Server Access — ServerFY",
@@ -465,7 +465,7 @@ export const solutionPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "project-teams",
+    slug: "sap-server-for-project-teams",
     eyebrow: "Solutions",
     title: "Parallel environments for project teams",
     metaTitle: "SAP Environments for Project Teams — ServerFY",
@@ -496,7 +496,7 @@ export const solutionPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "development",
+    slug: "sap-development-server",
     eyebrow: "Solutions",
     title: "Development workloads",
     metaTitle: "SAP Development Environments | ABAP & Fiori — ServerFY",
@@ -527,7 +527,7 @@ export const solutionPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "testing",
+    slug: "sap-testing-server",
     eyebrow: "Solutions",
     title: "Testing workloads",
     metaTitle: "SAP Testing Environments | Functional & Regression — ServerFY",
@@ -558,7 +558,7 @@ export const solutionPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "demo-poc",
+    slug: "sap-demo-poc-server",
     eyebrow: "Solutions",
     title: "Demo & proof of concept",
     metaTitle: "SAP Demo & POC Environments — ServerFY",
@@ -589,7 +589,7 @@ export const solutionPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "sandbox",
+    slug: "sap-sandbox-server",
     eyebrow: "Solutions",
     title: "Sandbox environments",
     metaTitle: "SAP Sandbox Environment | Experiment Safely — ServerFY",
@@ -625,7 +625,7 @@ export const solutionPages: DetailPage[] = [
 
 export const resourcePages: DetailPage[] = [
   {
-    slug: "knowledge-base",
+    slug: "sap-server-knowledge-base",
     eyebrow: "Resources",
     title: "Knowledge base",
     metaTitle: "Knowledge Base | SAP Server Setup & Access — ServerFY",
@@ -657,7 +657,7 @@ export const resourcePages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "guides",
+    slug: "sap-server-guides",
     eyebrow: "Resources",
     title: "Module-wise practice guides",
     metaTitle: "SAP Practice Guides by Module | FICO, MM, SD — ServerFY",
@@ -688,7 +688,7 @@ export const resourcePages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "system-requirements",
+    slug: "sap-server-system-requirements",
     eyebrow: "Resources",
     title: "System requirements",
     metaTitle: "System Requirements for SAP Remote Access — ServerFY",
@@ -720,7 +720,7 @@ export const resourcePages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "blog",
+    slug: "sap-server-blog",
     eyebrow: "Resources",
     title: "From the infrastructure team",
     metaTitle: "Blog | SAP Infrastructure Notes — ServerFY",
@@ -751,7 +751,7 @@ export const resourcePages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "server-status",
+    slug: "sap-server-status",
     eyebrow: "Resources",
     title: "Server status",
     metaTitle: "Server Status | SAP Environment Uptime — ServerFY",
