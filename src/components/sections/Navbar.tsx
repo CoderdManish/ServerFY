@@ -129,7 +129,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
             >
               <MessageCircle className="size-4" aria-hidden="true" />
             </a>
-            <CtaButton href="/contact" size="sm" className="whitespace-nowrap rounded-full px-4 2xl:px-5">
+            <CtaButton href={waLink(waMessages.buy)} {...waProps} size="sm" className="whitespace-nowrap rounded-full px-4 2xl:px-5">
               Get Your SAP Server
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
             </CtaButton>
@@ -178,7 +178,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
                   <div className="bg-navy-gradient p-7 text-white">
                     <p className="type-eyebrow text-orange">{megaMenus[openMenu].title}</p>
                     <p className="mt-3 text-sm leading-relaxed text-white/70">{megaMenus[openMenu].blurb}</p>
-                    <CtaButton href="/contact" size="sm" variant="outlineLight" className="mt-6">
+                    <CtaButton href={waLink(waMessages.general)} {...waProps} size="sm" variant="outlineLight" className="mt-6">
                       Talk to an expert
                       <ArrowRight className="size-4" aria-hidden="true" />
                     </CtaButton>
@@ -230,7 +230,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
                   </li>
                 ))}
               </ul>
-              <CtaButton href="/contact" className="mt-4 w-full" onClick={() => setMobileOpen(false)}>
+              <CtaButton href={waLink(waMessages.buy)} {...waProps} className="mt-4 w-full" onClick={() => setMobileOpen(false)}>
                 Get Your SAP Server
                 <ArrowRight className="size-4" aria-hidden="true" />
               </CtaButton>
