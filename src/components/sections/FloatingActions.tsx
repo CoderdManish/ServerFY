@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowUp, Headphones, MessageCircle } from "lucide-react";
-import { site } from "@/data/serverfy";
+import { waLink, waMessages } from "@/lib/whatsapp";
 
 export function FloatingActions() {
   const [showTop, setShowTop] = useState(false);
@@ -26,15 +26,17 @@ export function FloatingActions() {
       ) : null}
 
       <a
-        href="/contact"
-        aria-label="Contact support"
+        href={waLink(waMessages.expert)}
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label="Contact ServerFY support on WhatsApp"
         className="grid size-11 place-items-center rounded-full bg-navy text-white shadow-card transition-transform hover:-translate-y-0.5"
       >
         <Headphones className="size-4" aria-hidden="true" />
       </a>
 
       <a
-        href={site.whatsapp}
+        href={waLink(waMessages.general)}
         target="_blank"
         rel="noreferrer"
         aria-label="Chat with ServerFY on WhatsApp"

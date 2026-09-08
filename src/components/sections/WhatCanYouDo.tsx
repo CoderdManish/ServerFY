@@ -1,3 +1,4 @@
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import {
   Rocket,
   Users,
@@ -186,7 +187,7 @@ export function WhatCanYouDo() {
             <p className="mt-2 text-sm text-slate-600">
               Watching tutorials isn't enough. Real learning happens when you practice.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-y-6">
+            <div className="mt-8 grid grid-cols-3 items-start justify-items-center gap-y-6 sm:flex sm:flex-wrap sm:items-center sm:justify-between">
               {flow.map((step, i) => (
                 <div key={step.label} className="flex items-center gap-3 sm:gap-4">
                   <div className="flex flex-col items-center gap-2">
@@ -223,7 +224,8 @@ export function WhatCanYouDo() {
                 learning to doing.
               </p>
               <a
-                href="#pricing"
+                href={waLink(waMessages.demo)}
+                {...waProps}
                 className="mt-6 inline-flex items-center gap-2 rounded-xl bg-orange px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange/30 transition-all hover:-translate-y-0.5 hover:bg-orange-600"
               >
                 Get Free 24-Hour Demo <ArrowRight className="h-4 w-4" />

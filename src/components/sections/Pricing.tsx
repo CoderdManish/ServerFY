@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { CtaButton } from "@/components/CtaButton";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import { Reveal, SectionHeading } from "@/components/Primitives";
 import { plans } from "@/data/serverfy";
 import { cn } from "@/lib/utils";
@@ -100,7 +101,8 @@ export function Pricing() {
                   </ul>
 
                   <CtaButton
-                    href="/contact"
+                    href={waLink(waMessages.plan(plan.name))}
+                    {...waProps}
                     className="mt-7 w-full"
                     variant={plan.highlight ? "primary" : plan.monthly ? "outlineDark" : "blue"}
                   >
