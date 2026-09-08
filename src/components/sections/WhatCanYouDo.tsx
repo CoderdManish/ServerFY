@@ -194,7 +194,7 @@ export function WhatCanYouDo() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-3xl bg-navy-950 p-8 text-white shadow-xl">
+          <div className="relative overflow-hidden rounded-3xl bg-navy-gradient p-8 text-white shadow-xl">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-orange/20 blur-3xl"
