@@ -1,6 +1,6 @@
 import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
 import { ModulePageView, moduleFaqs } from "@/components/ModulePageView";
-import { legacyModuleSlug, moduleSlug } from "@/data/module-pages";
+import { legacyModuleSlug, moduleSlug, shortModuleSlug } from "@/data/module-pages";
 import { modules } from "@/data/serverfy";
 import { buildHead, breadcrumbList } from "@/lib/seo";
 
