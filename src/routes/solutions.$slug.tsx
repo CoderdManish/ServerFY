@@ -1,11 +1,16 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
 import { DetailPageView, detailHead } from "@/components/DetailPageView";
 import { findPage, solutionPages } from "@/data/pages";
+import { legacySolutionSlugs } from "@/data/legacy-slugs";
 
 export const Route = createFileRoute("/solutions/$slug")({
   loader: ({ params }) => {
     const page = findPage(solutionPages, params.slug);
-    if (!page) throw notFound();
+    if (!page) {
+      const moved = legacySolutionSlugs[params.slug.toLowerCase()];
+      if (moved) throw redirect({ to: "/solutions/$slug", params: { slug: moved }, statusCode: 301 });
+      throw notFound();
+    }
     return page;
   },
   head: ({ loaderData, params }) =>
