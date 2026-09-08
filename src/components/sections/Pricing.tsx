@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { CtaButton } from "@/components/CtaButton";
 import { Reveal, SectionHeading } from "@/components/Primitives";
-import { billingCycles, plans, type BillingCycleId } from "@/data/serverfy";
+import { plans } from "@/data/serverfy";
 import { cn } from "@/lib/utils";
 
 function AnimatedPrice({ value }: { value: number }) {
