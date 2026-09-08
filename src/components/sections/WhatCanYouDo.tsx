@@ -187,7 +187,7 @@ export function WhatCanYouDo() {
             <p className="mt-2 text-sm text-slate-600">
               Watching tutorials isn't enough. Real learning happens when you practice.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-y-6">
+            <div className="mt-8 grid grid-cols-3 items-start justify-items-center gap-y-6 sm:flex sm:flex-wrap sm:items-center sm:justify-between">
               {flow.map((step, i) => (
                 <div key={step.label} className="flex items-center gap-3 sm:gap-4">
                   <div className="flex flex-col items-center gap-2">
