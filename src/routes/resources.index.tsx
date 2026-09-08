@@ -5,42 +5,38 @@ import { FAQ } from "@/components/sections/FAQ";
 import { DashboardPreview } from "@/components/sections/DashboardPreview";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { faqs } from "@/data/serverfy";
+import { buildHead, breadcrumbList } from "@/lib/seo";
 
 const title = "Resources | SAP Server Guides & FAQs — ServerFY";
 const description =
   "Setup guides, system requirements, access walkthroughs and answers to the most common questions about running SAP server environments with ServerFY.";
+const keywords =
+  "SAP server guide, SAP GUI connection, SAP system requirements, SAP server FAQ, SAP access help, SAP server status";
 
 export const Route = createFileRoute("/resources/")({
   component: ResourcesPage,
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/resources" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/resources" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
+  head: () =>
+    buildHead({
+      title,
+      description,
+      path: "/resources",
+      type: "website",
+      keywords,
+      jsonLd: [
+        {
           "@type": "FAQPage",
           mainEntity: faqs.map((f) => ({
             "@type": "Question",
             name: f.q,
             acceptedAnswer: { "@type": "Answer", text: f.a },
           })),
-        }),
-      },
-    ],
-  }),
+        },
+        breadcrumbList([
+          { name: "Home", item: "/" },
+          { name: "Resources", item: "/resources" },
+        ]),
+      ],
+    }),
 });
 
 const guides = [
