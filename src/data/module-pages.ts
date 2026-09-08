@@ -1,13 +1,18 @@
 import type { DetailPage } from "@/data/pages";
 import type { SapModule } from "@/data/serverfy";
 
-/** Keyword-rich URL for a module, e.g. MM -> sap-mm-module-server-access. */
+/** Keyword-rich URL for a module, e.g. MM -> sap-mm-server-access-for-practice. */
 export function moduleSlug(code: string) {
+  return `sap-${code.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-server-access-for-practice`;
+}
+
+/** Previous keyword URL (e.g. "sap-mm-module-server-access") so existing links keep working. */
+export function legacyModuleSlug(code: string) {
   return `sap-${code.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-module-server-access`;
 }
 
-/** The old short URL (e.g. "mm") so existing links keep working. */
-export function legacyModuleSlug(code: string) {
+/** The original short URL (e.g. "mm") so old links keep working. */
+export function shortModuleSlug(code: string) {
   return code.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 }
 
