@@ -1,6 +1,7 @@
 import { Plus } from "lucide-react";
 import { Reveal, SectionHeading } from "@/components/Primitives";
 import { faqs } from "@/data/serverfy";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 
 export function FAQ() {
   return (
@@ -15,7 +16,8 @@ export function FAQ() {
           />
           <Reveal delay={0.1}>
             <a
-              href="#contact"
+              href={waLink(waMessages.question)}
+              {...waProps}
               className="mt-8 inline-flex items-center gap-2 rounded-full icon-tile px-6 py-3 text-sm font-extrabold"
             >
               Ask your question
