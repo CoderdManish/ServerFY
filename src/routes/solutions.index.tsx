@@ -5,28 +5,30 @@ import { UseCases } from "@/components/sections/UseCases";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
+import { buildHead, breadcrumbList } from "@/lib/seo";
 
 const title = "Solutions | SAP Servers for Training, Dev & Testing — ServerFY";
 const description =
   "SAP infrastructure shaped around how your team works: training institutes, consultants, trainer labs, project teams, development, testing, demos and sandboxes.";
+const keywords =
+  "SAP training server, SAP consultant practice, SAP trainer lab, SAP development server, SAP testing environment, SAP demo server";
 
 export const Route = createFileRoute("/solutions/")({
   component: SolutionsPage,
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/solutions" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/solutions" }],
-  }),
+  head: () =>
+    buildHead({
+      title,
+      description,
+      path: "/solutions",
+      type: "website",
+      keywords,
+      jsonLd: [
+        breadcrumbList([
+          { name: "Home", item: "/" },
+          { name: "Solutions", item: "/solutions" },
+        ]),
+      ],
+    }),
 });
 
 function SolutionsPage() {
