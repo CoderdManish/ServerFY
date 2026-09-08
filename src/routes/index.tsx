@@ -84,8 +84,6 @@ function Index() {
         <TrialBanner />
         <Metrics />
         <UseCases />
-        <DashboardPreview />
-        <Comparison />
         <Testimonials />
         <FAQ />
         <ExpertCTA />
