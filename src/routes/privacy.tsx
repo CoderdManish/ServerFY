@@ -1,28 +1,30 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { LegalBody } from "@/components/LegalBody";
+import { buildHead, breadcrumbList } from "@/lib/seo";
 
 const title = "Privacy Policy | ServerFY";
 const description =
   "What ServerFY collects when you request an SAP server, how that information is used, how long it is kept and how to have it removed.";
+const keywords =
+  "ServerFY privacy, SAP server privacy policy, data protection, delete my data";
 
 export const Route = createFileRoute("/privacy")({
   component: PrivacyPage,
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/privacy" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/privacy" }],
-  }),
+  head: () =>
+    buildHead({
+      title,
+      description,
+      path: "/privacy",
+      type: "website",
+      keywords,
+      jsonLd: [
+        breadcrumbList([
+          { name: "Home", item: "/" },
+          { name: "Privacy Policy", item: "/privacy" },
+        ]),
+      ],
+    }),
 });
 
 const sections = [
