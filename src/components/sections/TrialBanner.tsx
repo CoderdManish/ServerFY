@@ -1,5 +1,6 @@
 import { ArrowRight, Check } from "lucide-react";
 import { CtaButton } from "@/components/CtaButton";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import { Eyebrow, Reveal } from "@/components/Primitives";
 import { ServerVisual } from "./ServerVisual";
 
@@ -32,7 +33,7 @@ export function TrialBanner() {
                     </li>
                   ))}
                 </ul>
-                <CtaButton href="/contact" size="lg" className="mt-8">
+                <CtaButton href={waLink(waMessages.trial)} {...waProps} size="lg" className="mt-8 w-full sm:w-auto">
                   Start Free Trial
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </CtaButton>

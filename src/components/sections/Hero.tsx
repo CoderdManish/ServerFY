@@ -1,5 +1,6 @@
 import { ArrowRight, Clock, Layers, LockKeyhole, Zap } from "lucide-react";
 import { CtaButton } from "@/components/CtaButton";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import { ServerVisual } from "./ServerVisual";
 
 const proofs = [
@@ -31,7 +32,7 @@ function ProvisionLog() {
           provision.log
         </span>
       </div>
-      <div className="space-y-1.5 px-4 py-3.5 font-mono text-[0.7rem] leading-relaxed sm:text-[0.76rem]">
+      <div className="space-y-1.5 overflow-hidden px-4 py-3.5 font-mono text-[0.7rem] leading-relaxed sm:text-[0.76rem]">
         {logLines.map((l, i) => (
           <p
             key={l.text}
@@ -79,11 +80,11 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <CtaButton href="/contact" size="lg">
+            <CtaButton href={waLink(waMessages.buy)} {...waProps} size="lg" className="w-full sm:w-auto">
               Get Your SAP Server
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>
-            <CtaButton href="/modules" size="lg" variant="outlineLight">
+            <CtaButton href="/modules" size="lg" variant="outlineLight" className="w-full sm:w-auto">
               Explore SAP Modules
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>

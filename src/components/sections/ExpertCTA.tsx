@@ -2,6 +2,7 @@ import { ArrowRight, Headphones, MessageCircle } from "lucide-react";
 import { CtaButton } from "@/components/CtaButton";
 import { Eyebrow, Reveal } from "@/components/Primitives";
 import { site } from "@/data/serverfy";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 
 export function ExpertCTA() {
   return (
@@ -14,11 +15,11 @@ export function ExpertCTA() {
             Tell us your SAP module, version and requirement. Our SAP experts will help you choose the right environment.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <CtaButton href="/contact" size="lg">
+            <CtaButton href={waLink(waMessages.expert)} {...waProps} size="lg" className="w-full sm:w-auto">
               Talk To An SAP Expert
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>
-            <CtaButton href={site.whatsapp} target="_blank" rel="noreferrer" size="lg" variant="outlineLight">
+            <CtaButton href={waLink(waMessages.general)} {...waProps} size="lg" variant="outlineLight" className="w-full sm:w-auto">
               <MessageCircle className="size-4" aria-hidden="true" />
               WhatsApp Us
             </CtaButton>
