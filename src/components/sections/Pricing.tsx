@@ -34,48 +34,18 @@ function AnimatedPrice({ value }: { value: number }) {
 }
 
 export function Pricing() {
-  const [cycle, setCycle] = useState<BillingCycleId>("monthly");
-  const active = billingCycles.find((c) => c.id === cycle)!;
-
   return (
     <section id="pricing" className="section-y">
       <div className="container-fy">
         <SectionHeading
           eyebrow="Pricing"
           title="Simple SAP Server Pricing"
-          sub="Transparent monthly rates with longer-term discounts. Every plan includes remote access and a prepared SAP client."
+          sub="Transparent monthly rates. Every plan includes remote access and a prepared SAP client."
         />
-
-        <Reveal className="mt-8 flex justify-center" delay={0.12}>
-          <div role="tablist" aria-label="Billing cycle" className="inline-flex rounded-2xl glass-panel p-1">
-            {billingCycles.map((c) => (
-              <button
-                key={c.id}
-                role="tab"
-                aria-selected={cycle === c.id}
-                onClick={() => setCycle(c.id)}
-                className={cn(
-                  "relative z-10 min-h-11 rounded-xl px-4 text-[0.8rem] font-extrabold transition-colors sm:px-6",
-                  cycle === c.id ? "text-white" : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                {cycle === c.id ? (
-                  <span className="absolute inset-0 -z-10 rounded-xl bg-navy" />
-                ) : null}
-                {c.label}
-                {c.note ? (
-                  <span className={cn("ml-2 rounded-full px-2 py-0.5 text-[0.6rem]", cycle === c.id ? "bg-orange text-white" : "bg-accent text-blue")}>
-                    {c.note}
-                  </span>
-                ) : null}
-              </button>
-            ))}
-          </div>
-        </Reveal>
 
         <ul className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {plans.map((plan, i) => {
-            const price = plan.monthly ? Math.round(plan.monthly * active.multiplier) : null;
+            const price = plan.monthly;
             return (
               <Reveal as="li" key={plan.id} delay={0.06 * i} className="h-full">
                 <div
@@ -110,7 +80,7 @@ export function Pricing() {
                     )}
                   </div>
                   <p className={cn("mt-1 text-[0.7rem] font-semibold uppercase tracking-wider", plan.highlight ? "text-white/45" : "text-muted-foreground")}>
-                    {price ? `Billed ${active.label.toLowerCase()}` : "Scoped to your landscape"}
+                    {price ? "Billed monthly" : "Scoped to your landscape"}
                   </p>
 
                   <ul className="mt-6 flex-1 space-y-3">
@@ -144,7 +114,7 @@ export function Pricing() {
         </ul>
 
         <p className="mt-6 text-center text-xs text-muted-foreground">
-          Prices are indicative and exclude applicable taxes. Longer durations reduce the effective monthly rate.
+          Prices are indicative and exclude applicable taxes.
         </p>
       </div>
     </section>
