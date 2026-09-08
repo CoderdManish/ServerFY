@@ -1,8 +1,10 @@
 /** Maps every navbar mega-menu and footer label to the page it should open. */
 export const linkFor: Record<string, string> = {
   // Servers
-  "S/4HANA Servers": "/servers/sap-s4hana-server-access",
-  "S/4HANA": "/servers/sap-s4hana-server-access",
+  "S/4HANA Servers": "/servers/sap-s-4-hana-server-access",
+  "S/4HANA": "/servers/sap-s-4-hana-server-access",
+  "Practice Servers": "/servers/sap-practice-servers",
+  "Training Servers": "/servers/sap-training-servers",
   "ECC Servers": "/servers/sap-ecc-server-access",
   ECC: "/servers/sap-ecc-server-access",
   "SAP Servers": "/servers/sap-server-access",
