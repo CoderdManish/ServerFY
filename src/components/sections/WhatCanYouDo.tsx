@@ -150,22 +150,32 @@ export function WhatCanYouDo() {
           {audiences.map((a) => (
             <div
               key={a.title}
-              className="group rounded-2xl border border-slate-200/80 bg-white p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="group flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-3 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <div
-                className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br ${a.tint} text-white shadow-md`}
-              >
-                {"icon" in a ? (
-                  <a.icon className="h-6 w-6" />
-                ) : (
-                  <span className="text-sm font-extrabold tracking-wide">{a.initials}</span>
-                )}
+              {"image" in a ? (
+                <img
+                  src={a.image}
+                  alt={a.title}
+                  loading="lazy"
+                  width={256}
+                  height={256}
+                  className="h-14 w-14 shrink-0 rounded-xl object-cover"
+                />
+              ) : (
+                <div
+                  className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl ${a.tint}`}
+                >
+                  <a.icon className="h-7 w-7" />
+                </div>
+              )}
+              <div>
+                <h3 className="text-sm font-bold text-slate-900">{a.title}</h3>
+                <p className="mt-1 text-[11px] leading-relaxed text-slate-500">{a.desc}</p>
               </div>
-              <h3 className="mt-3 text-sm font-bold text-slate-900">{a.title}</h3>
-              <p className="mt-1 text-[11px] leading-relaxed text-slate-500">{a.desc}</p>
             </div>
           ))}
         </div>
+
 
         {/* Why Practice + CTA */}
         <div className="mt-14 grid gap-5 lg:grid-cols-[1.15fr_1fr]">
