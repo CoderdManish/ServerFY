@@ -105,7 +105,7 @@ const flow = [
 
 export function WhatCanYouDo() {
   return (
-    <section id="use-cases" className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/60 to-blue-50/50 py-20 lg:py-24">
+    <section id="what-can-you-do" className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/60 to-blue-50/50 py-20 lg:py-24">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* What Can You Do With ServerFY? */}
         <div className="text-center">
