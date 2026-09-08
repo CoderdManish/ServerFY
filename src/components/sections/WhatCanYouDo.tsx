@@ -1,20 +1,24 @@
 import {
   Rocket,
   Users,
-  Settings2,
-  Monitor,
-  Presentation,
+  Maximize2,
+  MonitorSmartphone,
+  UsersRound,
+  MonitorPlay,
   Building2,
   Landmark,
-  GraduationCap,
   PlayCircle,
-  BookOpenCheck,
-  DoorOpen,
-  MousePointerClick,
-  RefreshCcw,
+  BookOpen,
+  GraduationCap,
+  ClipboardCheck,
+  Lightbulb,
   BadgeCheck,
   ArrowRight,
 } from "lucide-react";
+import audStudents from "@/assets/aud-students.webp.asset.json";
+import audConsultants from "@/assets/aud-consultants.webp.asset.json";
+import audProfessionals from "@/assets/aud-professionals.webp.asset.json";
+import audTrainers from "@/assets/aud-trainers.webp.asset.json";
 
 const actions = [
   {
@@ -30,25 +34,25 @@ const actions = [
     desc: "Apply training concepts in real systems",
   },
   {
-    icon: Settings2,
-    tint: "bg-sky-100 text-sky-600",
+    icon: Maximize2,
+    tint: "bg-sky-100 text-sky-700",
     title: "Test Configurations",
     desc: "Experiment with customization and SPRO",
   },
   {
-    icon: Monitor,
+    icon: MonitorSmartphone,
     tint: "bg-cyan-100 text-cyan-600",
     title: "Develop",
     desc: "Work on development and technical environments",
   },
   {
-    icon: Presentation,
+    icon: UsersRound,
     tint: "bg-indigo-100 text-indigo-600",
     title: "Train Teams",
     desc: "Conduct live training sessions",
   },
   {
-    icon: Monitor,
+    icon: MonitorPlay,
     tint: "bg-blue-100 text-blue-700",
     title: "Demonstrate",
     desc: "Show real SAP processes for classroom or client demos",
@@ -57,51 +61,48 @@ const actions = [
 
 const audiences = [
   {
-    initials: "ST",
-    tint: "from-orange-400 to-orange-600",
+    image: audStudents.url,
     title: "Students",
     desc: "Practice and build confidence after training.",
   },
   {
-    initials: "CO",
-    tint: "from-blue-400 to-blue-600",
+    image: audConsultants.url,
     title: "Consultants",
     desc: "Test scenarios and configurations for projects.",
   },
   {
-    initials: "PR",
-    tint: "from-violet-400 to-violet-600",
+    image: audProfessionals.url,
     title: "Professionals",
     desc: "Refresh skills and explore new processes.",
   },
   {
-    initials: "TR",
-    tint: "from-sky-400 to-sky-600",
+    image: audTrainers.url,
     title: "Trainers",
     desc: "Demonstrate real SAP systems during training sessions.",
   },
   {
     icon: Building2,
-    tint: "from-cyan-400 to-cyan-600",
+    tint: "bg-slate-100 text-slate-600",
     title: "Companies",
     desc: "Provide SAP access for internal learning and development.",
   },
   {
     icon: Landmark,
-    tint: "from-indigo-400 to-indigo-600",
+    tint: "bg-slate-100 text-slate-600",
     title: "Institutes",
     desc: "Give students access to practical SAP environments.",
   },
 ];
 
 const flow = [
-  { icon: PlayCircle, label: "Watch Tutorial" },
-  { icon: BookOpenCheck, label: "Understand Concept" },
-  { icon: DoorOpen, label: "Open SAP" },
-  { icon: MousePointerClick, label: "Perform Transaction" },
-  { icon: RefreshCcw, label: "Learn from Mistakes" },
-  { icon: BadgeCheck, label: "Build Confidence" },
+  { icon: PlayCircle, label: "Watch Tutorial", tint: "bg-blue-50 text-blue-600" },
+  { icon: BookOpen, label: "Understand Concept", tint: "bg-rose-50 text-rose-500" },
+  { icon: GraduationCap, label: "Open SAP", tint: "bg-sky-50 text-sky-600" },
+  { icon: ClipboardCheck, label: "Perform Transaction", tint: "bg-orange-50 text-orange" },
+  { icon: Lightbulb, label: "Learn from Mistakes", tint: "bg-indigo-50 text-indigo-600" },
+  { icon: BadgeCheck, label: "Build Confidence", tint: "bg-amber-50 text-amber-500" },
 ];
+
 
 export function WhatCanYouDo() {
   return (
@@ -149,22 +150,32 @@ export function WhatCanYouDo() {
           {audiences.map((a) => (
             <div
               key={a.title}
-              className="group rounded-2xl border border-slate-200/80 bg-white p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="group flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-3 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <div
-                className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br ${a.tint} text-white shadow-md`}
-              >
-                {"icon" in a ? (
-                  <a.icon className="h-6 w-6" />
-                ) : (
-                  <span className="text-sm font-extrabold tracking-wide">{a.initials}</span>
-                )}
+              {"image" in a ? (
+                <img
+                  src={a.image}
+                  alt={a.title}
+                  loading="lazy"
+                  width={256}
+                  height={256}
+                  className="h-14 w-14 shrink-0 rounded-xl object-cover"
+                />
+              ) : (
+                <div
+                  className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl ${a.tint}`}
+                >
+                  <a.icon className="h-7 w-7" />
+                </div>
+              )}
+              <div>
+                <h3 className="text-sm font-bold text-slate-900">{a.title}</h3>
+                <p className="mt-1 text-[11px] leading-relaxed text-slate-500">{a.desc}</p>
               </div>
-              <h3 className="mt-3 text-sm font-bold text-slate-900">{a.title}</h3>
-              <p className="mt-1 text-[11px] leading-relaxed text-slate-500">{a.desc}</p>
             </div>
           ))}
         </div>
+
 
         {/* Why Practice + CTA */}
         <div className="mt-14 grid gap-5 lg:grid-cols-[1.15fr_1fr]">
@@ -179,7 +190,7 @@ export function WhatCanYouDo() {
               {flow.map((step, i) => (
                 <div key={step.label} className="flex items-center gap-3 sm:gap-4">
                   <div className="flex flex-col items-center gap-2">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-blue-600 shadow-md ring-1 ring-blue-100">
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-full ${step.tint} shadow-md ring-1 ring-white`}>
                       <step.icon className="h-5 w-5" />
                     </div>
                     <span className="max-w-[72px] text-center text-[10px] font-semibold leading-tight text-slate-700">
