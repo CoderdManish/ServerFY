@@ -1,3 +1,4 @@
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import {
   Rocket,
   Users,
@@ -223,7 +224,8 @@ export function WhatCanYouDo() {
                 learning to doing.
               </p>
               <a
-                href="#pricing"
+                href={waLink(waMessages.demo)}
+                {...waProps}
                 className="mt-6 inline-flex items-center gap-2 rounded-xl bg-orange px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange/30 transition-all hover:-translate-y-0.5 hover:bg-orange-600"
               >
                 Get Free 24-Hour Demo <ArrowRight className="h-4 w-4" />
