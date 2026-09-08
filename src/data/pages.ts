@@ -110,7 +110,7 @@ export const serverPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "sap-hana-server-access",
+    slug: "sap-server-access",
     eyebrow: "SAP Servers",
     title: "SAP HANA database access",
     metaTitle: "SAP HANA Server Access | Modelling & SQLScript — ServerFY",

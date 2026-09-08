@@ -5,7 +5,8 @@
 export const legacyServerSlugs: Record<string, string> = {
   s4hana: "sap-s4hana-server-access",
   ecc: "sap-ecc-server-access",
-  hana: "sap-hana-server-access",
+  hana: "sap-server-access",
+  "sap-hana-server-access": "sap-server-access",
   dedicated: "sap-dedicated-server-access",
   shared: "sap-shared-server-access",
 };
