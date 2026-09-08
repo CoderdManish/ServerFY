@@ -27,7 +27,7 @@ const environments = [
     title: "SAP Server",
     desc: "Work with SAP server environments for supported technical scenarios.",
     cta: "Explore SAP Server",
-    href: "/servers/sap-hana-server-access",
+    href: "/servers/sap-server-access",
   },
   {
     icon: Boxes,
