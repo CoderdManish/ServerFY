@@ -211,7 +211,7 @@ export const plans: Plan[] = [
     audience: "For learners",
     monthly: 1300,
     cta: "Get Starter Server",
-    features: ["4 GB RAM", "80 GB SSD", "1 CPU Core", "SAP ECC / S/4HANA", "Remote Access", "Standard Support"],
+    features: ["SAP ECC & S/4HANA Access", "SAP GUI & Fiori Ready", "Remote Access, 24/7", "Pre-configured Modules", "Weekly Backups", "Standard Support"],
   },
   {
     id: "professional",
@@ -220,7 +220,7 @@ export const plans: Plan[] = [
     monthly: 2000,
     highlight: true,
     cta: "Get Professional Server",
-    features: ["8 GB RAM", "160 GB SSD", "2 CPU Cores", "SAP ECC / S/4HANA", "Priority Support", "Daily Snapshot"],
+    features: ["Everything in Starter", "All Functional Modules", "IDES Sample Data Included", "Daily Snapshots", "Longer Practice Sessions", "Priority Support"],
   },
   {
     id: "advanced",
@@ -228,7 +228,7 @@ export const plans: Plan[] = [
     audience: "For consultants",
     monthly: 3000,
     cta: "Get Advanced Server",
-    features: ["16 GB RAM", "320 GB SSD", "4 CPU Cores", "Advanced Environment", "Priority Support", "Extended Sessions"],
+    features: ["Everything in Professional", "Technical Modules (ABAP, Basis, HANA)", "Up to 5 User Logins", "Custom Client Copies", "Migration Practice Access", "Priority Support"],
   },
   {
     id: "dedicated",
@@ -236,16 +236,16 @@ export const plans: Plan[] = [
     audience: "Custom",
     monthly: null,
     cta: "Contact Sales",
-    features: ["Custom RAM", "Custom Storage", "Custom CPU", "Custom SAP Landscape", "Dedicated Resources", "Named Support Contact"],
+    features: ["Everything in Advanced", "Fully Private Landscape", "Custom Modules & Data", "Unlimited User Logins", "Dedicated Resources", "Named Support Contact"],
   },
 ];
 
 export const comparison = {
   plans: ["Starter", "Professional", "Advanced", "Dedicated"],
   rows: [
-    { feature: "RAM", values: ["4 GB", "8 GB", "16 GB", "Custom"] },
-    { feature: "CPU", values: ["1 Core", "2 Cores", "4 Cores", "Custom"] },
-    { feature: "Storage", values: ["80 GB SSD", "160 GB SSD", "320 GB SSD", "Custom"] },
+    { feature: "Functional Modules", values: ["Core", "All", "All", "Custom"] },
+    { feature: "Technical Modules", values: ["—", "—", "Yes", "Custom"] },
+    { feature: "IDES Sample Data", values: ["—", "Yes", "Yes", "Custom"] },
     { feature: "SAP Version", values: ["ECC / S/4HANA", "ECC / S/4HANA", "ECC / S/4HANA / HANA", "Any supported"] },
     { feature: "Users", values: ["1", "2", "5", "Custom"] },
     { feature: "Remote Access", values: ["Yes", "Yes", "Yes", "Yes"] },
