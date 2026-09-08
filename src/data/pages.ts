@@ -46,7 +46,7 @@ const commonFaq = [
 
 export const serverPages: DetailPage[] = [
   {
-    slug: "sap-s4hana-server-access",
+    slug: "sap-s-4-hana-server-access",
     eyebrow: "SAP Servers",
     title: "SAP S/4HANA server access",
     metaTitle: "SAP S/4HANA Server Access | Practice & Development — ServerFY",
@@ -206,6 +206,68 @@ export const serverPages: DetailPage[] = [
         "Freelancers between projects",
         "Certification practice",
         "Trying a module before committing",
+      ],
+    },
+    faq: commonFaq,
+  },
+  {
+    slug: "sap-practice-servers",
+    eyebrow: "SAP Servers",
+    title: "SAP practice servers",
+    metaTitle: "SAP Practice Server Access | Hands-on SAP Practice — ServerFY",
+    intro:
+      "Practice-ready SAP landscapes with sample data loaded, so you can run real end-to-end cycles instead of reading about them.",
+    description:
+      "Rent an SAP practice server with S/4HANA or ECC access, sample company data and all core modules for hands-on practice and certification prep.",
+    highlights: [
+      { title: "Ready to practise", desc: "Org structures and master data already loaded, so scenarios run immediately.", icon: "Boxes" },
+      { title: "All core modules", desc: "Functional and technical modules switched on for module-wise practice.", icon: "LayoutGrid" },
+      { title: "Practice at your pace", desc: "24×7 remote access, so you can work evenings and weekends.", icon: "Clock" },
+      { title: "Reset on request", desc: "Start a scenario fresh whenever your configuration goes off track.", icon: "RefreshCw" },
+    ],
+    specs: [
+      { label: "Platform", value: "SAP S/4HANA or ECC 6.0, your choice" },
+      { label: "Best for", value: "Individual learners and job seekers" },
+      ...commonAccessSpecs,
+    ],
+    checklist: {
+      title: "Good fit for",
+      items: [
+        "Students building first hands-on experience",
+        "Certification preparation",
+        "Consultants refreshing configuration skills",
+        "Interview and project preparation",
+      ],
+    },
+    faq: commonFaq,
+  },
+  {
+    slug: "sap-training-servers",
+    eyebrow: "SAP Servers",
+    title: "SAP training servers",
+    metaTitle: "SAP Training Server Access | Batch Logins for Institutes — ServerFY",
+    intro:
+      "Batch-ready SAP landscapes with per-student logins, module-wise access and trainer controls for institutes and corporate learning teams.",
+    description:
+      "SAP training server access with bulk student logins, module-wise scope and trainer controls for institutes, academies and corporate training batches.",
+    highlights: [
+      { title: "Logins for every student", desc: "Bulk user creation with names, roles and module access set up before day one.", icon: "Users" },
+      { title: "Trainer controls", desc: "Trainer users with wider authorisation to demonstrate and reset scenarios.", icon: "ShieldCheck" },
+      { title: "Batch-sized capacity", desc: "Sized for your batch so screens stay responsive during live classes.", icon: "Gauge" },
+      { title: "Term-based billing", desc: "Pay for the length of the batch, extend when the next one starts.", icon: "Wallet" },
+    ],
+    specs: [
+      { label: "Users", value: "From 10 to 500 concurrent student logins" },
+      { label: "Platform", value: "SAP S/4HANA or ECC 6.0 with IDES-style data" },
+      ...commonAccessSpecs,
+    ],
+    checklist: {
+      title: "Good fit for",
+      items: [
+        "Training institutes and academies",
+        "Corporate upskilling batches",
+        "College and university SAP labs",
+        "Freelance trainers running cohorts",
       ],
     },
     faq: commonFaq,
