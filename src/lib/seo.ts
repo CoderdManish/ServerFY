@@ -9,6 +9,8 @@ type SeoInput = {
   jsonLd?: unknown[];
 };
 
+type MetaTag = { title: string } | { name?: string; property?: string; content: string };
+
 export function buildHead({
   title,
   description,
@@ -19,7 +21,7 @@ export function buildHead({
   noindex,
   jsonLd,
 }: SeoInput) {
-  const meta: Array<{ title?: string; name?: string; property?: string; content: string }> = [
+  const meta: MetaTag[] = [
     { title },
     { name: "description", content: description },
     { property: "og:title", content: title },
