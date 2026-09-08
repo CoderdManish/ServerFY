@@ -1,13 +1,18 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
 import { ModulePageView, moduleFaqs } from "@/components/ModulePageView";
-import { moduleSlug } from "@/data/module-pages";
+import { legacyModuleSlug, moduleSlug } from "@/data/module-pages";
 import { modules } from "@/data/serverfy";
 import { buildHead, breadcrumbList } from "@/lib/seo";
 
 export const Route = createFileRoute("/modules/$code")({
   loader: ({ params }) => {
-    const mod = modules.find((m) => moduleSlug(m.code) === params.code.toLowerCase());
-    if (!mod) throw notFound();
+    const code = params.code.toLowerCase();
+    const mod = modules.find((m) => moduleSlug(m.code) === code);
+    if (!mod) {
+      const moved = modules.find((m) => legacyModuleSlug(m.code) === code);
+      if (moved) throw redirect({ to: "/modules/$code", params: { code: moduleSlug(moved.code) }, statusCode: 301 });
+      throw notFound();
+    }
     return mod;
   },
   head: ({ loaderData, params }) => {

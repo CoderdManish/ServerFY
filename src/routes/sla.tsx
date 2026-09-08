@@ -10,7 +10,7 @@ export const Route = createFileRoute("/sla")({
     <DetailPageView
       page={page}
       related={[
-        { label: "Server status", to: "/resources/server-status" },
+        { label: "Server status", to: "/resources/sap-server-status" },
         { label: "Terms of service", to: "/terms" },
         { label: "Refund policy", to: "/refund-policy" },
       ]}

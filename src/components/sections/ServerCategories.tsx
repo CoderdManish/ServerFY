@@ -11,7 +11,7 @@ const environments = [
     title: "SAP ECC",
     desc: "Practice traditional SAP ECC environments with full access.",
     cta: "Explore ECC",
-    href: "/servers/ecc",
+    href: "/servers/sap-ecc-server-access",
   },
   {
     icon: Cloud,
@@ -19,7 +19,7 @@ const environments = [
     title: "SAP S/4HANA",
     desc: "Access modern SAP S/4HANA environments for hands-on practice.",
     cta: "Explore S/4HANA",
-    href: "/servers/s4hana",
+    href: "/servers/sap-s4hana-server-access",
   },
   {
     icon: Cpu,
@@ -27,7 +27,7 @@ const environments = [
     title: "SAP HANA",
     desc: "Work with SAP HANA environments for supported technical scenarios.",
     cta: "Explore HANA",
-    href: "/servers/hana",
+    href: "/servers/sap-hana-server-access",
   },
   {
     icon: Boxes,
