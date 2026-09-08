@@ -20,81 +20,48 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/sections/FloatingActions";
 import { faqs, site } from "@/data/serverfy";
+import { buildHead, breadcrumbList, organizationSchema, websiteSchema } from "@/lib/seo";
 
-const title = "ServerFY | Reliable SAP Servers for Functional & Technical SAP";
+const title = "ServerFY | Reliable SAP Servers for Practice, Training & Development";
 const description =
-  "Get reliable SAP S/4HANA, ECC, HANA, Functional and Technical SAP server environments for training, practice, development and testing.";
+  "Rent ready-to-use SAP S/4HANA, ECC and HANA server environments for functional and technical modules. Ideal for learners, trainers, consultants and project teams.";
+const keywords =
+  "SAP server, SAP S/4HANA access, SAP ECC server, SAP HANA, SAP practice, SAP training, SAP development server, SAP modules, FICO, MM, SD, PP, ABAP, Basis";
 
 export const Route = createFileRoute("/")({
   component: Index,
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Organization",
-              "@id": "/#organization",
-              name: "ServerFY",
-              description:
-                "Independent provider of SAP server environments for practice, training, development and testing.",
-              url: "/",
-              email: site.email,
-              telephone: site.phoneHref.replace("tel:", ""),
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "Vishal Nagar",
-                addressLocality: "Pune",
-                addressRegion: "Maharashtra",
-                addressCountry: "IN",
-              },
-              contactPoint: [
-                {
-                  "@type": "ContactPoint",
-                  contactType: "sales",
-                  telephone: site.phoneHref.replace("tel:", ""),
-                  email: site.email,
-                  areaServed: "IN",
-                  availableLanguage: ["en", "hi", "mr"],
-                },
-              ],
-              sameAs: [site.whatsapp],
-            },
-            {
-              "@type": "WebSite",
-              "@id": "/#website",
-              name: "ServerFY",
-              url: "/",
-              publisher: { "@id": "/#organization" },
-            },
-            {
-              "@type": "FAQPage",
-              mainEntity: faqs.map((f) => ({
-                "@type": "Question",
-                name: f.q,
-                acceptedAnswer: { "@type": "Answer", text: f.a },
-              })),
-            },
-          ],
-        }),
-      },
-    ],
-  }),
+  head: () =>
+    buildHead({
+      title,
+      description,
+      path: "/",
+      type: "website",
+      keywords,
+      jsonLd: [
+        organizationSchema(),
+        websiteSchema(),
+        {
+          "@type": "WebPage",
+          "@id": "/#webpage",
+          url: "/",
+          name: title,
+          description,
+          isPartOf: { "@id": "/#website" },
+          about: { "@id": "/#organization" },
+        },
+        {
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        },
+        breadcrumbList([
+          { name: "Home", item: "/" },
+        ]),
+      ],
+    }),
 });
 
 function Index() {

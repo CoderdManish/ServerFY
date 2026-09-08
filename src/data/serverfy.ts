@@ -188,8 +188,6 @@ export const modules: SapModule[] = [
 
 export const billingCycles = [
   { id: "monthly", label: "Monthly", multiplier: 1, months: 1, note: "" },
-  { id: "quarterly", label: "Quarterly", multiplier: 0.9, months: 3, note: "Save 10%" },
-  { id: "yearly", label: "Yearly", multiplier: 0.75, months: 12, note: "Save 25%" },
 ] as const;
 
 export type BillingCycleId = (typeof billingCycles)[number]["id"];
@@ -211,7 +209,7 @@ export const plans: Plan[] = [
     audience: "For learners",
     monthly: 1300,
     cta: "Get Starter Server",
-    features: ["SAP ECC & S/4HANA Access", "SAP GUI & Fiori Ready", "Remote Access, 24/7", "Pre-configured Modules", "Weekly Backups", "Standard Support"],
+    features: ["SAP S/4HANA Access", "SAP GUI & Fiori Ready", "Remote Access, 24/7", "Pre-configured Modules", "Weekly Backups", "Standard Support"],
   },
   {
     id: "professional",
@@ -246,7 +244,7 @@ export const comparison = {
     { feature: "Functional Modules", values: ["Core", "All", "All", "Custom"] },
     { feature: "Technical Modules", values: ["—", "—", "Yes", "Custom"] },
     { feature: "IDES Sample Data", values: ["—", "Yes", "Yes", "Custom"] },
-    { feature: "SAP Version", values: ["ECC / S/4HANA", "ECC / S/4HANA", "ECC / S/4HANA / HANA", "Any supported"] },
+    { feature: "SAP Version", values: ["S/4HANA", "S/4HANA", "S/4HANA / HANA", "Any supported"] },
     { feature: "Users", values: ["1", "2", "5", "Custom"] },
     { feature: "Remote Access", values: ["Yes", "Yes", "Yes", "Yes"] },
     { feature: "Support", values: ["Standard", "Priority", "Priority", "Named contact"] },

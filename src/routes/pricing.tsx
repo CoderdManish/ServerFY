@@ -5,28 +5,30 @@ import { Pricing } from "@/components/sections/Pricing";
 import { Comparison } from "@/components/sections/Comparison";
 import { TrialBanner } from "@/components/sections/TrialBanner";
 import { FAQ } from "@/components/sections/FAQ";
+import { buildHead, breadcrumbList } from "@/lib/seo";
 
-const title = "Pricing | Transparent SAP Server Plans — ServerFY";
+const title = "Pricing | Transparent Monthly SAP Server Plans — ServerFY";
 const description =
-  "Simple monthly, quarterly and yearly pricing for SAP practice, training, development and dedicated server plans. Compare what each plan includes.";
+  "Simple monthly pricing for SAP practice, training, development and dedicated server plans. Compare what each plan includes and pick the right access.";
+const keywords =
+  "SAP server pricing, SAP S/4HANA price, SAP practice server cost, SAP training server, dedicated SAP server, monthly SAP access";
 
 export const Route = createFileRoute("/pricing")({
   component: PricingPage,
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/pricing" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/pricing" }],
-  }),
+  head: () =>
+    buildHead({
+      title,
+      description,
+      path: "/pricing",
+      type: "website",
+      keywords,
+      jsonLd: [
+        breadcrumbList([
+          { name: "Home", item: "/" },
+          { name: "Pricing", item: "/pricing" },
+        ]),
+      ],
+    }),
 });
 
 function PricingPage() {
@@ -34,7 +36,7 @@ function PricingPage() {
     <PageShell
       eyebrow="Pricing"
       title="Clear plans, no surprise charges"
-      intro="Pick a billing cycle, pick the plan that matches your workload, and scale up or down whenever your project changes."
+      intro="Pick the plan that matches your workload and scale up or down whenever your project changes."
     >
       <Pricing />
       <Comparison />
