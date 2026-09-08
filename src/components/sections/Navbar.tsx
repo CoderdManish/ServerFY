@@ -7,6 +7,7 @@ import { CtaButton } from "@/components/CtaButton";
 import { megaMenus, nav, site } from "@/data/serverfy";
 import { linkFor } from "@/data/links";
 import { cn } from "@/lib/utils";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 
 type MenuKey = keyof typeof megaMenus;
 
