@@ -70,7 +70,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
       >
         <div
           className={cn(
-            "container-fy flex h-16 items-center justify-between gap-4 transition-[height,padding] duration-300",
+            "container-fy flex h-16 items-center justify-between gap-3 transition-[height,padding] duration-300 xl:px-4 2xl:px-8",
             scrolled ? "lg:h-[68px]" : "lg:h-[76px]",
           )}
         >
@@ -79,7 +79,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
           </Link>
 
           {/* Desktop nav */}
-          <nav aria-label="Main" className="hidden items-center gap-0.5 xl:flex">
+          <nav aria-label="Main" className="hidden shrink-0 items-center gap-0.5 xl:flex">
             {nav.map((item) => {
               const isActive = item.href === "/" ? active === "/" : active.startsWith(item.href);
               return (
@@ -90,7 +90,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
                     aria-expanded={item.menu ? openMenu === item.menu : undefined}
                     onFocus={() => (item.menu ? hoverOpen(item.menu) : setOpenMenu(null))}
                     className={cn(
-                      "relative flex min-h-10 items-center gap-1 rounded-lg px-3 py-2 text-[0.82rem] font-semibold transition-colors",
+                      "relative flex min-h-10 items-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-2 text-[0.76rem] font-semibold transition-colors 2xl:px-3 2xl:text-[0.82rem]",
                       isActive ? "text-white" : "text-white/70 hover:text-white",
                     )}
                   >
@@ -111,7 +111,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
           </nav>
 
           {/* Desktop right */}
-          <div className="hidden items-center gap-2 xl:flex">
+          <div className="hidden shrink-0 items-center gap-1.5 xl:flex 2xl:gap-2">
             <a
               href={site.phoneHref}
               className="flex items-center gap-2 rounded-lg px-2.5 py-2 text-[0.8rem] font-semibold text-white/70 transition-colors hover:text-white"
@@ -129,7 +129,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
             >
               <MessageCircle className="size-4" aria-hidden="true" />
             </a>
-            <CtaButton href="/contact" size="sm" className="whitespace-nowrap rounded-full px-5">
+            <CtaButton href="/contact" size="sm" className="whitespace-nowrap rounded-full px-4 2xl:px-5">
               Get Your SAP Server
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
             </CtaButton>
