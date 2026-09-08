@@ -2,6 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { ModulePageView, moduleFaqs } from "@/components/ModulePageView";
 import { moduleSlug } from "@/data/module-pages";
 import { modules } from "@/data/serverfy";
+import { buildHead, breadcrumbList } from "@/lib/seo";
 
 export const Route = createFileRoute("/modules/$code")({
   loader: ({ params }) => {
@@ -17,47 +18,29 @@ export const Route = createFileRoute("/modules/$code")({
     const path = `/modules/${params.code}`;
     const title = `SAP ${mod.code} Server Access | ${mod.name} Practice — ServerFY`;
     const description = `Practice SAP ${mod.code} (${mod.name}) on a live server. ${mod.desc} Available on ${mod.platforms.join(" / ")} with your own login, configuration access and support.`;
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-        { property: "og:type", content: "article" },
-        { property: "og:url", content: path },
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: title },
-        { name: "twitter:description", content: description },
-        { name: "robots", content: "index, follow" },
-      ],
-      links: [{ rel: "canonical", href: path }],
-      scripts: [
+    const keywords = `SAP ${mod.code}, SAP ${mod.name}, SAP ${mod.code} server, SAP ${mod.code} practice, SAP ${mod.code} training, ${mod.platforms.join(", ")}`;
+    return buildHead({
+      title,
+      description,
+      path,
+      type: "article",
+      keywords,
+      jsonLd: [
         {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "FAQPage",
-                mainEntity: moduleFaqs(mod).map((f) => ({
-                  "@type": "Question",
-                  name: f.q,
-                  acceptedAnswer: { "@type": "Answer", text: f.a },
-                })),
-              },
-              {
-                "@type": "BreadcrumbList",
-                itemListElement: [
-                  { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-                  { "@type": "ListItem", position: 2, name: "SAP Modules", item: "/modules" },
-                  { "@type": "ListItem", position: 3, name: `SAP ${mod.code}`, item: path },
-                ],
-              },
-            ],
-          }),
+          "@type": "FAQPage",
+          mainEntity: moduleFaqs(mod).map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
         },
+        breadcrumbList([
+          { name: "Home", item: "/" },
+          { name: "SAP Modules", item: "/modules" },
+          { name: `SAP ${mod.code}`, item: path },
+        ]),
       ],
-    };
+    });
   },
   component: ModuleDetail,
 });
