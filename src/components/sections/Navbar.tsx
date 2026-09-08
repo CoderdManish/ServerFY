@@ -55,112 +55,124 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "border-b border-white/10 bg-navy-dark/85 backdrop-blur-xl" : "bg-transparent",
+        "pointer-events-none fixed inset-x-0 top-0 z-50 px-0 transition-all duration-300 lg:px-4",
+        scrolled && "pt-2.5 lg:pt-3",
       )}
       onMouseLeave={hoverClose}
     >
-      <div className="container-fy flex h-16 items-center justify-between gap-4 lg:h-[76px]">
-        <Link to="/" className="shrink-0" aria-label="ServerFY home">
-          <Logo variant="light" />
-        </Link>
-
-        {/* Desktop nav */}
-        <nav aria-label="Main" className="hidden items-center gap-0.5 xl:flex">
-          {nav.map((item) => {
-            const isActive = item.href === "/" ? active === "/" : active.startsWith(item.href);
-            return (
-              <div key={item.label} className="relative" onMouseEnter={() => (item.menu ? hoverOpen(item.menu) : hoverClose())}>
-                <Link
-                  to={item.href}
-                  aria-haspopup={item.menu ? "true" : undefined}
-                  aria-expanded={item.menu ? openMenu === item.menu : undefined}
-                  onFocus={() => (item.menu ? hoverOpen(item.menu) : setOpenMenu(null))}
-                  className={cn(
-                    "relative flex items-center gap-1 rounded-lg px-3 py-2 text-[0.82rem] font-semibold transition-colors",
-                    isActive ? "text-white" : "text-white/70 hover:text-white",
-                  )}
-                >
-                  {item.label}
-                  {item.menu ? (
-                    <ChevronDown
-                      className={cn("size-3.5 transition-transform duration-300", openMenu === item.menu && "rotate-180")}
-                      aria-hidden="true"
-                    />
-                  ) : null}
-                  {isActive ? (
-                    <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-orange" />
-                  ) : null}
-                </Link>
-              </div>
-            );
-          })}
-        </nav>
-
-        {/* Desktop right */}
-        <div className="hidden items-center gap-2 xl:flex">
-          <a
-            href={site.phoneHref}
-            className="flex items-center gap-2 rounded-lg px-2.5 py-2 text-[0.8rem] font-semibold text-white/70 transition-colors hover:text-white"
-          >
-            <Phone className="size-4" aria-hidden="true" />
-            <span className="hidden 2xl:inline">{site.phone}</span>
-            <span className="sr-only 2xl:hidden">Call ServerFY</span>
-          </a>
-          <a
-            href={site.whatsapp}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Chat on WhatsApp"
-            className="grid size-10 place-items-center rounded-lg border border-white/15 text-white/80 transition-colors hover:border-white/40 hover:text-white"
-          >
-            <MessageCircle className="size-4" aria-hidden="true" />
-          </a>
-          <CtaButton href="/contact" size="sm" className="whitespace-nowrap">
-            Get Your SAP Server
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-          </CtaButton>
-        </div>
-
-        {/* Mobile right */}
-        <div className="flex items-center gap-1.5 xl:hidden">
-          <a
-            href={site.phoneHref}
-            aria-label="Call ServerFY"
-            className="grid size-11 place-items-center rounded-lg border border-white/15 text-white/80"
-          >
-            <Phone className="size-4" aria-hidden="true" />
-          </a>
-          <a
-            href={site.whatsapp}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Chat on WhatsApp"
-            className="grid size-11 place-items-center rounded-lg border border-white/15 text-white/80"
-          >
-            <MessageCircle className="size-4" aria-hidden="true" />
-          </a>
-          <button
-            type="button"
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-expanded={mobileOpen}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            className="grid size-11 place-items-center rounded-lg bg-white/10 text-white"
-          >
-            {mobileOpen ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mega menu */}
-      {openMenu ? (
+      <div
+        className={cn(
+          "pointer-events-auto relative mx-auto transition-[max-width,border-radius,background-color,box-shadow,border-color] duration-300 ease-out",
+          scrolled
+            ? "max-w-[1320px] rounded-2xl border border-white/10 bg-navy-dark/90 shadow-lift backdrop-blur-xl"
+            : "max-w-none border-transparent bg-transparent",
+        )}
+      >
         <div
-          key={openMenu}
-          className="anim-rise absolute inset-x-0 top-full hidden xl:block"
-          style={{ animationDuration: "0.22s" }}
-          onMouseEnter={() => hoverOpen(openMenu)}
+          className={cn(
+            "container-fy flex h-16 items-center justify-between gap-4 transition-[height,padding] duration-300",
+            scrolled ? "lg:h-[68px]" : "lg:h-[76px]",
+          )}
         >
-            <div className="container-fy pb-6">
+          <Link to="/" className="shrink-0" aria-label="ServerFY home">
+            <Logo variant="light" />
+          </Link>
+
+          {/* Desktop nav */}
+          <nav aria-label="Main" className="hidden items-center gap-0.5 xl:flex">
+            {nav.map((item) => {
+              const isActive = item.href === "/" ? active === "/" : active.startsWith(item.href);
+              return (
+                <div key={item.label} className="relative" onMouseEnter={() => (item.menu ? hoverOpen(item.menu) : hoverClose())}>
+                  <Link
+                    to={item.href}
+                    aria-haspopup={item.menu ? "true" : undefined}
+                    aria-expanded={item.menu ? openMenu === item.menu : undefined}
+                    onFocus={() => (item.menu ? hoverOpen(item.menu) : setOpenMenu(null))}
+                    className={cn(
+                      "relative flex min-h-10 items-center gap-1 rounded-lg px-3 py-2 text-[0.82rem] font-semibold transition-colors",
+                      isActive ? "text-white" : "text-white/70 hover:text-white",
+                    )}
+                  >
+                    {item.label}
+                    {item.menu ? (
+                      <ChevronDown
+                        className={cn("size-3.5 transition-transform duration-300", openMenu === item.menu && "rotate-180")}
+                        aria-hidden="true"
+                      />
+                    ) : null}
+                    {isActive ? (
+                      <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-orange" />
+                    ) : null}
+                  </Link>
+                </div>
+              );
+            })}
+          </nav>
+
+          {/* Desktop right */}
+          <div className="hidden items-center gap-2 xl:flex">
+            <a
+              href={site.phoneHref}
+              className="flex items-center gap-2 rounded-lg px-2.5 py-2 text-[0.8rem] font-semibold text-white/70 transition-colors hover:text-white"
+            >
+              <Phone className="size-4" aria-hidden="true" />
+              <span className="hidden 2xl:inline">{site.phone}</span>
+              <span className="sr-only 2xl:hidden">Call ServerFY</span>
+            </a>
+            <a
+              href={site.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Chat on WhatsApp"
+              className="grid size-10 place-items-center rounded-lg border border-white/15 text-white/80 transition-colors hover:border-white/40 hover:text-white"
+            >
+              <MessageCircle className="size-4" aria-hidden="true" />
+            </a>
+            <CtaButton href="/contact" size="sm" className="whitespace-nowrap rounded-full px-5">
+              Get Your SAP Server
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+            </CtaButton>
+          </div>
+
+          {/* Mobile right */}
+          <div className="flex items-center gap-1.5 xl:hidden">
+            <a
+              href={site.phoneHref}
+              aria-label="Call ServerFY"
+              className="grid size-11 place-items-center rounded-lg border border-white/15 text-white/80"
+            >
+              <Phone className="size-4" aria-hidden="true" />
+            </a>
+            <a
+              href={site.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Chat on WhatsApp"
+              className="grid size-11 place-items-center rounded-lg border border-white/15 text-white/80"
+            >
+              <MessageCircle className="size-4" aria-hidden="true" />
+            </a>
+            <button
+              type="button"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-expanded={mobileOpen}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              className="grid size-11 place-items-center rounded-lg bg-white/10 text-white"
+            >
+              {mobileOpen ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mega menu */}
+        {openMenu ? (
+          <div
+            key={openMenu}
+            className="anim-rise absolute left-1/2 top-[calc(100%+0.6rem)] hidden w-[min(calc(100vw-2rem),1240px)] -translate-x-1/2 xl:block"
+            style={{ animationDuration: "0.22s" }}
+            onMouseEnter={() => hoverOpen(openMenu)}
+          >
               <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-lift">
                 <div className="grid grid-cols-[280px_repeat(2,minmax(0,1fr))]">
                   <div className="bg-navy-gradient p-7 text-white">
@@ -197,13 +209,12 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
                   ))}
                 </div>
               </div>
-            </div>
-        </div>
-      ) : null}
+          </div>
+        ) : null}
 
-      {/* Mobile menu */}
-      {mobileOpen ? (
-        <div className="anim-rise overflow-hidden border-t border-white/10 bg-navy-dark/95 backdrop-blur-xl xl:hidden" style={{ animationDuration: "0.28s" }}>
+        {/* Mobile menu */}
+        {mobileOpen ? (
+          <div className={cn("anim-rise overflow-hidden border-t border-white/10 bg-navy-dark/95 backdrop-blur-xl xl:hidden", scrolled && "rounded-b-2xl")} style={{ animationDuration: "0.28s" }}>
             <nav aria-label="Mobile" className="container-fy max-h-[70vh] overflow-y-auto py-4">
               <ul className="space-y-1">
                 {nav.map((item) => (
@@ -224,8 +235,9 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
                 <ArrowRight className="size-4" aria-hidden="true" />
               </CtaButton>
             </nav>
-        </div>
-      ) : null}
+          </div>
+        ) : null}
+      </div>
     </header>
   );
 }
