@@ -1,20 +1,24 @@
 import {
   Rocket,
   Users,
-  Settings2,
-  Monitor,
-  Presentation,
+  Maximize2,
+  MonitorSmartphone,
+  UsersRound,
+  MonitorPlay,
   Building2,
   Landmark,
-  GraduationCap,
   PlayCircle,
-  BookOpenCheck,
-  DoorOpen,
-  MousePointerClick,
-  RefreshCcw,
+  BookOpen,
+  GraduationCap,
+  ClipboardCheck,
+  Lightbulb,
   BadgeCheck,
   ArrowRight,
 } from "lucide-react";
+import audStudents from "@/assets/aud-students.webp.asset.json";
+import audConsultants from "@/assets/aud-consultants.webp.asset.json";
+import audProfessionals from "@/assets/aud-professionals.webp.asset.json";
+import audTrainers from "@/assets/aud-trainers.webp.asset.json";
 
 const actions = [
   {
@@ -30,25 +34,25 @@ const actions = [
     desc: "Apply training concepts in real systems",
   },
   {
-    icon: Settings2,
-    tint: "bg-sky-100 text-sky-600",
+    icon: Maximize2,
+    tint: "bg-sky-100 text-sky-700",
     title: "Test Configurations",
     desc: "Experiment with customization and SPRO",
   },
   {
-    icon: Monitor,
+    icon: MonitorSmartphone,
     tint: "bg-cyan-100 text-cyan-600",
     title: "Develop",
     desc: "Work on development and technical environments",
   },
   {
-    icon: Presentation,
+    icon: UsersRound,
     tint: "bg-indigo-100 text-indigo-600",
     title: "Train Teams",
     desc: "Conduct live training sessions",
   },
   {
-    icon: Monitor,
+    icon: MonitorPlay,
     tint: "bg-blue-100 text-blue-700",
     title: "Demonstrate",
     desc: "Show real SAP processes for classroom or client demos",
@@ -57,51 +61,48 @@ const actions = [
 
 const audiences = [
   {
-    initials: "ST",
-    tint: "from-orange-400 to-orange-600",
+    image: audStudents.url,
     title: "Students",
     desc: "Practice and build confidence after training.",
   },
   {
-    initials: "CO",
-    tint: "from-blue-400 to-blue-600",
+    image: audConsultants.url,
     title: "Consultants",
     desc: "Test scenarios and configurations for projects.",
   },
   {
-    initials: "PR",
-    tint: "from-violet-400 to-violet-600",
+    image: audProfessionals.url,
     title: "Professionals",
     desc: "Refresh skills and explore new processes.",
   },
   {
-    initials: "TR",
-    tint: "from-sky-400 to-sky-600",
+    image: audTrainers.url,
     title: "Trainers",
     desc: "Demonstrate real SAP systems during training sessions.",
   },
   {
     icon: Building2,
-    tint: "from-cyan-400 to-cyan-600",
+    tint: "bg-slate-100 text-slate-600",
     title: "Companies",
     desc: "Provide SAP access for internal learning and development.",
   },
   {
     icon: Landmark,
-    tint: "from-indigo-400 to-indigo-600",
+    tint: "bg-slate-100 text-slate-600",
     title: "Institutes",
     desc: "Give students access to practical SAP environments.",
   },
 ];
 
 const flow = [
-  { icon: PlayCircle, label: "Watch Tutorial" },
-  { icon: BookOpenCheck, label: "Understand Concept" },
-  { icon: DoorOpen, label: "Open SAP" },
-  { icon: MousePointerClick, label: "Perform Transaction" },
-  { icon: RefreshCcw, label: "Learn from Mistakes" },
-  { icon: BadgeCheck, label: "Build Confidence" },
+  { icon: PlayCircle, label: "Watch Tutorial", tint: "bg-blue-50 text-blue-600" },
+  { icon: BookOpen, label: "Understand Concept", tint: "bg-rose-50 text-rose-500" },
+  { icon: GraduationCap, label: "Open SAP", tint: "bg-sky-50 text-sky-600" },
+  { icon: ClipboardCheck, label: "Perform Transaction", tint: "bg-orange-50 text-orange" },
+  { icon: Lightbulb, label: "Learn from Mistakes", tint: "bg-indigo-50 text-indigo-600" },
+  { icon: BadgeCheck, label: "Build Confidence", tint: "bg-amber-50 text-amber-500" },
 ];
+
 
 export function WhatCanYouDo() {
   return (
