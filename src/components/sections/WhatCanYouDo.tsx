@@ -190,7 +190,7 @@ export function WhatCanYouDo() {
               {flow.map((step, i) => (
                 <div key={step.label} className="flex items-center gap-3 sm:gap-4">
                   <div className="flex flex-col items-center gap-2">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-blue-600 shadow-md ring-1 ring-blue-100">
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-full ${step.tint} shadow-md ring-1 ring-white`}>
                       <step.icon className="h-5 w-5" />
                     </div>
                     <span className="max-w-[72px] text-center text-[10px] font-semibold leading-tight text-slate-700">
