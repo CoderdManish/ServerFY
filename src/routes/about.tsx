@@ -6,28 +6,30 @@ import { Metrics } from "@/components/sections/Metrics";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
+import { buildHead, breadcrumbList } from "@/lib/seo";
 
 const title = "About ServerFY | Independent SAP Infrastructure Provider";
 const description =
   "ServerFY runs monitored, backed-up SAP server environments for learners, trainers, consultants and project teams — with human support and no lock-in.";
+const keywords =
+  "about ServerFY, SAP infrastructure provider, SAP server company, SAP training infrastructure, SAP cloud servers India";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/about" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
+  head: () =>
+    buildHead({
+      title,
+      description,
+      path: "/about",
+      type: "website",
+      keywords,
+      jsonLd: [
+        breadcrumbList([
+          { name: "Home", item: "/" },
+          { name: "About Us", item: "/about" },
+        ]),
+      ],
+    }),
 });
 
 const values = [
