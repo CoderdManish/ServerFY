@@ -154,7 +154,7 @@ export function WhatCanYouDo() {
               <div
                 className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br ${a.tint} text-white shadow-md`}
               >
-                {"icon" in a && a.icon ? (
+                {"icon" in a ? (
                   <a.icon className="h-6 w-6" />
                 ) : (
                   <span className="text-sm font-extrabold tracking-wide">{a.initials}</span>
