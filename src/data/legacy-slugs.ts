@@ -3,7 +3,10 @@
  * on the right page. Each old slug points at its new keyword-rich slug.
  */
 export const legacyServerSlugs: Record<string, string> = {
-  s4hana: "sap-s4hana-server-access",
+  s4hana: "sap-s-4-hana-server-access",
+  "sap-s4hana-server-access": "sap-s-4-hana-server-access",
+  practice: "sap-practice-servers",
+  training: "sap-training-servers",
   ecc: "sap-ecc-server-access",
   hana: "sap-server-access",
   "sap-hana-server-access": "sap-server-access",
