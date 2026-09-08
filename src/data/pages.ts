@@ -13,6 +13,7 @@ export type DetailPage = {
   metaTitle: string;
   intro: string;
   description: string;
+  keywords?: string;
   highlights: Highlight[];
   specs: Spec[];
   checklist: { title: string; items: string[] };
