@@ -1,28 +1,30 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { LegalBody } from "@/components/LegalBody";
+import { buildHead, breadcrumbList } from "@/lib/seo";
 
 const title = "Terms of Service | ServerFY";
 const description =
   "The terms that apply when you use a ServerFY SAP server environment: access, acceptable use, billing, renewals and cancellation.";
+const keywords =
+  "ServerFY terms, SAP server terms, acceptable use, billing, cancellation";
 
 export const Route = createFileRoute("/terms")({
   component: TermsPage,
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/terms" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/terms" }],
-  }),
+  head: () =>
+    buildHead({
+      title,
+      description,
+      path: "/terms",
+      type: "website",
+      keywords,
+      jsonLd: [
+        breadcrumbList([
+          { name: "Home", item: "/" },
+          { name: "Terms of Service", item: "/terms" },
+        ]),
+      ],
+    }),
 });
 
 const sections = [
