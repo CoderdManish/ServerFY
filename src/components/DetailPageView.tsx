@@ -114,20 +114,25 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
 export function detailHead(page: DetailPage, path: string) {
   const categoryPath = "/" + path.split("/")[1];
   const categoryName = page.eyebrow || categoryPath.replace("/", "").replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+  const meta: Array<
+    | { title: string }
+    | { name: string; content: string }
+    | { property: string; content: string }
+  > = [
+    { title: page.metaTitle },
+    { name: "description", content: page.description },
+    { property: "og:title", content: page.metaTitle },
+    { property: "og:description", content: page.description },
+    { property: "og:type", content: "article" },
+    { property: "og:url", content: path },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: page.metaTitle },
+    { name: "twitter:description", content: page.description },
+    { name: "robots", content: "index, follow" },
+  ];
+  if (page.keywords) meta.push({ name: "keywords", content: page.keywords });
   return {
-    meta: [
-      { title: page.metaTitle },
-      { name: "description", content: page.description },
-      { name: "keywords", content: page.keywords || "" },
-      { property: "og:title", content: page.metaTitle },
-      { property: "og:description", content: page.description },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: path },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: page.metaTitle },
-      { name: "twitter:description", content: page.description },
-      { name: "robots", content: "index, follow" },
-    ],
+    meta,
     links: [{ rel: "canonical", href: path }],
     scripts: [
       {
