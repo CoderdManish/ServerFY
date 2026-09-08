@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { WhatIsServerfy } from "@/components/sections/WhatIsServerfy";
 import { ServerCategories } from "@/components/sections/ServerCategories";
 import { ModuleExplorer } from "@/components/sections/ModuleExplorer";
 import { Pricing } from "@/components/sections/Pricing";
@@ -108,6 +109,7 @@ function Index() {
       <Navbar />
       <main>
         <Hero />
+        <WhatIsServerfy />
         <TrustBar />
         <ServerCategories />
         <ModuleExplorer />
