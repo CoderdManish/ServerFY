@@ -40,19 +40,9 @@ export const megaMenus = {
         items: [
           { label: "S/4HANA Servers", desc: "Latest SAP suite environments", icon: "Server" },
           { label: "ECC Servers", desc: "Classic ECC 6.0 landscapes", icon: "HardDrive" },
-          { label: "HANA Servers", desc: "In-memory database access", icon: "Database" },
+          { label: "SAP Servers", desc: "In-memory database access", icon: "Database" },
           { label: "Dedicated Servers", desc: "Isolated resources for you", icon: "ShieldCheck" },
           { label: "Shared Servers", desc: "Cost-effective shared access", icon: "Users" },
-        ],
-      },
-      {
-        heading: "By purpose",
-        items: [
-          { label: "Practice Servers", desc: "Hands-on learning environments", icon: "GraduationCap" },
-          { label: "Training Servers", desc: "Batch access for trainers", icon: "Presentation" },
-          { label: "Development Servers", desc: "Build and extend safely", icon: "Code2" },
-          { label: "Testing Servers", desc: "Validate before rollout", icon: "FlaskConical" },
-          { label: "Demo / POC Servers", desc: "Show and prove quickly", icon: "MonitorPlay" },
         ],
       },
     ],
@@ -308,7 +298,7 @@ export const faqs = [
 ];
 
 export const footerColumns = [
-  { title: "SAP Servers", links: ["S/4HANA", "ECC", "HANA", "Dedicated", "Shared", "Practice"] },
+  { title: "SAP Servers", links: ["S/4HANA", "ECC", "SAP Server", "Dedicated", "Shared"] },
   { title: "SAP Modules", links: ["Functional", "Technical", "All Modules", "Module Comparison"] },
   { title: "Solutions", links: ["Training", "Development", "Testing", "Demo & POC", "Consultant Practice", "Corporate Learning"] },
   { title: "Resources", links: ["Blog", "Knowledge Base", "Guides", "FAQs", "System Requirements"] },

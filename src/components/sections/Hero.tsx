@@ -91,6 +91,7 @@ export function Hero() {
           </div>
 
           <p className="mt-4 text-sm text-white/45">
+            <span className="mr-1.5 text-green" aria-hidden="true">✓</span>
             Free trial available · No setup fee · Access within hours
           </p>
 

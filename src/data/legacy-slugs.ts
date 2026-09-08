@@ -8,11 +8,6 @@ export const legacyServerSlugs: Record<string, string> = {
   hana: "sap-hana-server-access",
   dedicated: "sap-dedicated-server-access",
   shared: "sap-shared-server-access",
-  practice: "sap-practice-server-access",
-  training: "sap-training-server-access",
-  development: "sap-development-server-access",
-  testing: "sap-testing-server-access",
-  demo: "sap-demo-server-access",
 };
 
 export const legacySolutionSlugs: Record<string, string> = {
