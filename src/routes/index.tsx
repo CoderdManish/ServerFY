@@ -4,7 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { WhatIsServerfy } from "@/components/sections/WhatIsServerfy";
 import { ServerCategories } from "@/components/sections/ServerCategories";
-import { ModuleExplorer } from "@/components/sections/ModuleExplorer";
+import { WhatCanYouDo } from "@/components/sections/WhatCanYouDo";
 import { Pricing } from "@/components/sections/Pricing";
 import { TrialBanner } from "@/components/sections/TrialBanner";
 import { FunctionalTechnical } from "@/components/sections/FunctionalTechnical";
@@ -112,7 +112,7 @@ function Index() {
         <WhatIsServerfy />
         <TrustBar />
         <ServerCategories />
-        <ModuleExplorer />
+        <WhatCanYouDo />
         <FunctionalTechnical />
         <HowItWorks />
         <Pricing />
