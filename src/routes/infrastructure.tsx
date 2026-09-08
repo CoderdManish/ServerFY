@@ -6,5 +6,5 @@ const page = companyPages.find((p) => p.slug === "infrastructure")!;
 
 export const Route = createFileRoute("/infrastructure")({
   head: () => detailHead(page, "/infrastructure"),
-  component: () => <DetailPageView page={page} related={[{ label: "Why ServerFY", to: "/why-serverfy" }, { label: "Server status", to: "/resources/server-status" }, { label: "SLA", to: "/sla" }]} />,
+  component: () => <DetailPageView page={page} related={[{ label: "Why ServerFY", to: "/why-serverfy" }, { label: "Server status", to: "/resources/sap-server-status" }, { label: "SLA", to: "/sla" }]} />,
 });
