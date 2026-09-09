@@ -5,6 +5,7 @@ import { CtaButton } from "@/components/CtaButton";
 import { PageShell } from "@/components/PageShell";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { IncludedBand } from "@/components/sections/IncludedBand";
+import { absUrl } from "@/lib/site";
 import type { DetailPage } from "@/data/pages";
 
 type RelatedLink = { label: string; to: string };
