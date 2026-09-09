@@ -16,10 +16,10 @@ import {
   BadgeCheck,
   ArrowRight,
 } from "lucide-react";
-import audStudents from "@/assets/aud-students.webp.asset.json";
-import audConsultants from "@/assets/aud-consultants.webp.asset.json";
-import audProfessionals from "@/assets/aud-professionals.webp.asset.json";
-import audTrainers from "@/assets/aud-trainers.webp.asset.json";
+import audStudents from "@/assets/aud-students.webp";
+import audConsultants from "@/assets/aud-consultants.webp";
+import audProfessionals from "@/assets/aud-professionals.webp";
+import audTrainers from "@/assets/aud-trainers.webp";
 
 const actions = [
   {
@@ -62,22 +62,22 @@ const actions = [
 
 const audiences = [
   {
-    image: audStudents.url,
+    image: audStudents,
     title: "Students",
     desc: "Practice and build confidence after training.",
   },
   {
-    image: audConsultants.url,
+    image: audConsultants,
     title: "Consultants",
     desc: "Test scenarios and configurations for projects.",
   },
   {
-    image: audProfessionals.url,
+    image: audProfessionals,
     title: "Professionals",
     desc: "Refresh skills and explore new processes.",
   },
   {
-    image: audTrainers.url,
+    image: audTrainers,
     title: "Trainers",
     desc: "Demonstrate real SAP systems during training sessions.",
   },
