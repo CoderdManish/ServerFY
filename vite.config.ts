@@ -9,6 +9,9 @@ import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
 
 export default defineConfig({
   plugins: [mcpPlugin()],
+  // On Vercel, emit a Vercel-native build (.vercel/output). On Lovable hosting
+  // the platform pins its own preset, so this override is ignored there.
+  nitro: process.env["VERCEL"] ? { preset: "vercel" } : true,
   tanstackStart: {
     pages: [
       { path: "/" },
