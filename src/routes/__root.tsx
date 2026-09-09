@@ -115,9 +115,11 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: gtmScript }} />
         <HeadContent />
       </head>
       <body>
+        <noscript dangerouslySetInnerHTML={{ __html: gtmNoScript }} />
         {children}
         <Scripts />
       </body>
