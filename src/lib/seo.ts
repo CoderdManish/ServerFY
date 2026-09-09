@@ -58,7 +58,7 @@ export function buildHead({
 
   return {
     meta,
-    links: [{ rel: "canonical", href: path }],
+    links: [{ rel: "canonical", href: url }],
     scripts,
   };
 }
@@ -70,7 +70,7 @@ export function breadcrumbList(items: { name: string; item: string }[]) {
       "@type": "ListItem",
       position: idx + 1,
       name: it.name,
-      item: it.item,
+      item: absUrl(it.item),
     })),
   };
 }
@@ -78,10 +78,10 @@ export function breadcrumbList(items: { name: string; item: string }[]) {
 export function organizationSchema() {
   return {
     "@type": "Organization",
-    "@id": "/#organization",
+    "@id": `${SITE_URL}/#organization`,
     name: "ServerFY",
-    url: "/",
-    logo: "/favicon.png",
+    url: `${SITE_URL}/`,
+    logo: absUrl("/favicon.png"),
     sameAs: [],
   };
 }
@@ -89,9 +89,9 @@ export function organizationSchema() {
 export function websiteSchema() {
   return {
     "@type": "WebSite",
-    "@id": "/#website",
+    "@id": `${SITE_URL}/#website`,
     name: "ServerFY",
-    url: "/",
-    publisher: { "@id": "/#organization" },
+    url: `${SITE_URL}/`,
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }
