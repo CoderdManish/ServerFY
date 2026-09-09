@@ -23,13 +23,14 @@ export function buildHead({
   noindex,
   jsonLd,
 }: SeoInput) {
+  const url = absUrl(path);
   const meta: MetaTag[] = [
     { title },
     { name: "description", content: description },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
     { property: "og:type", content: type },
-    { property: "og:url", content: path },
+    { property: "og:url", content: url },
     { name: "twitter:card", content: image ? "summary_large_image" : "summary" },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
