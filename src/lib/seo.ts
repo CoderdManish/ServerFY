@@ -1,3 +1,5 @@
+import { SITE_URL, absUrl } from "./site";
+
 type SeoInput = {
   title: string;
   description: string;
