@@ -5,6 +5,7 @@ import { CtaButton } from "@/components/CtaButton";
 import { PageShell } from "@/components/PageShell";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { IncludedBand } from "@/components/sections/IncludedBand";
+import { absUrl } from "@/lib/site";
 import type { DetailPage } from "@/data/pages";
 
 type RelatedLink = { label: string; to: string };
@@ -112,6 +113,7 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
 }
 
 export function detailHead(page: DetailPage, path: string) {
+  const url = absUrl(path);
   const categoryPath = "/" + path.split("/")[1];
   const categoryName = page.eyebrow || categoryPath.replace("/", "").replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
   const meta: Array<
@@ -124,7 +126,7 @@ export function detailHead(page: DetailPage, path: string) {
     { property: "og:title", content: page.metaTitle },
     { property: "og:description", content: page.description },
     { property: "og:type", content: "article" },
-    { property: "og:url", content: path },
+    { property: "og:url", content: url },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: page.metaTitle },
     { name: "twitter:description", content: page.description },
@@ -133,7 +135,7 @@ export function detailHead(page: DetailPage, path: string) {
   if (page.keywords) meta.push({ name: "keywords", content: page.keywords });
   return {
     meta,
-    links: [{ rel: "canonical", href: path }],
+    links: [{ rel: "canonical", href: url }],
     scripts: [
       {
         type: "application/ld+json",
@@ -151,9 +153,9 @@ export function detailHead(page: DetailPage, path: string) {
             {
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-                { "@type": "ListItem", position: 2, name: categoryName, item: categoryPath },
-                { "@type": "ListItem", position: 3, name: page.title, item: path },
+                { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
+                { "@type": "ListItem", position: 2, name: categoryName, item: absUrl(categoryPath) },
+                { "@type": "ListItem", position: 3, name: page.title, item: url },
               ],
             },
           ],
