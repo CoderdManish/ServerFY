@@ -41,8 +41,8 @@ export function buildHead({
     meta.push({ name: "keywords", content: keywords });
   }
   if (image) {
-    meta.push({ property: "og:image", content: image });
-    meta.push({ name: "twitter:image", content: image });
+    meta.push({ property: "og:image", content: absUrl(image) });
+    meta.push({ name: "twitter:image", content: absUrl(image) });
   }
 
   const scripts: Array<{ type: string; children: string }> = [];
