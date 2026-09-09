@@ -1,3 +1,5 @@
+import { SITE_URL, absUrl } from "./site";
+
 type SeoInput = {
   title: string;
   description: string;
@@ -21,13 +23,14 @@ export function buildHead({
   noindex,
   jsonLd,
 }: SeoInput) {
+  const url = absUrl(path);
   const meta: MetaTag[] = [
     { title },
     { name: "description", content: description },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
     { property: "og:type", content: type },
-    { property: "og:url", content: path },
+    { property: "og:url", content: url },
     { name: "twitter:card", content: image ? "summary_large_image" : "summary" },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
@@ -38,8 +41,8 @@ export function buildHead({
     meta.push({ name: "keywords", content: keywords });
   }
   if (image) {
-    meta.push({ property: "og:image", content: image });
-    meta.push({ name: "twitter:image", content: image });
+    meta.push({ property: "og:image", content: absUrl(image) });
+    meta.push({ name: "twitter:image", content: absUrl(image) });
   }
 
   const scripts: Array<{ type: string; children: string }> = [];
@@ -55,7 +58,7 @@ export function buildHead({
 
   return {
     meta,
-    links: [{ rel: "canonical", href: path }],
+    links: [{ rel: "canonical", href: url }],
     scripts,
   };
 }
@@ -67,7 +70,7 @@ export function breadcrumbList(items: { name: string; item: string }[]) {
       "@type": "ListItem",
       position: idx + 1,
       name: it.name,
-      item: it.item,
+      item: absUrl(it.item),
     })),
   };
 }
@@ -75,10 +78,10 @@ export function breadcrumbList(items: { name: string; item: string }[]) {
 export function organizationSchema() {
   return {
     "@type": "Organization",
-    "@id": "/#organization",
+    "@id": `${SITE_URL}/#organization`,
     name: "ServerFY",
-    url: "/",
-    logo: "/favicon.png",
+    url: `${SITE_URL}/`,
+    logo: absUrl("/favicon.png"),
     sameAs: [],
   };
 }
@@ -86,9 +89,9 @@ export function organizationSchema() {
 export function websiteSchema() {
   return {
     "@type": "WebSite",
-    "@id": "/#website",
+    "@id": `${SITE_URL}/#website`,
     name: "ServerFY",
-    url: "/",
-    publisher: { "@id": "/#organization" },
+    url: `${SITE_URL}/`,
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }

@@ -19,6 +19,7 @@ import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/sections/FloatingActions";
 import { faqs, site } from "@/data/serverfy";
 import { buildHead, breadcrumbList, organizationSchema, websiteSchema } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 const title = "ServerFY | Reliable SAP Servers for Practice, Training & Development";
 const description =
@@ -40,12 +41,12 @@ export const Route = createFileRoute("/")({
         websiteSchema(),
         {
           "@type": "WebPage",
-          "@id": "/#webpage",
-          url: "/",
+          "@id": `${SITE_URL}/#webpage`,
+          url: `${SITE_URL}/`,
           name: title,
           description,
-          isPartOf: { "@id": "/#website" },
-          about: { "@id": "/#organization" },
+          isPartOf: { "@id": `${SITE_URL}/#website` },
+          about: { "@id": `${SITE_URL}/#organization` },
         },
         {
           "@type": "FAQPage",
