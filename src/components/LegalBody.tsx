@@ -18,9 +18,6 @@ export function LegalBody({ sections }: { sections: Section[] }) {
               </li>
             ))}
           </ol>
-          <p className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">
-            Last updated: September 2026. We will note any material change on this page.
-          </p>
         </div>
       </div>
     </section>
