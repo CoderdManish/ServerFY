@@ -46,7 +46,7 @@ const commonFaq = [
 
 export const serverPages: DetailPage[] = [
   {
-    slug: "sap-s-4-hana-server-access",
+    slug: "sap-s4-hana-server-access",
     eyebrow: "SAP Servers",
     title: "SAP S/4HANA server access",
     metaTitle: "SAP S/4HANA Server Access | Practice & Development — ServerFY",
