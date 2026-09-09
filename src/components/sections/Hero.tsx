@@ -70,13 +70,13 @@ export function Hero() {
           </span>
 
           <h1 className="type-hero mt-6 text-balance text-white">
-            <span className="block">Enterprise SAP Servers</span>
-            <span className="text-gradient-orange mt-1 block">Engineered For Excellence.</span>
+            <span className="block">High-Speed ECC &amp; SAP S/4HANA</span>
+            <span className="text-gradient-orange mt-1 block">Server Access for Practice.</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
-            High-performance SAP environments for Functional &amp; Technical modules. Practice, learn, develop, test and
-            run your SAP operations with confidence.
+            Trusted SAP Server for Functional &amp; Technical modules. Practice, learn, develop, test and run your SAP
+            S/4 HANA practice server with confidence.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
