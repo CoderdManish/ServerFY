@@ -1,7 +1,7 @@
 import { Code2, SlidersHorizontal } from "lucide-react";
 import { Reveal, SectionHeading } from "@/components/Primitives";
 import { functionalList, technicalList } from "@/data/serverfy";
-import coreAsset from "@/assets/serverfy-core.webp.asset.json";
+import coreAsset from "@/assets/serverfy-core.webp";
 
 function Column({
   title,
@@ -141,7 +141,7 @@ export function FunctionalTechnical() {
                   className="absolute inset-0 rounded-[28px] bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--blue-bright)_35%,transparent),transparent)]"
                 />
                 <img
-                  src={coreAsset.url}
+                  src={coreAsset}
                   alt="ServerFY core"
                   width={320}
                   height={288}
