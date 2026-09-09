@@ -126,7 +126,7 @@ export function detailHead(page: DetailPage, path: string) {
     { property: "og:title", content: page.metaTitle },
     { property: "og:description", content: page.description },
     { property: "og:type", content: "article" },
-    { property: "og:url", content: path },
+    { property: "og:url", content: url },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: page.metaTitle },
     { name: "twitter:description", content: page.description },
@@ -135,7 +135,7 @@ export function detailHead(page: DetailPage, path: string) {
   if (page.keywords) meta.push({ name: "keywords", content: page.keywords });
   return {
     meta,
-    links: [{ rel: "canonical", href: path }],
+    links: [{ rel: "canonical", href: url }],
     scripts: [
       {
         type: "application/ld+json",
@@ -153,9 +153,9 @@ export function detailHead(page: DetailPage, path: string) {
             {
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-                { "@type": "ListItem", position: 2, name: categoryName, item: categoryPath },
-                { "@type": "ListItem", position: 3, name: page.title, item: path },
+                { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
+                { "@type": "ListItem", position: 2, name: categoryName, item: absUrl(categoryPath) },
+                { "@type": "ListItem", position: 3, name: page.title, item: url },
               ],
             },
           ],
