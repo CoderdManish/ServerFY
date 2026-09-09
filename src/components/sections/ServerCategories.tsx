@@ -19,7 +19,7 @@ const environments = [
     title: "SAP S/4HANA",
     desc: "Access modern SAP S/4HANA environments for hands-on practice.",
     cta: "Explore S/4HANA",
-    href: "/servers/sap-s-4-hana-server-access",
+    href: "/servers/sap-s4-hana-server-access",
   },
   {
     icon: Cpu,
