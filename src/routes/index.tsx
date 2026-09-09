@@ -40,12 +40,12 @@ export const Route = createFileRoute("/")({
         websiteSchema(),
         {
           "@type": "WebPage",
-          "@id": "/#webpage",
-          url: "/",
+          "@id": `${SITE_URL}/#webpage`,
+          url: `${SITE_URL}/`,
           name: title,
           description,
-          isPartOf: { "@id": "/#website" },
-          about: { "@id": "/#organization" },
+          isPartOf: { "@id": `${SITE_URL}/#website` },
+          about: { "@id": `${SITE_URL}/#organization` },
         },
         {
           "@type": "FAQPage",
