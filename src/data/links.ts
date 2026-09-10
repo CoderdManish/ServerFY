@@ -45,7 +45,7 @@ export const linkFor: Record<string, string> = {
   Sandbox: "/solutions/sap-sandbox-server",
 
   // Resources
-  Blog: "/resources/sap-server-blog",
+  Blog: "/blog",
   "Knowledge Base": "/resources/sap-server-knowledge-base",
   Guides: "/resources/sap-server-guides",
   FAQs: "/resources",
