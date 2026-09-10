@@ -8,10 +8,11 @@ type Props = {
   eyebrow: string;
   title: string;
   intro: string;
+  crumbs?: Crumb[];
   children: ReactNode;
 };
 
-export function PageShell({ eyebrow, title, intro, children }: Props) {
+export function PageShell({ eyebrow, title, intro, crumbs, children }: Props) {
   return (
     <div className="min-h-screen">
       <Navbar />
