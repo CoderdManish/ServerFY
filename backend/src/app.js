@@ -27,6 +27,7 @@ export function createApp() {
 
   app.get("/health", (_req, res) => res.json({ ok: true, uptime: process.uptime() }));
   app.use("/api/server-requests", serverRequestsRouter);
+  app.use("/api/analytics", analyticsRouter);
 
   app.use((_req, res) => res.status(404).json({ ok: false, message: "Not found" }));
 

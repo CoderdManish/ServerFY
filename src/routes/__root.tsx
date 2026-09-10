@@ -9,6 +9,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { VisitorAnalytics } from "../components/VisitorAnalytics";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 const GTM_ID = "GTM-NGF354JZ";
