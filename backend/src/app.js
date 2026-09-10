@@ -4,6 +4,7 @@ import helmet from "helmet";
 import compression from "compression";
 import { env } from "./config/env.js";
 import { serverRequestsRouter } from "./routes/serverRequests.js";
+import { analyticsRouter } from "./routes/analytics.js";
 
 export function createApp() {
   const app = express();
