@@ -38,3 +38,22 @@ npm run dev
 ## Connect the frontend
 
 Set `VITE_API_URL=https://<your-service>.onrender.com` in the frontend env.
+
+## Anonymous visitor analytics
+
+No signup or login required — the frontend generates a random visitor id and
+session id in the browser and batches events here.
+
+- `POST /api/analytics/collect` — public, rate limited (120 req/min/IP).
+  Accepts a batch of up to 50 events: `pageview`, `pageleave` (time on page +
+  scroll depth), `click`, `scroll`, `session_start`, custom `event`.
+  Also stores device type, screen/viewport, language, timezone, referrer,
+  entry page, returning-vs-new, user agent and approximate country/city taken
+  from proxy geo headers (Cloudflare / Vercel).
+- `GET /api/analytics/summary?days=7` — admin only (`x-admin-key`): visitors,
+  sessions, pageviews, total time, top pages, referrers, devices, countries,
+  top custom events, top clicked elements.
+- `GET /api/analytics/visitors/:visitorId` — admin only: full ordered journey
+  for one anonymous visitor.
+
+Raw events auto-expire after 180 days (TTL index).
