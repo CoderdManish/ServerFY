@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
-import { ChevronRight } from "lucide-react";
+import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/sections/FloatingActions";
