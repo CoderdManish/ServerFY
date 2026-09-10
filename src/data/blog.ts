@@ -2,6 +2,7 @@
  * Blog content. Add a new object to `blogPosts` to publish a new article —
  * the listing page, article page, sitemap and JSON-LD all read from here.
  */
+import beginnersCover from "@/assets/blog-sap-server-access-beginners.webp";
 
 export type BlogSection = {
   heading: string;
