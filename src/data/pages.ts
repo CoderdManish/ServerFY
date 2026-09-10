@@ -627,37 +627,6 @@ export const resourcePages: DetailPage[] = [
     faq: commonFaq,
   },
   {
-    slug: "sap-server-blog",
-    eyebrow: "Resources",
-    title: "From the infrastructure team",
-    metaTitle: "Blog | SAP Infrastructure Notes — ServerFY",
-    intro:
-      "Practical notes on running SAP landscapes: what breaks, what we changed, and what actually helps learners get productive faster.",
-    description:
-      "Notes from the ServerFY infrastructure team on running SAP landscapes, performance, access, backups and helping learners work faster.",
-    highlights: [
-      { title: "S/4HANA vs ECC for learners", desc: "Which one to start on, and when the answer changes.", icon: "GitCompare" },
-      { title: "Why sessions feel slow", desc: "The three causes we see most, and how to fix each one.", icon: "Gauge" },
-      { title: "Running a 40-person batch", desc: "What we prepare before a large training class begins.", icon: "GraduationCap" },
-      { title: "Backups that actually restore", desc: "How we test snapshots rather than assuming them.", icon: "History" },
-    ],
-    specs: [
-      { label: "Cadence", value: "A couple of posts each month" },
-      { label: "Written by", value: "The engineers who run the systems" },
-      { label: "Cost", value: "Free to read" },
-    ],
-    checklist: {
-      title: "Topics we cover",
-      items: [
-        "Access and connectivity",
-        "Performance and sizing",
-        "Training-batch operations",
-        "Module learning paths",
-      ],
-    },
-    faq: commonFaq,
-  },
-  {
     slug: "sap-server-status",
     eyebrow: "Resources",
     title: "Server status",
