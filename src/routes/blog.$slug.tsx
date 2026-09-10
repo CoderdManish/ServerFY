@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { ArrowRight, CalendarDays, Check, Clock, User } from "lucide-react";
 import { Icon } from "@/components/Icon";
