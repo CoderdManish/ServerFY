@@ -163,6 +163,18 @@ function BlogArticle() {
         <section className="section-y bg-soft-mesh">
           <div className="container-fy grid gap-10 lg:grid-cols-[minmax(0,1fr)_310px] lg:items-start">
             <article className="max-w-3xl">
+              {post.cover ? (
+                <figure className="mb-2 overflow-hidden rounded-3xl ring-1 ring-border">
+                  <img
+                    src={post.cover}
+                    alt={post.coverAlt ?? post.title}
+                    width={1280}
+                    height={853}
+                    loading="eager"
+                    className="w-full object-cover"
+                  />
+                </figure>
+              ) : null}
               {post.sections.map((s, i) => (
                 <div key={s.heading} id={slugifyHeading(s.heading)} className="scroll-mt-28 first:mt-0 mt-12">
                   <div className="flex items-center gap-3">
