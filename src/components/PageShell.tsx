@@ -23,13 +23,10 @@ export function PageShell({ eyebrow, title, intro, crumbs, children }: Props) {
             className="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(60%_60%_at_15%_0%,color-mix(in_oklab,var(--orange)_22%,transparent),transparent_70%),radial-gradient(50%_50%_at_90%_20%,color-mix(in_oklab,var(--blue-bright)_28%,transparent),transparent_70%)]"
           />
           <div className="container-fy relative">
-            <nav aria-label="Breadcrumb" className="mb-5 flex items-center gap-1.5 text-xs font-semibold text-white/55">
-              <Link to="/" className="transition-colors hover:text-white">
-                Home
-              </Link>
-              <ChevronRight className="size-3.5" aria-hidden="true" />
-              <span className="text-white/85">{title}</span>
-            </nav>
+            <Breadcrumbs
+              className="mb-5"
+              items={crumbs ?? [{ name: "Home", to: "/" }, { name: title }]}
+            />
             <p className="type-eyebrow text-orange">{eyebrow}</p>
             <h1 className="mt-3 max-w-3xl text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
               {title}
