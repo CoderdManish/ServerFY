@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { modules } from "@/data/serverfy";
 import { moduleSlug } from "@/data/module-pages";
 import { resourcePages, serverPages, solutionPages } from "@/data/pages";
+import { blogPosts } from "@/data/blog";
 
 const staticPaths = [
   "/",
