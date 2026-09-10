@@ -152,17 +152,19 @@ export function trackPageView(path: string) {
   push({ type: "pageview", path, title: document.title, referrer: document.referrer || "direct" });
 }
 
-function labelFor(el: Element) {
+function labelFor(el: Element): NonNullable<AnalyticsEvent["target"]> | null {
   const node = el.closest("a,button,[data-analytics]") as HTMLElement | null;
   if (!node) return null;
   const anchor = node as HTMLAnchorElement;
-  return {
+  const text = (node.innerText || node.getAttribute("aria-label") || "").trim().slice(0, 160);
+  const target: NonNullable<AnalyticsEvent["target"]> = {
     tag: node.tagName.toLowerCase(),
-    text: (node.innerText || node.getAttribute("aria-label") || "").trim().slice(0, 160),
-    id: node.id || undefined,
-    href: anchor.href || undefined,
-    label: node.dataset['analytics'] || (node.innerText || node.getAttribute("aria-label") || "").trim().slice(0, 160),
+    text,
+    label: node.dataset['analytics'] || text,
   };
+  if (node.id) target.id = node.id;
+  if (anchor.href) target.href = anchor.href;
+  return target;
 }
 
 /** Boot the tracker once (idempotent). */
