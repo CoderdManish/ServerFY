@@ -29,6 +29,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WhyServerfyRouteImport } from './routes/why-serverfy'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ModulesIndexRouteImport } from './routes/modules.index'
 import { Route as ModulesCodeRouteImport } from './routes/modules.$code'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
@@ -139,6 +140,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/',
   getParentRoute: () => BlogRoute,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 const ModulesIndexRoute = ModulesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -200,6 +206,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
@@ -225,6 +232,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
@@ -256,6 +264,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
@@ -288,6 +297,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
@@ -313,6 +323,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
@@ -343,6 +354,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
@@ -518,6 +530,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof BlogRoute
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/modules/': {
       id: '/modules/'
       path: '/'
@@ -578,10 +597,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
 const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 
