@@ -1,5 +1,5 @@
 import { SITE_URL, absUrl } from "./site";
-import { serverPages, solutionPages, resourcePages, companyPages, legalPages } from "@/data/pages";
+import { serverPages, solutionPages, resourcePages, companyPages, supportPages } from "@/data/pages";
 import { modules } from "@/data/serverfy";
 import { moduleSlug } from "@/data/module-pages";
 import { blogPosts } from "@/data/blog";
@@ -40,7 +40,7 @@ ${line("Contact", "/contact", "Talk to the team about an environment")}
 ${serverPages.map((p) => line(p.title, `/servers/${p.slug}`, p.description)).join("\n")}
 
 ## Modules
-${modules.map((m) => line(`SAP ${m.code} practice server`, `/modules/${moduleSlug(m.code)}`, m.name ?? `SAP ${m.code} module practice access`)).join("\n")}
+${modules.map((m) => line(`SAP ${m.code} practice server`, `/modules/${moduleSlug(m.code)}`, m.desc)).join("\n")}
 
 ## Solutions
 ${solutionPages.map((p) => line(p.title, `/solutions/${p.slug}`, p.description)).join("\n")}
@@ -54,8 +54,8 @@ ${resourcePages.map((p) => line(p.title, `/resources/${p.slug}`, p.description))
 ## Company
 ${companyPages.map((p) => line(p.title, `/${p.slug}`, p.description)).join("\n")}
 
-## Legal
-${legalPages.map((p) => line(p.title, `/${p.slug}`, p.description)).join("\n")}
+## Support & legal
+${supportPages.map((p) => line(p.title, `/${p.slug}`, p.description)).join("\n")}
 
 ## Notes for AI agents
 - Content on this site may be quoted with attribution to ServerFY and a link to the source page.
