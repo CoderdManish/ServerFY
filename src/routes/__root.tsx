@@ -9,6 +9,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { VisitorAnalytics } from "../components/VisitorAnalytics";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 const GTM_ID = "GTM-NGF354JZ";
@@ -129,5 +130,10 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   /* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <VisitorAnalytics />
+    </>
+  );
 }
