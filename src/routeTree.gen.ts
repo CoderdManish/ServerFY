@@ -28,6 +28,7 @@ import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WhyServerfyRouteImport } from './routes/why-serverfy'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ModulesIndexRouteImport } from './routes/modules.index'
 import { Route as ModulesCodeRouteImport } from './routes/modules.$code'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
@@ -133,6 +134,11 @@ const Char91DotwellKnownChar93OauthProtectedResourceRoute =
     path: '/.well-known/oauth-protected-resource',
     getParentRoute: () => rootRouteImport,
   } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
+} as any)
 const ModulesIndexRoute = ModulesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -177,7 +183,7 @@ const SolutionsSlugRoute = SolutionsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
@@ -198,6 +204,7 @@ export interface FileRoutesByFullPath {
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/modules/': typeof ModulesIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/servers/': typeof ServersIndexRoute
@@ -206,7 +213,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
@@ -223,6 +229,7 @@ export interface FileRoutesByTo {
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/modules': typeof ModulesIndexRoute
   '/resources': typeof ResourcesIndexRoute
   '/servers': typeof ServersIndexRoute
@@ -232,7 +239,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
@@ -253,6 +260,7 @@ export interface FileRoutesById {
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/modules/': typeof ModulesIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/servers/': typeof ServersIndexRoute
@@ -284,6 +292,7 @@ export interface FileRouteTypes {
     | '/resources/$slug'
     | '/servers/$slug'
     | '/solutions/$slug'
+    | '/blog/'
     | '/modules/'
     | '/resources/'
     | '/servers/'
@@ -292,7 +301,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/blog'
     | '/careers'
     | '/contact'
     | '/infrastructure'
@@ -309,6 +317,7 @@ export interface FileRouteTypes {
     | '/resources/$slug'
     | '/servers/$slug'
     | '/solutions/$slug'
+    | '/blog'
     | '/modules'
     | '/resources'
     | '/servers'
@@ -338,6 +347,7 @@ export interface FileRouteTypes {
     | '/resources/$slug'
     | '/servers/$slug'
     | '/solutions/$slug'
+    | '/blog/'
     | '/modules/'
     | '/resources/'
     | '/servers/'
@@ -347,7 +357,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  BlogRoute: typeof BlogRoute
+  BlogRoute: typeof BlogRouteWithChildren
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   InfrastructureRoute: typeof InfrastructureRoute
@@ -501,6 +511,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/modules/': {
       id: '/modules/'
       path: '/'
@@ -560,6 +577,16 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface BlogRouteChildren {
+  BlogIndexRoute: typeof BlogIndexRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogIndexRoute: BlogIndexRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 interface ModulesRouteChildren {
   ModulesCodeRoute: typeof ModulesCodeRoute
   ModulesIndexRoute: typeof ModulesIndexRoute
@@ -617,7 +644,7 @@ const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  BlogRoute: BlogRoute,
+  BlogRoute: BlogRouteWithChildren,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   InfrastructureRoute: InfrastructureRoute,
