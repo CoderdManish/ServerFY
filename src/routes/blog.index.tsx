@@ -137,26 +137,37 @@ function BlogIndex() {
                 </div>
               </div>
 
-              <div className="glass-dark rounded-2xl p-6 sm:p-7">
-                <div className="flex items-center gap-3">
-                  <span className="icon-tile-dark grid size-12 place-items-center rounded-xl">
-                    <Icon name={featured.icon} className="size-6" />
-                  </span>
-                  <p className="text-xs font-black uppercase tracking-wider text-white/50">
-                    In this article
-                  </p>
+              {featured.cover ? (
+                <img
+                  src={featured.cover}
+                  alt={featured.coverAlt ?? featured.title}
+                  width={1280}
+                  height={853}
+                  loading="eager"
+                  className="w-full rounded-2xl object-cover shadow-[0_24px_60px_-30px_rgba(6,18,40,0.9)] ring-1 ring-white/15"
+                />
+              ) : (
+                <div className="glass-dark rounded-2xl p-6 sm:p-7">
+                  <div className="flex items-center gap-3">
+                    <span className="icon-tile-dark grid size-12 place-items-center rounded-xl">
+                      <Icon name={featured.icon} className="size-6" />
+                    </span>
+                    <p className="text-xs font-black uppercase tracking-wider text-white/50">
+                      In this article
+                    </p>
+                  </div>
+                  <ol className="mt-5 space-y-3">
+                    {featured.sections.slice(0, 4).map((s, i) => (
+                      <li key={s.heading} className="flex items-start gap-3">
+                        <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-md bg-white/10 text-[0.7rem] font-black text-orange ring-1 ring-white/10">
+                          {i + 1}
+                        </span>
+                        <span className="text-sm leading-relaxed text-white/75">{s.heading}</span>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
-                <ol className="mt-5 space-y-3">
-                  {featured.sections.slice(0, 4).map((s, i) => (
-                    <li key={s.heading} className="flex items-start gap-3">
-                      <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-md bg-white/10 text-[0.7rem] font-black text-orange ring-1 ring-white/10">
-                        {i + 1}
-                      </span>
-                      <span className="text-sm leading-relaxed text-white/75">{s.heading}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
+              )}
             </div>
           </article>
         </div>
