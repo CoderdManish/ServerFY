@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { modules } from "@/data/serverfy";
 import { moduleSlug } from "@/data/module-pages";
 import { resourcePages, serverPages, solutionPages } from "@/data/pages";
+import { blogPosts } from "@/data/blog";
 
 const staticPaths = [
   "/",
@@ -10,6 +11,7 @@ const staticPaths = [
   "/solutions",
   "/pricing",
   "/resources",
+  "/blog",
   "/about",
   "/contact",
   "/why-serverfy",
@@ -27,6 +29,7 @@ function allPaths(): string[] {
     ...serverPages.map((p) => `/servers/${p.slug}`),
     ...solutionPages.map((p) => `/solutions/${p.slug}`),
     ...resourcePages.map((p) => `/resources/${p.slug}`),
+    ...blogPosts.map((p) => `/blog/${p.slug}`),
     ...modules.map((m) => `/modules/${moduleSlug(m.code)}`),
   ];
 }

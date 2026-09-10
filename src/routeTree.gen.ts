@@ -11,9 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as InfrastructureRouteImport } from './routes/infrastructure'
+import { Route as LlmDottxtRouteImport } from './routes/llm[.]txt'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ModulesRouteImport } from './routes/modules'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -27,6 +30,8 @@ import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WhyServerfyRouteImport } from './routes/why-serverfy'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ModulesIndexRouteImport } from './routes/modules.index'
 import { Route as ModulesCodeRouteImport } from './routes/modules.$code'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
@@ -46,6 +51,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
@@ -59,6 +69,16 @@ const ContactRoute = ContactRouteImport.update({
 const InfrastructureRoute = InfrastructureRouteImport.update({
   id: '/infrastructure',
   path: '/infrastructure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmDottxtRoute = LlmDottxtRouteImport.update({
+  id: '/llm.txt',
+  path: '/llm.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -127,6 +147,16 @@ const Char91DotwellKnownChar93OauthProtectedResourceRoute =
     path: '/.well-known/oauth-protected-resource',
     getParentRoute: () => rootRouteImport,
   } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 const ModulesIndexRoute = ModulesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -171,9 +201,12 @@ const SolutionsSlugRoute = SolutionsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blog': typeof BlogRouteWithChildren
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
+  '/llm.txt': typeof LlmDottxtRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/mcp': typeof McpRoute
   '/modules': typeof ModulesRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -187,10 +220,12 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/modules/': typeof ModulesIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/servers/': typeof ServersIndexRoute
@@ -202,6 +237,8 @@ export interface FileRoutesByTo {
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
+  '/llm.txt': typeof LlmDottxtRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -211,10 +248,12 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/modules': typeof ModulesIndexRoute
   '/resources': typeof ResourcesIndexRoute
   '/servers': typeof ServersIndexRoute
@@ -224,9 +263,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blog': typeof BlogRouteWithChildren
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
+  '/llm.txt': typeof LlmDottxtRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/mcp': typeof McpRoute
   '/modules': typeof ModulesRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -240,10 +282,12 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/modules/': typeof ModulesIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/servers/': typeof ServersIndexRoute
@@ -254,9 +298,12 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/blog'
     | '/careers'
     | '/contact'
     | '/infrastructure'
+    | '/llm.txt'
+    | '/llms.txt'
     | '/mcp'
     | '/modules'
     | '/pricing'
@@ -270,10 +317,12 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
     | '/solutions/$slug'
+    | '/blog/'
     | '/modules/'
     | '/resources/'
     | '/servers/'
@@ -285,6 +334,8 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/infrastructure'
+    | '/llm.txt'
+    | '/llms.txt'
     | '/mcp'
     | '/pricing'
     | '/privacy'
@@ -294,10 +345,12 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
     | '/solutions/$slug'
+    | '/blog'
     | '/modules'
     | '/resources'
     | '/servers'
@@ -306,9 +359,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/blog'
     | '/careers'
     | '/contact'
     | '/infrastructure'
+    | '/llm.txt'
+    | '/llms.txt'
     | '/mcp'
     | '/modules'
     | '/pricing'
@@ -322,10 +378,12 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
     | '/solutions/$slug'
+    | '/blog/'
     | '/modules/'
     | '/resources/'
     | '/servers/'
@@ -335,9 +393,12 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BlogRoute: typeof BlogRouteWithChildren
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   InfrastructureRoute: typeof InfrastructureRoute
+  LlmDottxtRoute: typeof LlmDottxtRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   McpRoute: typeof McpRoute
   ModulesRoute: typeof ModulesRouteWithChildren
   PricingRoute: typeof PricingRoute
@@ -369,6 +430,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/careers': {
       id: '/careers'
       path: '/careers'
@@ -388,6 +456,20 @@ declare module '@tanstack/react-router' {
       path: '/infrastructure'
       fullPath: '/infrastructure'
       preLoaderRoute: typeof InfrastructureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llm.txt': {
+      id: '/llm.txt'
+      path: '/llm.txt'
+      fullPath: '/llm.txt'
+      preLoaderRoute: typeof LlmDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -481,6 +563,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/modules/': {
       id: '/modules/'
       path: '/'
@@ -540,6 +636,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 interface ModulesRouteChildren {
   ModulesCodeRoute: typeof ModulesCodeRoute
   ModulesIndexRoute: typeof ModulesIndexRoute
@@ -597,9 +705,12 @@ const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BlogRoute: BlogRouteWithChildren,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   InfrastructureRoute: InfrastructureRoute,
+  LlmDottxtRoute: LlmDottxtRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   McpRoute: McpRoute,
   ModulesRoute: ModulesRouteWithChildren,
   PricingRoute: PricingRoute,

@@ -5,6 +5,10 @@ import { legacyResourceSlugs } from "@/data/legacy-slugs";
 
 export const Route = createFileRoute("/resources/$slug")({
   loader: ({ params }) => {
+    // The blog moved to its own /blog section.
+    if (["sap-server-blog", "blog"].includes(params.slug.toLowerCase())) {
+      throw redirect({ to: "/blog", statusCode: 301 });
+    }
     const page = findPage(resourcePages, params.slug);
     if (!page) {
       const moved = legacyResourceSlugs[params.slug.toLowerCase()];
