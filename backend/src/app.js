@@ -4,6 +4,7 @@ import helmet from "helmet";
 import compression from "compression";
 import { env } from "./config/env.js";
 import { serverRequestsRouter } from "./routes/serverRequests.js";
+import { analyticsRouter } from "./routes/analytics.js";
 
 export function createApp() {
   const app = express();
@@ -26,6 +27,7 @@ export function createApp() {
 
   app.get("/health", (_req, res) => res.json({ ok: true, uptime: process.uptime() }));
   app.use("/api/server-requests", serverRequestsRouter);
+  app.use("/api/analytics", analyticsRouter);
 
   app.use((_req, res) => res.status(404).json({ ok: false, message: "Not found" }));
 
