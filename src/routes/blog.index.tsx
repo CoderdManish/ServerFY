@@ -228,7 +228,10 @@ function BlogIndex() {
                     {post.excerpt}
                   </p>
                   <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
-                    <Meta date={post.date} minutes={post.readMinutes} />
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+                      <CalendarDays className="size-3.5" aria-hidden="true" />
+                      <time dateTime={post.date}>{formatDate(post.date)}</time>
+                    </span>
                     <ArrowRight
                       className="size-4 text-orange opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
                       aria-hidden="true"
