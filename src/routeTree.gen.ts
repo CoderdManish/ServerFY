@@ -15,6 +15,7 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as InfrastructureRouteImport } from './routes/infrastructure'
+import { Route as LlmDottxtRouteImport } from './routes/llm[.]txt'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ModulesRouteImport } from './routes/modules'
@@ -68,6 +69,11 @@ const ContactRoute = ContactRouteImport.update({
 const InfrastructureRoute = InfrastructureRouteImport.update({
   id: '/infrastructure',
   path: '/infrastructure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmDottxtRoute = LlmDottxtRouteImport.update({
+  id: '/llm.txt',
+  path: '/llm.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
@@ -199,6 +205,7 @@ export interface FileRoutesByFullPath {
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
+  '/llm.txt': typeof LlmDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/mcp': typeof McpRoute
   '/modules': typeof ModulesRouteWithChildren
@@ -230,6 +237,7 @@ export interface FileRoutesByTo {
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
+  '/llm.txt': typeof LlmDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
@@ -259,6 +267,7 @@ export interface FileRoutesById {
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
+  '/llm.txt': typeof LlmDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/mcp': typeof McpRoute
   '/modules': typeof ModulesRouteWithChildren
@@ -293,6 +302,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/infrastructure'
+    | '/llm.txt'
     | '/llms.txt'
     | '/mcp'
     | '/modules'
@@ -324,6 +334,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/infrastructure'
+    | '/llm.txt'
     | '/llms.txt'
     | '/mcp'
     | '/pricing'
@@ -352,6 +363,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/infrastructure'
+    | '/llm.txt'
     | '/llms.txt'
     | '/mcp'
     | '/modules'
@@ -385,6 +397,7 @@ export interface RootRouteChildren {
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   InfrastructureRoute: typeof InfrastructureRoute
+  LlmDottxtRoute: typeof LlmDottxtRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
   McpRoute: typeof McpRoute
   ModulesRoute: typeof ModulesRouteWithChildren
@@ -443,6 +456,13 @@ declare module '@tanstack/react-router' {
       path: '/infrastructure'
       fullPath: '/infrastructure'
       preLoaderRoute: typeof InfrastructureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llm.txt': {
+      id: '/llm.txt'
+      path: '/llm.txt'
+      fullPath: '/llm.txt'
+      preLoaderRoute: typeof LlmDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/llms.txt': {
@@ -689,6 +709,7 @@ const rootRouteChildren: RootRouteChildren = {
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   InfrastructureRoute: InfrastructureRoute,
+  LlmDottxtRoute: LlmDottxtRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
   McpRoute: McpRoute,
   ModulesRoute: ModulesRouteWithChildren,
