@@ -30,6 +30,5 @@ export const legacyResourceSlugs: Record<string, string> = {
   "knowledge-base": "sap-server-knowledge-base",
   guides: "sap-server-guides",
   "system-requirements": "sap-server-system-requirements",
-  blog: "sap-server-blog",
   "server-status": "sap-server-status",
 };
