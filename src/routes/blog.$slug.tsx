@@ -78,12 +78,41 @@ function slugifyHeading(h: string) {
   return h.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
+function ReadingProgress() {
+  const [pct, setPct] = useState(0);
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        setPct(max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0);
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+  return (
+    <div aria-hidden="true" className="fixed inset-x-0 top-0 z-[60] h-0.5 bg-transparent">
+      <div
+        className="h-full bg-orange transition-[width] duration-150 ease-out"
+        style={{ width: `${pct}%` }}
+      />
+    </div>
+  );
+}
+
 function BlogArticle() {
   const post = Route.useLoaderData();
   const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
     <div className="min-h-screen">
+      <ReadingProgress />
       <Navbar />
       <main>
         {/* Article header */}
@@ -97,15 +126,24 @@ function BlogArticle() {
               className="mb-5"
               items={[{ name: "Home", to: "/" }, { name: "Blog", to: "/blog" }, { name: post.title }]}
             />
-            <p className="type-eyebrow text-orange">{post.category}</p>
-            <h1 className="mt-3 max-w-3xl text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[0.68rem] font-black uppercase tracking-wider text-orange ring-1 ring-white/15">
+                {post.category}
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-wider text-white/60 ring-1 ring-white/10">
+                {post.readMinutes} min read
+              </span>
+            </div>
+            <h1 className="mt-4 max-w-3xl text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[2.9rem]">
               {post.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">{post.intro}</p>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">{post.intro}</p>
 
-            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-semibold text-white/60">
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/10 pt-5 text-xs font-semibold text-white/60">
               <span className="inline-flex items-center gap-2">
-                <User className="size-3.5" aria-hidden="true" />
+                <span className="grid size-8 place-items-center rounded-full bg-white/10 ring-1 ring-white/15">
+                  <User className="size-3.5 text-orange" aria-hidden="true" />
+                </span>
                 {post.author}
               </span>
               <span className="inline-flex items-center gap-2">
@@ -122,18 +160,33 @@ function BlogArticle() {
 
         {/* Body + sidebar */}
         <section className="section-y bg-soft-mesh">
-          <div className="container-fy grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+          <div className="container-fy grid gap-10 lg:grid-cols-[minmax(0,1fr)_310px] lg:items-start">
             <article className="max-w-3xl">
-              {post.sections.map((s) => (
-                <div key={s.heading} id={slugifyHeading(s.heading)} className="scroll-mt-28 first:mt-0 mt-10">
-                  <h2 className="text-xl font-black tracking-tight text-foreground sm:text-2xl">{s.heading}</h2>
-                  {s.paragraphs.map((p) => (
-                    <p key={p} className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">
+              {post.sections.map((s, i) => (
+                <div key={s.heading} id={slugifyHeading(s.heading)} className="scroll-mt-28 first:mt-0 mt-12">
+                  <div className="flex items-center gap-3">
+                    <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-orange/10 text-xs font-black text-orange ring-1 ring-orange/20">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span aria-hidden="true" className="h-px flex-1 bg-border" />
+                  </div>
+                  <h2 className="mt-4 text-xl font-black tracking-tight text-foreground sm:text-2xl">
+                    {s.heading}
+                  </h2>
+                  {s.paragraphs.map((p, pi) => (
+                    <p
+                      key={p}
+                      className={`mt-4 text-sm leading-7 text-muted-foreground sm:text-[0.98rem] sm:leading-8 ${
+                        i === 0 && pi === 0
+                          ? "first-letter:float-left first-letter:mr-2.5 first-letter:mt-1 first-letter:text-5xl first-letter:font-black first-letter:leading-none first-letter:text-orange"
+                          : ""
+                      }`}
+                    >
                       {p}
                     </p>
                   ))}
                   {s.bullets?.length ? (
-                    <ul className="mt-5 space-y-2.5">
+                    <ul className="neu-card mt-6 space-y-3 rounded-2xl p-5">
                       {s.bullets.map((b) => (
                         <li key={b} className="flex items-start gap-3 text-sm leading-relaxed text-foreground">
                           <span className="icon-tile-soft mt-0.5 grid size-6 shrink-0 place-items-center rounded-md">
@@ -146,6 +199,7 @@ function BlogArticle() {
                   ) : null}
                 </div>
               ))}
+
 
               <div className="glass-panel mt-12 rounded-3xl p-6 sm:p-8">
                 <h2 className="text-lg font-black tracking-tight text-foreground">Key takeaways</h2>
