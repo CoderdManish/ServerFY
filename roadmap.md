@@ -4,3 +4,6 @@
 - [x] Make homepage fully SEO-friendly
 - [x] Remove purpose-based server pages and navigation links
 - [x] Rename HANA server labels to SAP Server and add the trial checkmark
+
+- [x] Improve mobile homepage hero performance and layout from Lighthouse report
+- [x] Diagnose why field Web Vitals are unavailable
