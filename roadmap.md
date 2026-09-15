@@ -5,5 +5,5 @@
 - [x] Remove purpose-based server pages and navigation links
 - [x] Rename HANA server labels to SAP Server and add the trial checkmark
 
-- [ ] Improve mobile homepage hero performance and layout from Lighthouse report
-- [ ] Diagnose why field Web Vitals are unavailable
+- [x] Improve mobile homepage hero performance and layout from Lighthouse report
+- [x] Diagnose why field Web Vitals are unavailable
