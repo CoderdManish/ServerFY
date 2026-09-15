@@ -68,7 +68,8 @@ export const Route = createFileRoute("/")({
       ...head,
       links: [
         ...head.links,
-        { rel: "preload", as: "image", href: rackMobile, type: "image/webp", media: "(max-width: 767px)" },
+        // Only the desktop rack is above the fold; on mobile it sits below the
+        // first screen, so preloading it would compete with first paint.
         { rel: "preload", as: "image", href: rackDesktop, type: "image/webp", media: "(min-width: 768px)" },
       ],
     };
