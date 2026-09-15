@@ -17,3 +17,6 @@ Sitemap: https://serverfy.in/sitemap.xml
 
 # AI agent guide
 # https://serverfy.in/llms.txt
+
+User-agent: *
+Disallow: /admin/
