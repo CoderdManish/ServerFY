@@ -30,6 +30,7 @@ import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WhyServerfyRouteImport } from './routes/why-serverfy'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ModulesIndexRouteImport } from './routes/modules.index'
@@ -147,6 +148,11 @@ const Char91DotwellKnownChar93OauthProtectedResourceRoute =
     path: '/.well-known/oauth-protected-resource',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/admin/analytics',
+  path: '/admin/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -220,6 +226,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -248,6 +255,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -282,6 +290,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -317,6 +326,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/admin/analytics'
     | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
@@ -345,6 +355,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/admin/analytics'
     | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
@@ -378,6 +389,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
+    | '/admin/analytics'
     | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
@@ -412,6 +424,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   WhyServerfyRoute: typeof WhyServerfyRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -561,6 +574,13 @@ declare module '@tanstack/react-router' {
       path: '/.well-known/oauth-protected-resource'
       fullPath: '/.well-known/oauth-protected-resource'
       preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/admin/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -725,6 +745,7 @@ const rootRouteChildren: RootRouteChildren = {
   WhyServerfyRoute: WhyServerfyRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
