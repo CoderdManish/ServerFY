@@ -70,6 +70,8 @@ function HeroRack() {
           alt=""
           width={640}
           height={622}
+          sizes="(min-width: 1024px) 46vw, calc(100vw - 2rem)"
+          loading="eager"
           decoding="async"
           fetchPriority="high"
           className="mx-auto block h-auto w-full object-contain [filter:drop-shadow(0_24px_34px_color-mix(in_oklab,var(--navy-dark)_55%,transparent))]"
@@ -81,26 +83,26 @@ function HeroRack() {
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-navy-gradient pt-24 pb-12 lg:pt-28 lg:pb-16">
+    <section id="top" className="relative overflow-hidden bg-navy-gradient pt-20 pb-10 sm:pt-24 sm:pb-12 lg:pt-28 lg:pb-16">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.13] [mask-image:radial-gradient(70%_60%_at_50%_35%,#000,transparent)]" />
-      <div className="container-fy relative grid items-center gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14">
+      <div className="container-fy relative grid items-center gap-4 sm:gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14">
         <div className="min-w-0">
           <span className="type-eyebrow inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-white/80 backdrop-blur">
             <span className="size-1.5 rounded-full bg-orange led" />
             All SAP landscapes operational
           </span>
 
-          <h1 className="type-hero mt-6 text-balance text-white">
+          <h1 className="type-hero mt-4 text-balance text-white sm:mt-6">
             <span className="block">High-Speed ECC &amp; SAP S/4HANA</span>
             <span className="text-gradient-orange mt-1 block">Server Access for Practice.</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70 sm:mt-6 sm:text-lg">
             Trusted SAP Server for Functional &amp; Technical modules. Practice, learn, develop, test and run your SAP
             S/4 HANA practice server with confidence.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
             <CtaButton href={waLink(waMessages.buy)} {...waProps} size="lg" className="w-full sm:w-auto">
               Get Your SAP Server
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -116,7 +118,7 @@ export function Hero() {
             Free trial available · No setup fee · Access within hours
           </p>
 
-          <ul className="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <ul className="mt-9 hidden grid-cols-2 gap-3 sm:grid sm:grid-cols-4">
             {proofs.map(({ icon: I, label }) => (
               <li key={label} className="flex items-center gap-2 text-[0.78rem] font-semibold text-white/70">
                 <span className="grid size-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 text-blue-bright">
@@ -130,7 +132,9 @@ export function Hero() {
 
         <div className="flex min-w-0 flex-col gap-5">
           <HeroRack />
-          <ProvisionLog />
+          <div className="hidden sm:block">
+            <ProvisionLog />
+          </div>
         </div>
       </div>
     </section>
