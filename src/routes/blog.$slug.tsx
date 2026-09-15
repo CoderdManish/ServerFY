@@ -79,6 +79,47 @@ function slugifyHeading(h: string) {
   return h.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
+/** Renders plain text plus simple <a href="...">text</a> links from blog paragraphs. */
+function LinkedText({ text }: { text: string }) {
+  const parts: (string | { type: "link"; href: string; label: string })[] = [];
+  const regex = /<a\s+href="([^"]+)"[^>]*>([^<]+)<\/a>/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(text)) !== null) {
+    const idx = match.index!;
+    const full = match[0]!;
+    const href = match[1]!;
+    const label = match[2]!;
+    if (idx > lastIndex) {
+      parts.push(text.slice(lastIndex, idx));
+    }
+    parts.push({ type: "link", href, label });
+    lastIndex = idx + full.length;
+  }
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return (
+    <>
+      {parts.map((part, i) =>
+        typeof part === "string" ? (
+          <span key={i}>{part}</span>
+        ) : (
+          <a
+            key={i}
+            href={part.href}
+            className="font-semibold text-blue underline decoration-blue/30 underline-offset-4 transition-colors hover:text-orange hover:decoration-orange"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {part.label}
+          </a>
+        ),
+      )}
+    </>
+  );
+}
+
 function ReadingProgress() {
   const [pct, setPct] = useState(0);
   useEffect(() => {
@@ -195,7 +236,7 @@ function BlogArticle() {
                           : ""
                       }`}
                     >
-                      {p}
+                      <LinkedText text={p} />
                     </p>
                   ))}
                   {s.bullets?.length ? (
