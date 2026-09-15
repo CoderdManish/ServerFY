@@ -48,8 +48,10 @@ export const Route = createFileRoute("/blog/")({
     }),
 });
 
-const featured = (sortedPosts.find((p) => p.featured) ?? sortedPosts[0])!;
-const rest = sortedPosts.filter((p) => p.slug !== featured.slug);
+const featuredPosts = sortedPosts.filter((p) => p.featured);
+const featured = (featuredPosts[0] ?? sortedPosts[0])!;
+const featuredSlugs = new Set(featuredPosts.map((p) => p.slug));
+const rest = sortedPosts.filter((p) => !featuredSlugs.has(p.slug));
 
 function Meta({ date, minutes, light }: { date: string; minutes: number; light?: boolean }) {
   const cls = light ? "text-white/60" : "text-muted-foreground";
@@ -99,7 +101,10 @@ function BlogIndex() {
             </p>
           </div>
 
-          <article className="group relative mt-8 overflow-hidden rounded-[28px] bg-navy-gradient shadow-[0_30px_80px_-40px_rgba(6,18,40,0.75)] ring-1 ring-white/10">
+          <div className="mt-8 -mx-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex gap-6">
+              {featuredPosts.map((post) => (
+          <article key={post.slug} className="group relative w-[88vw] max-w-[1100px] shrink-0 snap-start overflow-hidden rounded-[28px] bg-navy-gradient shadow-[0_30px_80px_-40px_rgba(6,18,40,0.75)] ring-1 ring-white/10">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 opacity-80 [background:radial-gradient(55%_65%_at_12%_0%,color-mix(in_oklab,var(--orange)_26%,transparent),transparent_70%),radial-gradient(50%_60%_at_92%_15%,color-mix(in_oklab,var(--blue-bright)_30%,transparent),transparent_72%)]"
@@ -111,36 +116,36 @@ function BlogIndex() {
                     Featured
                   </span>
                   <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[0.68rem] font-black uppercase tracking-wider text-white/80 ring-1 ring-white/15">
-                    {featured.category}
+                    {post.category}
                   </span>
                 </div>
                 <h3 className="mt-5 text-[1.7rem] font-black leading-[1.12] tracking-tight text-white sm:text-4xl">
                   <Link
                     to="/blog/$slug"
-                    params={{ slug: featured.slug }}
+                    params={{ slug: post.slug }}
                     className="bg-[linear-gradient(var(--orange),var(--orange))] bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-[background-size,color] duration-500 hover:text-orange group-hover:bg-[length:100%_2px]"
                   >
-                    {featured.title}
+                    {post.title}
                   </Link>
                 </h3>
                 <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
-                  {featured.excerpt}
+                  {post.excerpt}
                 </p>
                 <div className="mt-6">
-                  <Meta date={featured.date} minutes={featured.readMinutes} light />
+                  <Meta date={post.date} minutes={post.readMinutes} light />
                 </div>
                 <div className="mt-8">
-                  <CtaButton href={`/blog/${featured.slug}`} size="sm">
+                  <CtaButton href={`/blog/${post.slug}`} size="sm">
                     Read the article
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                   </CtaButton>
                 </div>
               </div>
 
-              {featured.cover ? (
+              {post.cover ? (
                 <img
-                  src={featured.cover}
-                  alt={featured.coverAlt ?? featured.title}
+                  src={post.cover}
+                  alt={post.coverAlt ?? post.title}
                   width={1280}
                   height={853}
                   loading="eager"
@@ -150,14 +155,14 @@ function BlogIndex() {
                 <div className="glass-dark rounded-2xl p-6 sm:p-7">
                   <div className="flex items-center gap-3">
                     <span className="icon-tile-dark grid size-12 place-items-center rounded-xl">
-                      <Icon name={featured.icon} className="size-6" />
+                      <Icon name={post.icon} className="size-6" />
                     </span>
                     <p className="text-xs font-black uppercase tracking-wider text-white/50">
                       In this article
                     </p>
                   </div>
                   <ol className="mt-5 space-y-3">
-                    {featured.sections.slice(0, 4).map((s, i) => (
+                    {post.sections.slice(0, 4).map((s, i) => (
                       <li key={s.heading} className="flex items-start gap-3">
                         <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-md bg-white/10 text-[0.7rem] font-black text-orange ring-1 ring-white/10">
                           {i + 1}
@@ -170,6 +175,14 @@ function BlogIndex() {
               )}
             </div>
           </article>
+              ))}
+            </div>
+          </div>
+          {featuredPosts.length > 1 && (
+            <p className="mt-4 text-center text-xs text-muted-foreground">
+              Swipe to see more featured articles
+            </p>
+          )}
         </div>
       </section>
 
