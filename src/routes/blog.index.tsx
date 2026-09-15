@@ -48,8 +48,10 @@ export const Route = createFileRoute("/blog/")({
     }),
 });
 
-const featured = (sortedPosts.find((p) => p.featured) ?? sortedPosts[0])!;
-const rest = sortedPosts.filter((p) => p.slug !== featured.slug);
+const featuredPosts = sortedPosts.filter((p) => p.featured);
+const featured = (featuredPosts[0] ?? sortedPosts[0])!;
+const featuredSlugs = new Set(featuredPosts.map((p) => p.slug));
+const rest = sortedPosts.filter((p) => !featuredSlugs.has(p.slug));
 
 function Meta({ date, minutes, light }: { date: string; minutes: number; light?: boolean }) {
   const cls = light ? "text-white/60" : "text-muted-foreground";
