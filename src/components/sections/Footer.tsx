@@ -1,4 +1,4 @@
-import { Linkedin, Mail, MapPin, MessageCircle, Phone, Twitter, Youtube } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone, Youtube } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Link } from "@tanstack/react-router";
 import { footerColumns, site } from "@/data/serverfy";
@@ -43,8 +43,9 @@ export function Footer() {
             <ul className="mt-6 flex gap-2">
               {[
                 { icon: MessageCircle, label: "WhatsApp", href: site.whatsapp },
-                { icon: Linkedin, label: "LinkedIn", href: "#" },
-                { icon: Twitter, label: "X", href: "#" },
+                { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/serverfy/" },
+                { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/profile.php?id=61594163638065" },
+                { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/server_fy/?hl=en" },
                 { icon: Youtube, label: "YouTube", href: "#" },
               ].map((s) => (
                 <li key={s.label}>
