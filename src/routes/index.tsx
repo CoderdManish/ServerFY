@@ -20,6 +20,8 @@ import { FloatingActions } from "@/components/sections/FloatingActions";
 import { faqs, site } from "@/data/serverfy";
 import { buildHead, breadcrumbList, organizationSchema, websiteSchema } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
+import rackDesktop from "@/assets/server-rack-hero-desktop.webp";
+import rackMobile from "@/assets/server-rack-hero-mobile.webp";
 
 const title = "ServerFY | Reliable SAP Servers for Practice, Training & Development";
 const description =
@@ -29,8 +31,8 @@ const keywords =
 
 export const Route = createFileRoute("/")({
   component: Index,
-  head: () =>
-    buildHead({
+  head: () => {
+    const head = buildHead({
       title,
       description,
       path: "/",
@@ -60,7 +62,17 @@ export const Route = createFileRoute("/")({
           { name: "Home", item: "/" },
         ]),
       ],
-    }),
+    });
+
+    return {
+      ...head,
+      links: [
+        ...head.links,
+        { rel: "preload", as: "image", href: rackMobile, type: "image/webp", media: "(max-width: 767px)" },
+        { rel: "preload", as: "image", href: rackDesktop, type: "image/webp", media: "(min-width: 768px)" },
+      ],
+    };
+  },
 });
 
 function Index() {

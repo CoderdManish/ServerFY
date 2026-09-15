@@ -1,7 +1,8 @@
 import { ArrowRight, Clock, Layers, LockKeyhole, Zap } from "lucide-react";
 import { CtaButton } from "@/components/CtaButton";
 import { waLink, waMessages, waProps } from "@/lib/whatsapp";
-import { ServerVisual } from "./ServerVisual";
+import rackDesktop from "@/assets/server-rack-hero-desktop.webp";
+import rackMobile from "@/assets/server-rack-hero-mobile.webp";
 
 const proofs = [
   { icon: Zap, label: "Instant Access" },
@@ -58,6 +59,26 @@ function ProvisionLog() {
   );
 }
 
+function HeroRack() {
+  return (
+    <div className="relative isolate mx-auto w-full max-w-[590px]" aria-hidden="true">
+      <div className="pointer-events-none absolute inset-x-[12%] bottom-[4%] -z-10 h-2/3 rounded-full bg-blue-bright/20 blur-3xl" />
+      <picture>
+        <source media="(min-width: 768px)" srcSet={rackDesktop} type="image/webp" />
+        <img
+          src={rackMobile}
+          alt=""
+          width={640}
+          height={622}
+          decoding="async"
+          fetchPriority="high"
+          className="mx-auto block h-auto w-full object-contain [filter:drop-shadow(0_24px_34px_color-mix(in_oklab,var(--navy-dark)_55%,transparent))]"
+        />
+      </picture>
+    </div>
+  );
+}
+
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-navy-gradient pt-24 pb-12 lg:pt-28 lg:pb-16">
@@ -108,7 +129,7 @@ export function Hero() {
         </div>
 
         <div className="flex min-w-0 flex-col gap-5">
-          <ServerVisual compact />
+          <HeroRack />
           <ProvisionLog />
         </div>
       </div>
