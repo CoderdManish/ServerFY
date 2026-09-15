@@ -116,36 +116,36 @@ function BlogIndex() {
                     Featured
                   </span>
                   <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[0.68rem] font-black uppercase tracking-wider text-white/80 ring-1 ring-white/15">
-                    {featured.category}
+                    {post.category}
                   </span>
                 </div>
                 <h3 className="mt-5 text-[1.7rem] font-black leading-[1.12] tracking-tight text-white sm:text-4xl">
                   <Link
                     to="/blog/$slug"
-                    params={{ slug: featured.slug }}
+                    params={{ slug: post.slug }}
                     className="bg-[linear-gradient(var(--orange),var(--orange))] bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-[background-size,color] duration-500 hover:text-orange group-hover:bg-[length:100%_2px]"
                   >
-                    {featured.title}
+                    {post.title}
                   </Link>
                 </h3>
                 <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
-                  {featured.excerpt}
+                  {post.excerpt}
                 </p>
                 <div className="mt-6">
-                  <Meta date={featured.date} minutes={featured.readMinutes} light />
+                  <Meta date={post.date} minutes={post.readMinutes} light />
                 </div>
                 <div className="mt-8">
-                  <CtaButton href={`/blog/${featured.slug}`} size="sm">
+                  <CtaButton href={`/blog/${post.slug}`} size="sm">
                     Read the article
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                   </CtaButton>
                 </div>
               </div>
 
-              {featured.cover ? (
+              {post.cover ? (
                 <img
-                  src={featured.cover}
-                  alt={featured.coverAlt ?? featured.title}
+                  src={post.cover}
+                  alt={post.coverAlt ?? post.title}
                   width={1280}
                   height={853}
                   loading="eager"
@@ -155,14 +155,14 @@ function BlogIndex() {
                 <div className="glass-dark rounded-2xl p-6 sm:p-7">
                   <div className="flex items-center gap-3">
                     <span className="icon-tile-dark grid size-12 place-items-center rounded-xl">
-                      <Icon name={featured.icon} className="size-6" />
+                      <Icon name={post.icon} className="size-6" />
                     </span>
                     <p className="text-xs font-black uppercase tracking-wider text-white/50">
                       In this article
                     </p>
                   </div>
                   <ol className="mt-5 space-y-3">
-                    {featured.sections.slice(0, 4).map((s, i) => (
+                    {post.sections.slice(0, 4).map((s, i) => (
                       <li key={s.heading} className="flex items-start gap-3">
                         <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-md bg-white/10 text-[0.7rem] font-black text-orange ring-1 ring-white/10">
                           {i + 1}
