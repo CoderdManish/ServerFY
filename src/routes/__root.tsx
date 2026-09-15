@@ -14,7 +14,9 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 const GTM_ID = "GTM-NGF354JZ";
 
-const gtmScript = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`;
+// GTM is queued immediately but the container script is fetched only after the
+// page has painted and gone idle, so it never competes with FCP/LCP resources.
+const gtmScript = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var loaded=false;var load=function(){if(loaded)return;loaded=true;var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);};var start=function(){('requestIdleCallback'in w)?w.requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);};(d.readyState==='complete')?start():w.addEventListener('load',start);['pointerdown','keydown','touchstart','scroll'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true});});})(window,document,'script','dataLayer','${GTM_ID}');`;
 
 const gtmNoScript = `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
 
