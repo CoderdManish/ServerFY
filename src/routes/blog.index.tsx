@@ -175,6 +175,14 @@ function BlogIndex() {
               )}
             </div>
           </article>
+              ))}
+            </div>
+          </div>
+          {featuredPosts.length > 1 && (
+            <p className="mt-4 text-center text-xs text-muted-foreground">
+              Swipe to see more featured articles
+            </p>
+          )}
         </div>
       </section>
 
