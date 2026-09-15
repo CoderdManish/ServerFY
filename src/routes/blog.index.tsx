@@ -101,7 +101,10 @@ function BlogIndex() {
             </p>
           </div>
 
-          <article className="group relative mt-8 overflow-hidden rounded-[28px] bg-navy-gradient shadow-[0_30px_80px_-40px_rgba(6,18,40,0.75)] ring-1 ring-white/10">
+          <div className="mt-8 -mx-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex gap-6">
+              {featuredPosts.map((post) => (
+          <article key={post.slug} className="group relative w-[88vw] max-w-[1100px] shrink-0 snap-start overflow-hidden rounded-[28px] bg-navy-gradient shadow-[0_30px_80px_-40px_rgba(6,18,40,0.75)] ring-1 ring-white/10">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 opacity-80 [background:radial-gradient(55%_65%_at_12%_0%,color-mix(in_oklab,var(--orange)_26%,transparent),transparent_70%),radial-gradient(50%_60%_at_92%_15%,color-mix(in_oklab,var(--blue-bright)_30%,transparent),transparent_72%)]"
