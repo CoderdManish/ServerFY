@@ -5,6 +5,8 @@ import compression from "compression";
 import { env } from "./config/env.js";
 import { serverRequestsRouter } from "./routes/serverRequests.js";
 import { analyticsRouter } from "./routes/analytics.js";
+import { authRouter } from "./routes/auth.js";
+import { leadsRouter } from "./routes/leads.js";
 
 export function createApp() {
   const app = express();
@@ -19,8 +21,8 @@ export function createApp() {
         if (!origin || env.corsOrigins.includes(origin)) return cb(null, true);
         return cb(new Error("Not allowed by CORS"));
       },
-      methods: ["GET", "POST", "OPTIONS"],
-      allowedHeaders: ["Content-Type", "x-admin-key"],
+      methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+      allowedHeaders: ["Content-Type", "Authorization"],
       maxAge: 86400,
     }),
   );
@@ -28,6 +30,8 @@ export function createApp() {
   app.get("/health", (_req, res) => res.json({ ok: true, uptime: process.uptime() }));
   app.use("/api/server-requests", serverRequestsRouter);
   app.use("/api/analytics", analyticsRouter);
+  app.use("/api/auth", authRouter);
+  app.use("/api/leads", leadsRouter);
 
   app.use((_req, res) => res.status(404).json({ ok: false, message: "Not found" }));
 

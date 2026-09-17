@@ -2,7 +2,7 @@ import { Router } from "express";
 import rateLimit from "express-rate-limit";
 import { z } from "zod";
 import { AnalyticsEvent } from "../models/AnalyticsEvent.js";
-import { adminAuth } from "../middleware/adminAuth.js";
+import { requireAuth, requirePermission } from "../middleware/auth.js";
 
 export const analyticsRouter = Router();
 
@@ -92,7 +92,7 @@ analyticsRouter.post("/collect", collectLimiter, async (req, res, next) => {
 });
 
 // Admin-only reporting.
-analyticsRouter.get("/summary", adminAuth, async (req, res, next) => {
+analyticsRouter.get("/summary", requireAuth, requirePermission("analytics"), async (req, res, next) => {
   try {
     const days = Math.min(Math.max(Number(req.query.days ?? 7), 1), 90);
     const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
@@ -182,7 +182,7 @@ analyticsRouter.get("/summary", adminAuth, async (req, res, next) => {
 });
 
 // Full event stream for one anonymous visitor (session replay of the journey).
-analyticsRouter.get("/visitors/:visitorId", adminAuth, async (req, res, next) => {
+analyticsRouter.get("/visitors/:visitorId", requireAuth, requirePermission("analytics"), async (req, res, next) => {
   try {
     const limit = Math.min(Number(req.query.limit ?? 200), 1000);
     const items = await AnalyticsEvent.find({ visitorId: req.params.visitorId })
@@ -190,6 +190,73 @@ analyticsRouter.get("/visitors/:visitorId", adminAuth, async (req, res, next) =>
       .limit(limit)
       .lean();
     return res.json({ ok: true, count: items.length, items });
+  } catch (err) {
+    return next(err);
+  }
+});
+
+// Visitor volume for the current period vs the previous one, bucketed for charts.
+const TS_RANGES = { day: { buckets: 24, unit: "hour" }, week: { buckets: 7, unit: "day" }, month: { buckets: 30, unit: "day" }, year: { buckets: 12, unit: "month" } };
+
+function tsStartOf(unit, date) {
+  const d = new Date(date);
+  d.setUTCMinutes(0, 0, 0);
+  if (unit === "hour") return d;
+  d.setUTCHours(0, 0, 0, 0);
+  if (unit === "day") return d;
+  d.setUTCDate(1);
+  return d;
+}
+
+function tsShift(unit, date, amount) {
+  const d = new Date(date);
+  if (unit === "hour") d.setUTCHours(d.getUTCHours() + amount);
+  else if (unit === "day") d.setUTCDate(d.getUTCDate() + amount);
+  else d.setUTCMonth(d.getUTCMonth() + amount);
+  return d;
+}
+
+analyticsRouter.get("/timeseries", requireAuth, requirePermission("analytics"), async (req, res, next) => {
+  try {
+    const key = TS_RANGES[String(req.query.range ?? "week")] ? String(req.query.range ?? "week") : "week";
+    const { buckets, unit } = TS_RANGES[key];
+    const end = tsShift(unit, tsStartOf(unit, new Date()), 1);
+    const currentStart = tsShift(unit, end, -buckets);
+    const previousStart = tsShift(unit, currentStart, -buckets);
+
+    const rows = await AnalyticsEvent.aggregate([
+      { $match: { occurredAt: { $gte: previousStart, $lt: end } } },
+      {
+        $group: {
+          _id: { $dateTrunc: { date: "$occurredAt", unit } },
+          visitors: { $addToSet: "$visitorId" },
+          pageviews: { $sum: { $cond: [{ $eq: ["$type", "pageview"] }, 1, 0] } },
+        },
+      },
+      { $project: { visitors: { $size: "$visitors" }, pageviews: 1 } },
+    ]);
+    const byBucket = new Map(rows.map((r) => [new Date(r._id).toISOString(), r]));
+
+    const series = [];
+    for (let i = 0; i < buckets; i += 1) {
+      const cur = tsShift(unit, currentStart, i).toISOString();
+      const prev = tsShift(unit, previousStart, i).toISOString();
+      series.push({
+        at: cur,
+        current: byBucket.get(cur)?.visitors ?? 0,
+        previous: byBucket.get(prev)?.visitors ?? 0,
+        pageviews: byBucket.get(cur)?.pageviews ?? 0,
+      });
+    }
+    const current = series.reduce((s, p) => s + p.current, 0);
+    const previous = series.reduce((s, p) => s + p.previous, 0);
+    return res.json({
+      ok: true,
+      range: key,
+      unit,
+      series,
+      totals: { current, previous, changePct: previous ? Math.round(((current - previous) / previous) * 100) : null },
+    });
   } catch (err) {
     return next(err);
   }
