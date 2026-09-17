@@ -2,7 +2,7 @@ import { Router } from "express";
 import rateLimit from "express-rate-limit";
 import { z } from "zod";
 import { AnalyticsEvent } from "../models/AnalyticsEvent.js";
-import { adminAuth } from "../middleware/adminAuth.js";
+import { requireAuth, requirePermission } from "../middleware/auth.js";
 
 export const analyticsRouter = Router();
 
@@ -92,7 +92,7 @@ analyticsRouter.post("/collect", collectLimiter, async (req, res, next) => {
 });
 
 // Admin-only reporting.
-analyticsRouter.get("/summary", adminAuth, async (req, res, next) => {
+analyticsRouter.get("/summary", requireAuth, requirePermission("analytics"), async (req, res, next) => {
   try {
     const days = Math.min(Math.max(Number(req.query.days ?? 7), 1), 90);
     const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
@@ -182,7 +182,7 @@ analyticsRouter.get("/summary", adminAuth, async (req, res, next) => {
 });
 
 // Full event stream for one anonymous visitor (session replay of the journey).
-analyticsRouter.get("/visitors/:visitorId", adminAuth, async (req, res, next) => {
+analyticsRouter.get("/visitors/:visitorId", requireAuth, requirePermission("analytics"), async (req, res, next) => {
   try {
     const limit = Math.min(Number(req.query.limit ?? 200), 1000);
     const items = await AnalyticsEvent.find({ visitorId: req.params.visitorId })

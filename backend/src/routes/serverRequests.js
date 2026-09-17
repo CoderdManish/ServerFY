@@ -2,7 +2,7 @@ import { Router } from "express";
 import rateLimit from "express-rate-limit";
 import { z } from "zod";
 import { ServerRequest } from "../models/ServerRequest.js";
-import { adminAuth } from "../middleware/adminAuth.js";
+import { requireAuth, requirePermission } from "../middleware/auth.js";
 
 export const serverRequestsRouter = Router();
 
@@ -49,7 +49,7 @@ serverRequestsRouter.post("/", submitLimiter, async (req, res, next) => {
   }
 });
 
-serverRequestsRouter.get("/", adminAuth, async (req, res, next) => {
+serverRequestsRouter.get("/", requireAuth, requirePermission("requests"), async (req, res, next) => {
   try {
     const limit = Math.min(Number(req.query.limit ?? 50), 200);
     const items = await ServerRequest.find({})
