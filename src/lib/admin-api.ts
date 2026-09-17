@@ -55,11 +55,9 @@ export async function api<T>(
 
   let res: Response;
   try {
-    res = await fetch(`${API_URL}${path}`, {
-      method: options.method ?? "GET",
-      headers,
-      body: options.body === undefined ? undefined : JSON.stringify(options.body),
-    });
+    const init: RequestInit = { method: options.method ?? "GET", headers };
+    if (options.body !== undefined) init.body = JSON.stringify(options.body);
+    res = await fetch(`${API_URL}${path}`, init);
   } catch {
     throw new ApiError(0, "Could not reach the data service. Please try again.");
   }
