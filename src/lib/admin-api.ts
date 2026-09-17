@@ -5,7 +5,7 @@ export const ADMIN_BASE = "/sfy-console-9f2a";
 const API_URL = (import.meta.env["VITE_API_URL"] as string | undefined)?.replace(/\/$/, "");
 const TOKEN_KEY = "sfy_admin_token";
 
-export type AdminPermission = "analytics" | "leads" | "requests" | "admins";
+export type AdminPermission = "analytics" | "leads" | "requests" | "admins" | "blog";
 
 export type AdminUser = {
   id: string;
