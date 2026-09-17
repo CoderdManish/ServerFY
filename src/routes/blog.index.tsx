@@ -5,7 +5,8 @@ import { Icon } from "@/components/Icon";
 import { PageShell } from "@/components/PageShell";
 import { CtaButton } from "@/components/CtaButton";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
-import { blogCategories, formatDate, sortedPosts } from "@/data/blog";
+import { formatDate, sortedPosts } from "@/data/blog";
+import { loadBlogIndex } from "@/lib/blog-api";
 import { buildHead, breadcrumbList } from "@/lib/seo";
 import { absUrl } from "@/lib/site";
 
