@@ -7,6 +7,7 @@ import { serverRequestsRouter } from "./routes/serverRequests.js";
 import { analyticsRouter } from "./routes/analytics.js";
 import { authRouter } from "./routes/auth.js";
 import { leadsRouter } from "./routes/leads.js";
+import { blogRouter } from "./routes/blog.js";
 
 export function createApp() {
   const app = express();
