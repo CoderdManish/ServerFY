@@ -15,6 +15,8 @@ export function createApp() {
   app.set("trust proxy", 1); // Render sits behind a proxy
   app.use(helmet());
   app.use(compression());
+  // Blog articles carry long bodies and inline cover images.
+  app.use("/api/blog", express.json({ limit: "6mb" }));
   app.use(express.json({ limit: "100kb" }));
   app.use(
     cors({
