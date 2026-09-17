@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const PERMISSIONS = ["analytics", "leads", "requests", "admins"];
+export const PERMISSIONS = ["analytics", "leads", "requests", "admins", "blog"];
 
 const adminUserSchema = new mongoose.Schema(
   {
