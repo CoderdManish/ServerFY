@@ -9,12 +9,13 @@ import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/sections/FloatingActions";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { blogPosts, findPost, formatDate } from "@/data/blog";
+import { loadBlogPost } from "@/lib/blog-api";
 import { buildHead, breadcrumbList } from "@/lib/seo";
 import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
-    const post = findPost(params.slug);
+  loader: async ({ params }) => {
+    const post = (await loadBlogPost(params.slug)) ?? findPost(params.slug);
     if (!post) throw notFound();
     return post;
   },
