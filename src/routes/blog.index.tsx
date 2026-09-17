@@ -69,11 +69,22 @@ function Meta({ date, minutes, light }: { date: string; minutes: number; light?:
 }
 
 function BlogIndex() {
+  const { posts, categories } = Route.useLoaderData();
   const [active, setActive] = useState<string>("All");
+
+  const featuredPosts = useMemo(() => {
+    const flagged = posts.filter((p) => p.featured);
+    return flagged.length ? flagged : posts.slice(0, 1);
+  }, [posts]);
+  const rest = useMemo(() => {
+    const slugs = new Set(featuredPosts.map((p) => p.slug));
+    return posts.filter((p) => !slugs.has(p.slug));
+  }, [posts, featuredPosts]);
   const visible = useMemo(
     () => (active === "All" ? rest : rest.filter((p) => p.category === active)),
-    [active],
+    [active, rest],
   );
+  const blogCategories = categories;
 
   return (
     <PageShell
