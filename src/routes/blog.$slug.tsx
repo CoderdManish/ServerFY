@@ -9,6 +9,7 @@ import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/sections/FloatingActions";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { blogPosts, findPost, formatDate } from "@/data/blog";
+import { loadBlogPost } from "@/lib/blog-api";
 import { buildHead, breadcrumbList } from "@/lib/seo";
 import { absUrl } from "@/lib/site";
 
