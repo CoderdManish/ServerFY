@@ -44,6 +44,7 @@ import { Route as SfyConsole9f2aDashboardRouteImport } from './routes/sfy-consol
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsSlugRouteImport } from './routes/solutions.$slug'
 import { Route as SfyConsole9f2aBlogIndexRouteImport } from './routes/sfy-console-9f2a.blog.index'
+import { Route as SfyConsole9f2aBlogIdRouteImport } from './routes/sfy-console-9f2a.blog.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -221,6 +222,11 @@ const SfyConsole9f2aBlogIndexRoute = SfyConsole9f2aBlogIndexRouteImport.update({
   path: '/',
   getParentRoute: () => SfyConsole9f2aBlogRoute,
 } as any)
+const SfyConsole9f2aBlogIdRoute = SfyConsole9f2aBlogIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => SfyConsole9f2aBlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -257,6 +263,7 @@ export interface FileRoutesByFullPath {
   '/servers/': typeof ServersIndexRoute
   '/sfy-console-9f2a/': typeof SfyConsole9f2aIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
+  '/sfy-console-9f2a/blog/$id': typeof SfyConsole9f2aBlogIdRoute
   '/sfy-console-9f2a/blog/': typeof SfyConsole9f2aBlogIndexRoute
 }
 export interface FileRoutesByTo {
@@ -288,6 +295,7 @@ export interface FileRoutesByTo {
   '/servers': typeof ServersIndexRoute
   '/sfy-console-9f2a': typeof SfyConsole9f2aIndexRoute
   '/solutions': typeof SolutionsIndexRoute
+  '/sfy-console-9f2a/blog/$id': typeof SfyConsole9f2aBlogIdRoute
   '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogIndexRoute
 }
 export interface FileRoutesById {
@@ -326,6 +334,7 @@ export interface FileRoutesById {
   '/servers/': typeof ServersIndexRoute
   '/sfy-console-9f2a/': typeof SfyConsole9f2aIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
+  '/sfy-console-9f2a/blog/$id': typeof SfyConsole9f2aBlogIdRoute
   '/sfy-console-9f2a/blog/': typeof SfyConsole9f2aBlogIndexRoute
 }
 export interface FileRouteTypes {
@@ -365,6 +374,7 @@ export interface FileRouteTypes {
     | '/servers/'
     | '/sfy-console-9f2a/'
     | '/solutions/'
+    | '/sfy-console-9f2a/blog/$id'
     | '/sfy-console-9f2a/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -396,6 +406,7 @@ export interface FileRouteTypes {
     | '/servers'
     | '/sfy-console-9f2a'
     | '/solutions'
+    | '/sfy-console-9f2a/blog/$id'
     | '/sfy-console-9f2a/blog'
   id:
     | '__root__'
@@ -433,6 +444,7 @@ export interface FileRouteTypes {
     | '/servers/'
     | '/sfy-console-9f2a/'
     | '/solutions/'
+    | '/sfy-console-9f2a/blog/$id'
     | '/sfy-console-9f2a/blog/'
   fileRoutesById: FileRoutesById
 }
@@ -710,6 +722,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SfyConsole9f2aBlogIndexRouteImport
       parentRoute: typeof SfyConsole9f2aBlogRoute
     }
+    '/sfy-console-9f2a/blog/$id': {
+      id: '/sfy-console-9f2a/blog/$id'
+      path: '/$id'
+      fullPath: '/sfy-console-9f2a/blog/$id'
+      preLoaderRoute: typeof SfyConsole9f2aBlogIdRouteImport
+      parentRoute: typeof SfyConsole9f2aBlogRoute
+    }
   }
 }
 
@@ -780,10 +799,12 @@ const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
 )
 
 interface SfyConsole9f2aBlogRouteChildren {
+  SfyConsole9f2aBlogIdRoute: typeof SfyConsole9f2aBlogIdRoute
   SfyConsole9f2aBlogIndexRoute: typeof SfyConsole9f2aBlogIndexRoute
 }
 
 const SfyConsole9f2aBlogRouteChildren: SfyConsole9f2aBlogRouteChildren = {
+  SfyConsole9f2aBlogIdRoute: SfyConsole9f2aBlogIdRoute,
   SfyConsole9f2aBlogIndexRoute: SfyConsole9f2aBlogIndexRoute,
 }
 
