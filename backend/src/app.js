@@ -33,6 +33,7 @@ export function createApp() {
   app.use("/api/analytics", analyticsRouter);
   app.use("/api/auth", authRouter);
   app.use("/api/leads", leadsRouter);
+  app.use("/api/blog", blogRouter);
 
   app.use((_req, res) => res.status(404).json({ ok: false, message: "Not found" }));
 
