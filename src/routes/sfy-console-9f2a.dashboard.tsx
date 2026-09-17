@@ -60,7 +60,7 @@ type Lead = {
 };
 
 const RANGE_DAYS: Record<ChartRange, number> = { day: 1, week: 7, month: 30, year: 90 };
-const PERMISSIONS: AdminPermission[] = ["analytics", "leads", "requests", "admins"];
+const PERMISSIONS: AdminPermission[] = ["analytics", "leads", "requests", "admins", "blog"];
 const STATUSES = ["new", "contacted", "qualified", "converted", "lost"];
 
 function formatDuration(ms: number) {
