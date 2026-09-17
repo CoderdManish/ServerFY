@@ -107,7 +107,7 @@ function BlogIndex() {
               </h2>
             </div>
             <p className="text-sm font-semibold text-muted-foreground">
-              {sortedPosts.length} articles · updated monthly
+              {posts.length} articles · updated monthly
             </p>
           </div>
 
