@@ -10,6 +10,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { VisitorAnalytics } from "../components/VisitorAnalytics";
+import { LeadPopup } from "../components/LeadPopup";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 const GTM_ID = "GTM-NGF354JZ";
@@ -136,6 +137,7 @@ function RootComponent() {
     <>
       <Outlet />
       <VisitorAnalytics />
+      <LeadPopup />
     </>
   );
 }

@@ -30,7 +30,6 @@ import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WhyServerfyRouteImport } from './routes/why-serverfy'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
-import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ModulesIndexRouteImport } from './routes/modules.index'
@@ -39,6 +38,8 @@ import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as ServersIndexRouteImport } from './routes/servers.index'
 import { Route as ServersSlugRouteImport } from './routes/servers.$slug'
+import { Route as SfyConsole9f2aIndexRouteImport } from './routes/sfy-console-9f2a.index'
+import { Route as SfyConsole9f2aDashboardRouteImport } from './routes/sfy-console-9f2a.dashboard'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsSlugRouteImport } from './routes/solutions.$slug'
 
@@ -148,11 +149,6 @@ const Char91DotwellKnownChar93OauthProtectedResourceRoute =
     path: '/.well-known/oauth-protected-resource',
     getParentRoute: () => rootRouteImport,
   } as any)
-const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
-  id: '/admin/analytics',
-  path: '/admin/analytics',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -193,6 +189,16 @@ const ServersSlugRoute = ServersSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ServersRoute,
 } as any)
+const SfyConsole9f2aIndexRoute = SfyConsole9f2aIndexRouteImport.update({
+  id: '/sfy-console-9f2a/',
+  path: '/sfy-console-9f2a/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SfyConsole9f2aDashboardRoute = SfyConsole9f2aDashboardRouteImport.update({
+  id: '/sfy-console-9f2a/dashboard',
+  path: '/sfy-console-9f2a/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -226,16 +232,17 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/admin/analytics': typeof AdminAnalyticsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
+  '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/modules/': typeof ModulesIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/servers/': typeof ServersIndexRoute
+  '/sfy-console-9f2a/': typeof SfyConsole9f2aIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -255,16 +262,17 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/admin/analytics': typeof AdminAnalyticsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
+  '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog': typeof BlogIndexRoute
   '/modules': typeof ModulesIndexRoute
   '/resources': typeof ResourcesIndexRoute
   '/servers': typeof ServersIndexRoute
+  '/sfy-console-9f2a': typeof SfyConsole9f2aIndexRoute
   '/solutions': typeof SolutionsIndexRoute
 }
 export interface FileRoutesById {
@@ -290,16 +298,17 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/admin/analytics': typeof AdminAnalyticsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
+  '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/modules/': typeof ModulesIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/servers/': typeof ServersIndexRoute
+  '/sfy-console-9f2a/': typeof SfyConsole9f2aIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
 }
 export interface FileRouteTypes {
@@ -326,16 +335,17 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
-    | '/admin/analytics'
     | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
+    | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog/'
     | '/modules/'
     | '/resources/'
     | '/servers/'
+    | '/sfy-console-9f2a/'
     | '/solutions/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -355,16 +365,17 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
-    | '/admin/analytics'
     | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
+    | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog'
     | '/modules'
     | '/resources'
     | '/servers'
+    | '/sfy-console-9f2a'
     | '/solutions'
   id:
     | '__root__'
@@ -389,16 +400,17 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/.well-known/oauth-protected-resource'
-    | '/admin/analytics'
     | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
+    | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog/'
     | '/modules/'
     | '/resources/'
     | '/servers/'
+    | '/sfy-console-9f2a/'
     | '/solutions/'
   fileRoutesById: FileRoutesById
 }
@@ -424,7 +436,8 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   WhyServerfyRoute: typeof WhyServerfyRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
+  SfyConsole9f2aDashboardRoute: typeof SfyConsole9f2aDashboardRoute
+  SfyConsole9f2aIndexRoute: typeof SfyConsole9f2aIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -576,13 +589,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/analytics': {
-      id: '/admin/analytics'
-      path: '/admin/analytics'
-      fullPath: '/admin/analytics'
-      preLoaderRoute: typeof AdminAnalyticsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/blog/': {
       id: '/blog/'
       path: '/'
@@ -638,6 +644,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/servers/$slug'
       preLoaderRoute: typeof ServersSlugRouteImport
       parentRoute: typeof ServersRoute
+    }
+    '/sfy-console-9f2a/': {
+      id: '/sfy-console-9f2a/'
+      path: '/sfy-console-9f2a'
+      fullPath: '/sfy-console-9f2a/'
+      preLoaderRoute: typeof SfyConsole9f2aIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sfy-console-9f2a/dashboard': {
+      id: '/sfy-console-9f2a/dashboard'
+      path: '/sfy-console-9f2a/dashboard'
+      fullPath: '/sfy-console-9f2a/dashboard'
+      preLoaderRoute: typeof SfyConsole9f2aDashboardRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/solutions/': {
       id: '/solutions/'
@@ -745,7 +765,8 @@ const rootRouteChildren: RootRouteChildren = {
   WhyServerfyRoute: WhyServerfyRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
-  AdminAnalyticsRoute: AdminAnalyticsRoute,
+  SfyConsole9f2aDashboardRoute: SfyConsole9f2aDashboardRoute,
+  SfyConsole9f2aIndexRoute: SfyConsole9f2aIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
