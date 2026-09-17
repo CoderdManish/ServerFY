@@ -16,9 +16,11 @@ const keywords =
   "SAP blog, SAP server blog, SAP practice guides, SAP S/4HANA articles, SAP training tips, SAP performance";
 
 export const Route = createFileRoute("/blog/")({
+  loader: () => loadBlogIndex(),
   component: BlogIndex,
-  head: () =>
-    buildHead({
+  head: ({ loaderData }) => {
+    const posts = loaderData?.posts ?? sortedPosts;
+    return buildHead({
       title,
       description,
       path: "/blog",
@@ -31,7 +33,7 @@ export const Route = createFileRoute("/blog/")({
           name: "ServerFY Blog",
           url: absUrl("/blog"),
           description,
-          blogPost: sortedPosts.map((p) => ({
+          blogPost: posts.map((p) => ({
             "@type": "BlogPosting",
             headline: p.title,
             url: absUrl(`/blog/${p.slug}`),
@@ -45,13 +47,9 @@ export const Route = createFileRoute("/blog/")({
           { name: "Blog", item: "/blog" },
         ]),
       ],
-    }),
+    });
+  },
 });
-
-const featuredPosts = sortedPosts.filter((p) => p.featured);
-const featured = (featuredPosts[0] ?? sortedPosts[0])!;
-const featuredSlugs = new Set(featuredPosts.map((p) => p.slug));
-const rest = sortedPosts.filter((p) => !featuredSlugs.has(p.slug));
 
 function Meta({ date, minutes, light }: { date: string; minutes: number; light?: boolean }) {
   const cls = light ? "text-white/60" : "text-muted-foreground";
