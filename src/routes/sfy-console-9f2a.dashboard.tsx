@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import {
   ADMIN_BASE,
@@ -60,7 +60,7 @@ type Lead = {
 };
 
 const RANGE_DAYS: Record<ChartRange, number> = { day: 1, week: 7, month: 30, year: 90 };
-const PERMISSIONS: AdminPermission[] = ["analytics", "leads", "requests", "admins"];
+const PERMISSIONS: AdminPermission[] = ["analytics", "leads", "requests", "admins", "blog"];
 const STATUSES = ["new", "contacted", "qualified", "converted", "lost"];
 
 function formatDuration(ms: number) {
@@ -170,12 +170,22 @@ function Dashboard() {
               {me.email} · {me.role}
             </p>
           </div>
-          <button
-            onClick={signOut}
-            className="shrink-0 rounded-full border border-white/15 px-4 py-2 text-xs font-bold text-white/75 hover:border-white/35"
-          >
-            Sign out
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            {can("blog") && (
+              <Link
+                to="/sfy-console-9f2a/blog"
+                className="rounded-full bg-orange px-4 py-2 text-xs font-bold text-white"
+              >
+                Blog studio
+              </Link>
+            )}
+            <button
+              onClick={signOut}
+              className="rounded-full border border-white/15 px-4 py-2 text-xs font-bold text-white/75 hover:border-white/35"
+            >
+              Sign out
+            </button>
+          </div>
         </header>
 
         <nav className="mt-6 flex flex-wrap gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1">

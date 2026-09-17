@@ -7,6 +7,7 @@ import { serverRequestsRouter } from "./routes/serverRequests.js";
 import { analyticsRouter } from "./routes/analytics.js";
 import { authRouter } from "./routes/auth.js";
 import { leadsRouter } from "./routes/leads.js";
+import { blogRouter } from "./routes/blog.js";
 
 export function createApp() {
   const app = express();
@@ -14,6 +15,8 @@ export function createApp() {
   app.set("trust proxy", 1); // Render sits behind a proxy
   app.use(helmet());
   app.use(compression());
+  // Blog articles carry long bodies and inline cover images.
+  app.use("/api/blog", express.json({ limit: "6mb" }));
   app.use(express.json({ limit: "100kb" }));
   app.use(
     cors({
@@ -32,6 +35,7 @@ export function createApp() {
   app.use("/api/analytics", analyticsRouter);
   app.use("/api/auth", authRouter);
   app.use("/api/leads", leadsRouter);
+  app.use("/api/blog", blogRouter);
 
   app.use((_req, res) => res.status(404).json({ ok: false, message: "Not found" }));
 

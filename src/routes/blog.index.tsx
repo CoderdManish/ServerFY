@@ -5,7 +5,8 @@ import { Icon } from "@/components/Icon";
 import { PageShell } from "@/components/PageShell";
 import { CtaButton } from "@/components/CtaButton";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
-import { blogCategories, formatDate, sortedPosts } from "@/data/blog";
+import { formatDate, sortedPosts } from "@/data/blog";
+import { loadBlogIndex } from "@/lib/blog-api";
 import { buildHead, breadcrumbList } from "@/lib/seo";
 import { absUrl } from "@/lib/site";
 
@@ -16,9 +17,11 @@ const keywords =
   "SAP blog, SAP server blog, SAP practice guides, SAP S/4HANA articles, SAP training tips, SAP performance";
 
 export const Route = createFileRoute("/blog/")({
+  loader: () => loadBlogIndex(),
   component: BlogIndex,
-  head: () =>
-    buildHead({
+  head: ({ loaderData }) => {
+    const posts = loaderData?.posts ?? sortedPosts;
+    return buildHead({
       title,
       description,
       path: "/blog",
@@ -31,7 +34,7 @@ export const Route = createFileRoute("/blog/")({
           name: "ServerFY Blog",
           url: absUrl("/blog"),
           description,
-          blogPost: sortedPosts.map((p) => ({
+          blogPost: posts.map((p) => ({
             "@type": "BlogPosting",
             headline: p.title,
             url: absUrl(`/blog/${p.slug}`),
@@ -45,13 +48,9 @@ export const Route = createFileRoute("/blog/")({
           { name: "Blog", item: "/blog" },
         ]),
       ],
-    }),
+    });
+  },
 });
-
-const featuredPosts = sortedPosts.filter((p) => p.featured);
-const featured = (featuredPosts[0] ?? sortedPosts[0])!;
-const featuredSlugs = new Set(featuredPosts.map((p) => p.slug));
-const rest = sortedPosts.filter((p) => !featuredSlugs.has(p.slug));
 
 function Meta({ date, minutes, light }: { date: string; minutes: number; light?: boolean }) {
   const cls = light ? "text-white/60" : "text-muted-foreground";
@@ -70,11 +69,22 @@ function Meta({ date, minutes, light }: { date: string; minutes: number; light?:
 }
 
 function BlogIndex() {
+  const { posts, categories } = Route.useLoaderData();
   const [active, setActive] = useState<string>("All");
+
+  const featuredPosts = useMemo(() => {
+    const flagged = posts.filter((p) => p.featured);
+    return flagged.length ? flagged : posts.slice(0, 1);
+  }, [posts]);
+  const rest = useMemo(() => {
+    const slugs = new Set(featuredPosts.map((p) => p.slug));
+    return posts.filter((p) => !slugs.has(p.slug));
+  }, [posts, featuredPosts]);
   const visible = useMemo(
     () => (active === "All" ? rest : rest.filter((p) => p.category === active)),
-    [active],
+    [active, rest],
   );
+  const blogCategories = categories;
 
   return (
     <PageShell
@@ -97,7 +107,7 @@ function BlogIndex() {
               </h2>
             </div>
             <p className="text-sm font-semibold text-muted-foreground">
-              {sortedPosts.length} articles · updated monthly
+              {posts.length} articles · updated monthly
             </p>
           </div>
 
