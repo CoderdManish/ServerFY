@@ -43,6 +43,7 @@ import { Route as SfyConsole9f2aBlogRouteImport } from './routes/sfy-console-9f2
 import { Route as SfyConsole9f2aDashboardRouteImport } from './routes/sfy-console-9f2a.dashboard'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsSlugRouteImport } from './routes/solutions.$slug'
+import { Route as SfyConsole9f2aBlogIndexRouteImport } from './routes/sfy-console-9f2a.blog.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -215,6 +216,11 @@ const SolutionsSlugRoute = SolutionsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => SolutionsRoute,
 } as any)
+const SfyConsole9f2aBlogIndexRoute = SfyConsole9f2aBlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SfyConsole9f2aBlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -242,7 +248,7 @@ export interface FileRoutesByFullPath {
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
-  '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogRoute
+  '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogRouteWithChildren
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -251,6 +257,7 @@ export interface FileRoutesByFullPath {
   '/servers/': typeof ServersIndexRoute
   '/sfy-console-9f2a/': typeof SfyConsole9f2aIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
+  '/sfy-console-9f2a/blog/': typeof SfyConsole9f2aBlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -273,7 +280,6 @@ export interface FileRoutesByTo {
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
-  '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogRoute
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -282,6 +288,7 @@ export interface FileRoutesByTo {
   '/servers': typeof ServersIndexRoute
   '/sfy-console-9f2a': typeof SfyConsole9f2aIndexRoute
   '/solutions': typeof SolutionsIndexRoute
+  '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -310,7 +317,7 @@ export interface FileRoutesById {
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
-  '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogRoute
+  '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogRouteWithChildren
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -319,6 +326,7 @@ export interface FileRoutesById {
   '/servers/': typeof ServersIndexRoute
   '/sfy-console-9f2a/': typeof SfyConsole9f2aIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
+  '/sfy-console-9f2a/blog/': typeof SfyConsole9f2aBlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -357,6 +365,7 @@ export interface FileRouteTypes {
     | '/servers/'
     | '/sfy-console-9f2a/'
     | '/solutions/'
+    | '/sfy-console-9f2a/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -379,7 +388,6 @@ export interface FileRouteTypes {
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
-    | '/sfy-console-9f2a/blog'
     | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog'
@@ -388,6 +396,7 @@ export interface FileRouteTypes {
     | '/servers'
     | '/sfy-console-9f2a'
     | '/solutions'
+    | '/sfy-console-9f2a/blog'
   id:
     | '__root__'
     | '/'
@@ -424,6 +433,7 @@ export interface FileRouteTypes {
     | '/servers/'
     | '/sfy-console-9f2a/'
     | '/solutions/'
+    | '/sfy-console-9f2a/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -448,7 +458,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   WhyServerfyRoute: typeof WhyServerfyRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  SfyConsole9f2aBlogRoute: typeof SfyConsole9f2aBlogRoute
+  SfyConsole9f2aBlogRoute: typeof SfyConsole9f2aBlogRouteWithChildren
   SfyConsole9f2aDashboardRoute: typeof SfyConsole9f2aDashboardRoute
   SfyConsole9f2aIndexRoute: typeof SfyConsole9f2aIndexRoute
 }
@@ -693,6 +703,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsSlugRouteImport
       parentRoute: typeof SolutionsRoute
     }
+    '/sfy-console-9f2a/blog/': {
+      id: '/sfy-console-9f2a/blog/'
+      path: '/'
+      fullPath: '/sfy-console-9f2a/blog/'
+      preLoaderRoute: typeof SfyConsole9f2aBlogIndexRouteImport
+      parentRoute: typeof SfyConsole9f2aBlogRoute
+    }
   }
 }
 
@@ -762,6 +779,17 @@ const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
   SolutionsRouteChildren,
 )
 
+interface SfyConsole9f2aBlogRouteChildren {
+  SfyConsole9f2aBlogIndexRoute: typeof SfyConsole9f2aBlogIndexRoute
+}
+
+const SfyConsole9f2aBlogRouteChildren: SfyConsole9f2aBlogRouteChildren = {
+  SfyConsole9f2aBlogIndexRoute: SfyConsole9f2aBlogIndexRoute,
+}
+
+const SfyConsole9f2aBlogRouteWithChildren =
+  SfyConsole9f2aBlogRoute._addFileChildren(SfyConsole9f2aBlogRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -785,7 +813,7 @@ const rootRouteChildren: RootRouteChildren = {
   WhyServerfyRoute: WhyServerfyRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
-  SfyConsole9f2aBlogRoute: SfyConsole9f2aBlogRoute,
+  SfyConsole9f2aBlogRoute: SfyConsole9f2aBlogRouteWithChildren,
   SfyConsole9f2aDashboardRoute: SfyConsole9f2aDashboardRoute,
   SfyConsole9f2aIndexRoute: SfyConsole9f2aIndexRoute,
 }
