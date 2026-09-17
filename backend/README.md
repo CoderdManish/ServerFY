@@ -57,3 +57,24 @@ session id in the browser and batches events here.
   for one anonymous visitor.
 
 Raw events auto-expire after 180 days (TTL index).
+
+## Admin console (added)
+
+Environment variables:
+
+| Name | Purpose |
+| --- | --- |
+| `JWT_SECRET` | signs admin login sessions (long random string) |
+| `OWNER_EMAIL` / `OWNER_PASSWORD` / `OWNER_NAME` | the first (owner) admin, created automatically on first boot only |
+
+`ADMIN_API_KEY` is no longer used — admin endpoints require `Authorization: Bearer <token>`
+obtained from `POST /api/auth/login`.
+
+New endpoints:
+- `POST /api/auth/login`, `GET /api/auth/me`, `POST /api/auth/change-password`
+- `GET|POST /api/auth/admins`, `PATCH|DELETE /api/auth/admins/:id` (permission: `admins`)
+- `POST /api/leads` (public popup), `GET /api/leads`, `PATCH /api/leads/:id`, `GET /api/leads/stats?range=day|week|month|year`
+- `GET /api/analytics/timeseries?range=day|week|month|year`
+
+MongoDB: two new collections are created automatically — `adminusers` and `leads`.
+No manual Atlas changes are needed beyond the existing database user and network access.

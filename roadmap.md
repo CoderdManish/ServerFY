@@ -7,3 +7,7 @@
 
 - [x] Improve mobile homepage hero performance and layout from Lighthouse report
 - [x] Diagnose why field Web Vitals are unavailable
+- [x] Hidden admin console at /sfy-console-9f2a with email+password login and roles
+- [x] Lead popup on all public pages, stored in MongoDB, shown in admin dashboard
+- [x] Replace analytics access key with real admin logins
+- [ ] Deploy backend to Render and set VITE_API_URL
