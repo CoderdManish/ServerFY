@@ -39,6 +39,7 @@ import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as ServersIndexRouteImport } from './routes/servers.index'
 import { Route as ServersSlugRouteImport } from './routes/servers.$slug'
 import { Route as SfyConsole9f2aIndexRouteImport } from './routes/sfy-console-9f2a.index'
+import { Route as SfyConsole9f2aBlogRouteImport } from './routes/sfy-console-9f2a.blog'
 import { Route as SfyConsole9f2aDashboardRouteImport } from './routes/sfy-console-9f2a.dashboard'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsSlugRouteImport } from './routes/solutions.$slug'
@@ -194,6 +195,11 @@ const SfyConsole9f2aIndexRoute = SfyConsole9f2aIndexRouteImport.update({
   path: '/sfy-console-9f2a/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SfyConsole9f2aBlogRoute = SfyConsole9f2aBlogRouteImport.update({
+  id: '/sfy-console-9f2a/blog',
+  path: '/sfy-console-9f2a/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SfyConsole9f2aDashboardRoute = SfyConsole9f2aDashboardRouteImport.update({
   id: '/sfy-console-9f2a/dashboard',
   path: '/sfy-console-9f2a/dashboard',
@@ -236,6 +242,7 @@ export interface FileRoutesByFullPath {
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
+  '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogRoute
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -266,6 +273,7 @@ export interface FileRoutesByTo {
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
+  '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogRoute
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -302,6 +310,7 @@ export interface FileRoutesById {
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
+  '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogRoute
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -339,6 +348,7 @@ export interface FileRouteTypes {
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
+    | '/sfy-console-9f2a/blog'
     | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog/'
@@ -369,6 +379,7 @@ export interface FileRouteTypes {
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
+    | '/sfy-console-9f2a/blog'
     | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog'
@@ -404,6 +415,7 @@ export interface FileRouteTypes {
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
+    | '/sfy-console-9f2a/blog'
     | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog/'
@@ -436,6 +448,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   WhyServerfyRoute: typeof WhyServerfyRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  SfyConsole9f2aBlogRoute: typeof SfyConsole9f2aBlogRoute
   SfyConsole9f2aDashboardRoute: typeof SfyConsole9f2aDashboardRoute
   SfyConsole9f2aIndexRoute: typeof SfyConsole9f2aIndexRoute
 }
@@ -652,6 +665,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SfyConsole9f2aIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sfy-console-9f2a/blog': {
+      id: '/sfy-console-9f2a/blog'
+      path: '/sfy-console-9f2a/blog'
+      fullPath: '/sfy-console-9f2a/blog'
+      preLoaderRoute: typeof SfyConsole9f2aBlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sfy-console-9f2a/dashboard': {
       id: '/sfy-console-9f2a/dashboard'
       path: '/sfy-console-9f2a/dashboard'
@@ -765,6 +785,7 @@ const rootRouteChildren: RootRouteChildren = {
   WhyServerfyRoute: WhyServerfyRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  SfyConsole9f2aBlogRoute: SfyConsole9f2aBlogRoute,
   SfyConsole9f2aDashboardRoute: SfyConsole9f2aDashboardRoute,
   SfyConsole9f2aIndexRoute: SfyConsole9f2aIndexRoute,
 }
