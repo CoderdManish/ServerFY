@@ -91,7 +91,7 @@ export function ComparisonChart({
       y: h - (p[key] / max) * (h - padTop),
     }));
 
-  const curPts = useMemo(() => toPts(series.length ? "current" : "current"), [series, max]);
+  const curPts = useMemo(() => toPts("current"), [series, max]);
   const prevPts = useMemo(() => (series.length ? toPts("previous") : []), [series, max]);
 
   const curLine = smoothPath(curPts);
