@@ -1,6 +1,7 @@
 # Roadmap
 
-- [ ] Apply new graph design (user: "all are good" — pick best fit) for dashboard charts (Visitors + Leads)
-- [ ] Show visitor IDs in analytics dashboard (list of recent visitors)
-- [ ] Fix build error: dist-check failed — build produced no dist/ directory
-- [ ] Remove temporary chart-preview route after chart work is done
+- [x] Apply new graph design for dashboard charts (glowing area spline, Visitors + Leads)
+- [x] Show visitor IDs in analytics dashboard (Recent visitors list → journey)
+- [x] Fix build error: dist-check failed — postbuild now always writes dist/
+- [ ] Backend repo (separate): add `GET /api/analytics/visitors` route — file changed here: backend/src/routes/analytics.js — copy to backend repo + redeploy on Render
+- [ ] Remove temporary chart-preview route after user confirms the new design
