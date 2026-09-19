@@ -1,10 +1,6 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+# Repository guidelines
+
+- Frontend: TanStack Start (React 19 + Vite 8), Tailwind CSS v4.
+- Backend: Express + MongoDB Atlas under `backend/` (deployed separately).
+- Avoid rewriting published git history (force pushes, rebases of pushed commits).
+- Keep the deployed branch in a working state; production builds run `npm run build`.
