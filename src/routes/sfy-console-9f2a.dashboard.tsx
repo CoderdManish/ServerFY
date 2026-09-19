@@ -322,6 +322,53 @@ function AnalyticsTab() {
       </div>
 
       <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5">
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="text-xs font-extrabold uppercase tracking-[0.12em] text-orange">Recent visitors</h3>
+          <span className="text-[11px] text-white/40">{visitors?.length ?? 0} in this period</span>
+        </div>
+        {visitorsUnsupported ? (
+          <p className="mt-3 text-sm text-white/45">
+            Visitor IDs need the latest backend update — add the <code>GET /api/analytics/visitors</code> route
+            and redeploy the backend.
+          </p>
+        ) : visitors === null ? (
+          <p className="mt-3 text-sm text-white/45">Loading visitors…</p>
+        ) : visitors.length === 0 ? (
+          <p className="mt-3 text-sm text-white/45">No visitors recorded in this period yet.</p>
+        ) : (
+          <ul className="mt-3 divide-y divide-white/10">
+            {visitors.slice(0, 25).map((v) => (
+              <li key={v.visitorId}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setVisitorId(v.visitorId);
+                    loadJourney(v.visitorId);
+                  }}
+                  className="flex w-full flex-wrap items-center gap-x-3 gap-y-1 py-2 text-left text-sm transition-colors hover:text-white"
+                >
+                  <span className="min-w-0 flex-1 truncate font-mono text-[12px] font-bold text-orange">
+                    {v.visitorId}
+                  </span>
+                  <span className="text-white/50">{v.device ?? "device?"}</span>
+                  <span className="text-white/50">{v.country ?? "—"}</span>
+                  <span className="text-white/70">{v.pageviews} pages</span>
+                  <span className="text-white/40">
+                    {new Date(v.lastSeen).toLocaleString(undefined, {
+                      day: "numeric",
+                      month: "short",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5">
         <h3 className="text-xs font-extrabold uppercase tracking-[0.12em] text-orange">Visitor journey</h3>
         <div className="mt-3 flex flex-wrap gap-2">
           <input
@@ -331,12 +378,7 @@ function AnalyticsTab() {
             className="min-w-[200px] flex-1 rounded-xl border border-white/15 bg-navy-dark/70 px-4 py-2.5 text-sm text-white outline-none focus:border-orange"
           />
           <button
-            onClick={() => {
-              if (!visitorId.trim()) return;
-              api<{ items: typeof journey }>(`/api/analytics/visitors/${encodeURIComponent(visitorId.trim())}`)
-                .then((r) => setJourney(r.items ?? []))
-                .catch(() => setError("Could not load that visitor journey."));
-            }}
+            onClick={() => loadJourney(visitorId)}
             className="rounded-xl bg-orange px-4 py-2.5 text-sm font-bold text-white"
           >
             Show journey
