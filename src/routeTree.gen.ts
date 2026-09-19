@@ -38,6 +38,7 @@ import { Route as ServersIndexRouteImport } from './routes/servers.index'
 import { Route as ServersSlugRouteImport } from './routes/servers.$slug'
 import { Route as SfyConsole9f2aIndexRouteImport } from './routes/sfy-console-9f2a.index'
 import { Route as SfyConsole9f2aBlogRouteImport } from './routes/sfy-console-9f2a.blog'
+import { Route as SfyConsole9f2aChartPreviewRouteImport } from './routes/sfy-console-9f2a.chart-preview'
 import { Route as SfyConsole9f2aDashboardRouteImport } from './routes/sfy-console-9f2a.dashboard'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsSlugRouteImport } from './routes/solutions.$slug'
@@ -189,6 +190,12 @@ const SfyConsole9f2aBlogRoute = SfyConsole9f2aBlogRouteImport.update({
   path: '/sfy-console-9f2a/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SfyConsole9f2aChartPreviewRoute =
+  SfyConsole9f2aChartPreviewRouteImport.update({
+    id: '/sfy-console-9f2a/chart-preview',
+    path: '/sfy-console-9f2a/chart-preview',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SfyConsole9f2aDashboardRoute = SfyConsole9f2aDashboardRouteImport.update({
   id: '/sfy-console-9f2a/dashboard',
   path: '/sfy-console-9f2a/dashboard',
@@ -240,6 +247,7 @@ export interface FileRoutesByFullPath {
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
   '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogRouteWithChildren
+  '/sfy-console-9f2a/chart-preview': typeof SfyConsole9f2aChartPreviewRoute
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -270,6 +278,7 @@ export interface FileRoutesByTo {
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
+  '/sfy-console-9f2a/chart-preview': typeof SfyConsole9f2aChartPreviewRoute
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -307,6 +316,7 @@ export interface FileRoutesById {
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
   '/sfy-console-9f2a/blog': typeof SfyConsole9f2aBlogRouteWithChildren
+  '/sfy-console-9f2a/chart-preview': typeof SfyConsole9f2aChartPreviewRoute
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -345,6 +355,7 @@ export interface FileRouteTypes {
     | '/resources/$slug'
     | '/servers/$slug'
     | '/sfy-console-9f2a/blog'
+    | '/sfy-console-9f2a/chart-preview'
     | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog/'
@@ -375,6 +386,7 @@ export interface FileRouteTypes {
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
+    | '/sfy-console-9f2a/chart-preview'
     | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog'
@@ -411,6 +423,7 @@ export interface FileRouteTypes {
     | '/resources/$slug'
     | '/servers/$slug'
     | '/sfy-console-9f2a/blog'
+    | '/sfy-console-9f2a/chart-preview'
     | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog/'
@@ -444,6 +457,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   WhyServerfyRoute: typeof WhyServerfyRoute
   SfyConsole9f2aBlogRoute: typeof SfyConsole9f2aBlogRouteWithChildren
+  SfyConsole9f2aChartPreviewRoute: typeof SfyConsole9f2aChartPreviewRoute
   SfyConsole9f2aDashboardRoute: typeof SfyConsole9f2aDashboardRoute
   SfyConsole9f2aIndexRoute: typeof SfyConsole9f2aIndexRoute
 }
@@ -653,6 +667,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SfyConsole9f2aBlogRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sfy-console-9f2a/chart-preview': {
+      id: '/sfy-console-9f2a/chart-preview'
+      path: '/sfy-console-9f2a/chart-preview'
+      fullPath: '/sfy-console-9f2a/chart-preview'
+      preLoaderRoute: typeof SfyConsole9f2aChartPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sfy-console-9f2a/dashboard': {
       id: '/sfy-console-9f2a/dashboard'
       path: '/sfy-console-9f2a/dashboard'
@@ -791,6 +812,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   WhyServerfyRoute: WhyServerfyRoute,
   SfyConsole9f2aBlogRoute: SfyConsole9f2aBlogRouteWithChildren,
+  SfyConsole9f2aChartPreviewRoute: SfyConsole9f2aChartPreviewRoute,
   SfyConsole9f2aDashboardRoute: SfyConsole9f2aDashboardRoute,
   SfyConsole9f2aIndexRoute: SfyConsole9f2aIndexRoute,
 }
