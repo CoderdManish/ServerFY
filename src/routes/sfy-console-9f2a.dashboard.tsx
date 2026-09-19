@@ -215,15 +215,36 @@ function Dashboard() {
   );
 }
 
+type VisitorRow = {
+  visitorId: string;
+  lastSeen: string;
+  firstSeen: string;
+  events: number;
+  pageviews: number;
+  sessions: number;
+  device?: string;
+  country?: string;
+  landingPage?: string;
+};
+
 function AnalyticsTab() {
   const [range, setRange] = useState<ChartRange>("week");
   const [ts, setTs] = useState<TimeSeries | null>(null);
   const [summary, setSummary] = useState<Summary | null>(null);
   const [visitorId, setVisitorId] = useState("");
+  const [visitors, setVisitors] = useState<VisitorRow[] | null>(null);
+  const [visitorsUnsupported, setVisitorsUnsupported] = useState(false);
   const [journey, setJourney] = useState<
     { _id: string; type: string; name?: string; path?: string; durationMs?: number; occurredAt: string }[] | null
   >(null);
   const [error, setError] = useState<string | null>(null);
+
+  const loadJourney = (id: string) => {
+    if (!id.trim()) return;
+    api<{ items: typeof journey }>(`/api/analytics/visitors/${encodeURIComponent(id.trim())}`)
+      .then((r) => setJourney(r.items ?? []))
+      .catch(() => setError("Could not load that visitor journey."));
+  };
 
   useEffect(() => {
     setError(null);
@@ -231,6 +252,13 @@ function AnalyticsTab() {
     api<Summary>(`/api/analytics/summary?days=${RANGE_DAYS[range]}`)
       .then(setSummary)
       .catch((err) => setError(err instanceof ApiError ? err.message : "Could not load analytics."));
+    setVisitorsUnsupported(false);
+    api<{ visitors: VisitorRow[] }>(`/api/analytics/visitors?days=${RANGE_DAYS[range]}`)
+      .then((r) => setVisitors(r.visitors ?? []))
+      .catch((err) => {
+        setVisitors([]);
+        if (err instanceof ApiError && err.status === 404) setVisitorsUnsupported(true);
+      });
   }, [range]);
 
   const t = summary?.totals;
