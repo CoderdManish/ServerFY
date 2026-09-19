@@ -17,7 +17,6 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as InfrastructureRouteImport } from './routes/infrastructure'
 import { Route as LlmDottxtRouteImport } from './routes/llm[.]txt'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
-import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ModulesRouteImport } from './routes/modules'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -29,7 +28,6 @@ import { Route as SlaRouteImport } from './routes/sla'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WhyServerfyRouteImport } from './routes/why-serverfy'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ModulesIndexRouteImport } from './routes/modules.index'
@@ -84,11 +82,6 @@ const LlmDottxtRoute = LlmDottxtRouteImport.update({
 const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
   id: '/llms.txt',
   path: '/llms.txt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ModulesRoute = ModulesRouteImport.update({
@@ -146,12 +139,6 @@ const WhyServerfyRoute = WhyServerfyRouteImport.update({
   path: '/why-serverfy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -237,7 +224,6 @@ export interface FileRoutesByFullPath {
   '/infrastructure': typeof InfrastructureRoute
   '/llm.txt': typeof LlmDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
-  '/mcp': typeof McpRoute
   '/modules': typeof ModulesRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -249,7 +235,6 @@ export interface FileRoutesByFullPath {
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -274,7 +259,6 @@ export interface FileRoutesByTo {
   '/infrastructure': typeof InfrastructureRoute
   '/llm.txt': typeof LlmDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
-  '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
@@ -282,7 +266,6 @@ export interface FileRoutesByTo {
   '/sla': typeof SlaRoute
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -308,7 +291,6 @@ export interface FileRoutesById {
   '/infrastructure': typeof InfrastructureRoute
   '/llm.txt': typeof LlmDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
-  '/mcp': typeof McpRoute
   '/modules': typeof ModulesRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -320,7 +302,6 @@ export interface FileRoutesById {
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -348,7 +329,6 @@ export interface FileRouteTypes {
     | '/infrastructure'
     | '/llm.txt'
     | '/llms.txt'
-    | '/mcp'
     | '/modules'
     | '/pricing'
     | '/privacy'
@@ -360,7 +340,6 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/terms'
     | '/why-serverfy'
-    | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
@@ -385,7 +364,6 @@ export interface FileRouteTypes {
     | '/infrastructure'
     | '/llm.txt'
     | '/llms.txt'
-    | '/mcp'
     | '/pricing'
     | '/privacy'
     | '/refund-policy'
@@ -393,7 +371,6 @@ export interface FileRouteTypes {
     | '/sla'
     | '/terms'
     | '/why-serverfy'
-    | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
@@ -418,7 +395,6 @@ export interface FileRouteTypes {
     | '/infrastructure'
     | '/llm.txt'
     | '/llms.txt'
-    | '/mcp'
     | '/modules'
     | '/pricing'
     | '/privacy'
@@ -430,7 +406,6 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/terms'
     | '/why-serverfy'
-    | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
     | '/modules/$code'
     | '/resources/$slug'
@@ -457,7 +432,6 @@ export interface RootRouteChildren {
   InfrastructureRoute: typeof InfrastructureRoute
   LlmDottxtRoute: typeof LlmDottxtRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
-  McpRoute: typeof McpRoute
   ModulesRoute: typeof ModulesRouteWithChildren
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -469,7 +443,6 @@ export interface RootRouteChildren {
   SolutionsRoute: typeof SolutionsRouteWithChildren
   TermsRoute: typeof TermsRoute
   WhyServerfyRoute: typeof WhyServerfyRoute
-  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   SfyConsole9f2aBlogRoute: typeof SfyConsole9f2aBlogRouteWithChildren
   SfyConsole9f2aDashboardRoute: typeof SfyConsole9f2aDashboardRoute
   SfyConsole9f2aIndexRoute: typeof SfyConsole9f2aIndexRoute
@@ -531,13 +504,6 @@ declare module '@tanstack/react-router' {
       path: '/llms.txt'
       fullPath: '/llms.txt'
       preLoaderRoute: typeof LlmsDottxtRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/modules': {
@@ -615,13 +581,6 @@ declare module '@tanstack/react-router' {
       path: '/why-serverfy'
       fullPath: '/why-serverfy'
       preLoaderRoute: typeof WhyServerfyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -820,7 +779,6 @@ const rootRouteChildren: RootRouteChildren = {
   InfrastructureRoute: InfrastructureRoute,
   LlmDottxtRoute: LlmDottxtRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
-  McpRoute: McpRoute,
   ModulesRoute: ModulesRouteWithChildren,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
@@ -832,8 +790,6 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsRoute: SolutionsRouteWithChildren,
   TermsRoute: TermsRoute,
   WhyServerfyRoute: WhyServerfyRoute,
-  Char91DotwellKnownChar93OauthProtectedResourceRoute:
-    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   SfyConsole9f2aBlogRoute: SfyConsole9f2aBlogRouteWithChildren,
   SfyConsole9f2aDashboardRoute: SfyConsole9f2aDashboardRoute,
   SfyConsole9f2aIndexRoute: SfyConsole9f2aIndexRoute,
