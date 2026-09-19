@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "postbuild": "node scripts/postbuild-vercel.mjs"
+    "postbuild": "node scripts/postbuild-vercel.mjs",
+    "postbuild:dev": "node scripts/postbuild-vercel.mjs"
   },
   "overrides": {
     "rolldown": "1.2.1"

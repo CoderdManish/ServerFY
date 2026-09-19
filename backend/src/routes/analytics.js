@@ -181,6 +181,50 @@ analyticsRouter.get("/summary", requireAuth, requirePermission("analytics"), asy
   }
 });
 
+// Recent visitors list: anonymous visitor IDs with activity summary, newest first.
+analyticsRouter.get("/visitors", requireAuth, requirePermission("analytics"), async (req, res, next) => {
+  try {
+    const days = Math.min(Math.max(Number(req.query.days ?? 7) || 7, 1), 90);
+    const since = new Date(Date.now() - days * 86400000);
+    const rows = await AnalyticsEvent.aggregate([
+      { $match: { occurredAt: { $gte: since } } },
+      { $sort: { occurredAt: -1 } },
+      {
+        $group: {
+          _id: "$visitorId",
+          lastSeen: { $first: "$occurredAt" },
+          firstSeen: { $last: "$occurredAt" },
+          events: { $sum: 1 },
+          pageviews: { $sum: { $cond: [{ $eq: ["$type", "pageview"] }, 1, 0] } },
+          sessions: { $addToSet: "$sessionId" },
+          device: { $first: "$device.type" },
+          country: { $first: "$geo.country" },
+          landingPage: { $last: "$path" },
+        },
+      },
+      {
+        $project: {
+          visitorId: "$_id",
+          _id: 0,
+          lastSeen: 1,
+          firstSeen: 1,
+          events: 1,
+          pageviews: 1,
+          sessions: { $size: "$sessions" },
+          device: 1,
+          country: 1,
+          landingPage: 1,
+        },
+      },
+      { $sort: { lastSeen: -1 } },
+      { $limit: 100 },
+    ]);
+    return res.json({ ok: true, days, count: rows.length, visitors: rows });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 // Full event stream for one anonymous visitor (session replay of the journey).
 analyticsRouter.get("/visitors/:visitorId", requireAuth, requirePermission("analytics"), async (req, res, next) => {
   try {
