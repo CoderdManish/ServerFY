@@ -38,7 +38,7 @@ function ChartPreview() {
           onRangeChange={setRange}
           series={RANGES[range]}
         />
-e        <ComparisonChart
+        <ComparisonChart
           title="Visitors"
           unitLabel="visitors"
           range={range}
