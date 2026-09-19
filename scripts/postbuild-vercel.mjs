@@ -8,7 +8,7 @@ import { join } from "node:path";
 const outputDir = join(process.cwd(), ".vercel", "output");
 
 if (!existsSync(outputDir)) {
-  process.exit(0); // Not a Vercel build (e.g. Lovable hosting) — nothing to do.
+  process.exit(0); // Not a Vercel build — nothing to do.
 }
 
 // Build Output API v3 config: serve prerendered static files first,
