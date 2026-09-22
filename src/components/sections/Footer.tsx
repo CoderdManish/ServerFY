@@ -1,8 +1,29 @@
 import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone, Youtube } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Link } from "@tanstack/react-router";
-import { footerColumns, site } from "@/data/serverfy";
+import { footerColumns, modules, site } from "@/data/serverfy";
 import { linkFor } from "@/data/links";
+import { moduleSlug } from "@/data/module-pages";
+import { compareLinks, guideLinks, serverLinks, solutionLinks } from "@/data/site-index";
+
+function LinkRow({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <h2 className="type-eyebrow text-white/80">{title}</h2>
+      <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-[0.78rem]">{children}</ul>
+    </div>
+  );
+}
+
+function LinkChip({ to, label }: { to: string; label: string }) {
+  return (
+    <li>
+      <Link to={to} className="text-white/55 transition-colors hover:text-orange">
+        {label}
+      </Link>
+    </li>
+  );
+}
 
 const columnHref: Record<string, string> = {
   "SAP Servers": "/servers",
@@ -81,6 +102,34 @@ export function Footer() {
             ))}
           </nav>
         </div>
+
+        <nav aria-label="Browse everything" className="mt-12 space-y-6 border-t border-white/10 pt-8">
+          <LinkRow title="SAP module server access">
+            {modules.map((m) => (
+              <LinkChip key={m.code} to={`/modules/${moduleSlug(m.code)}`} label={`SAP ${m.code}`} />
+            ))}
+          </LinkRow>
+          <LinkRow title="SAP server environments">
+            {serverLinks.map((l) => (
+              <LinkChip key={l.to} to={l.to} label={l.label} />
+            ))}
+          </LinkRow>
+          <LinkRow title="Solutions by need">
+            {solutionLinks.map((l) => (
+              <LinkChip key={l.to} to={l.to} label={l.label} />
+            ))}
+          </LinkRow>
+          <LinkRow title="Comparisons">
+            {compareLinks.map((l) => (
+              <LinkChip key={l.to} to={l.to} label={l.label} />
+            ))}
+          </LinkRow>
+          <LinkRow title="Guides & knowledge base">
+            {guideLinks.map((l) => (
+              <LinkChip key={l.to} to={l.to} label={l.label} />
+            ))}
+          </LinkRow>
+        </nav>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 ServerFY. All Rights Reserved.</p>
