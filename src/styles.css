@@ -205,6 +205,29 @@
   }
 }
 
+@utility enterprise-console {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklab, #ffffff 14%, transparent);
+  background:
+    radial-gradient(80% 90% at 50% 20%, color-mix(in oklab, var(--blue-bright) 18%, transparent), transparent 70%),
+    color-mix(in oklab, var(--navy-dark) 94%, transparent);
+  box-shadow: 0 24px 70px -32px color-mix(in oklab, var(--blue-bright) 60%, transparent);
+}
+
+@utility system-flow-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-dasharray: 7 9;
+  animation: dash-flow 8s linear infinite;
+}
+
+@utility system-flow-line-delay {
+  animation-delay: -4s;
+}
+
 @utility card-hover {
   transition:
     transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
