@@ -16,6 +16,27 @@ export function shortModuleSlug(code: string) {
   return code.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 }
 
+/** Search phrases people actually use for each module's practice environment. */
+function moduleKeywords(code: string) {
+  const c = code.toLowerCase();
+  return [
+    `sap ${c} server access`,
+    `sap ${c} server access for practice`,
+    `sap ${c} practice server`,
+    `sap ${c} practice server india`,
+    `sap ${c} practice environment`,
+    `sap ${c} training server`,
+    `sap ${c} server access india`,
+    `sap ${c} online server`,
+    `sap ${c} remote server access`,
+    `sap ${c} hands on practice`,
+    `how to practice sap ${c}`,
+    `how to learn sap ${c} practically`,
+    `sap ${c} practical exercises`,
+    `sap ${c} real time scenarios`,
+  ].join(", ");
+}
+
 export function moduleDetailPage(mod: SapModule): DetailPage {
   const isTechnical = mod.type === "technical";
   const platforms = mod.platforms.join(", ");
@@ -28,6 +49,7 @@ export function moduleDetailPage(mod: SapModule): DetailPage {
     metaTitle: `SAP ${mod.code} Server Access | ${mod.name} Practice — ServerFY`,
     intro: `${mod.name} on a live SAP system — ${mod.desc.toLowerCase()} Available on ${platforms} with remote access and your own login.`,
     description: `Get hands-on SAP ${mod.code} (${mod.name}) server access on ${platforms}. ${mod.desc} Remote login, daily backups and same-day activation.`,
+    keywords: moduleKeywords(mod.code),
     highlights: [
       {
         title: "Live system, real screens",
