@@ -11,3 +11,4 @@
 - [x] SEO/GEO build-out: answer-first blocks, comparison pages (/compare), knowledge-hub articles, sitemap + llms.txt
 - [x] SAP Logon 770 screenshot used as technical evidence on server pages
 - [ ] Confirm real plan specs (RAM/vCPU/storage/validity) — current copy uses general wording
+- [ ] Map supplied keyword groups to pages and update titles/descriptions/keywords sitewide
