@@ -52,11 +52,13 @@ export const serverPages: DetailPage[] = [
     slug: "sap-s4-hana-server-access",
     eyebrow: "SAP Servers",
     title: "SAP S/4HANA server access",
-    metaTitle: "SAP S/4HANA Server Access | Practice & Development — ServerFY",
+    metaTitle: "SAP S/4HANA Server Access India | S4 HANA Practice Server — ServerFY",
     intro:
       "A fully activated S/4HANA landscape with Fiori launchpad, core functional modules and sample data, ready for practice, configuration and development.",
     description:
       "Rent a fully configured SAP S/4HANA environment with Fiori, core modules and sample data for learning, configuration, ABAP development and testing.",
+    keywords:
+      "sap s4hana server access, sap s4 hana server access india, s4 hana practice server, sap s4hana practice environment, sap s4hana online server, sap s4hana remote access, sap s4 hana training server",
     highlights: [
       { title: "Fully activated appliance", desc: "Core functional and technical scope switched on, so you can configure from day one.", icon: "Server" },
       { title: "Fiori launchpad included", desc: "Catalogs, groups and standard apps configured for realistic S/4HANA screens.", icon: "LayoutGrid" },
@@ -84,11 +86,13 @@ export const serverPages: DetailPage[] = [
     slug: "sap-ecc-server-access",
     eyebrow: "SAP Servers",
     title: "SAP ECC 6.0 server access",
-    metaTitle: "SAP ECC 6.0 Server Access | IDES Practice Systems — ServerFY",
+    metaTitle: "SAP ECC Server Access for Practice | ECC Practice Server India — ServerFY",
     intro:
       "Classic ECC 6.0 landscapes with the full functional footprint and IDES-style sample data — still the fastest way to learn core SAP processes.",
     description:
       "Rent an SAP ECC 6.0 environment with all core functional modules and sample data for hands-on practice, training batches and ABAP development.",
+    keywords:
+      "sap ecc server access, sap ecc practice server india, sap ecc server access india, sap ecc online access, sap ecc remote access, sap ecc practice environment, sap ecc training server, sap ecc online server",
     highlights: [
       { title: "Complete core scope", desc: "FICO, MM, SD, PP, PM, QM, HCM and WM configured and ready to use.", icon: "Boxes" },
       { title: "Sample company data", desc: "Plants, org structures and master data so scenarios run end to end.", icon: "Factory" },
@@ -116,11 +120,13 @@ export const serverPages: DetailPage[] = [
     slug: "sap-server-access",
     eyebrow: "SAP Servers",
     title: "SAP HANA database access",
-    metaTitle: "SAP HANA Server Access | Modelling & SQLScript — ServerFY",
+    metaTitle: "SAP Server Access Online | Remote SAP Practice Server — ServerFY",
     intro:
       "In-memory HANA access for modelling, calculation views, SQLScript and administration practice, with HANA Studio or Web IDE connectivity.",
     description:
       "Rent SAP HANA database access for calculation views, SQLScript, modelling and administration practice with secure remote connectivity.",
+    keywords:
+      "sap server access, sap server access online, sap online server access, sap remote server access, sap server for learning, sap server access india, sap server for practice",
     highlights: [
       { title: "Full modelling scope", desc: "Attribute, analytic and calculation views with your own schema.", icon: "Database" },
       { title: "SQLScript workspace", desc: "Procedures, functions and performance tuning on real data volumes.", icon: "Terminal" },
@@ -152,6 +158,8 @@ export const serverPages: DetailPage[] = [
       "ServerFY is a leading provider of enterprise-grade, customised dedicated SAP S/4HANA servers running the latest fully activated S/4HANA appliance — your private, isolated environment with no sharing and no compromises.",
     description:
       "Enterprise-grade dedicated SAP S/4HANA server hosting with exclusive access, SSL security, ABAP and Fiori development support, custom domain and 99.9% uptime.",
+    keywords:
+      "sap dedicated server access, dedicated sap practice server, private sap environment, sap server for multiple users, sap server for sap institute",
     highlights: [
       { title: "Exclusive access", desc: "The entire server infrastructure is leased solely to your organisation.", icon: "Lock" },
       { title: "Top-notch security", desc: "Private environment with SSL, reducing the risk of breaches and unauthorised access.", icon: "ShieldCheck" },
@@ -186,11 +194,13 @@ export const serverPages: DetailPage[] = [
     slug: "sap-shared-server-access",
     eyebrow: "SAP Servers",
     title: "Shared SAP servers",
-    metaTitle: "Shared SAP Server Access | Affordable Practice — ServerFY",
+    metaTitle: "Shared SAP Server Access | Affordable SAP Practice Server — ServerFY",
     intro:
       "A personal user on a well-maintained shared landscape — the most affordable way to get genuine hands-on SAP time.",
     description:
       "Affordable shared SAP server access with your own login on a monitored landscape, ideal for individual practice and certification prep.",
+    keywords:
+      "sap shared server access, affordable sap practice server, sap practice server price, cheap sap server access, sap online practice server",
     highlights: [
       { title: "Your own login", desc: "A personal user and workspace on a landscape shared with other learners.", icon: "Users" },
       { title: "Lowest entry cost", desc: "Start practising for a fraction of a dedicated environment.", icon: "Wallet" },
@@ -217,11 +227,13 @@ export const serverPages: DetailPage[] = [
     slug: "sap-practice-servers",
     eyebrow: "SAP Servers",
     title: "SAP practice servers",
-    metaTitle: "SAP Practice Server Access | Hands-on SAP Practice — ServerFY",
+    metaTitle: "SAP Practice Server India | Online SAP Practice Environment — ServerFY",
     intro:
       "Practice-ready SAP landscapes with sample data loaded, so you can run real end-to-end cycles instead of reading about them.",
     description:
       "Rent an SAP practice server with S/4HANA or ECC access, sample company data and all core modules for hands-on practice and certification prep.",
+    keywords:
+      "sap practice server, sap practice server india, sap practice environment, sap practice server online, sap practice server for beginners, sap hands on practice server, best sap practice server, sap practice server providers in india",
     highlights: [
       { title: "Ready to practise", desc: "Org structures and master data already loaded, so scenarios run immediately.", icon: "Boxes" },
       { title: "All core modules", desc: "Functional and technical modules switched on for module-wise practice.", icon: "LayoutGrid" },
@@ -248,11 +260,13 @@ export const serverPages: DetailPage[] = [
     slug: "sap-training-servers",
     eyebrow: "SAP Servers",
     title: "SAP training servers",
-    metaTitle: "SAP Training Server Access | Batch Logins for Institutes — ServerFY",
+    metaTitle: "SAP Training Server for Institutes | Batch Logins India — ServerFY",
     intro:
       "Batch-ready SAP landscapes with per-student logins, module-wise access and trainer controls for institutes and corporate learning teams.",
     description:
       "SAP training server access with bulk student logins, module-wise scope and trainer controls for institutes, academies and corporate training batches.",
+    keywords:
+      "sap training server, sap training server for institutes, sap batch training server, sap training lab server, sap practice environment for training institutes, sap server for training",
     highlights: [
       { title: "Logins for every student", desc: "Bulk user creation with names, roles and module access set up before day one.", icon: "Users" },
       { title: "Trainer controls", desc: "Trainer users with wider authorisation to demonstrate and reset scenarios.", icon: "ShieldCheck" },
@@ -289,6 +303,8 @@ export const solutionPages: DetailPage[] = [
       "Give every learner a working system on day one, with logins prepared ahead of the batch and an admin user for the trainer.",
     description:
       "SAP server infrastructure for training institutes and corporate batches: per-learner logins, trainer admin access and term-based pricing.",
+    keywords:
+      "sap server for training institutes, sap practice server for institutes, sap server for sap institute, sap server for multiple users, sap batch training server, sap training lab server",
     highlights: [
       { title: "Ready before day one", desc: "Logins, roles and exercise data prepared before your batch starts.", icon: "GraduationCap" },
       { title: "One admin, many learners", desc: "The trainer resets passwords and data without waiting on us.", icon: "Presentation" },
@@ -321,6 +337,8 @@ export const solutionPages: DetailPage[] = [
       "Stay sharp between projects, prepare for a certification, or rehearse a configuration before you do it on a client system.",
     description:
       "Personal SAP practice environments for working consultants: rehearse configuration, prepare certifications and stay current between projects.",
+    keywords:
+      "sap server access for consultants, sap practice server for consultants, sap consultant practice environment, sap practice environment for consultants, sap server for sap consultants, sap remote practice server",
     highlights: [
       { title: "Private workspace", desc: "Your own client or user, with your customising left untouched.", icon: "ShieldCheck" },
       { title: "Rehearse safely", desc: "Try the change here before you touch a client landscape.", icon: "FlaskConical" },
@@ -352,6 +370,8 @@ export const solutionPages: DetailPage[] = [
       "Lab environments sized for live classes, with concurrent logins that hold up when thirty people press enter at the same time.",
     description:
       "Multi-user SAP lab environments for trainers, sized for concurrent classroom logins with monitored performance and quick resets.",
+    keywords:
+      "sap trainer lab server, sap server for trainers, sap training server multiple users, sap demo server for trainers",
     highlights: [
       { title: "Concurrency tested", desc: "Sized for the whole class working at once, not one login at a time.", icon: "Users" },
       { title: "Exercise data", desc: "We load your exercise master data before the session.", icon: "Database" },
@@ -383,6 +403,8 @@ export const solutionPages: DetailPage[] = [
       "Separate clients for build, test and demo so your team stops queueing for a single system.",
     description:
       "Parallel SAP environments for project teams: separate build, test and demo clients with transports and coordinated access.",
+    keywords:
+      "sap server for project teams, sap practice environment for professionals, sap server for working professionals, sap professional practice environment",
     highlights: [
       { title: "Client per stream", desc: "Build, test and demo run side by side without stepping on each other.", icon: "Layers" },
       { title: "Transport path", desc: "Move objects between clients the way your process expects.", icon: "GitBranch" },
@@ -414,6 +436,8 @@ export const solutionPages: DetailPage[] = [
       "Everything a developer needs on day one: keys, packages, transports and the tooling to build ABAP, Fiori and integrations.",
     description:
       "SAP development environments for ABAP, Fiori, UI5 and integration work, with developer keys, packages and transport handling.",
+    keywords:
+      "sap development server, sap abap practice server, sap technical practice server, sap abap coding practice server, sap development environment access",
     highlights: [
       { title: "Keys on arrival", desc: "Developer registration handled before handover.", icon: "KeyRound" },
       { title: "Full tooling", desc: "ABAP Workbench, Eclipse ADT, CDS and OData.", icon: "Code2" },
@@ -445,6 +469,8 @@ export const solutionPages: DetailPage[] = [
       "Dedicated space for functional, regression and integration cycles, with restore points so a failed run costs minutes, not days.",
     description:
       "SAP testing environments for functional, regression and integration cycles with snapshots, parallel clients and short-term terms.",
+    keywords:
+      "sap testing server, sap test environment access, sap regression testing server, sap sandbox for testing",
     highlights: [
       { title: "Restore points", desc: "Snapshot before the run, roll back after it.", icon: "History" },
       { title: "Parallel streams", desc: "Several test cycles at once in separate clients.", icon: "Layers" },
@@ -476,6 +502,8 @@ export const solutionPages: DetailPage[] = [
       "Show the idea working on a real SAP system instead of a slide, with an environment that looks tidy on a shared screen.",
     description:
       "Short-term SAP demo and proof of concept environments with clean data, reserved performance and restorable baselines.",
+    keywords:
+      "sap demo server, sap poc environment, sap demo environment access, sap proof of concept server",
     highlights: [
       { title: "Looks the part", desc: "Clean, curated data your audience can follow.", icon: "MonitorPlay" },
       { title: "Reserved capacity", desc: "Performance held steady for the session.", icon: "Gauge" },
@@ -507,6 +535,8 @@ export const solutionPages: DetailPage[] = [
       "A throwaway landscape for experiments: change anything, break anything, and reset when you are done.",
     description:
       "SAP sandbox environments for safe experimentation, with full customising freedom and a reset whenever you need a clean slate.",
+    keywords:
+      "sap sandbox server, sap sandbox environment, safe sap practice environment, sap experimentation server",
     highlights: [
       { title: "Nothing is precious", desc: "Experiment without a change board or approval chain.", icon: "FlaskConical" },
       { title: "Reset on demand", desc: "Return to a clean baseline whenever you like.", icon: "History" },
@@ -543,6 +573,8 @@ const baseResourcePages: DetailPage[] = [
       "Step-by-step articles for connecting, working and troubleshooting on your ServerFY environment.",
     description:
       "ServerFY knowledge base: connecting with SAP GUI, Fiori access, user administration, backups, resets and troubleshooting articles.",
+    keywords:
+      "sap server knowledge base, how to practice sap, where to practice sap, sap practice help",
     highlights: [
       { title: "Connecting", desc: "Install SAP GUI, add the connection entry and log in the first time.", icon: "Laptop" },
       { title: "Fiori access", desc: "Open the launchpad, find catalogs and pin the apps you use.", icon: "LayoutGrid" },
@@ -575,6 +607,8 @@ const baseResourcePages: DetailPage[] = [
       "Suggested practice paths for each module, so your time on the server has a plan behind it.",
     description:
       "Module-wise SAP practice guides for FICO, MM, SD, PP, HCM, ABAP, Basis and more — structured paths for building real hands-on experience.",
+    keywords:
+      "sap practice guides, how to practice sap fico, how to practice sap mm, how to practice sap abap, how to practice sap basis, sap practical exercises, sap real time scenarios",
     highlights: [
       { title: "FICO path", desc: "Org structure, GL, AP, AR, asset accounting, month-end.", icon: "Calculator" },
       { title: "MM path", desc: "Purchase requisition to invoice verification, end to end.", icon: "Boxes" },
@@ -606,6 +640,8 @@ const baseResourcePages: DetailPage[] = [
       "Everything runs on our infrastructure, so your own machine only needs to be good enough to display the screens.",
     description:
       "What you need locally to use a ServerFY SAP environment: SAP GUI or a browser, a stable internet connection and modest hardware.",
+    keywords:
+      "sap server system requirements, sap gui requirements, sap practice server requirements, sap remote access requirements",
     highlights: [
       { title: "Any modern laptop", desc: "4 GB RAM and a dual-core processor is enough for SAP GUI.", icon: "Laptop" },
       { title: "Stable internet", desc: "2 Mbps works; 10 Mbps feels comfortable for a full day.", icon: "Wifi" },
