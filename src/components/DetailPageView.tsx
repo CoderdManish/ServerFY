@@ -78,6 +78,8 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
         </div>
       </section>
 
+      {showEvidence ? <SystemEvidence /> : null}
+
       <IncludedBand />
 
       {/* FAQ */}
