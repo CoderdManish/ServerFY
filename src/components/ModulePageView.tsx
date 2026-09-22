@@ -15,7 +15,9 @@ import {
   moduleSteps,
   whyChoose,
 } from "@/data/module-content";
-import type { SapModule } from "@/data/serverfy";
+import { modules, type SapModule } from "@/data/serverfy";
+import { moduleSlug } from "@/data/module-pages";
+import { serverLinks } from "@/data/site-index";
 import { cn } from "@/lib/utils";
 import { SapSystemGraphic } from "@/components/SapSystemGraphic";
 
@@ -492,6 +494,45 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                 </ul>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Related modules & environments */}
+        <section className="section-y-sm bg-soft-mesh">
+          <div className="container-fy">
+            <h2 className="text-xl font-black tracking-tight text-foreground sm:text-2xl">
+              Other SAP modules you can practise
+            </h2>
+            <ul className="mt-5 flex flex-wrap gap-2.5">
+              {modules
+                .filter((m) => m.code !== mod.code)
+                .map((m) => (
+                  <li key={m.code}>
+                    <Link
+                      to="/modules/$code"
+                      params={{ code: moduleSlug(m.code) }}
+                      className="neu-pill inline-flex items-center rounded-full px-4 py-2 text-sm font-bold text-blue transition-colors hover:text-orange"
+                    >
+                      SAP {m.code}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+            <h2 className="mt-10 text-xl font-black tracking-tight text-foreground sm:text-2xl">
+              Choose your SAP environment
+            </h2>
+            <ul className="mt-5 flex flex-wrap gap-2.5">
+              {serverLinks.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="neu-pill inline-flex items-center rounded-full px-4 py-2 text-sm font-bold text-blue transition-colors hover:text-orange"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
