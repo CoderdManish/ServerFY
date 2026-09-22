@@ -8,7 +8,7 @@ export const site = {
   tagline: "Reliable SAP server infrastructure",
   phone: "+91 86053 23014",
   phoneHref: "tel:+918605323014",
-  whatsapp: "https://wa.me/918605323014",
+  whatsapp: "https://api.whatsapp.com/send?phone=918605323014",
   email: "hello@serverfy.com",
   address: "Vishal Nagar, Pune, Maharashtra, India",
 };
