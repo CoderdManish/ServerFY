@@ -27,7 +27,7 @@ const title = "ServerFY | Reliable SAP Servers for Practice, Training & Developm
 const description =
   "Rent ready-to-use SAP S/4HANA, ECC and HANA server environments for functional and technical modules. Ideal for learners, trainers, consultants and project teams.";
 const keywords =
-  "SAP server, SAP S/4HANA access, SAP ECC server, SAP HANA, SAP practice, SAP training, SAP development server, SAP modules, FICO, MM, SD, PP, ABAP, Basis";
+  "sap server access, sap practice server, sap practice server india, sap server access india, sap online server access, sap remote server access, sap server for learning, sap server for practice, sap s4hana server access, sap ecc server access, sap training server, sap server providers in india, sap practice server providers in india, best sap practice server, best sap server access provider";
 
 export const Route = createFileRoute("/")({
   component: Index,

@@ -14,7 +14,7 @@ export const resourceArticles: DetailPage[] = [
       "A hosted, non-production SAP system rented for learning, configuration practice, development and demos — accessed remotely with SAP GUI.",
     description:
       "An SAP practice server is a hosted non-production SAP system you rent for learning and configuration. Here is what it includes, who uses it and how access works.",
-    keywords: "what is sap practice server, sap practice environment, sap server for learning",
+    keywords: "what is sap practice server, what is sap practice environment, how to practice sap, where to practice sap, how to learn sap practically, sap practice environment, sap server for learning",
     highlights: [
       { title: "Hosted, not installed", desc: "The SAP system runs on our infrastructure; you only install SAP GUI.", icon: "Server" },
       { title: "Sample data", desc: "IDES-style master data so end-to-end business cycles actually run.", icon: "Database" },
@@ -53,7 +53,7 @@ export const resourceArticles: DetailPage[] = [
       "Install SAP GUI, add the connection entry we send you, log on with your client and user, and change your password on first login.",
     description:
       "Step-by-step guide to accessing a remote SAP server: SAP GUI setup, connection entry, logging on, first-password change and what to do if the connection fails.",
-    keywords: "how to access sap server, sap gui connection, remote sap login",
+    keywords: "how to get sap server access, how to get sap practice server, how to access sap server, how to practice sap online, how to practice sap at home, sap online practice server, remote sap login",
     highlights: [
       { title: "Install SAP GUI", desc: "SAP GUI for Windows, or SAP GUI for Java on macOS and Linux.", icon: "Download" },
       { title: "Add the connection", desc: "Enter application server, instance number and system ID from the handover mail.", icon: "Plug" },
@@ -92,7 +92,7 @@ export const resourceArticles: DetailPage[] = [
       "What SAP GUI is, which version to use, how to install it on each operating system and how to create your first connection entry.",
     description:
       "How to install SAP GUI on Windows, macOS and Linux, choose the right version, create a connection entry and fix the most common installation problems.",
-    keywords: "sap gui installation, install sap gui windows, sap gui for java mac",
+    keywords: "sap gui installation, install sap gui windows, sap gui for java mac, how to practice sap without installation, sap practice server online",
     highlights: [
       { title: "One light client", desc: "SAP GUI is a small desktop client — the SAP system itself stays on the server.", icon: "MonitorSmartphone" },
       { title: "Windows", desc: "SAP GUI for Windows 7.70 or later is the most feature-complete option.", icon: "Laptop" },
@@ -131,7 +131,7 @@ export const resourceArticles: DetailPage[] = [
       "Cost depends on the SAP system, whether the environment is shared or dedicated, how much memory it needs and how long you keep it.",
     description:
       "What drives the price of an SAP practice server: system type, shared versus dedicated, memory sizing, number of users and access duration.",
-    keywords: "sap practice server cost, sap server price, sap server access cost",
+    keywords: "sap practice server cost, sap server access price, sap server access cost, sap practice server monthly price, affordable sap practice server, sap server access plans",
     highlights: [
       { title: "System type", desc: "S/4HANA environments need more memory than classic ECC systems.", icon: "Server" },
       { title: "Shared or dedicated", desc: "Sharing the infrastructure is the cheapest route; exclusivity costs more.", icon: "Users" },
@@ -170,7 +170,7 @@ export const resourceArticles: DetailPage[] = [
       "FICO practice needs a system with an activated finance and controlling scope, company code data and posting periods open — on S/4HANA that means the Universal Journal.",
     description:
       "What an SAP FICO practice server must have: activated FI and CO scope, company code and chart of accounts data, open posting periods and reporting access.",
-    keywords: "sap server for fico, sap fico practice server, fico server access",
+    keywords: "sap server for fico, sap fico practice server, sap fico server access for practice, how to practice sap fico at home, sap fico hands on practice, sap fico practice transactions, sap fico real time scenarios",
     highlights: [
       { title: "Configured company code", desc: "Chart of accounts, fiscal year variant and posting periods ready to use.", icon: "Building2" },
       { title: "FI and CO scope", desc: "GL, AP, AR, asset accounting and controlling switched on.", icon: "Calculator" },
@@ -209,7 +209,7 @@ export const resourceArticles: DetailPage[] = [
       "BASIS practice needs administrator-level access: user administration, client handling, transports, background jobs and system monitoring — which means a dedicated environment.",
     description:
       "What an SAP BASIS practice environment requires: administrator rights, client administration, transport management, job scheduling and monitoring transactions.",
-    keywords: "sap server for basis, sap basis practice server, sap basis admin access",
+    keywords: "sap server for basis, sap basis practice server, sap basis practice environment, how to practice sap basis, sap basis hands on practice, sap basis technical practice server",
     highlights: [
       { title: "Administrator rights", desc: "SU01, PFCG, client tools and system parameters at your disposal.", icon: "ShieldCheck" },
       { title: "Client administration", desc: "Create and copy clients to rehearse real Basis tasks.", icon: "Layers" },

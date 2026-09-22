@@ -11,7 +11,7 @@ const title = "Pricing | Transparent Monthly SAP Server Plans — ServerFY";
 const description =
   "Simple monthly pricing for SAP practice, training, development and dedicated server plans. Compare what each plan includes and pick the right access.";
 const keywords =
-  "SAP server pricing, SAP S/4HANA price, SAP practice server cost, SAP training server, dedicated SAP server, monthly SAP access";
+  "sap server access price, sap practice server price, sap server access cost, sap practice server cost, sap server access plans, sap practice server monthly price, sap ecc server access price, sap s4hana server access price, sap fico server access price, sap mm server access price, affordable sap practice server";
 
 export const Route = createFileRoute("/pricing")({
   component: PricingPage,
