@@ -46,9 +46,9 @@ export function moduleDetailPage(mod: SapModule): DetailPage {
     slug: moduleSlug(mod.code),
     eyebrow: "SAP Modules",
     title,
-    metaTitle: `SAP ${mod.code} Server Access | ${mod.name} Practice — ServerFY`,
+    metaTitle: `SAP ${mod.code} Server Access for Practice — ServerFY`,
     intro: `${mod.name} on a live SAP system — ${mod.desc.toLowerCase()} Available on ${platforms} with remote access and your own login.`,
-    description: `Get hands-on SAP ${mod.code} (${mod.name}) server access on ${platforms}. ${mod.desc} Remote login, daily backups and same-day activation.`,
+    description: `Hands-on SAP ${mod.code} (${mod.name}) server access on ${platforms} — remote login, daily backups and same-day activation.`,
     keywords: moduleKeywords(mod.code),
     highlights: [
       {
