@@ -1,4 +1,4 @@
-import sapLogon from "@/assets/sap-logon-770.png.asset.json";
+import sapLogon from "@/assets/sap-logon.webp";
 
 /**
  * Original infrastructure evidence: a real SAP Logon screenshot from a
@@ -38,7 +38,7 @@ export function SystemEvidence() {
 
         <figure className="neu-card rounded-2xl p-3 sm:p-4">
           <img
-            src={sapLogon.url}
+            src={sapLogon}
             alt="SAP Logon 770 window showing a ServerFY connection entry with system description and system ID"
             width={751}
             height={749}
