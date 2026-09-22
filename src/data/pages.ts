@@ -3,6 +3,9 @@
  * Each entry drives a detail page rendered by <DetailPageView />.
  */
 
+import { resourceArticles } from "./resource-articles";
+
+
 export type Highlight = { title: string; desc: string; icon: string };
 export type Spec = { label: string; value: string };
 
@@ -530,7 +533,7 @@ export const solutionPages: DetailPage[] = [
 
 /* --------------------------------- Resources -------------------------------- */
 
-export const resourcePages: DetailPage[] = [
+const baseResourcePages: DetailPage[] = [
   {
     slug: "sap-server-knowledge-base",
     eyebrow: "Resources",
@@ -823,6 +826,9 @@ export const supportPages: DetailPage[] = [
     faq: commonFaq,
   },
 ];
+
+/** Resource landing pages plus the SAP Server Knowledge Hub articles. */
+export const resourcePages: DetailPage[] = [...baseResourcePages, ...resourceArticles];
 
 export const allDetailPages = {
   servers: serverPages,

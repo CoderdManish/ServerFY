@@ -5,14 +5,20 @@ import { CtaButton } from "@/components/CtaButton";
 import { PageShell } from "@/components/PageShell";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { IncludedBand } from "@/components/sections/IncludedBand";
+import { QuickAnswer } from "@/components/sections/QuickAnswer";
+import { SystemEvidence } from "@/components/sections/SystemEvidence";
+import { quickAnswers } from "@/data/answers";
 import { absUrl } from "@/lib/site";
 import type { DetailPage } from "@/data/pages";
 
 type RelatedLink = { label: string; to: string };
 
 export function DetailPageView({ page, related = [] }: { page: DetailPage; related?: RelatedLink[] }) {
+  const qa = quickAnswers[page.slug];
+  const showEvidence = page.eyebrow === "SAP Servers";
   return (
     <PageShell eyebrow={page.eyebrow} title={page.title} intro={page.intro}>
+      {qa ? <QuickAnswer question={qa.question} answer={qa.answer} /> : null}
       {/* Highlights */}
       <section className="section-y bg-soft-mesh">
         <div className="container-fy">
@@ -72,6 +78,8 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
         </div>
       </section>
 
+      {showEvidence ? <SystemEvidence /> : null}
+
       <IncludedBand />
 
       {/* FAQ */}
@@ -116,6 +124,7 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
 
 export function detailHead(page: DetailPage, path: string) {
   const url = absUrl(path);
+  const qa = quickAnswers[page.slug];
   const categoryPath = "/" + path.split("/")[1];
   const categoryName = page.eyebrow || categoryPath.replace("/", "").replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
   const meta: Array<
@@ -146,11 +155,37 @@ export function detailHead(page: DetailPage, path: string) {
           "@graph": [
             {
               "@type": "FAQPage",
-              mainEntity: page.faq.map((f) => ({
-                "@type": "Question",
-                name: f.q,
-                acceptedAnswer: { "@type": "Answer", text: f.a },
+              mainEntity: [
+                ...(qa
+                  ? [{ "@type": "Question", name: qa.question, acceptedAnswer: { "@type": "Answer", text: qa.answer } }]
+                  : []),
+                ...page.faq.map((f) => ({
+                  "@type": "Question",
+                  name: f.q,
+                  acceptedAnswer: { "@type": "Answer", text: f.a },
+                })),
+              ],
+            },
+            {
+              "@type": "Service",
+              "@id": `${url}#service`,
+              name: page.title,
+              serviceType: page.eyebrow,
+              description: page.description,
+              url,
+              provider: { "@type": "Organization", name: "ServerFY", url: absUrl("/") },
+              areaServed: "Worldwide",
+              additionalProperty: page.specs.map((s) => ({
+                "@type": "PropertyValue",
+                name: s.label,
+                value: s.value,
               })),
+              offers: {
+                "@type": "Offer",
+                url: absUrl("/pricing"),
+                priceCurrency: "INR",
+                availability: "https://schema.org/InStock",
+              },
             },
             {
               "@type": "BreadcrumbList",

@@ -301,7 +301,7 @@ export const footerColumns = [
   { title: "SAP Servers", links: ["S/4HANA", "ECC", "SAP Server", "Dedicated", "Shared"] },
   { title: "SAP Modules", links: ["Functional", "Technical", "All Modules", "Module Comparison"] },
   { title: "Solutions", links: ["Training", "Development", "Testing", "Demo & POC", "Consultant Practice", "Corporate Learning"] },
-  { title: "Resources", links: ["Blog", "Knowledge Base", "Guides", "FAQs", "System Requirements"] },
+  { title: "Resources", links: ["Blog", "Knowledge Base", "Comparisons", "Guides", "FAQs", "System Requirements"] },
   { title: "Company", links: ["About", "Why ServerFY", "Infrastructure", "Careers", "Contact"] },
   { title: "Support", links: ["Contact Support", "Server Status", "Terms", "Privacy", "Refund Policy", "SLA"] },
 ];

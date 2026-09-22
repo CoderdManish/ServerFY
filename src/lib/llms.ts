@@ -2,6 +2,7 @@ import { SITE_URL, absUrl } from "./site";
 import { serverPages, solutionPages, resourcePages, companyPages, supportPages } from "@/data/pages";
 import { modules } from "@/data/serverfy";
 import { moduleSlug } from "@/data/module-pages";
+import { comparisonPages } from "@/data/comparisons";
 import { blogPosts } from "@/data/blog";
 
 function line(title: string, path: string, desc: string) {
@@ -33,6 +34,7 @@ ${line("SAP Servers", "/servers", "All SAP server environments")}
 ${line("SAP Modules", "/modules", "Practice servers by SAP module")}
 ${line("Solutions", "/solutions", "Server setups by audience and use case")}
 ${line("Resources", "/resources", "Setup guides, requirements and FAQs")}
+${line("Comparisons", "/compare", "Side-by-side comparisons of SAP server options")}
 ${line("Blog", "/blog", "Articles on SAP practice, performance and training operations")}
 ${line("Contact", "/contact", "Talk to the team about an environment")}
 
@@ -47,6 +49,9 @@ ${solutionPages.map((p) => line(p.title, `/solutions/${p.slug}`, p.description))
 
 ## Blog articles
 ${blogPosts.map((p) => line(p.title, `/blog/${p.slug}`, p.description)).join("\n")}
+
+## Comparisons
+${comparisonPages.map((p) => line(p.title, `/compare/${p.slug}`, p.description)).join("\n")}
 
 ## Resources
 ${resourcePages.map((p) => line(p.title, `/resources/${p.slug}`, p.description)).join("\n")}

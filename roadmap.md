@@ -8,5 +8,6 @@
 - [x] Redesign all SAP module and server detail pages from the hero through every content section
 - [x] Add a lightweight technical graphic to the SAP Easy Access panel across module pages
 - [x] Verify the shared redesign on mobile and desktop before rollout
-- [ ] SEO/GEO strategy build-out (answer-first pages, spec tables, comparison pages, resources hub, entity signals)
-- [ ] Use uploaded SAP Logon 770 GUI screenshot as technical evidence on server pages
+- [x] SEO/GEO build-out: answer-first blocks, comparison pages (/compare), knowledge-hub articles, sitemap + llms.txt
+- [x] SAP Logon 770 screenshot used as technical evidence on server pages
+- [ ] Confirm real plan specs (RAM/vCPU/storage/validity) — current copy uses general wording

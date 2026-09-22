@@ -47,6 +47,7 @@ export const linkFor: Record<string, string> = {
   // Resources
   Blog: "/blog",
   "Knowledge Base": "/resources/sap-server-knowledge-base",
+  Comparisons: "/compare",
   Guides: "/resources/sap-server-guides",
   FAQs: "/resources",
   "System Requirements": "/resources/sap-server-system-requirements",
