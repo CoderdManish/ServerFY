@@ -9,6 +9,7 @@ import { QuickAnswer } from "@/components/sections/QuickAnswer";
 import { SystemEvidence } from "@/components/sections/SystemEvidence";
 import { quickAnswers } from "@/data/answers";
 import { absUrl } from "@/lib/site";
+import { clampDescription, clampTitle, socialMeta } from "@/lib/seo";
 import type { DetailPage } from "@/data/pages";
 
 type RelatedLink = { label: string; to: string };
@@ -127,20 +128,15 @@ export function detailHead(page: DetailPage, path: string) {
   const qa = quickAnswers[page.slug];
   const categoryPath = "/" + path.split("/")[1];
   const categoryName = page.eyebrow || categoryPath.replace("/", "").replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+  const metaTitle = clampTitle(page.metaTitle);
+  const metaDescription = clampDescription(page.description);
   const meta: Array<
     | { title: string }
-    | { name: string; content: string }
-    | { property: string; content: string }
+    | { name?: string; property?: string; content: string }
   > = [
-    { title: page.metaTitle },
-    { name: "description", content: page.description },
-    { property: "og:title", content: page.metaTitle },
-    { property: "og:description", content: page.description },
-    { property: "og:type", content: "article" },
-    { property: "og:url", content: url },
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: page.metaTitle },
-    { name: "twitter:description", content: page.description },
+    { title: metaTitle },
+    { name: "description", content: metaDescription },
+    ...socialMeta({ title: metaTitle, description: metaDescription, url, type: "article" }),
     { name: "robots", content: "index, follow" },
   ];
   if (page.keywords) meta.push({ name: "keywords", content: page.keywords });

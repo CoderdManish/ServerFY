@@ -7,7 +7,7 @@ import { site } from "@/data/serverfy";
 const number = site.whatsapp.replace(/\D/g, "");
 
 export function waLink(message: string) {
-  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+  return `https://api.whatsapp.com/send?phone=${number}&text=${encodeURIComponent(message)}`;
 }
 
 export const waProps = { target: "_blank", rel: "noreferrer noopener" } as const;

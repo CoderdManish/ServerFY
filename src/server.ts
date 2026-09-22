@@ -44,12 +44,32 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+/**
+ * Let the CDN serve public pages instantly (and revalidate in the background),
+ * so crawlers and first-time visitors never wait on a cold render.
+ * Admin pages are never cached.
+ */
+function withPageCaching(request: Request, response: Response): Response {
+  if (request.method !== "GET" || response.status !== 200) return response;
+  if (!(response.headers.get("content-type") ?? "").includes("text/html")) return response;
+  if (response.headers.has("cache-control")) return response;
+  if (new URL(request.url).pathname.startsWith("/sfy-console")) {
+    response.headers.set("cache-control", "private, no-store");
+    return response;
+  }
+  response.headers.set(
+    "cache-control",
+    "public, max-age=0, s-maxage=600, stale-while-revalidate=86400",
+  );
+  return response;
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      return withPageCaching(request, await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {

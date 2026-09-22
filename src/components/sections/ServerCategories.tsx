@@ -2,6 +2,7 @@ import { ArrowRight, Boxes, Cloud, Cpu, Database } from "lucide-react";
 import { Icon } from "@/components/Icon";
 import { Reveal } from "@/components/Primitives";
 import { Link } from "@tanstack/react-router";
+import { moduleSlug } from "@/data/module-pages";
 import { modules } from "@/data/serverfy";
 
 const environments = [
@@ -56,7 +57,7 @@ function ModuleTile({ code, index }: { code: string; index: number }) {
     <li>
       <Link
         to="/modules/$code"
-        params={{ code: mod.code.toLowerCase() }}
+        params={{ code: moduleSlug(mod.code) }}
         className="group flex h-full flex-col items-center gap-2 rounded-2xl border border-border bg-background px-3 py-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange/40 hover:shadow-card"
       >
         <span

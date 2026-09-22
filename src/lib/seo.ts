@@ -13,6 +13,54 @@ type SeoInput = {
 
 type MetaTag = { title: string } | { name?: string; property?: string; content: string };
 
+/** Default share image (1200x630) used when a page has no image of its own. */
+export const DEFAULT_OG_IMAGE = "/og-cover.jpg";
+
+/** Trim to a search-friendly length at a word boundary, without a dangling separator. */
+export function clampText(text: string, max: number) {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max);
+  const at = cut.lastIndexOf(" ");
+  return (at > max * 0.6 ? cut.slice(0, at) : cut).replace(/[\s\-–—|,:;.]+$/, "");
+}
+
+export const clampTitle = (t: string) => clampText(t, 60);
+export const clampDescription = (d: string) => clampText(d, 155);
+
+/** og:/twitter: tags every page shares, so social previews are never incomplete. */
+export function socialMeta({
+  title,
+  description,
+  url,
+  type = "website",
+  image = DEFAULT_OG_IMAGE,
+}: {
+  title: string;
+  description: string;
+  url: string;
+  type?: string;
+  image?: string;
+}): MetaTag[] {
+  const img = absUrl(image);
+  return [
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:type", content: type },
+    { property: "og:url", content: url },
+    { property: "og:site_name", content: "ServerFY" },
+    { property: "og:locale", content: "en_IN" },
+    { property: "og:image", content: img },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:image:alt", content: title },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: img },
+  ];
+}
+
 export function buildHead({
   title,
   description,
@@ -24,25 +72,17 @@ export function buildHead({
   jsonLd,
 }: SeoInput) {
   const url = absUrl(path);
+  const t = clampTitle(title);
+  const d = clampDescription(description);
   const meta: MetaTag[] = [
-    { title },
-    { name: "description", content: description },
-    { property: "og:title", content: title },
-    { property: "og:description", content: description },
-    { property: "og:type", content: type },
-    { property: "og:url", content: url },
-    { name: "twitter:card", content: image ? "summary_large_image" : "summary" },
-    { name: "twitter:title", content: title },
-    { name: "twitter:description", content: description },
+    { title: t },
+    { name: "description", content: d },
+    ...socialMeta({ title: t, description: d, url, type, image: image ?? DEFAULT_OG_IMAGE }),
     { name: "robots", content: noindex ? "noindex, nofollow" : "index, follow" },
   ];
 
   if (keywords) {
     meta.push({ name: "keywords", content: keywords });
-  }
-  if (image) {
-    meta.push({ property: "og:image", content: absUrl(image) });
-    meta.push({ name: "twitter:image", content: absUrl(image) });
   }
 
   const scripts: Array<{ type: string; children: string }> = [];

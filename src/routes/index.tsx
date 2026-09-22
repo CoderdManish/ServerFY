@@ -23,7 +23,7 @@ import { SITE_URL } from "@/lib/site";
 import rackDesktop from "@/assets/server-rack-hero-desktop.webp";
 import rackMobile from "@/assets/server-rack-hero-mobile.webp";
 
-const title = "ServerFY | Reliable SAP Servers for Practice, Training & Development";
+const title = "SAP Server Access for Practice & Training | ServerFY";
 const description =
   "Rent ready-to-use SAP S/4HANA, ECC and HANA server environments for functional and technical modules. Ideal for learners, trainers, consultants and project teams.";
 const keywords =

@@ -23,8 +23,8 @@ export const Route = createFileRoute("/modules/$code")({
     }
     const mod = loaderData;
     const path = `/modules/${params.code}`;
-    const title = `SAP ${mod.code} Server Access | ${mod.name} Practice — ServerFY`;
-    const description = `Practice SAP ${mod.code} (${mod.name}) on a live server. ${mod.desc} Available on ${mod.platforms.join(" / ")} with your own login, configuration access and support.`;
+    const title = `SAP ${mod.code} Server Access for Practice — ServerFY`;
+    const description = `Practice SAP ${mod.code} (${mod.name}) on a live SAP server — ${mod.platforms.join(" / ")}, your own login, configuration access and support.`;
     const keywords = `SAP ${mod.code}, SAP ${mod.name}, SAP ${mod.code} server, SAP ${mod.code} practice, SAP ${mod.code} training, ${mod.platforms.join(", ")}`;
     return buildHead({
       title,
