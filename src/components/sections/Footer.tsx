@@ -73,6 +73,8 @@ export function Footer() {
                   <a
                     href={s.href}
                     aria-label={s.label}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
                     className="grid size-11 place-items-center rounded-xl border border-white/10 transition-colors hover:border-orange hover:text-white"
                   >
                     <s.icon className="size-4" aria-hidden="true" />
