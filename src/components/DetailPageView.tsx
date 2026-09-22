@@ -154,11 +154,37 @@ export function detailHead(page: DetailPage, path: string) {
           "@graph": [
             {
               "@type": "FAQPage",
-              mainEntity: page.faq.map((f) => ({
-                "@type": "Question",
-                name: f.q,
-                acceptedAnswer: { "@type": "Answer", text: f.a },
+              mainEntity: [
+                ...(qa
+                  ? [{ "@type": "Question", name: qa.question, acceptedAnswer: { "@type": "Answer", text: qa.answer } }]
+                  : []),
+                ...page.faq.map((f) => ({
+                  "@type": "Question",
+                  name: f.q,
+                  acceptedAnswer: { "@type": "Answer", text: f.a },
+                })),
+              ],
+            },
+            {
+              "@type": "Service",
+              "@id": `${url}#service`,
+              name: page.title,
+              serviceType: page.eyebrow,
+              description: page.description,
+              url,
+              provider: { "@type": "Organization", name: "ServerFY", url: absUrl("/") },
+              areaServed: "Worldwide",
+              additionalProperty: page.specs.map((s) => ({
+                "@type": "PropertyValue",
+                name: s.label,
+                value: s.value,
               })),
+              offers: {
+                "@type": "Offer",
+                url: absUrl("/pricing"),
+                priceCurrency: "INR",
+                availability: "https://schema.org/InStock",
+              },
             },
             {
               "@type": "BreadcrumbList",
