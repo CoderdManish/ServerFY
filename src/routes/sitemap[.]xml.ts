@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { modules } from "@/data/serverfy";
 import { moduleSlug } from "@/data/module-pages";
 import { resourcePages, serverPages, solutionPages } from "@/data/pages";
+import { comparisonPages } from "@/data/comparisons";
 import { publishedBlogSlugs } from "@/lib/blog-slugs";
 
 const staticPaths = [
@@ -11,6 +12,7 @@ const staticPaths = [
   "/solutions",
   "/pricing",
   "/resources",
+  "/compare",
   "/blog",
   "/about",
   "/contact",
@@ -30,6 +32,7 @@ async function allPaths(): Promise<string[]> {
     ...serverPages.map((p) => `/servers/${p.slug}`),
     ...solutionPages.map((p) => `/solutions/${p.slug}`),
     ...resourcePages.map((p) => `/resources/${p.slug}`),
+    ...comparisonPages.map((p) => `/compare/${p.slug}`),
     ...blogSlugs.map((slug) => `/blog/${slug}`),
     ...modules.map((m) => `/modules/${moduleSlug(m.code)}`),
   ];
