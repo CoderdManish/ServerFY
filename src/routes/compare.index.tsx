@@ -16,7 +16,7 @@ export const Route = createFileRoute("/compare/")({
       title,
       description,
       path: "/compare",
-      keywords: "sap server comparison, dedicated vs shared sap server, sap ecc vs s4hana",
+      keywords: "sap practice server comparison, sap server comparison, dedicated vs shared sap server, sap ecc vs s4hana practice, best sap practice server, best sap server access provider",
       jsonLd: [
         {
           "@type": "ItemList",

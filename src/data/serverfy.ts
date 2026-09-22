@@ -84,6 +84,8 @@ export const megaMenus = {
         items: [
           { label: "SAP Training", desc: "Institutes & corporate batches", icon: "GraduationCap" },
           { label: "Consultant Practice", desc: "Stay sharp between projects", icon: "Briefcase" },
+          { label: "For Students", desc: "Affordable practice for beginners", icon: "GraduationCap" },
+          { label: "For Professionals", desc: "Practise around a full-time job", icon: "Briefcase" },
           { label: "Trainer Labs", desc: "Multi-user lab access", icon: "Presentation" },
           { label: "Project Teams", desc: "Parallel environments", icon: "Users" },
         ],
@@ -300,7 +302,7 @@ export const faqs = [
 export const footerColumns = [
   { title: "SAP Servers", links: ["S/4HANA", "ECC", "SAP Server", "Dedicated", "Shared"] },
   { title: "SAP Modules", links: ["Functional", "Technical", "All Modules", "Module Comparison"] },
-  { title: "Solutions", links: ["Training", "Development", "Testing", "Demo & POC", "Consultant Practice", "Corporate Learning"] },
+  { title: "Solutions", links: ["For Students", "For Professionals", "Training", "Development", "Testing", "Demo & POC", "Consultant Practice"] },
   { title: "Resources", links: ["Blog", "Knowledge Base", "Comparisons", "Guides", "FAQs", "System Requirements"] },
   { title: "Company", links: ["About", "Why ServerFY", "Infrastructure", "Careers", "Contact"] },
   { title: "Support", links: ["Contact Support", "Server Status", "Terms", "Privacy", "Refund Policy", "SLA"] },

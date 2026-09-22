@@ -37,6 +37,8 @@ export const linkFor: Record<string, string> = {
   Training: "/solutions/sap-server-for-training-institutes",
   "Corporate Learning": "/solutions/sap-server-for-training-institutes",
   "Consultant Practice": "/solutions/sap-server-for-consultants",
+  "For Students": "/solutions/sap-server-for-students",
+  "For Professionals": "/solutions/sap-server-for-working-professionals",
   "Trainer Labs": "/solutions/sap-server-for-trainers",
   "Project Teams": "/solutions/sap-server-for-project-teams",
   Development: "/solutions/sap-development-server",
