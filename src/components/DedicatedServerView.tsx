@@ -32,7 +32,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
         <div className="container-fy relative">
           <ul className="grid gap-4 sm:grid-cols-3">
             {dedicatedStats.map((s) => (
-              <li key={s.label} className="glass-dark flex items-center gap-4 rounded-2xl px-5 py-4">
+              <li key={s.label} className="glass-dark rail-card flex items-center gap-4 rounded-2xl px-5 py-4">
                 <span className="icon-tile-dark grid size-12 shrink-0 place-items-center rounded-xl text-orange">
                   <Icon name={s.icon} className="size-5" />
                 </span>
@@ -83,7 +83,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {dedicatedUseCases.map((u, i) => (
               <Reveal as="li" key={u.title} delay={(i % 4) * 0.05}>
-                <div className="neu-card rail-card flex h-full items-start gap-3.5 rounded-2xl p-5">
+                 <div className="neu-card rail-card flex h-full items-start gap-3.5 rounded-xl p-5">
                   <span className="icon-tile grid size-11 shrink-0 place-items-center rounded-xl">
                     <Icon name={u.icon} className="size-5" />
                   </span>
@@ -133,7 +133,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
 
           <ul className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
             {dedicatedPillars.map((p) => (
-              <li key={p.title} className="glass-panel rounded-2xl p-5">
+              <li key={p.title} className="glass-panel rail-card rounded-xl p-5">
                 <span className="icon-tile grid size-11 place-items-center rounded-xl">
                   <Icon name={p.icon} className="size-5" />
                 </span>
@@ -156,7 +156,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {dedicatedWhy.map((w, i) => (
               <Reveal as="li" key={w.title} delay={(i % 3) * 0.05}>
-                <div className="neu-card rail-card h-full rounded-2xl p-6">
+                 <div className="neu-card rail-card h-full rounded-xl p-6">
                   <div className="flex items-center justify-between gap-3">
                     <span className="icon-tile grid size-12 place-items-center rounded-2xl">
                       <Icon name={w.icon} className="size-5" />
@@ -186,7 +186,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
           <ul className="mt-10 grid gap-4 sm:grid-cols-2">
             {dedicatedIncluded.map((it, i) => (
               <Reveal as="li" key={it.title} delay={(i % 2) * 0.05}>
-                <div className="glass-panel rail-card flex h-full gap-4 rounded-2xl p-6">
+                 <div className="glass-panel rail-card flex h-full gap-4 rounded-xl p-6">
                   <span className="icon-tile grid size-12 shrink-0 place-items-center rounded-2xl">
                     <Icon name={it.icon} className="size-5" />
                   </span>
@@ -254,7 +254,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
           {/* Mobile cards */}
           <ul className="mt-10 grid gap-4 lg:hidden">
             {dedicatedComparison.map((row) => (
-              <li key={row.feature} className="neu-card rounded-2xl p-5">
+               <li key={row.feature} className="neu-card rail-card rounded-xl p-5">
                 <p className="type-eyebrow text-orange">{row.feature}</p>
                 <div className="mt-3 space-y-3 text-sm">
                   <div className="rounded-xl border border-orange/25 bg-orange/[0.06] p-3">
@@ -283,7 +283,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
           <ul className="mt-10 grid gap-4 md:grid-cols-3">
             {dedicatedModels.map((m, i) => (
               <Reveal as="li" key={m.title} delay={i * 0.05}>
-                <div className="glass-panel rail-card h-full rounded-2xl p-6">
+                 <div className="glass-panel rail-card h-full rounded-xl p-6">
                   <span className="icon-tile grid size-12 place-items-center rounded-2xl">
                     <Icon name={m.icon} className="size-5" />
                   </span>
@@ -311,7 +311,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
           <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">Common questions</h2>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {page.faq.map((f) => (
-              <div key={f.q} className="neu-card rounded-2xl p-5">
+               <div key={f.q} className="faq-row rounded-xl p-5">
                 <h3 className="text-base font-bold text-foreground">{f.q}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
               </div>

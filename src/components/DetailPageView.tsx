@@ -16,10 +16,11 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
       {/* Highlights */}
       <section className="section-y bg-soft-mesh">
         <div className="container-fy">
-          <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">What you get</h2>
+          <p className="type-eyebrow text-orange">Built for real SAP work</p>
+          <h2 className="mt-3 type-section text-foreground">What you get</h2>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {page.highlights.map((h) => (
-              <li key={h.title} className="neu-card rounded-2xl p-5">
+              <li key={h.title} className="neu-card rail-card rounded-2xl p-5">
                 <span className="icon-tile grid size-11 place-items-center rounded-xl">
                   <Icon name={h.icon} className="size-5" />
                 </span>
@@ -34,7 +35,7 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
       {/* Specs + checklist */}
       <section className="section-y bg-soft-tint">
         <div className="container-fy grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:items-start">
-          <div className="glass-panel rounded-3xl p-6 sm:p-8">
+           <div className="glass-panel overflow-hidden rounded-2xl p-6 sm:p-8">
             <h2 className="text-xl font-black tracking-tight text-foreground">Specification</h2>
             <dl className="mt-6 divide-y divide-border">
               {page.specs.map((s) => (
@@ -46,7 +47,7 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
             </dl>
           </div>
 
-          <div className="neu-card rounded-3xl p-6 sm:p-8">
+          <div className="neu-card rail-card rounded-2xl p-6 sm:p-8">
             <h2 className="text-xl font-black tracking-tight text-foreground">{page.checklist.title}</h2>
             <ul className="mt-6 space-y-3">
               {page.checklist.items.map((item) => (
@@ -76,10 +77,11 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
       {/* FAQ */}
       <section className="section-y bg-soft-mesh">
         <div className="container-fy">
-          <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">Common questions</h2>
+          <p className="type-eyebrow text-orange">Need to know</p>
+          <h2 className="mt-3 type-section text-foreground">Common questions</h2>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {page.faq.map((f) => (
-              <div key={f.q} className="neu-card rounded-2xl p-5">
+              <div key={f.q} className="faq-row rounded-2xl p-5">
                 <h3 className="text-base font-bold text-foreground">{f.q}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
               </div>

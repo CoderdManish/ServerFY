@@ -17,6 +17,7 @@ import {
 } from "@/data/module-content";
 import type { SapModule } from "@/data/serverfy";
 import { cn } from "@/lib/utils";
+import { SapSystemGraphic } from "@/components/SapSystemGraphic";
 
 /* ------------------------------ Pastel cycle ------------------------------ */
 
@@ -51,14 +52,8 @@ function EasyAccessMock({ mod, menu }: { mod: SapModule; menu: string[] }) {
               </li>
             ))}
           </ul>
-          <div className="relative grid place-items-center bg-soft-tint p-4">
-            <p className="text-center text-sm font-black italic leading-relaxed text-navy/70">
-              Practice
-              <br />
-              Explore
-              <br />
-              Build Your Skills
-            </p>
+          <div className="relative min-h-52 bg-navy p-3">
+            <SapSystemGraphic label={`SAP ${mod.code} learning flow`} compact className="h-full border-0 shadow-none" />
           </div>
         </div>
       </div>
@@ -110,14 +105,15 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
       <Navbar solid />
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-soft-mesh pt-28 pb-14 lg:pt-32 lg:pb-16">
+        <section className="relative overflow-hidden bg-navy-gradient pt-28 pb-14 lg:pt-32 lg:pb-16">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" />
           <div className="container-fy grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
+            <div className="relative">
               <p className="type-eyebrow text-orange">Practice | Learn | Grow</p>
-              <h1 className="mt-3 text-3xl font-black leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                <span className="text-blue">SAP {mod.code}</span> Server Access
+              <h1 className="mt-3 text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
+                SAP {mod.code} <span className="text-gradient-orange">Server Access</span>
               </h1>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">
                 Practice {mod.name} on a live SAP environment. {mod.desc} Available on {mod.platforms.join(" and ")} with
                 remote access and your own login.
               </p>
@@ -125,10 +121,10 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
               <ul className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {heroChips.map((chip) => (
                   <li key={chip.title} className="flex items-center gap-2.5">
-                    <span className="icon-tile grid size-9 shrink-0 place-items-center rounded-lg">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.07] text-orange">
                       <Icon name={chip.icon} className="size-4" />
                     </span>
-                    <span className="text-[0.72rem] font-bold leading-tight text-foreground">{chip.title}</span>
+                    <span className="text-[0.72rem] font-bold leading-tight text-white/80">{chip.title}</span>
                   </li>
                 ))}
               </ul>
@@ -138,11 +134,11 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                   Get Free 24-Hour Demo
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </CtaButton>
-                <CtaButton href="/pricing" variant="outlineDark">
+                <CtaButton href="/pricing" variant="outlineLight">
                   View Plans
                 </CtaButton>
               </div>
-              <p className="mt-4 text-xs font-semibold text-muted-foreground">
+              <p className="mt-4 text-xs font-semibold text-white/55">
                 No credit card required &nbsp;|&nbsp; Instant access &nbsp;|&nbsp; Technical support
               </p>
             </div>
