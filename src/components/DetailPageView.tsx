@@ -124,6 +124,7 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
 
 export function detailHead(page: DetailPage, path: string) {
   const url = absUrl(path);
+  const qa = quickAnswers[page.slug];
   const categoryPath = "/" + path.split("/")[1];
   const categoryName = page.eyebrow || categoryPath.replace("/", "").replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
   const meta: Array<
