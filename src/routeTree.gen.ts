@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as InfrastructureRouteImport } from './routes/infrastructure'
 import { Route as LlmDottxtRouteImport } from './routes/llm[.]txt'
@@ -30,6 +31,8 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WhyServerfyRouteImport } from './routes/why-serverfy'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CompareIndexRouteImport } from './routes/compare.index'
+import { Route as CompareSlugRouteImport } from './routes/compare.$slug'
 import { Route as ModulesIndexRouteImport } from './routes/modules.index'
 import { Route as ModulesCodeRouteImport } from './routes/modules.$code'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
@@ -63,6 +66,11 @@ const BlogRoute = BlogRouteImport.update({
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -150,6 +158,16 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => BlogRoute,
 } as any)
+const CompareIndexRoute = CompareIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CompareRoute,
+} as any)
+const CompareSlugRoute = CompareSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CompareRoute,
+} as any)
 const ModulesIndexRoute = ModulesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -227,6 +245,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/blog': typeof BlogRouteWithChildren
   '/careers': typeof CareersRoute
+  '/compare': typeof CompareRouteWithChildren
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
   '/llm.txt': typeof LlmDottxtRoute
@@ -243,6 +262,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/compare/$slug': typeof CompareSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
@@ -251,6 +271,7 @@ export interface FileRoutesByFullPath {
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/compare/': typeof CompareIndexRoute
   '/modules/': typeof ModulesIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/servers/': typeof ServersIndexRoute
@@ -275,6 +296,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/compare/$slug': typeof CompareSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
@@ -282,6 +304,7 @@ export interface FileRoutesByTo {
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/compare': typeof CompareIndexRoute
   '/modules': typeof ModulesIndexRoute
   '/resources': typeof ResourcesIndexRoute
   '/servers': typeof ServersIndexRoute
@@ -296,6 +319,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/blog': typeof BlogRouteWithChildren
   '/careers': typeof CareersRoute
+  '/compare': typeof CompareRouteWithChildren
   '/contact': typeof ContactRoute
   '/infrastructure': typeof InfrastructureRoute
   '/llm.txt': typeof LlmDottxtRoute
@@ -312,6 +336,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/why-serverfy': typeof WhyServerfyRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/compare/$slug': typeof CompareSlugRoute
   '/modules/$code': typeof ModulesCodeRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/servers/$slug': typeof ServersSlugRoute
@@ -320,6 +345,7 @@ export interface FileRoutesById {
   '/sfy-console-9f2a/dashboard': typeof SfyConsole9f2aDashboardRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/compare/': typeof CompareIndexRoute
   '/modules/': typeof ModulesIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/servers/': typeof ServersIndexRoute
@@ -335,6 +361,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/blog'
     | '/careers'
+    | '/compare'
     | '/contact'
     | '/infrastructure'
     | '/llm.txt'
@@ -351,6 +378,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/blog/$slug'
+    | '/compare/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
@@ -359,6 +387,7 @@ export interface FileRouteTypes {
     | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog/'
+    | '/compare/'
     | '/modules/'
     | '/resources/'
     | '/servers/'
@@ -383,6 +412,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/blog/$slug'
+    | '/compare/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
@@ -390,6 +420,7 @@ export interface FileRouteTypes {
     | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog'
+    | '/compare'
     | '/modules'
     | '/resources'
     | '/servers'
@@ -403,6 +434,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/blog'
     | '/careers'
+    | '/compare'
     | '/contact'
     | '/infrastructure'
     | '/llm.txt'
@@ -419,6 +451,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-serverfy'
     | '/blog/$slug'
+    | '/compare/$slug'
     | '/modules/$code'
     | '/resources/$slug'
     | '/servers/$slug'
@@ -427,6 +460,7 @@ export interface FileRouteTypes {
     | '/sfy-console-9f2a/dashboard'
     | '/solutions/$slug'
     | '/blog/'
+    | '/compare/'
     | '/modules/'
     | '/resources/'
     | '/servers/'
@@ -441,6 +475,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   BlogRoute: typeof BlogRouteWithChildren
   CareersRoute: typeof CareersRoute
+  CompareRoute: typeof CompareRouteWithChildren
   ContactRoute: typeof ContactRoute
   InfrastructureRoute: typeof InfrastructureRoute
   LlmDottxtRoute: typeof LlmDottxtRoute
@@ -490,6 +525,13 @@ declare module '@tanstack/react-router' {
       path: '/careers'
       fullPath: '/careers'
       preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -611,6 +653,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof BlogRoute
     }
+    '/compare/': {
+      id: '/compare/'
+      path: '/'
+      fullPath: '/compare/'
+      preLoaderRoute: typeof CompareIndexRouteImport
+      parentRoute: typeof CompareRoute
+    }
+    '/compare/$slug': {
+      id: '/compare/$slug'
+      path: '/$slug'
+      fullPath: '/compare/$slug'
+      preLoaderRoute: typeof CompareSlugRouteImport
+      parentRoute: typeof CompareRoute
+    }
     '/modules/': {
       id: '/modules/'
       path: '/'
@@ -724,6 +780,19 @@ const BlogRouteChildren: BlogRouteChildren = {
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
+interface CompareRouteChildren {
+  CompareSlugRoute: typeof CompareSlugRoute
+  CompareIndexRoute: typeof CompareIndexRoute
+}
+
+const CompareRouteChildren: CompareRouteChildren = {
+  CompareSlugRoute: CompareSlugRoute,
+  CompareIndexRoute: CompareIndexRoute,
+}
+
+const CompareRouteWithChildren =
+  CompareRoute._addFileChildren(CompareRouteChildren)
+
 interface ModulesRouteChildren {
   ModulesCodeRoute: typeof ModulesCodeRoute
   ModulesIndexRoute: typeof ModulesIndexRoute
@@ -796,6 +865,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   BlogRoute: BlogRouteWithChildren,
   CareersRoute: CareersRoute,
+  CompareRoute: CompareRouteWithChildren,
   ContactRoute: ContactRoute,
   InfrastructureRoute: InfrastructureRoute,
   LlmDottxtRoute: LlmDottxtRoute,
