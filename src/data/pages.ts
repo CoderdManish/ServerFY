@@ -329,6 +329,84 @@ export const solutionPages: DetailPage[] = [
     faq: commonFaq,
   },
   {
+    slug: "sap-server-for-students",
+    eyebrow: "Solutions",
+    title: "SAP server access for students",
+    metaTitle: "SAP Server Access for Students | Practice Server India — ServerFY",
+    intro:
+      "An affordable SAP practice server for students and beginners — your own login on a live SAP system, no installation and no licence of your own.",
+    description:
+      "Affordable SAP server access for students and beginners in India. Practise SAP S/4HANA or ECC online with your own login, sample data and same-day activation.",
+    keywords:
+      "sap server access for students, sap practice server for students, sap server for students, sap practice server for students india, sap practice environment for students, sap server access for beginners, sap practice server for beginners, affordable sap practice server, sap server access india, sap practice server online",
+    highlights: [
+      { title: "Nothing to install", desc: "Your laptop only runs SAP GUI; the SAP system itself runs on our infrastructure.", icon: "Laptop" },
+      { title: "Student-friendly price", desc: "Monthly access instead of buying hardware or licences.", icon: "Wallet" },
+      { title: "Sample business data", desc: "IDES-style data so full business cycles actually run while you learn.", icon: "Database" },
+      { title: "Your own login", desc: "A personal user and workspace — your configuration stays as you left it.", icon: "UserCheck" },
+    ],
+    specs: [
+      { label: "Systems", value: "SAP S/4HANA or SAP ECC" },
+      { label: "Best for", value: "Students, freshers and first-time learners" },
+      { label: "Laptop needed", value: "Any modern laptop with a stable internet connection" },
+      ...commonAccessSpecs,
+    ],
+    checklist: {
+      title: "Ideal if you are",
+      items: [
+        "Studying SAP alongside a college course",
+        "Following a SAP training programme and need practice time",
+        "Preparing for interviews or certification",
+        "Starting from zero and want guided setup",
+        "Sharing costs with classmates on a shared environment",
+      ],
+    },
+    faq: [
+      { q: "Do I need a powerful laptop?", a: "No. The SAP system runs on our servers; your laptop only needs SAP GUI and internet." },
+      { q: "Is there a student price?", a: "Shared environments are the most affordable option — see the pricing page, and tell us if you are a batch of students." },
+      { q: "Can I start without any SAP experience?", a: "Yes. We send setup instructions and help you log in the first time." },
+    ],
+  },
+  {
+    slug: "sap-server-for-working-professionals",
+    eyebrow: "Solutions",
+    title: "SAP practice environment for working professionals",
+    metaTitle: "SAP Server for Working Professionals | Practice After Work — ServerFY",
+    intro:
+      "Practise SAP around a full-time job — 24×7 remote access, your own login, and the freedom to pause and resume whenever your week allows.",
+    description:
+      "SAP practice environment for working professionals: 24x7 remote access to S/4HANA or ECC, hands-on configuration practice and monthly plans you can extend.",
+    keywords:
+      "sap practice server for professionals, sap server access for professionals, sap practice environment for professionals, sap server for working professionals, sap professional practice environment, sap hands on sap practice, how to practice sap after training, how to practice sap after certification",
+    highlights: [
+      { title: "Available 24×7", desc: "Log in late evening or at weekends — the system is always up.", icon: "Activity" },
+      { title: "Hands-on, not theory", desc: "Real transactions and configuration, so you can talk about what you have actually done.", icon: "Wrench" },
+      { title: "Switch modules", desc: "Add a second module when you want to reposition your profile.", icon: "Boxes" },
+      { title: "Extend when needed", desc: "Monthly access that carries your work forward when you renew.", icon: "CalendarClock" },
+    ],
+    specs: [
+      { label: "Systems", value: "SAP S/4HANA or SAP ECC" },
+      { label: "Best for", value: "Working professionals, career switchers, certified learners" },
+      { label: "Access window", value: "Unrestricted during your access period" },
+      ...commonAccessSpecs,
+    ],
+    checklist: {
+      title: "Common goals",
+      items: [
+        "Practising after finishing a training course",
+        "Applying what a certification only covered in theory",
+        "Moving from support into implementation work",
+        "Building hands-on examples to talk about in interviews",
+        "Learning a second module while employed",
+      ],
+    },
+    faq: [
+      { q: "Can I practise only on weekends?", a: "Yes — access is unrestricted within your period, so use it whenever suits you." },
+      { q: "How long do professionals usually need?", a: "Most take one to three months per module." },
+      { q: "Can my employer be invoiced?", a: "Yes, tell us the billing details and we will raise the invoice accordingly." },
+    ],
+  },
+  {
     slug: "sap-server-for-consultants",
     eyebrow: "Solutions",
     title: "Practice environments for consultants",
