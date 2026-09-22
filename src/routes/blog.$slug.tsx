@@ -151,7 +151,12 @@ function ReadingProgress() {
 
 function BlogArticle() {
   const post = Route.useLoaderData();
-  const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  // Rotate through the library so every article is linked from some other article.
+  const others = blogPosts.filter((p) => p.slug !== post.slug);
+  const start = Math.max(0, blogPosts.findIndex((p) => p.slug === post.slug));
+  const related = others.length
+    ? Array.from({ length: Math.min(3, others.length) }, (_, i) => others[(start + i) % others.length]!)
+    : [];
 
   return (
     <div className="min-h-screen">
