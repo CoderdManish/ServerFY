@@ -112,16 +112,12 @@ export function ComparisonView({ page }: { page: ComparisonPage }) {
 
 export function comparisonHead(page: ComparisonPage, path: string) {
   const url = absUrl(path);
-  const meta: Array<{ title: string } | { name: string; content: string } | { property: string; content: string }> = [
-    { title: page.metaTitle },
-    { name: "description", content: page.description },
-    { property: "og:title", content: page.metaTitle },
-    { property: "og:description", content: page.description },
-    { property: "og:type", content: "article" },
-    { property: "og:url", content: url },
-    { name: "twitter:card", content: "summary" },
-    { name: "twitter:title", content: page.metaTitle },
-    { name: "twitter:description", content: page.description },
+  const title = clampTitle(page.metaTitle);
+  const description = clampDescription(page.description);
+  const meta: Array<{ title: string } | { name?: string; property?: string; content: string }> = [
+    { title },
+    { name: "description", content: description },
+    ...socialMeta({ title, description, url, type: "article" }),
     { name: "robots", content: "index, follow" },
   ];
   if (page.keywords) meta.push({ name: "keywords", content: page.keywords });
