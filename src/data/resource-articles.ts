@@ -96,7 +96,7 @@ export const resourceArticles: DetailPage[] = [
     highlights: [
       { title: "One light client", desc: "SAP GUI is a small desktop client — the SAP system itself stays on the server.", icon: "MonitorSmartphone" },
       { title: "Windows", desc: "SAP GUI for Windows 7.70 or later is the most feature-complete option.", icon: "Laptop" },
-      { title: "macOS and Linux", desc: "SAP GUI for Java provides the same logon and transaction experience.", icon: "Apple" },
+      { title: "macOS and Linux", desc: "SAP GUI for Java provides the same logon and transaction experience.", icon: "Laptop" },
       { title: "Connection entry", desc: "Add one entry per system; you can keep several systems side by side.", icon: "ListPlus" },
     ],
     specs: [
