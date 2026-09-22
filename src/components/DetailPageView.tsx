@@ -5,14 +5,20 @@ import { CtaButton } from "@/components/CtaButton";
 import { PageShell } from "@/components/PageShell";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { IncludedBand } from "@/components/sections/IncludedBand";
+import { QuickAnswer } from "@/components/sections/QuickAnswer";
+import { SystemEvidence } from "@/components/sections/SystemEvidence";
+import { quickAnswers } from "@/data/answers";
 import { absUrl } from "@/lib/site";
 import type { DetailPage } from "@/data/pages";
 
 type RelatedLink = { label: string; to: string };
 
 export function DetailPageView({ page, related = [] }: { page: DetailPage; related?: RelatedLink[] }) {
+  const qa = quickAnswers[page.slug];
+  const showEvidence = page.eyebrow === "SAP Servers";
   return (
     <PageShell eyebrow={page.eyebrow} title={page.title} intro={page.intro}>
+      {qa ? <QuickAnswer question={qa.question} answer={qa.answer} /> : null}
       {/* Highlights */}
       <section className="section-y bg-soft-mesh">
         <div className="container-fy">
