@@ -5,6 +5,7 @@ import { CtaButton } from "@/components/CtaButton";
 import { QuickAnswer } from "@/components/sections/QuickAnswer";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { absUrl } from "@/lib/site";
+import { clampDescription, clampTitle, socialMeta } from "@/lib/seo";
 import type { ComparisonPage } from "@/data/comparisons";
 
 export function ComparisonView({ page }: { page: ComparisonPage }) {

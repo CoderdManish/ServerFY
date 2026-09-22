@@ -25,7 +25,7 @@ export const comparisonPages: ComparisonPage[] = [
     slug: "sap-cloud-server-vs-sap-practice-server",
     eyebrow: "Comparison",
     title: "SAP cloud server vs SAP practice server",
-    metaTitle: "SAP Cloud Server vs SAP Practice Server — What's the Difference? | ServerFY",
+    metaTitle: "SAP Cloud Server vs SAP Practice Server | ServerFY",
     description:
       "A plain comparison of a full SAP cloud deployment and a rented SAP practice server: purpose, cost, licensing, data, admin effort and who each one suits.",
     keywords: "sap cloud server vs practice server, sap practice server, sap cloud hosting",
@@ -69,7 +69,7 @@ export const comparisonPages: ComparisonPage[] = [
     slug: "dedicated-sap-server-vs-shared-sap-environment",
     eyebrow: "Comparison",
     title: "Dedicated SAP server vs shared SAP environment",
-    metaTitle: "Dedicated SAP Server vs Shared SAP Environment — Which to Pick | ServerFY",
+    metaTitle: "Dedicated vs Shared SAP Server — Which to Pick | ServerFY",
     description:
       "Compare a dedicated SAP environment with a shared SAP server: control, performance, data isolation, cost and the situations each one fits.",
     keywords: "dedicated sap server, shared sap server, sap server comparison",
@@ -113,7 +113,7 @@ export const comparisonPages: ComparisonPage[] = [
     slug: "sap-ecc-vs-sap-s4hana-practice-environment",
     eyebrow: "Comparison",
     title: "SAP ECC vs SAP S/4HANA practice environment",
-    metaTitle: "SAP ECC vs SAP S/4HANA Practice Environment — Which to Learn | ServerFY",
+    metaTitle: "SAP ECC vs S/4HANA Practice Server | ServerFY",
     description:
       "Compare an ECC practice system with an S/4HANA practice environment: database, user interface, data model, module scope and which one to learn first.",
     keywords: "sap ecc vs s4hana, sap s4hana practice server, sap ecc practice server",
@@ -156,7 +156,7 @@ export const comparisonPages: ComparisonPage[] = [
     slug: "sap-server-vs-local-installation",
     eyebrow: "Comparison",
     title: "Remote SAP server vs local SAP installation",
-    metaTitle: "Remote SAP Server vs Local SAP Installation — Which Is Better | ServerFY",
+    metaTitle: "Remote SAP Server vs Local Install | ServerFY",
     description:
       "Compare renting a remote SAP practice server with installing SAP on your own laptop: hardware, setup time, stability, maintenance and cost.",
     keywords: "sap local installation, install sap on laptop, remote sap server access",
@@ -198,7 +198,7 @@ export const comparisonPages: ComparisonPage[] = [
     slug: "8gb-vs-16gb-vs-32gb-sap-server",
     eyebrow: "Comparison",
     title: "8 GB vs 16 GB vs 32 GB SAP server",
-    metaTitle: "8 GB vs 16 GB vs 32 GB SAP Server — How Much RAM Do You Need | ServerFY",
+    metaTitle: "8 GB vs 16 GB vs 32 GB SAP Server RAM | ServerFY",
     description:
       "How much memory an SAP practice environment needs: what 8 GB, 16 GB and 32 GB configurations comfortably run, and how many users each supports.",
     keywords: "sap server ram requirements, sap hana memory requirements, how much ram for sap",
