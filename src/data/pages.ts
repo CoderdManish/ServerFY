@@ -827,6 +827,9 @@ export const supportPages: DetailPage[] = [
   },
 ];
 
+/** Resource landing pages plus the SAP Server Knowledge Hub articles. */
+export const resourcePages: DetailPage[] = [...baseResourcePages, ...resourceArticles];
+
 export const allDetailPages = {
   servers: serverPages,
   solutions: solutionPages,
