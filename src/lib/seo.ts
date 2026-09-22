@@ -77,7 +77,7 @@ export function buildHead({
   const meta: MetaTag[] = [
     { title: t },
     { name: "description", content: d },
-    ...socialMeta({ title: t, description: d, url, type, image }),
+    ...socialMeta({ title: t, description: d, url, type, image: image ?? DEFAULT_OG_IMAGE }),
     { name: "robots", content: noindex ? "noindex, nofollow" : "index, follow" },
   ];
 
