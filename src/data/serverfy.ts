@@ -9,7 +9,7 @@ export const site = {
   phone: "+91 86053 23014",
   phoneHref: "tel:+918605323014",
   whatsapp: "https://api.whatsapp.com/send?phone=918605323014",
-  email: "hello@serverfy.com",
+  email: "official.serverfy@gmail.com",
   address: "Pune, Maharashtra, India",
 };
 

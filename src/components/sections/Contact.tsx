@@ -121,7 +121,7 @@ export function Contact() {
                     <input id="fy-name" className={fieldClass} value={values.name} onChange={(e) => set("name", e.target.value)} placeholder="Your full name" autoComplete="name" />
                   </Field>
                   <Field label="Email" error={errors.email} id="fy-email">
-                    <input id="fy-email" type="email" className={fieldClass} value={values.email} onChange={(e) => set("email", e.target.value)} placeholder="you@company.com" autoComplete="email" />
+                    <input id="fy-email" type="email" className={fieldClass} value={values.email} onChange={(e) => set("email", e.target.value)} placeholder="official.serverfy@gmail.com" autoComplete="email" />
                   </Field>
                   <Field label="Phone / WhatsApp" error={errors.phone} id="fy-phone">
                     <input id="fy-phone" type="tel" className={fieldClass} value={values.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+91 00000 00000" autoComplete="tel" />

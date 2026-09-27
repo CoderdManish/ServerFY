@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { ctaClasses } from "@/components/CtaButton";
-import { modules } from "@/data/serverfy";
+import { modules, site } from "@/data/serverfy";
 import { submitServerRequest } from "@/lib/server-request-service";
 import { waLink } from "@/lib/whatsapp";
 import { trackEvent } from "@/lib/analytics";
@@ -70,7 +70,7 @@ Duration: ${v.duration}`;
     setError("");
     setState("loading");
     const res = await submitServerRequest({
-      name: v.name, email: v.email || "not-provided@serverfy.in", phone: v.phone,
+      name: v.name, email: v.email || site.email, phone: v.phone,
       sapModule: v.module || "Not sure", sapVersion: v.version, serverType: v.serverType,
       users: v.users, duration: v.duration, requirement: `Free 24-hour demo request. Experience: ${v.experience}`,
     });
