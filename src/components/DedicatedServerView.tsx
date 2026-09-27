@@ -6,6 +6,7 @@ import { Reveal, SectionHeading } from "@/components/Primitives";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { IncludedBand } from "@/components/sections/IncludedBand";
 import type { DetailPage } from "@/data/pages";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import {
   dedicatedComparison,
   dedicatedIncluded,
