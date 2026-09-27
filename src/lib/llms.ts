@@ -29,7 +29,7 @@ Sitemap: ${SITE_URL}/sitemap.xml
 
 ## Core pages
 ${line("Home", "/", "Overview of SAP server access for practice and training")}
-${line("Pricing", "/pricing", "Monthly plans for SAP server access")}
+${line("Pricing", "/pricing", "Fixed-duration plans for SAP server access")}
 ${line("SAP Servers", "/servers", "All SAP server environments")}
 ${line("SAP Modules", "/modules", "Practice servers by SAP module")}
 ${line("Solutions", "/solutions", "Server setups by audience and use case")}

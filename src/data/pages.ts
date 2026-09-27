@@ -375,7 +375,7 @@ export const solutionPages: DetailPage[] = [
     intro:
       "Practise SAP around a full-time job — 24×7 remote access, your own login, and the freedom to pause and resume whenever your week allows.",
     description:
-      "SAP practice environment for working professionals: 24x7 remote access to S/4HANA or ECC, hands-on configuration practice and monthly plans you can extend.",
+      "SAP practice environment for working professionals: 24x7 remote access to S/4HANA or ECC, hands-on configuration practice and flexible access periods.",
     keywords:
       "sap practice server for professionals, sap server access for professionals, sap practice environment for professionals, sap server for working professionals, sap professional practice environment, sap hands on sap practice, how to practice sap after training, how to practice sap after certification",
     highlights: [
