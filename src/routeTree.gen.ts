@@ -15,6 +15,7 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FreeDemoRouteImport } from './routes/free-demo'
 import { Route as InfrastructureRouteImport } from './routes/infrastructure'
 import { Route as LlmDottxtRouteImport } from './routes/llm[.]txt'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
@@ -76,6 +77,11 @@ const CompareRoute = CompareRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeDemoRoute = FreeDemoRouteImport.update({
+  id: '/free-demo',
+  path: '/free-demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InfrastructureRoute = InfrastructureRouteImport.update({
@@ -247,6 +253,7 @@ export interface FileRoutesByFullPath {
   '/careers': typeof CareersRoute
   '/compare': typeof CompareRouteWithChildren
   '/contact': typeof ContactRoute
+  '/free-demo': typeof FreeDemoRoute
   '/infrastructure': typeof InfrastructureRoute
   '/llm.txt': typeof LlmDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
@@ -285,6 +292,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/free-demo': typeof FreeDemoRoute
   '/infrastructure': typeof InfrastructureRoute
   '/llm.txt': typeof LlmDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
@@ -321,6 +329,7 @@ export interface FileRoutesById {
   '/careers': typeof CareersRoute
   '/compare': typeof CompareRouteWithChildren
   '/contact': typeof ContactRoute
+  '/free-demo': typeof FreeDemoRoute
   '/infrastructure': typeof InfrastructureRoute
   '/llm.txt': typeof LlmDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
@@ -363,6 +372,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/compare'
     | '/contact'
+    | '/free-demo'
     | '/infrastructure'
     | '/llm.txt'
     | '/llms.txt'
@@ -401,6 +411,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
+    | '/free-demo'
     | '/infrastructure'
     | '/llm.txt'
     | '/llms.txt'
@@ -436,6 +447,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/compare'
     | '/contact'
+    | '/free-demo'
     | '/infrastructure'
     | '/llm.txt'
     | '/llms.txt'
@@ -477,6 +489,7 @@ export interface RootRouteChildren {
   CareersRoute: typeof CareersRoute
   CompareRoute: typeof CompareRouteWithChildren
   ContactRoute: typeof ContactRoute
+  FreeDemoRoute: typeof FreeDemoRoute
   InfrastructureRoute: typeof InfrastructureRoute
   LlmDottxtRoute: typeof LlmDottxtRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
@@ -539,6 +552,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free-demo': {
+      id: '/free-demo'
+      path: '/free-demo'
+      fullPath: '/free-demo'
+      preLoaderRoute: typeof FreeDemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/infrastructure': {
@@ -867,6 +887,7 @@ const rootRouteChildren: RootRouteChildren = {
   CareersRoute: CareersRoute,
   CompareRoute: CompareRouteWithChildren,
   ContactRoute: ContactRoute,
+  FreeDemoRoute: FreeDemoRoute,
   InfrastructureRoute: InfrastructureRoute,
   LlmDottxtRoute: LlmDottxtRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
