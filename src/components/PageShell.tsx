@@ -4,6 +4,7 @@ import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/sections/FloatingActions";
 import { CtaButton } from "@/components/CtaButton";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import { SapSystemGraphic } from "@/components/SapSystemGraphic";
 import { ArrowRight, Check } from "lucide-react";
 
