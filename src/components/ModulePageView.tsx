@@ -455,6 +455,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
 
                   <CtaButton
                     href={p.href}
+                    {...(p.href.startsWith("http") ? waProps : {})}
                     size="sm"
                     variant={p.highlight ? "blue" : "outlineDark"}
                     className="mt-6 w-full"

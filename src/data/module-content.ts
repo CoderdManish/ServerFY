@@ -4,6 +4,7 @@
  * content below changes per module. Modules without an entry fall back to a
  * generated set derived from src/data/serverfy.ts.
  */
+import { waLink, waMessages } from "@/lib/whatsapp";
 import { modules, type SapModule } from "@/data/serverfy";
 
 export type PracticeArea = { title: string; icon: string; items: string[] };
