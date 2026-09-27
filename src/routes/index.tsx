@@ -11,7 +11,6 @@ import { FunctionalTechnical } from "@/components/sections/FunctionalTechnical";
 import { Metrics } from "@/components/sections/Metrics";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { UseCases } from "@/components/sections/UseCases";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
@@ -98,7 +97,6 @@ function Index() {
         <TrialBanner />
         <Metrics />
         <UseCases />
-        <Testimonials />
         <FAQ />
         <ExpertCTA />
         <Contact />

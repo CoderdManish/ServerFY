@@ -181,6 +181,13 @@ export function initAnalytics() {
       const target = labelFor(t);
       if (!target) return;
       push({ type: "click", path: location.pathname, target });
+      // Funnel steps: CTA → WhatsApp / demo form
+      const href = target.href ?? "";
+      if (href.includes("whatsapp.com") || href.includes("wa.me")) {
+        push({ type: "event", name: "whatsapp_click", path: location.pathname, props: { label: target.text ?? "" } });
+      } else if (href.includes("/free-demo")) {
+        push({ type: "event", name: "demo_cta_click", path: location.pathname, props: { label: target.text ?? "" } });
+      }
     },
     { capture: true, passive: true },
   );

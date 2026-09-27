@@ -5,8 +5,8 @@ import rackDesktop from "@/assets/server-rack-hero-desktop.webp";
 import rackMobile from "@/assets/server-rack-hero-mobile.webp";
 
 const proofs = [
-  { icon: Zap, label: "Instant Access" },
-  { icon: Clock, label: "24/7 Availability" },
+  { icon: Zap, label: "Same-Day Activation" },
+  { icon: Clock, label: "24/7 Remote Login" },
   { icon: LockKeyhole, label: "Secure Infrastructure" },
   { icon: Layers, label: "Flexible Plans" },
 ];
@@ -89,7 +89,7 @@ export function Hero() {
         <div className="min-w-0">
           <span className="type-eyebrow inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-white/80 backdrop-blur">
             <span className="size-1.5 rounded-full bg-orange led" />
-            All SAP landscapes operational
+            S/4HANA &amp; ECC environments available
           </span>
 
           <h1 className="type-hero mt-4 text-balance text-white sm:mt-6">
@@ -107,15 +107,15 @@ export function Hero() {
               Get Your SAP Server
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>
-            <CtaButton href="/modules" size="lg" variant="outlineLight" className="w-full sm:w-auto">
-              Explore SAP Modules
+            <CtaButton href="/free-demo" size="lg" variant="outlineLight" className="w-full sm:w-auto">
+              Get Free 24-Hour Demo
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>
           </div>
 
           <p className="mt-4 text-sm text-white/45">
             <span className="mr-1.5 text-green" aria-hidden="true">✓</span>
-            Free trial available · No setup fee · Access within hours
+            Free 24-hour demo · No setup fee · Most environments ready the same working day
           </p>
 
           <ul className="mt-9 hidden grid-cols-2 gap-3 sm:grid sm:grid-cols-4">

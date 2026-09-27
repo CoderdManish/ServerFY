@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, ChevronRight, Plus } from "lucide-react";
 import { Icon } from "@/components/Icon";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import { CtaButton } from "@/components/CtaButton";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
@@ -132,7 +133,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
               </ul>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <CtaButton href="/contact">
+                <CtaButton href={`/free-demo?module=${encodeURIComponent(mod.code)}`}>
                   Get Free 24-Hour Demo
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </CtaButton>
@@ -141,7 +142,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
                 </CtaButton>
               </div>
               <p className="mt-4 text-xs font-semibold text-white/55">
-                No credit card required &nbsp;|&nbsp; Instant access &nbsp;|&nbsp; Technical support
+                No credit card required &nbsp;|&nbsp; Same-day activation &nbsp;|&nbsp; Technical support
               </p>
             </div>
 
@@ -548,9 +549,9 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <CtaButton href="/contact">Get Free 24-Hour Demo</CtaButton>
-              <CtaButton href="/contact" variant="outlineLight">
-                Talk to an Expert
+              <CtaButton href={`/free-demo?module=${encodeURIComponent(mod.code)}`}>Get Free 24-Hour Demo</CtaButton>
+              <CtaButton href={waLink(waMessages.module(mod.code))} {...waProps} variant="outlineLight">
+                Ask on WhatsApp
               </CtaButton>
             </div>
           </div>
