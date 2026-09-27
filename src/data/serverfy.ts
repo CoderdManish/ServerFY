@@ -10,7 +10,7 @@ export const site = {
   phoneHref: "tel:+918605323014",
   whatsapp: "https://api.whatsapp.com/send?phone=918605323014",
   email: "hello@serverfy.com",
-  address: "Vishal Nagar, Pune, Maharashtra, India",
+  address: "Pune, Maharashtra, India",
 };
 
 export type NavItem = {
