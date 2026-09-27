@@ -170,46 +170,86 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
         {openMenu ? (
           <div
             key={openMenu}
-            className="anim-rise absolute left-1/2 top-[calc(100%+0.6rem)] hidden w-[min(calc(100vw-2rem),1240px)] -translate-x-1/2 xl:block"
+            className={cn(
+              "anim-rise absolute left-1/2 top-[calc(100%+0.6rem)] hidden -translate-x-1/2 xl:block",
+              megaMenus[openMenu].groups.length === 1
+                ? "w-[min(calc(100vw-2rem),900px)]"
+                : "w-[min(calc(100vw-2rem),1120px)]",
+            )}
             style={{ animationDuration: "0.22s" }}
             onMouseEnter={() => hoverOpen(openMenu)}
           >
-              <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-lift">
-                <div className="grid grid-cols-[280px_repeat(2,minmax(0,1fr))]">
-                  <div className="bg-navy-gradient p-7 text-white">
+            <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-lift">
+              <div className="grid grid-cols-[248px_minmax(0,1fr)]">
+                <div className="relative flex min-h-full flex-col overflow-hidden bg-navy-gradient p-6 text-white">
+                  <div aria-hidden="true" className="absolute inset-0 bg-grid opacity-20" />
+                  <div className="relative">
+                    <span className="mb-5 grid size-11 place-items-center rounded-xl border border-white/15 bg-white/10 text-orange shadow-glow-orange">
+                      <Icon
+                        name={openMenu === "servers" ? "Server" : openMenu === "modules" ? "LayoutGrid" : openMenu === "solutions" ? "Briefcase" : "BookOpen"}
+                        className="size-5"
+                      />
+                    </span>
                     <p className="type-eyebrow text-orange">{megaMenus[openMenu].title}</p>
                     <p className="mt-3 text-sm leading-relaxed text-white/70">{megaMenus[openMenu].blurb}</p>
-                    <CtaButton href={waLink(waMessages.general)} {...waProps} size="sm" variant="outlineLight" className="mt-6">
-                      Talk to an expert
-                      <ArrowRight className="size-4" aria-hidden="true" />
-                    </CtaButton>
                   </div>
+                  <CtaButton
+                    href={waLink(waMessages.general)}
+                    {...waProps}
+                    size="sm"
+                    variant="outlineLight"
+                    className="relative mt-auto w-fit"
+                  >
+                    Talk to an expert
+                    <ArrowRight className="size-4" aria-hidden="true" />
+                  </CtaButton>
+                </div>
+
+                <div className={cn("grid", megaMenus[openMenu].groups.length === 1 ? "grid-cols-1" : "grid-cols-2 divide-x divide-border")}>
                   {megaMenus[openMenu].groups.map((group) => (
-                    <div key={group.heading} className="p-6">
-                      <p className="type-eyebrow text-muted-foreground">{group.heading}</p>
-                      <ul className="mt-3 space-y-1">
+                    <div key={group.heading} className="flex min-w-0 flex-col p-5">
+                      <div className="flex items-center justify-between gap-3 border-b border-border pb-3">
+                        <p className="type-eyebrow text-muted-foreground">{group.heading}</p>
+                        <span className="text-[0.68rem] font-bold text-orange">{group.items.length} options</span>
+                      </div>
+                      <ul
+                        className={cn(
+                          "mt-3 grid gap-1",
+                          megaMenus[openMenu].groups.length === 1 && "grid-cols-2 gap-x-3",
+                        )}
+                      >
                         {group.items.map((it) => (
                           <li key={it.label}>
                             <Link
                               to={linkFor[it.label] ?? menuHref[openMenu]}
-                              className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-accent"
+                              className="group/item grid min-h-14 grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 rounded-xl px-2.5 py-2 transition-colors hover:bg-accent"
                               onClick={() => setOpenMenu(null)}
                             >
-                              <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-lg icon-tile-soft">
-                                <Icon name={it.icon} className="size-4" />
+                              <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-orange/20 bg-orange/5 text-orange transition-colors group-hover/item:border-orange/40 group-hover/item:bg-orange/10">
+                                <Icon name={it.icon} className="size-4.5" />
                               </span>
                               <span className="min-w-0">
-                                <span className="block text-sm font-bold text-foreground">{it.label}</span>
-                                <span className="block truncate text-xs text-muted-foreground">{it.desc}</span>
+                                <span className="block truncate text-[0.82rem] font-extrabold text-foreground">{it.label}</span>
+                                <span className="block truncate text-[0.7rem] leading-relaxed text-muted-foreground">{it.desc}</span>
                               </span>
+                              <ArrowRight className="size-3.5 -translate-x-1 text-muted-foreground opacity-0 transition-all group-hover/item:translate-x-0 group-hover/item:text-orange group-hover/item:opacity-100" aria-hidden="true" />
                             </Link>
                           </li>
                         ))}
                       </ul>
+                      <Link
+                        to={menuHref[openMenu]}
+                        onClick={() => setOpenMenu(null)}
+                        className="mt-auto flex items-center gap-2 border-t border-border pt-3 text-xs font-extrabold text-blue transition-colors hover:text-blue-bright"
+                      >
+                        Explore all {megaMenus[openMenu].title}
+                        <ArrowRight className="size-3.5" aria-hidden="true" />
+                      </Link>
                     </div>
                   ))}
                 </div>
               </div>
+            </div>
           </div>
         ) : null}
 
