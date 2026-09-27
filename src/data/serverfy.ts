@@ -178,12 +178,6 @@ export const modules: SapModule[] = [
   { code: "SolMan", name: "Solution Manager", desc: "ChaRM, monitoring and system landscape setup.", type: "technical", platforms: ["ECC"], availability: "Limited slots", icon: "Workflow" },
 ];
 
-export const billingCycles = [
-  { id: "monthly", label: "Monthly", multiplier: 1, months: 1, note: "" },
-] as const;
-
-export type BillingCycleId = (typeof billingCycles)[number]["id"];
-
 export type Plan = {
   id: string;
   name: string;
@@ -200,32 +194,14 @@ export type Plan = {
 
 export const plans: Plan[] = [
   {
-    id: "starter",
-    name: "Starter",
-    audience: "For learners",
+    id: "access",
+    name: "SAP Server Access",
+    audience: "For individual practice",
     monthly: 1300,
-    cta: "Get Starter Server",
-    bestFor: "Students & beginners", users: "1 login", backup: "Weekly", support: "Standard",
-    features: ["SAP S/4HANA Access", "SAP GUI & Fiori Ready", "Remote Access, 24/7", "Pre-configured Modules", "Weekly Backups", "Standard Support"],
-  },
-  {
-    id: "professional",
-    name: "Professional",
-    audience: "For working professionals",
-    monthly: 2000,
     highlight: true,
-    cta: "Get Professional Server",
-    bestFor: "Working professionals", users: "2 logins", backup: "Daily snapshots", support: "Priority",
-    features: ["Everything in Starter", "All Functional Modules", "IDES Sample Data Included", "Daily Snapshots", "Longer Practice Sessions", "Priority Support"],
-  },
-  {
-    id: "advanced",
-    name: "Advanced",
-    audience: "For consultants",
-    monthly: 3000,
-    cta: "Get Advanced Server",
-    bestFor: "Consultants & trainers", users: "Up to 5 logins", backup: "Daily", support: "Priority",
-    features: ["Everything in Professional", "Technical Modules (ABAP, Basis, HANA)", "Up to 5 User Logins", "Custom Client Copies", "Migration Practice Access", "Priority Support"],
+    cta: "Get SAP Server Access",
+    bestFor: "Learners & professionals", users: "1 login", backup: "Weekly", support: "Standard",
+    features: ["SAP S/4HANA Access", "SAP GUI & Fiori Ready", "Remote Access, 24/7", "Pre-configured Modules", "Weekly Backups", "Standard Support"],
   },
   {
     id: "dedicated",
@@ -234,24 +210,23 @@ export const plans: Plan[] = [
     monthly: null,
     cta: "Contact Sales",
     bestFor: "Institutes & companies", users: "Custom", backup: "Custom", support: "Named contact",
-    features: ["Everything in Advanced", "Fully Private Landscape", "Custom Modules & Data", "Unlimited User Logins", "Dedicated Resources", "Named Support Contact"],
+    features: ["Private SAP Landscape", "Custom Modules & Data", "Multiple User Logins", "Dedicated Resources", "Custom Backup Plan", "Named Support Contact"],
   },
 ];
 
 export const comparison = {
-  plans: ["Starter", "Professional", "Advanced", "Dedicated"],
+  plans: ["Shared access", "Dedicated"],
   rows: [
-    { feature: "Functional Modules", values: ["Core", "All", "All", "Custom"] },
-    { feature: "Technical Modules", values: ["—", "—", "Yes", "Custom"] },
-    { feature: "IDES Sample Data", values: ["—", "Yes", "Yes", "Custom"] },
-    { feature: "SAP Version", values: ["S/4HANA", "S/4HANA", "S/4HANA / HANA", "Any supported"] },
-    { feature: "Users", values: ["1", "2", "5", "Custom"] },
-    { feature: "Remote Access", values: ["Yes", "Yes", "Yes", "Yes"] },
-    { feature: "Support", values: ["Standard", "Priority", "Priority", "Named contact"] },
-    { feature: "Backup", values: ["Weekly", "Daily", "Daily", "Custom"] },
-    { feature: "Monitoring", values: ["Basic", "Standard", "Advanced", "Advanced"] },
-    { feature: "Duration", values: ["1–12 months", "1–12 months", "1–12 months", "Custom term"] },
-    { feature: "Dedicated Resources", values: ["No", "No", "Partial", "Yes"] },
+    { feature: "Functional Modules", values: ["Selectable", "Custom"] },
+    { feature: "Technical Modules", values: ["Selectable", "Custom"] },
+    { feature: "IDES Sample Data", values: ["Included", "Custom"] },
+    { feature: "SAP Version", values: ["S/4HANA / ECC", "Any supported"] },
+    { feature: "Users", values: ["1", "Custom"] },
+    { feature: "Remote Access", values: ["Yes", "Yes"] },
+    { feature: "Support", values: ["Standard", "Named contact"] },
+    { feature: "Backup", values: ["Weekly", "Custom"] },
+    { feature: "Duration", values: ["1, 2, 3 or 6 months", "Custom term"] },
+    { feature: "Dedicated Resources", values: ["No", "Yes"] },
   ],
 };
 
