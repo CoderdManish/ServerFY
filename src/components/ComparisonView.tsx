@@ -7,6 +7,7 @@ import { ExpertCTA } from "@/components/sections/ExpertCTA";
 import { absUrl } from "@/lib/site";
 import { clampDescription, clampTitle, socialMeta } from "@/lib/seo";
 import type { ComparisonPage } from "@/data/comparisons";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 
 export function ComparisonView({ page }: { page: ComparisonPage }) {
   const three = page.columns.length === 3;
@@ -70,7 +71,7 @@ export function ComparisonView({ page }: { page: ComparisonPage }) {
               ))}
             </ul>
             <div className="mt-7 flex flex-wrap gap-3">
-              <CtaButton href="/contact" size="sm">
+              <CtaButton href={waLink(waMessages.comparison(page.title))} {...waProps} size="sm">
                 Ask which fits you
                 <ArrowRight className="size-4" aria-hidden="true" />
               </CtaButton>
