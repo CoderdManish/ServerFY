@@ -1,5 +1,6 @@
 import { Activity, ArrowRight, Cpu, HardDrive, MemoryStick, Server } from "lucide-react";
 import { CtaButton } from "@/components/CtaButton";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import { Reveal, SectionHeading } from "@/components/Primitives";
 
 const usage = [
