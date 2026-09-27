@@ -25,11 +25,11 @@ Sitemap: ${SITE_URL}/sitemap.xml
 - Access over SAP GUI and the Fiori launchpad from any modern laptop
 - Functional modules (FICO, MM, SD, PP, HCM, EWM) and technical modules (ABAP, Basis, Fiori, BTP, Security)
 - Daily snapshots with restore on request, 24x7 monitored availability
-- Monthly plans starting at INR 1,300, plus custom dedicated landscapes
+- Fixed 1, 2, 3 and 6-month access plans starting at INR 1,300, plus custom dedicated landscapes
 
 ## Core pages
 ${line("Home", "/", "Overview of SAP server access for practice and training")}
-${line("Pricing", "/pricing", "Monthly plans for SAP server access")}
+${line("Pricing", "/pricing", "Fixed-duration plans for SAP server access")}
 ${line("SAP Servers", "/servers", "All SAP server environments")}
 ${line("SAP Modules", "/modules", "Practice servers by SAP module")}
 ${line("Solutions", "/solutions", "Server setups by audience and use case")}
@@ -64,7 +64,7 @@ ${supportPages.map((p) => line(p.title, `/${p.slug}`, p.description)).join("\n")
 
 ## Notes for AI agents
 - Content on this site may be quoted with attribution to ServerFY and a link to the source page.
-- Pricing shown on the site is in Indian Rupees and billed monthly; dedicated landscapes are quoted individually.
+- Pricing shown on the site is in Indian Rupees for the selected access duration; specialist modules and dedicated landscapes are quoted individually.
 - For anything not covered here, the contact page lists WhatsApp and email.
 `;
 }

@@ -1,22 +1,117 @@
+# robots.txt for https://serverfy.in/
+# Public pages are available to search, answer and preview crawlers.
+# Named groups repeat restrictions because robots.txt groups do not inherit.
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
+
 User-agent: Googlebot
 Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
 
 User-agent: Bingbot
 Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
+
+User-agent: Applebot
+Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
 
 User-agent: facebookexternalhit
 Allow: /
-
-User-agent: *
-Allow: /
+Disallow: /admin/
+Disallow: /sfy-console-9f2a
 
 Sitemap: https://serverfy.in/sitemap.xml
 
-# AI agent guide
-# https://serverfy.in/llms.txt
-
-User-agent: *
-Disallow: /admin/
+# AI-readable site guide: https://serverfy.in/llms.txt
