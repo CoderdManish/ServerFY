@@ -11,6 +11,7 @@ import { quickAnswers } from "@/data/answers";
 import { absUrl } from "@/lib/site";
 import { clampDescription, clampTitle, socialMeta } from "@/lib/seo";
 import type { DetailPage } from "@/data/pages";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 
 type RelatedLink = { label: string; to: string };
 
@@ -67,7 +68,7 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
               ))}
             </ul>
             <div className="mt-7 flex flex-wrap gap-3">
-              <CtaButton href="/contact" size="sm">
+              <CtaButton href={waLink(waMessages.page(page.title))} {...waProps} size="sm">
                 Get this environment
                 <ArrowRight className="size-4" aria-hidden="true" />
               </CtaButton>

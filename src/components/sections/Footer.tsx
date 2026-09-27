@@ -5,6 +5,7 @@ import { footerColumns, modules, site } from "@/data/serverfy";
 import { linkFor } from "@/data/links";
 import { moduleSlug } from "@/data/module-pages";
 import { compareLinks, guideLinks, serverLinks, solutionLinks } from "@/data/site-index";
+import { waLink, waMessages } from "@/lib/whatsapp";
 
 function LinkRow({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -63,7 +64,7 @@ export function Footer() {
             </ul>
             <ul className="mt-6 flex gap-2">
               {[
-                { icon: MessageCircle, label: "WhatsApp", href: site.whatsapp },
+                { icon: MessageCircle, label: "WhatsApp", href: waLink(waMessages.general) },
                 { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/serverfy/" },
                 { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/profile.php?id=61594163638065" },
                 { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/server_fy/?hl=en" },

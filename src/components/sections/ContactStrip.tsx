@@ -1,5 +1,6 @@
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { site } from "@/data/serverfy";
+import { waLink, waMessages } from "@/lib/whatsapp";
 
 /** Local contact details — also the human-readable source for the LocalBusiness markup. */
 export function ContactStrip() {
@@ -26,7 +27,7 @@ export function ContactStrip() {
             </span>
             <h3 className="mt-4 text-sm font-black uppercase tracking-wider text-muted-foreground">WhatsApp</h3>
             <a
-              href={site.whatsapp}
+              href={waLink(waMessages.general)}
               target="_blank"
               rel="noreferrer"
               className="mt-1 block text-base font-bold text-foreground hover:text-orange"
