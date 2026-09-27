@@ -133,11 +133,11 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
               </ul>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <CtaButton href={`/free-demo?module=${encodeURIComponent(mod.code)}`}>
+                <CtaButton href={waLink(waMessages.demo)} {...waProps}>
                   Get Free 24-Hour Demo
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </CtaButton>
-                <CtaButton href="/pricing" variant="outlineLight">
+                <CtaButton href={waLink(waMessages.pricing)} {...waProps} variant="outlineLight">
                   View Plans
                 </CtaButton>
               </div>
@@ -455,6 +455,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
 
                   <CtaButton
                     href={p.href}
+                    {...(p.href.startsWith("http") ? waProps : {})}
                     size="sm"
                     variant={p.highlight ? "blue" : "outlineDark"}
                     className="mt-6 w-full"
@@ -549,7 +550,7 @@ export function ModulePageView({ mod }: { mod: SapModule }) {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <CtaButton href={`/free-demo?module=${encodeURIComponent(mod.code)}`}>Get Free 24-Hour Demo</CtaButton>
+              <CtaButton href={waLink(waMessages.demo)} {...waProps}>Get Free 24-Hour Demo</CtaButton>
               <CtaButton href={waLink(waMessages.module(mod.code))} {...waProps} variant="outlineLight">
                 Ask on WhatsApp
               </CtaButton>

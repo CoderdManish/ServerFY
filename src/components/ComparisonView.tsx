@@ -75,7 +75,7 @@ export function ComparisonView({ page }: { page: ComparisonPage }) {
                 Ask which fits you
                 <ArrowRight className="size-4" aria-hidden="true" />
               </CtaButton>
-              <CtaButton href="/pricing" size="sm" variant="outlineDark">
+              <CtaButton href={waLink(waMessages.pricing)} {...waProps} size="sm" variant="outlineDark">
                 See pricing
               </CtaButton>
             </div>

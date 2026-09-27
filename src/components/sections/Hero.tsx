@@ -107,7 +107,7 @@ export function Hero() {
               Get Your SAP Server
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>
-            <CtaButton href="/free-demo" size="lg" variant="outlineLight" className="w-full sm:w-auto">
+            <CtaButton href={waLink(waMessages.demo)} {...waProps} size="lg" variant="outlineLight" className="w-full sm:w-auto">
               Get Free 24-Hour Demo
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>

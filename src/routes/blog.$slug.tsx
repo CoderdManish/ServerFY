@@ -300,7 +300,7 @@ function BlogArticle() {
                   Tell us your SAP module and experience level. We will set up a free 24-hour demo so you can try it first.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
-                  <CtaButton href="/free-demo">
+                  <CtaButton href={waLink(waMessages.demo)} {...waProps}>
                     Get free 24-hour demo <ArrowRight className="size-4" aria-hidden="true" />
                   </CtaButton>
                   <CtaButton href={waLink(waMessages.expert)} {...waProps} variant="outlineLight">
@@ -337,7 +337,7 @@ function BlogArticle() {
                   Live SAP environments with your own logins, usually activated the same working day.
                 </p>
                 <div className="mt-5">
-                  <CtaButton href="/pricing" size="sm">
+                  <CtaButton href={waLink(waMessages.pricing)} {...waProps} size="sm">
                     See pricing
                     <ArrowRight className="size-4" aria-hidden="true" />
                   </CtaButton>

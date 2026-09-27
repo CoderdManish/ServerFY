@@ -65,7 +65,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
               Get started
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>
-            <CtaButton href="/pricing" variant="outlineLight">
+            <CtaButton href={waLink(waMessages.pricing)} {...waProps} variant="outlineLight">
               See pricing
             </CtaButton>
           </div>
