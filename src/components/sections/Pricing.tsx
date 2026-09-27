@@ -5,6 +5,7 @@ import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import { Reveal, SectionHeading } from "@/components/Primitives";
 import { plans } from "@/data/serverfy";
 import { cn } from "@/lib/utils";
+import { PlanChooser } from "@/components/sections/PlanChooser";
 
 function AnimatedPrice({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -84,6 +85,15 @@ export function Pricing() {
                     {price ? "Billed monthly" : "Scoped to your landscape"}
                   </p>
 
+                  <dl className={cn("mt-5 grid grid-cols-2 gap-x-3 gap-y-2 rounded-xl p-3 text-[0.72rem]", plan.highlight ? "bg-white/5" : "bg-soft-tint")}>
+                    {([["Best for", plan.bestFor], ["Users", plan.users], ["Backup", plan.backup], ["Support", plan.support]] as const).map(([k, v]) => (
+                      <div key={k}>
+                        <dt className={plan.highlight ? "text-white/50" : "text-muted-foreground"}>{k}</dt>
+                        <dd className={cn("font-bold", plan.highlight ? "text-white" : "text-foreground")}>{v}</dd>
+                      </div>
+                    ))}
+                  </dl>
+
                   <ul className="mt-6 flex-1 space-y-3">
                     {plan.features.map((f) => (
                       <li key={f} className="flex items-start gap-2.5 text-sm">
@@ -118,6 +128,8 @@ export function Pricing() {
         <p className="mt-6 text-center text-xs text-muted-foreground">
           Prices are indicative and exclude applicable taxes.
         </p>
+
+        <PlanChooser />
       </div>
     </section>
   );
