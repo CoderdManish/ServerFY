@@ -192,6 +192,10 @@ export type Plan = {
   highlight?: boolean;
   cta: string;
   features: string[];
+  bestFor: string;
+  users: string;
+  backup: string;
+  support: string;
 };
 
 export const plans: Plan[] = [
@@ -201,6 +205,7 @@ export const plans: Plan[] = [
     audience: "For learners",
     monthly: 1300,
     cta: "Get Starter Server",
+    bestFor: "Students & beginners", users: "1 login", backup: "Weekly", support: "Standard",
     features: ["SAP S/4HANA Access", "SAP GUI & Fiori Ready", "Remote Access, 24/7", "Pre-configured Modules", "Weekly Backups", "Standard Support"],
   },
   {
@@ -210,6 +215,7 @@ export const plans: Plan[] = [
     monthly: 2000,
     highlight: true,
     cta: "Get Professional Server",
+    bestFor: "Working professionals", users: "2 logins", backup: "Daily snapshots", support: "Priority",
     features: ["Everything in Starter", "All Functional Modules", "IDES Sample Data Included", "Daily Snapshots", "Longer Practice Sessions", "Priority Support"],
   },
   {
@@ -218,6 +224,7 @@ export const plans: Plan[] = [
     audience: "For consultants",
     monthly: 3000,
     cta: "Get Advanced Server",
+    bestFor: "Consultants & trainers", users: "Up to 5 logins", backup: "Daily", support: "Priority",
     features: ["Everything in Professional", "Technical Modules (ABAP, Basis, HANA)", "Up to 5 User Logins", "Custom Client Copies", "Migration Practice Access", "Priority Support"],
   },
   {
@@ -226,6 +233,7 @@ export const plans: Plan[] = [
     audience: "Custom",
     monthly: null,
     cta: "Contact Sales",
+    bestFor: "Institutes & companies", users: "Custom", backup: "Custom", support: "Named contact",
     features: ["Everything in Advanced", "Fully Private Landscape", "Custom Modules & Data", "Unlimited User Logins", "Dedicated Resources", "Named Support Contact"],
   },
 ];
@@ -247,13 +255,14 @@ export const comparison = {
   ],
 };
 
+/** Only verifiable, specific claims — no invented numbers. */
 export const metrics = [
-  { value: 99.9, suffix: "%", label: "Target platform uptime" },
-  { value: 10000, suffix: "+", label: "Sessions delivered" },
-  { value: 50, suffix: "+", label: "SAP environments" },
-  { value: 24, suffix: "/7", label: "Access & support window" },
-  { value: null, display: "Instant", label: "Server activation" },
-  { value: 100, suffix: "%", label: "Private access credentials" },
+  { value: "Same day", label: "Most environments activated the same working day" },
+  { value: "24 hours", label: "Free demo environment before you pay" },
+  { value: "25 modules", label: "Functional and technical SAP modules on offer" },
+  { value: "S/4HANA + ECC", label: "Both SAP generations available to practise on" },
+  { value: "SAP GUI", label: "Log in from your own machine — no local install" },
+  { value: "Private", label: "Credentials sent only to you at handover" },
 ];
 
 export const steps = [
