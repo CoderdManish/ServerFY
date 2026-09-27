@@ -23,7 +23,7 @@ export function Comparison() {
                   <th
                     key={p}
                     scope="col"
-                    className={cn("px-6 py-4 text-left type-eyebrow", p === "Professional" && "text-orange")}
+                    className={cn("px-6 py-4 text-left type-eyebrow", p === "Shared access" && "text-orange")}
                   >
                     {p}
                   </th>
@@ -55,15 +55,15 @@ export function Comparison() {
               <div
                 className={cn(
                   "rounded-2xl border p-5",
-                  idx === 1 ? "border-orange/40 bg-navy text-white" : "border-border bg-card",
+                  idx === 0 ? "border-orange/40 bg-navy text-on-navy" : "border-border bg-card",
                 )}
               >
-                <p className={cn("type-eyebrow", idx === 1 ? "text-orange" : "text-blue")}>{p}</p>
+                <p className={cn("type-eyebrow", idx === 0 ? "text-orange" : "text-blue")}>{p}</p>
                 <dl className="mt-4 space-y-2.5">
                   {comparison.rows.map((row) => (
                     <div key={row.feature} className="flex items-start justify-between gap-4 text-sm">
-                      <dt className={idx === 1 ? "text-white/55" : "text-muted-foreground"}>{row.feature}</dt>
-                      <dd className={cn("text-right font-bold", idx === 1 ? "text-white" : "text-foreground")}>
+                      <dt className={idx === 0 ? "text-on-navy/55" : "text-muted-foreground"}>{row.feature}</dt>
+                      <dd className={cn("text-right font-bold", idx === 0 ? "text-on-navy" : "text-foreground")}>
                         {row.values[idx]}
                       </dd>
                     </div>

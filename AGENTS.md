@@ -4,3 +4,4 @@
 - Backend: Express + MongoDB Atlas under `backend/` (deployed separately).
 - Avoid rewriting published git history (force pushes, rebases of pushed commits).
 - Keep the deployed branch in a working state; production builds run `npm run build`.
+- Keep access pricing in `src/data/pricing.ts` as the single source of truth so every pricing surface stays consistent.
