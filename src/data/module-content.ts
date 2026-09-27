@@ -63,7 +63,7 @@ export const modulePlans = [
     term: "24 Hours",
     features: ["Live SAP environment", "Personal login", "Basic transactions", "Remote access"],
     cta: "Get Free Demo",
-    href: "/contact",
+    href: waLink(waMessages.demo),
     highlight: false,
   },
   {
@@ -71,7 +71,7 @@ export const modulePlans = [
     term: "30 Days",
     features: ["Full module practice access", "Transactions & configuration", "Technical support", "Best for learning & self-practice"],
     cta: "Get Started",
-    href: "/pricing",
+    href: waLink(waMessages.pricing),
     highlight: true,
   },
   {
@@ -79,7 +79,7 @@ export const modulePlans = [
     term: "Custom",
     features: ["Dedicated environment", "Extended access", "Custom requirements", "Priority support"],
     cta: "Talk to an Expert",
-    href: "/contact",
+    href: waLink(waMessages.expert),
     highlight: false,
   },
 ];
