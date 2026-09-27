@@ -60,7 +60,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <CtaButton href="/contact">
+            <CtaButton href={waLink(waMessages.dedicated)} {...waProps}>
               Get started
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </CtaButton>
@@ -121,7 +121,7 @@ export function DedicatedServerView({ page }: { page: DetailPage }) {
               ))}
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
-              <CtaButton href="/contact" size="sm">
+              <CtaButton href={waLink(waMessages.dedicated)} {...waProps} size="sm">
                 Get started
                 <ArrowRight className="size-4" aria-hidden="true" />
               </CtaButton>
