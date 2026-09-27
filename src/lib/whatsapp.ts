@@ -25,4 +25,11 @@ export const waMessages = {
   institute: "Hi ServerFY, I need SAP environments for a training batch. Please share batch pricing and available configurations.",
   consultant: "Hi ServerFY, I'm an SAP consultant and need a practice environment to test configurations. Please share options.",
   question: "Hi ServerFY, I have a question about your SAP servers.",
+  pricing: "Hi ServerFY, I'm looking for SAP server pricing. Please share the plans and prices.",
+  page: (title: string) =>
+    `Hi ServerFY, I'm interested in "${title}". Please share availability, pricing and the next steps.`,
+  dedicated:
+    "Hi ServerFY, I need a dedicated SAP server for my team/institute. Please help me plan the configuration and pricing.",
+  comparison: (title: string) =>
+    `Hi ServerFY, I was reading "${title}" and I'm not sure which option fits me. Can you help me choose?`,
 };
