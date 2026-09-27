@@ -72,7 +72,7 @@ export function DetailPageView({ page, related = [] }: { page: DetailPage; relat
                 Get this environment
                 <ArrowRight className="size-4" aria-hidden="true" />
               </CtaButton>
-              <CtaButton href="/pricing" size="sm" variant="outlineDark">
+              <CtaButton href={waLink(waMessages.pricing)} {...waProps} size="sm" variant="outlineDark">
                 See pricing
               </CtaButton>
             </div>

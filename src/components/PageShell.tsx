@@ -37,11 +37,11 @@ export function PageShell({ eyebrow, title, intro, crumbs, children }: Props) {
               </h1>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">{intro}</p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <CtaButton href="/free-demo">
+                <CtaButton href={waLink(waMessages.demo)} {...waProps}>
                   Get free 24-hour demo
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </CtaButton>
-                <CtaButton href="/pricing" variant="outlineLight">View plans</CtaButton>
+                <CtaButton href={waLink(waMessages.pricing)} {...waProps} variant="outlineLight">View plans</CtaButton>
               </div>
               <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-white/65">
                 {['24-hour demo', 'Secure remote login', 'Expert support'].map((item) => (
