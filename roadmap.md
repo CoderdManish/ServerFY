@@ -12,3 +12,6 @@
 - [x] SAP Logon 770 screenshot used as technical evidence on server pages
 - [ ] Confirm real plan specs (RAM/vCPU/storage/validity) — current copy uses general wording
 - [x] Mapped keyword groups to pages (titles, descriptions, keywords) + new Students and Working-professionals pages
+- [x] Marketing review: real-facts stats, removed sample reviews, softer claims, /free-demo funnel, plan chooser + cost estimate, intent WhatsApp messages, blog end CTA, funnel click tracking
+- [ ] Real testimonials, customer counts, uptime figure — waiting on user
+- [ ] Case study (40-learner batch), free guide lead magnet — waiting on real details from user

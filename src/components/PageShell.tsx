@@ -37,8 +37,8 @@ export function PageShell({ eyebrow, title, intro, crumbs, children }: Props) {
               </h1>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">{intro}</p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <CtaButton href="/contact">
-                  Get SAP access
+                <CtaButton href="/free-demo">
+                  Get free 24-hour demo
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </CtaButton>
                 <CtaButton href="/pricing" variant="outlineLight">View plans</CtaButton>

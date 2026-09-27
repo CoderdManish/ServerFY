@@ -4,6 +4,7 @@ import { ArrowRight, CalendarDays, Check, Clock, User } from "lucide-react";
 import { Icon } from "@/components/Icon";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CtaButton } from "@/components/CtaButton";
+import { waLink, waMessages, waProps } from "@/lib/whatsapp";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/sections/FloatingActions";
@@ -290,6 +291,23 @@ function BlogArticle() {
                   </div>
                 </div>
               ) : null}
+
+              <div className="mt-12 rounded-2xl bg-navy-gradient p-6 sm:p-8">
+                <h2 className="text-xl font-black tracking-tight text-white sm:text-2xl">
+                  Still not sure which SAP environment you need?
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  Tell us your SAP module and experience level. We will set up a free 24-hour demo so you can try it first.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <CtaButton href="/free-demo">
+                    Get free 24-hour demo <ArrowRight className="size-4" aria-hidden="true" />
+                  </CtaButton>
+                  <CtaButton href={waLink(waMessages.expert)} {...waProps} variant="outlineLight">
+                    Ask on WhatsApp
+                  </CtaButton>
+                </div>
+              </div>
             </article>
 
             {/* Sidebar */}
