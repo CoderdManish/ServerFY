@@ -122,7 +122,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
               <span className="sr-only 2xl:hidden">Call ServerFY</span>
             </a>
             <a
-              href={site.whatsapp}
+              href={waLink(waMessages.general)}
               target="_blank"
               rel="noreferrer"
               aria-label="Chat on WhatsApp"
@@ -146,7 +146,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
               <Phone className="size-4" aria-hidden="true" />
             </a>
             <a
-              href={site.whatsapp}
+              href={waLink(waMessages.general)}
               target="_blank"
               rel="noreferrer"
               aria-label="Chat on WhatsApp"
