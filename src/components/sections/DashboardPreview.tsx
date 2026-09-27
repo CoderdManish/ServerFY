@@ -126,10 +126,10 @@ export function DashboardPreview() {
                   </div>
 
                   <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-                    <CtaButton href="/contact" size="sm" variant="blue" className="flex-1">
+                    <CtaButton href={waLink(waMessages.buy)} {...waProps} size="sm" variant="blue" className="flex-1">
                       Open Server
                     </CtaButton>
-                    <CtaButton href="/contact" size="sm" variant="outlineDark" className="flex-1">
+                    <CtaButton href={waLink(waMessages.extend)} {...waProps} size="sm" variant="outlineDark" className="flex-1">
                       Extend Access
                     </CtaButton>
                   </div>

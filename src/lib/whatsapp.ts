@@ -15,6 +15,7 @@ export const waProps = { target: "_blank", rel: "noreferrer noopener" } as const
 export const waMessages = {
   general: "Hi ServerFY, I'd like to know more about your SAP server plans.",
   buy: "Hi ServerFY, I want to buy an SAP server. Please share the details.",
+  extend: "Hi ServerFY, I'd like to extend my SAP server access. Please share renewal options and pricing.",
   trial: "Hi ServerFY, I'd like to start the free 24-hour SAP server trial.",
   expert: "Hi ServerFY, I need help choosing the right SAP server for my requirement.",
   demo: "Hi ServerFY, I'd like a free 24-hour SAP demo environment.",
