@@ -35,9 +35,11 @@ export function setToken(token: string | null) {
 
 export class ApiError extends Error {
   status: number;
-  constructor(status: number, message: string) {
+  fields: Record<string, string>;
+  constructor(status: number, message: string, fields: Record<string, string> = {}) {
     super(message);
     this.status = status;
+    this.fields = fields;
   }
 }
 
@@ -63,10 +65,16 @@ export async function api<T>(
   }
 
   if (res.status === 204) return undefined as T;
-  const data = (await res.json().catch(() => null)) as { message?: string } | null;
+  const data = (await res.json().catch(() => null)) as
+    | { message?: string; errors?: Record<string, string> }
+    | null;
   if (!res.ok) {
     if (res.status === 401) setToken(null);
-    throw new ApiError(res.status, data?.message ?? "Something went wrong.");
+    const message =
+      res.status === 413
+        ? "The article is too large to save (usually the cover image). Please use a smaller image."
+        : (data?.message ?? "Something went wrong.");
+    throw new ApiError(res.status, message, data?.errors ?? {});
   }
   return data as T;
 }

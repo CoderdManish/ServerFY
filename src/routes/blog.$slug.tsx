@@ -1,3 +1,4 @@
+import { isRichText, sanitizeRichText } from "@/lib/rich-text";
 import { useEffect, useState } from "react";
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { ArrowRight, CalendarDays, Check, Clock, User } from "lucide-react";
@@ -234,7 +235,14 @@ function BlogArticle() {
                   <h2 className="mt-4 text-xl font-black tracking-tight text-foreground sm:text-2xl">
                     {s.heading}
                   </h2>
-                  {s.paragraphs.map((p, pi) => (
+                  {s.paragraphs.map((p, pi) =>
+                    isRichText(p) ? (
+                      <div
+                        key={pi}
+                        className="rich-body mt-4 text-sm leading-7 text-muted-foreground sm:text-[0.98rem] sm:leading-8"
+                        dangerouslySetInnerHTML={{ __html: sanitizeRichText(p) }}
+                      />
+                    ) : (
                     <p
                       key={p}
                       className={`mt-4 text-sm leading-7 text-muted-foreground sm:text-[0.98rem] sm:leading-8 ${
@@ -245,7 +253,8 @@ function BlogArticle() {
                     >
                       <LinkedText text={p} />
                     </p>
-                  ))}
+                    ),
+                  )}
                   {s.bullets?.length ? (
                     <ul className="neu-card mt-6 space-y-3 rounded-2xl p-5">
                       {s.bullets.map((b) => (
