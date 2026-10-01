@@ -13,7 +13,7 @@ const editor = [requireAuth, requirePermission("blog")];
 
 const sectionSchema = z.object({
   heading: z.string().trim().max(300).default(""),
-  paragraphs: z.array(z.string().max(6000)).default([]),
+  paragraphs: z.array(z.string().max(40000)).default([]),
   bullets: z.array(z.string().max(2000)).default([]),
 });
 
@@ -42,6 +42,16 @@ const postSchema = z.object({
   faq: z.array(z.object({ q: z.string().max(400), a: z.string().max(4000) })).default([]),
   status: z.enum(["draft", "published"]).default("draft"),
 });
+
+/** Turns zod issues into { field: message } so the panel can highlight each field. */
+function fieldErrors(error) {
+  const out = {};
+  for (const issue of error.issues) {
+    const key = issue.path.join(".") || "form";
+    if (!out[key]) out[key] = issue.message;
+  }
+  return out;
+}
 
 const publicShape = (p) => ({
   slug: p.slug,
@@ -150,7 +160,11 @@ blogRouter.post("/admin", editor, async (req, res, next) => {
   try {
     const parsed = postSchema.safeParse(req.body);
     if (!parsed.success) {
-      return res.status(400).json({ ok: false, message: "Please check the article fields." });
+      return res.status(400).json({
+        ok: false,
+        message: "Please fix the highlighted fields.",
+        errors: fieldErrors(parsed.error),
+      });
     }
     const data = parsed.data;
     const post = await BlogPost.create({
@@ -177,7 +191,13 @@ blogRouter.post("/admin", editor, async (req, res, next) => {
 blogRouter.patch("/admin/:id", editor, async (req, res, next) => {
   try {
     const parsed = postSchema.partial().safeParse(req.body);
-    if (!parsed.success) return res.status(400).json({ ok: false, message: "Invalid update." });
+    if (!parsed.success) {
+      return res.status(400).json({
+        ok: false,
+        message: "Please fix the highlighted fields.",
+        errors: fieldErrors(parsed.error),
+      });
+    }
     const post = await BlogPost.findById(req.params.id);
     if (!post) return res.status(404).json({ ok: false, message: "Article not found." });
 
