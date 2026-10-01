@@ -88,7 +88,7 @@ function validate(d: BlogPostDraft): Errors {
   return e;
 }
 
-function Err({ msg }: { msg?: string }) {
+function Err({ msg }: { msg?: string | undefined }) {
   return msg ? (
     <p role="alert" className="mt-1.5 text-xs font-semibold text-red-600">
       {msg}
